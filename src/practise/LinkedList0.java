@@ -1,11 +1,11 @@
 package practise;
 
-public class LinkedList3Nodes {
+public class LinkedList0 {
 
     /* method to create a simple linked list with 3 nodes*/
     public static void main(String[] args) {
         /* Start with the empty list. */
-        LinkedList3Nodes llist = new LinkedList3Nodes();
+        LinkedList0 llist = new LinkedList0();
 
         llist.head = new Node(1);
         Node second = new Node(2);

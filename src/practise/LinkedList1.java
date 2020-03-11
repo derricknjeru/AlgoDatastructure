@@ -1,6 +1,6 @@
 package practise;
-
-public class LinkedListTraversal {
+//traversal
+public class LinkedList1 {
     Node head;
 
     static class Node {
@@ -16,7 +16,7 @@ public class LinkedListTraversal {
     /* Linked list Node.  This inner class is made static so that
           main() can access it */
     public static void main(String[] args) {
-        LinkedListTraversal llist = new LinkedListTraversal();
+        LinkedList1 llist = new LinkedList1();
 
         llist.head = new Node(1);
         Node second = new Node(2);
