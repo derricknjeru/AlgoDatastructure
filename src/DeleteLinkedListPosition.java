@@ -5,12 +5,13 @@ public class DeleteLinkedListPosition {
 
         DeleteLinkedListPosition linkedListPosition = new DeleteLinkedListPosition();
 
-        linkedListPosition.push(7);
+        linkedListPosition.push(1);
         linkedListPosition.push(7);
         linkedListPosition.push(1);
         linkedListPosition.push(3);
         linkedListPosition.push(2);
         linkedListPosition.push(8);
+
 
         System.out.println("\nCreated Linked list is: ");
         linkedListPosition.printList();
@@ -53,9 +54,7 @@ public class DeleteLinkedListPosition {
         // Store pointer to the next of node to be deleted
         //Basically the node that will be temp next;
 
-        Node new_node = temp.next.next;
-
-        temp.next = new_node; // Unlink the deleted node from list
+        temp.next = temp.next.next; // Unlink the deleted node from list
 
 
     }
@@ -90,4 +89,6 @@ public class DeleteLinkedListPosition {
             data = d;
         }
     }
+
+
 }
