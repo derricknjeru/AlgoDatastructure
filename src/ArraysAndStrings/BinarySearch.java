@@ -1,3 +1,5 @@
+package ArraysAndStrings;
+
 public class BinarySearch {
     public static void main(String[] ars) {
         int[] arr = {2, 3, 4, 10, 40};

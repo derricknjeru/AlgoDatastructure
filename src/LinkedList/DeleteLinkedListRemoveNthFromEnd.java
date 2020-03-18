@@ -1,3 +1,5 @@
+package LinkedList;
+
 public class DeleteLinkedListRemoveNthFromEnd {
     ListNode head;
 
@@ -14,6 +16,7 @@ public class DeleteLinkedListRemoveNthFromEnd {
         linkedList.printList();
 
         int n = 2;
+
         linkedList.removeNthFromEnd(linkedList.head, n);
 
         System.out.printf("\nAfter removing %d node from the linked list\n", n);
@@ -87,6 +90,18 @@ public class DeleteLinkedListRemoveNthFromEnd {
      * We relink next pointer of the (L - n)(th node to the (L - n + 2)th node and we are done.
      */
 
+
+    /**
+     * Complexity Analysis
+     *
+     * Time complexity :O(L).
+     *
+     * The algorithm makes two traversal of the list, first to calculate list length L and second to find the (L - n)th node(Previous node). There are 2L-n operations and time complexity is O(L).
+     *
+     * Space complexity : O(1).
+     *
+     * We only used constant extra space.
+     */
     public ListNode removeNthFromEnd(ListNode head, int n) {
 
         int length = 0;
@@ -96,6 +111,9 @@ public class DeleteLinkedListRemoveNthFromEnd {
             length++;
             tempH = tempH.next;
         }
+
+        /*When building a new list while doing linked list problems dummy heads are your best friend.
+        They prevent you from having to do null checks on a list and you can immediately append to the .next value through a pointer to it with no fear of a null pointer exception.*/
 
         ListNode dummy = new ListNode(0);
         dummy.next = head;

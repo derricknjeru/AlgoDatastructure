@@ -1,3 +1,5 @@
+package LinkedList;
+
 public class DeleteLinkedListkey {
     ListNode head;
 

@@ -1,3 +1,5 @@
+package ArraysAndStrings;
+
 public class ReverseString {
     public static void main(String[] args) {
         char[] word = {'H', 'e', 'l', 'l', 'o'};

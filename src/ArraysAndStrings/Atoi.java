@@ -1,3 +1,5 @@
+package ArraysAndStrings;
+
 public class Atoi {
     public static void main(String[] args) {
         String x = "4193 with words";//expected=4193
