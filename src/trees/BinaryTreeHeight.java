@@ -1,7 +1,7 @@
 package trees;
 
 import java.util.Scanner;
-
+//https://www.codesdope.com/blog/article/binary-tree-in-java-traversals-finding-height-of-n/
 class Node {
     Node left;
     Node right;
@@ -25,8 +25,10 @@ class BinaryTreeHeight {
     public static int height(Node root) {
         // Write your code here.
         if (root == null || isLeaf(root)) {
+            // height will be 0 if the node is leaf or null
             return 0;
         } else {
+            //height of a node will be 1+ greater among height of right subtree and height of left subtree
             return 1 + Math.max(height(root.left), height(root.right));
         }
     }
