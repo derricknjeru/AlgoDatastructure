@@ -1,8 +1,5 @@
-package ArraysAndStrings;
+package arrays_and_strings;
 
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
-
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class LinearSearch {

@@ -1,6 +1,4 @@
-package ArraysAndStrings;
-
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+package arrays_and_strings;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package ArraysAndStrings;
+package arrays_and_strings;
 
 public class ReverseInteger {
     public static void main(String[] args) {

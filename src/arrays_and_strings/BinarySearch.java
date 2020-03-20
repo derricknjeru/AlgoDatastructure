@@ -1,4 +1,4 @@
-package ArraysAndStrings;
+package arrays_and_strings;
 
 public class BinarySearch {
     public static void main(String[] ars) {
