@@ -8,7 +8,9 @@ public class LinkedList0 {
         LinkedList0 llist = new LinkedList0();
 
         llist.head = new Node(1);
+
         Node second = new Node(2);
+
         Node third = new Node(3);
 
         /* Three nodes have been allocated dynamically.

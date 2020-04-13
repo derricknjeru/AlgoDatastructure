@@ -58,6 +58,7 @@ public class BackspaceStringCompare {
 
     public boolean backspaceCompare(String S, String T) {
         Stack<Character> stackS = new Stack<>();
+        //String S = "ab#c";
         char[] chars = S.toCharArray();
         for (char c : chars) {
             if (c != '#') {
