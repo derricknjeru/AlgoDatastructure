@@ -23,7 +23,7 @@ public class ValidPalindrome {
             while (i < j && !Character.isLetterOrDigit(s.charAt(i)) || i < j && s.charAt(i) == ' ') {
                 i++;
             }
-            while (i < j && !Character.isLetterOrDigit(s.charAt(j)) || i < j && s.charAt(i) == ' ') {
+            while (i < j && !Character.isLetterOrDigit(s.charAt(j)) || i < j && s.charAt(j) == ' ') {
                 j--;
             }
 
