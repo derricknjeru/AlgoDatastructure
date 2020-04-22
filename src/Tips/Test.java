@@ -1,45 +1,57 @@
 package Tips;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Test {
     public static void main(String[] args) {
-        Test pt = new Test();
+        Test hs = new Test();
 
-        String s = "A man, a plan, a canal: Panama";
-        //String s = "A mike";
+        int stones[] = {2, 7, 4, 1, 8, 1};
+        //int stones[] = {1,1};
 
-        boolean isPalindrome = pt.isPalindrome(s);
+        int stoneDiff = hs.heavyStoneOutput(stones);
 
-        System.out.println("isPalindrome:"+isPalindrome);
+        System.out.println();
+
+        System.out.println("output: " + stoneDiff);
+
     }
 
-    public boolean isPalindrome(String s) {
-
-        s = s.replaceAll("[^a-zA-Z]", "").toLowerCase();
-
-        //System.out.println("Only letters: " + s);
-
-        char sToChar[] = s.toCharArray();
-        char oppToChar[] = new char[sToChar.length];
-        String palindrome = "";
-
-        int sizeOfSToChar = sToChar.length;
-        while (sizeOfSToChar > 0) {
-            sizeOfSToChar--;
-
-            oppToChar[sizeOfSToChar] = sToChar[sizeOfSToChar];
-
-            palindrome = palindrome + oppToChar[sizeOfSToChar] + "";
+    public int heavyStoneOutput(int stones[]) {
+        if (stones.length < 1 || stones.length > 30) {
+            return 0;
         }
 
-        //System.out.println("Palindrome: " + palindrome);
-
-        if (s.equals(palindrome)) {
-            return true;
+        List<Integer> stoneList = new ArrayList<Integer>();
+        for (int i = 0; i < stones.length; i++) {
+            if (stones[i] >= 1 && stones[i] <= 1000) {
+                stoneList.add(stones[i]);
+            }
         }
 
-        return false;
+        Collections.sort(stoneList);
+
+        for (int i = 0; i < stones.length; i++) {
+
+            if (stoneList.size() > 1) {
+                int diffs = stoneList.get(stoneList.size() - 1) - stoneList.get(stoneList.size() - 2);
+
+                stoneList.set(stoneList.size() - 1, diffs);
+                stoneList.remove(stoneList.size() - 2);
+                Collections.sort(stoneList);
+
+                //System.out.print(stoneList.toString());
+            }
+        }
+
+        if (!stoneList.isEmpty()) {
+            return stoneList.get(0);
+        }
+
+        return 0;
     }
-
 
 }
 

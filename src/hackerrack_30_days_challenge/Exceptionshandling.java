@@ -4,7 +4,7 @@ import java.util.*;
 import java.io.*;
 
 //Write your code here
-class Calculator {
+class Calculator2 {
 
     int power(int n, int p) {
         if (n >= 0 && p >= 0) {
@@ -25,7 +25,7 @@ class Exceptionshandling {
 
             int n = in.nextInt();
             int p = in.nextInt();
-            Calculator myCalculator = new Calculator();
+            Calculator2 myCalculator = new Calculator2();
             try {
                 int ans = myCalculator.power(n, p);
                 System.out.println(ans);

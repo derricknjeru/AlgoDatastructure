@@ -1,57 +1,41 @@
 package hackerrack_30_days_challenge;
 
+import java.io.*;
 import java.util.*;
-import java.util.LinkedList;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 
 public class Solution {
-    // Write your code here.
-    Stack<Character> stack = new Stack<>();
-    Queue<Character> queue = new LinkedList<>();
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        String input = scan.nextLine();
-        scan.close();
-
-        // Convert input String to an array of characters:
-        char[] s = input.toCharArray();
-
-        // Create a Solution object:
-        Solution p = new Solution();
-
-        // Enqueue/Push all chars to their respective data structures:
-        for (char c : s) {
-            p.pushCharacter(c);
-            p.enqueueCharacter(c);
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int[] a = new int[n];
+        for (int a_i = 0; a_i < n; a_i++) {
+            a[a_i] = in.nextInt();
         }
+        // Write Your Code Here
+        System.out.printf("Array is sorted in %d swaps.\n", new Solution().bubbleSort(a));
+        System.out.printf("First Element: %d", a[0]);
+        System.out.printf("\nLast Element: %d", a[a.length - 1]);
 
-        // Pop/Dequeue the chars at the head of both data structures and compare them:
-        boolean isPalindrome = true;
-        for (int i = 0; i < s.length / 2; i++) {
-            if (p.popCharacter() != p.dequeueCharacter()) {
-                isPalindrome = false;
-                break;
-            }
-        }
-
-        //Finally, print whether string s is palindrome or not.
-        System.out.println("The word, " + input + ", is "
-                + ((!isPalindrome) ? "not a palindrome." : "a palindrome."));
     }
 
-    private Character dequeueCharacter() {
-        return queue.remove();
-    }
+    public int bubbleSort(int arr[]) {
+        // Track number of elements swapped during a single array traversal
+        int numberOfSwaps = 0;
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++)
+            for (int j = 0; j < n - i - 1; j++)
+                if (arr[j] > arr[j + 1]) {
+                    // swap arr[j+1] and arr[i]
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    numberOfSwaps++;
+                }
 
-    private Character popCharacter() {
-        return stack.pop();
-    }
-
-    private void enqueueCharacter(char c) {
-        queue.add(c);
-    }
-
-    private void pushCharacter(char c) {
-        stack.push(c);
+        return numberOfSwaps;
     }
 }
