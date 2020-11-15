@@ -62,7 +62,7 @@ public class RemoveElement {
 
         while (i < j) {
             if (nums[i] == val) {
-                nums[i] = nums[j - 1];
+                nums[i] = nums[j-1];
                 j--;
             } else {
                 i++;
