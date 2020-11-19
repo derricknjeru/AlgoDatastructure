@@ -1,7 +1,8 @@
-package arrays_and_strings;
+package revision.strings_and_arrays;
 
 import java.util.Arrays;
 import java.util.HashMap;
+
 //
 public class ValidAnagram {
     public static void main(String[] args) {
