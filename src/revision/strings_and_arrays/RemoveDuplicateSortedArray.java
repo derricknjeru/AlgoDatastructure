@@ -1,4 +1,4 @@
-package arrays_and_strings;
+package revision.strings_and_arrays;
 
 public class RemoveDuplicateSortedArray {
     /**
