@@ -65,8 +65,7 @@ public class RemoveDuplicateSortedArray {
 
         for (int i = 0; i < size - 1; i++) {
             if (nums[i] != nums[i + 1]) {
-                nums[_length] = nums[i];
-                _length++;
+                nums[_length++] = nums[i];
             }
 
         }

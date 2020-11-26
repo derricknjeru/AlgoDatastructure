@@ -2,11 +2,31 @@ package arrays101;
 
 public class DuplicateZeros {
     public static void main(String[] args) {
-        int[] arr = {1, 0, 2, 3, 0, 4, 5, 0};
-        int[] arr2 = {8, 4, 5, 0, 0, 0, 0, 7};
+        //int[] arr = {1, 0, 2, 3, 0, 4, 5, 0};
+        int[] arr = {8, 4, 5, 0, 0, 0, 0, 7};
 
-        DuplicateZeros zeros = new DuplicateZeros();
-        zeros.duplicateZeros(arr2);
+        //DuplicateZeros zeros = new DuplicateZeros();
+        // zeros.duplicateZeros(arr2);
+
+        int possibleDup = 0;
+        int size = arr.length;
+
+        for (int i = 0; i < size - possibleDup; i++) {
+            if (arr[i] == 0) {
+
+                if (i == size - possibleDup) {
+                    // For this zero we just copy it without duplication.
+                    arr[size - 1] = 0;
+                    break;
+                }
+
+                possibleDup++;
+            }
+
+        }
+
+
+        System.out.println(possibleDup);
     }
 
     /**

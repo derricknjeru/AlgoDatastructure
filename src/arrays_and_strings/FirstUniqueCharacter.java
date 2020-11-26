@@ -1,5 +1,6 @@
 package arrays_and_strings;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 
 public class FirstUniqueCharacter {
@@ -8,6 +9,8 @@ public class FirstUniqueCharacter {
         String s="loveleetcode";
         FirstUniqueCharacter u = new FirstUniqueCharacter();
         System.out.println(u.firstUniqChar(s));
+
+        BigInteger f = new BigInteger("1"); // Or BigInteger.ONE
     }
 
     /**
