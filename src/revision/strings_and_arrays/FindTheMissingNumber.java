@@ -4,7 +4,8 @@ import java.util.HashSet;
 
 public class FindTheMissingNumber {
     public static void main(String[] args) {
-
+        int[] arr = {9, 6, 2, 3, 5,8, 7, 0, 1};
+        System.out.printf("The missing number is %d", missingNumber(arr));
     }
 
     /**
@@ -36,36 +37,36 @@ public class FindTheMissingNumber {
      * Explanation: n = 1 since there is 1 number, so all numbers are in the range [0,1]. 1 is the missing number in the range since it does not appear in nums.
      */
 
-    public int missingNumber(int[] nums) {
-
-        int n=nums.length;
+    public static int missingNumber(int[] nums) {
+//[9,6,4,2,3,5,7,0,1]
+        int n = nums.length;
 
         //Gause formula==n(n+1)/2
 
-        int totalSum=n*(n+1)/2;
+        int totalSum = n * (n + 1) / 2;
 
-        int currSum=0;
+        int currSum = 0;
 
-        for(int a:nums){
-            currSum+=a;
+        for (int a : nums) {
+            currSum += a;
         }
 
-        return totalSum-currSum;
+        return totalSum - currSum;
     }
 
     public int missingNumber2(int[] nums) {
         //add this to set and compare if all the possible numbers are there
 
-        HashSet<Integer> set =new HashSet<>();
+        HashSet<Integer> set = new HashSet<>();
 
-        for(int a: nums){
+        for (int a : nums) {
             set.add(a);
         }
 
-        int n=nums.length;
+        int n = nums.length;
 
-        for(int i=0;i<=n;i++){
-            if(!set.contains(i)){
+        for (int i = 0; i <= n; i++) {
+            if (!set.contains(i)) {
                 return i;
             }
         }

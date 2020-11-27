@@ -1,4 +1,4 @@
-package trees;
+package revision.trees;
 
 import java.util.Scanner;
 
