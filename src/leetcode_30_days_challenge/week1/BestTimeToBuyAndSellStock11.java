@@ -1,6 +1,6 @@
 package leetcode_30_days_challenge.week1;
 
-public class BestTimeToBuyAndSellStock {
+public class BestTimeToBuyAndSellStock11 {
     /**
      * Say you have an array for which the ith element is the price of a given stock on day i.
      * <p>
@@ -30,7 +30,7 @@ public class BestTimeToBuyAndSellStock {
 
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5};
-        BestTimeToBuyAndSellStock b = new BestTimeToBuyAndSellStock();
+        BestTimeToBuyAndSellStock11 b = new BestTimeToBuyAndSellStock11();
         System.out.printf("The maximum profit %d", b.maxProfit(arr));
     }
 

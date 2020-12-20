@@ -32,10 +32,14 @@ public class FindNumbersWithEvenNumberOfDigits {
     public static void main(String[] args) {
         FindNumbersWithEvenNumberOfDigits numbers = new FindNumbersWithEvenNumberOfDigits();
 
-        int[] nums = {12, 345, 2, 6, 7896};
+        //int[] nums = {12, 345, 2, 6, 7896};
 
-        System.out.printf("How many contains an even number of digits %d",
-                numbers.findNumbers(nums));
+        // System.out.printf("How many contains an even number of digits %d",
+        //       numbers.findNumbers(nums));
+        String x = String.valueOf(-123);
+
+        System.out.printf("%s", x.length());
+
 
     }
 

@@ -12,6 +12,36 @@ public class BinaryRepresentation {
         Integer.toBinaryString(7);
     }
 
+    public String reverseOnlyLetters(String S) {
+        if (S.length() == 0) return S;
+
+        S = S.trim();
+
+        int i = 0;
+        int j = S.length() - 1;
+
+        char[] a = S.toCharArray();
+
+        while (i < j) {
+            while (!Character.isLetter(S.charAt(i))) {
+                i++;
+            }
+            while (!Character.isLetter(S.charAt(j))) {
+                j--;
+            }
+
+            char temp = a[j];
+            a[j] = S.charAt(i);
+            a[i] = temp;
+
+            i++;
+            j--;
+
+        }
+
+        return new String(a);
+    }
+
     String bin(int d) {
         String binary = Integer.toBinaryString(d);
 

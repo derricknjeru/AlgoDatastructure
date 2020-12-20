@@ -7,8 +7,6 @@ public class ValidPalindrome {
         x.toLowerCase();
 
         System.out.println(isPalindrome(x));
-
-
     }
 
     /**
@@ -21,10 +19,10 @@ public class ValidPalindrome {
         int i = 0;
 
         while (i < j) {
-            while (i < j && !Character.isLetterOrDigit(s.charAt(i)) || i < j && s.charAt(i) == ' ') {
+            while (i < j && !Character.isLetterOrDigit(s.charAt(i))) {
                 i++;
             }
-            while (i < j && !Character.isLetterOrDigit(s.charAt(j)) || i < j && s.charAt(j) == ' ') {
+            while (i < j && !Character.isLetterOrDigit(s.charAt(j))) {
                 j--;
             }
 

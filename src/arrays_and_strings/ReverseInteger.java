@@ -3,11 +3,22 @@ package arrays_and_strings;
 public class ReverseInteger {
     public static void main(String[] args) {
 
-        int x = -123;
+        int x = 1534236469;
         ReverseInteger r = new ReverseInteger();
 
         System.out.println(r.reverse(x));
 
+    }
+
+
+
+    public int reverse3(int x) {
+        String reversed = new StringBuilder().append(x).reverse().toString();
+        try {
+            return (x < 0) ? Integer.parseInt(reversed) * -1 : Integer.parseInt(reversed);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 
 
@@ -52,34 +63,34 @@ public class ReverseInteger {
     }
 
     public int reverse2(int x) {
-        if(x==0) return 0;
+        if (x == 0) return 0;
 
-        boolean isNegative=false;
+        boolean isNegative = false;
 
-        String sInt=String.valueOf(x);
+        String sInt = String.valueOf(x);
 
-        if(sInt.charAt(0)=='-'){
-            isNegative=true;
-            sInt=sInt.substring(1);
+        if (sInt.charAt(0) == '-') {
+            isNegative = true;
+            sInt = sInt.substring(1);
         }
-        char [] arr=sInt.toCharArray();
+        char[] arr = sInt.toCharArray();
 
-        double result=0;
+        double result = 0;
 
-        for(int i=arr.length-1;i>=0; i--){
-            result=result*10 + arr[i]-'0';
-        }
-
-        if(isNegative){
-            result*=-1;
+        for (int i = arr.length - 1; i >= 0; i--) {
+            result = result * 10 + arr[i] - '0';
         }
 
-        if(result>Integer.MAX_VALUE || result<Integer.MIN_VALUE){
+        if (isNegative) {
+            result *= -1;
+        }
+
+        if (result > Integer.MAX_VALUE || result < Integer.MIN_VALUE) {
             return 0;
         }
 
 
-        return (int)result;
+        return (int) result;
 
 
     }

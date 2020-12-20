@@ -109,4 +109,36 @@ public class DuplicateZeros {
 
     }
 
+    //https://www.youtube.com/watch?v=io3N5YTFbxM&ab_channel=RajdeepKaur
+    public void duplicateZeros2(int[] arr) {
+
+        int zeros = 0;
+
+        for (int a : arr) {
+            if (a == 0) {
+                zeros++;
+            }
+        }
+
+        int i = arr.length - 1;
+        int j = i + zeros;
+
+        while (i != j) {
+            insert(arr, i, j--);
+            if (arr[i] == 0) {
+                insert(arr, i, j--);
+            }
+            i--;
+
+        }
+
+
+    }
+
+    private void insert(int[] arr, int i, int j) {
+        if (j < arr.length) {
+            arr[j] = arr[i];
+        }
+    }
+
 }

@@ -2,7 +2,7 @@ package trees;
 
 import java.util.Scanner;
 
-public class LowestCommonAncestor {
+public class LowestCommonAncestorBST {
     // A binary tree node
     static class Node {
         int data;

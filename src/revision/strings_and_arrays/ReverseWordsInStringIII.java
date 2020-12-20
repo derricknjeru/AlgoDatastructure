@@ -1,9 +1,10 @@
 package revision.strings_and_arrays;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class ReverseWordsInStringIII {
     public static void main(String[] args) {
+        HashMap<Integer,Integer> map = new HashMap<>();
 
     }
 
@@ -122,6 +123,75 @@ public class ReverseWordsInStringIII {
         result.append(word.reverse());
         return result.toString();
     }
+
+    public String reverseWords22(String s) {
+
+        int n=s.length();
+
+        if(n==0){
+            return "";
+        }
+        //remove leading and trailling spaces
+        s=trim(s,n);
+
+        //remove spaces between words
+        s=s.replaceAll("\\s+"," ");
+
+        String words[] = split22(s);
+
+        int i=0;
+        int j=words.length-1;
+
+        while(i<j){
+            String tmp=words[i];
+            words[i++]=words[j];
+            words[j--]=tmp;
+        }
+
+
+        return String.join(" ",words);
+
+    }
+
+    private String [] split22(String s){
+        List<String> words=new ArrayList<>();
+
+        char[] arr=s.toCharArray();
+
+        StringBuilder sb =new StringBuilder();
+
+        for(char c:arr){
+            if(c==' '){
+                words.add(sb.toString());
+                sb=new StringBuilder();
+            }else {
+                sb.append(c);
+            }
+
+        }
+
+        words.add(sb.toString());
+
+        return words.toArray(new String [0]);
+
+    }
+
+    private String trim(String s, int n){
+        int i=0;
+
+        int j=n-1;
+
+        while(i<n && Character.isWhitespace(s.charAt(i))){
+            i++;
+        }
+
+        while(j>=0 && s.charAt(j)==' '){
+            j--;
+        }
+
+        return s.substring(i,j+1);
+    }
+
 }
 
 

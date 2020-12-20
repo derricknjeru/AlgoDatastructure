@@ -1,14 +1,16 @@
 package revision.strings_and_arrays;
 
 
+
+
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 
 public class ReverseWordsInAString {
     public static void main(String[] args) {
-
-
         String s = "the sky is blue";
         //String s = "  hello world  ";
         //String s = "a good   example";
@@ -91,6 +93,18 @@ public class ReverseWordsInAString {
         return sb.substring(0, sb.length() - 1);
     }
 
+    String trimmedBetween(String str, int start, int end) {
+        while (start < end && Character.isWhitespace(str.charAt(start))) {
+            ++start;
+        }
+
+        while (start < end && Character.isWhitespace(str.charAt(end - 1))) {
+            --end;
+        }
+
+        return str.substring(start, end);
+    }
+
 
     //Solution with Space complexity 0(1)
 
@@ -109,6 +123,10 @@ public class ReverseWordsInAString {
 
         System.out.println(Arrays.toString(arr));
 
+
         return String.join(" ", arr); //convert array to a string of words
     }
+
+
+
 }
