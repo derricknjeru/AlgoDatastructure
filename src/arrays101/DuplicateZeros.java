@@ -3,7 +3,7 @@ package arrays101;
 public class DuplicateZeros {
     public static void main(String[] args) {
         //int[] arr = {1, 0, 2, 3, 0, 4, 5, 0};
-        int[] arr = {8, 4, 5, 0, 0, 0, 0, 7};
+        int[] arr = {8, 4, 5, 0, 0, 0, 0, 7}; //
 
         //DuplicateZeros zeros = new DuplicateZeros();
         // zeros.duplicateZeros(arr2);

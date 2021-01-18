@@ -3,6 +3,7 @@ package revision.tips;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class MinMaxHeap {
     public static void main(String[] args) {
@@ -12,7 +13,7 @@ public class MinMaxHeap {
          * To implement Max Heap, we use Collections.reverseOrder()
          */
 
-       // createMinHeap();
+        // createMinHeap();
         createMaxHeap();
 
     }
@@ -29,6 +30,10 @@ public class MinMaxHeap {
         Iterator iterator = minHeap.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
+        }
+
+        for (int a : minHeap) {
+            System.out.println("dddffdfdfdfdfd" + a);
         }
 
         // Removing the top priority element (or head) and
@@ -64,12 +69,12 @@ public class MinMaxHeap {
     }
 
     private static void createMaxHeap() {
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+        PriorityQueue<String> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
         // Adding items to the pQueue using add()
-        maxHeap.add(10);
-        maxHeap.add(30);
-        maxHeap.add(20);
-        maxHeap.add(400);
+        maxHeap.add("10");
+        maxHeap.add(String.valueOf(30));
+        maxHeap.add(String.valueOf(20));
+        maxHeap.add(String.valueOf(400));
 
         Iterator iterator = maxHeap.iterator();
         while (iterator.hasNext()) {
@@ -84,6 +89,8 @@ public class MinMaxHeap {
         while (iterator2.hasNext()) {
             System.out.println(iterator2.next());
         }
+
+        //Add,poll,peek,
 
 
         // Check if an element is present using contains()

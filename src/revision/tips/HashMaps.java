@@ -10,6 +10,15 @@ public class HashMaps {
          */
 
         HashMap<Double, Integer> map = createPrintHashMap();
+
+
+        map.entrySet().stream().sorted(Map.Entry.comparingByValue(Collections.reverseOrder())).forEach(x -> {
+
+        });
+
+        Comparator<Map.Entry<String,String>> valueComparator=(k,v)-> v.getValue().compareTo(v.getValue());
+
+
         sortMapByKeyUsingTreeMap(map);
         sortValueUsingComparator(map);
         sortValueUsingStreamAPI(map);
@@ -55,8 +64,11 @@ public class HashMaps {
 
     private static void sortValueUsingComparator(HashMap<Double, Integer> map) {
         Comparator<Map.Entry<Double, Integer>> valueComparator = (x, y) -> y.getValue().compareTo(x.getValue());
+
         List<Map.Entry<Double, Integer>> list = new ArrayList<>(map.entrySet());
+
         Collections.sort(list, valueComparator);
+
         System.out.println("\n------------Sort by value using Comparator---------------------\n");
         for (Map.Entry<Double, Integer> m : list) {
             System.out.println("Key " + m.getKey() + " Value " + m.getValue());
