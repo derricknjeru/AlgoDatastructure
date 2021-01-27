@@ -1,13 +1,7 @@
 package revision.strings_and_arrays;
 
 
-
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class ReverseWordsInAString {
     public static void main(String[] args) {
@@ -127,6 +121,85 @@ public class ReverseWordsInAString {
         return String.join(" ", arr); //convert array to a string of words
     }
 
+    public String reverseWords3(String s) {
+
+        //trim whitespaces
+        String x = s.replaceAll("^\\s+|\\s+$", "").replaceAll("\\s+", " ");
+
+        //split
+        String[] arr = split(x);
+
+        int i = 0;
+        int j = arr.length - 1; //last index
+
+        while (i < j) {
+            String tempWord = arr[i];
+            arr[i++] = arr[j];
+            arr[j--] = tempWord;
+
+        }
+
+        return String.join(" ", arr);
+
+
+    }
+
+    private String[] split(String s) {
+
+        List<String> list = new ArrayList<>();
+
+        char[] arr = s.toCharArray();
+
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : arr) {
+            if (c == ' ') {
+                list.add(sb.toString());
+                sb = new StringBuilder();
+            } else {
+                sb.append(c);
+            }
+        }
+
+        list.add(sb.toString());
+
+        return list.toArray(new String[0]);
+    }
+
+    public String reverseWords4(String s) {
+
+        //trim whitespaces
+        String x = s.replaceAll("\\s+", " ");
+
+        //split
+        String[] arr = x.trim().split(" ");
+
+        Stack<String> stack = new Stack<>();
+
+        for (String w : arr) {
+            stack.push(w);
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        while (!stack.isEmpty()) {
+            sb.append(stack.pop());
+            sb.append(" ");
+        }
+
+        return sb.substring(0, sb.length() - 1);
+
+
+    }
+
+    private int getKey(HashMap<Integer, Integer> map, int n) {
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue().equals(n)) {
+                return entry.getKey();
+            }
+        }
+        return -1;
+    }
 
 
 }

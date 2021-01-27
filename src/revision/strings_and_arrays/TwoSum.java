@@ -1,6 +1,7 @@
 package revision.strings_and_arrays;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class TwoSum {
     public static void main(String[] args) {
@@ -42,7 +43,7 @@ public class TwoSum {
      * @param target
      * @return
      */
-    public int[] twoSum(int[] nums, int target) {
+    public int[] twoSum2(int[] nums, int target) {
 
         HashMap<Integer, Integer> map = new HashMap<>();
 
@@ -62,5 +63,38 @@ public class TwoSum {
         }
 
         return indices;
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+
+        HashMap<Integer,Integer> map = new HashMap<>();
+
+        int [] indexArr = new int[2];
+
+        int index=0;
+        for(int a:nums){
+
+            int n=target-a;
+
+            if(map.containsValue(n)){
+                indexArr[0]=getKey(map,n);
+                indexArr[1]=index;
+                return indexArr;
+            }
+
+            map.put(index++,a);
+
+        }
+
+        return indexArr;
+    }
+
+    private int getKey(HashMap<Integer, Integer> map, int n) {
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue().equals(n)) {
+                return entry.getKey();
+            }
+        }
+        return -1;
     }
 }

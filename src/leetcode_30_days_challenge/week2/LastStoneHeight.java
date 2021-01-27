@@ -1,7 +1,5 @@
 package leetcode_30_days_challenge.week2;
 
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
-
 import java.util.*;
 
 public class LastStoneHeight {
