@@ -1,8 +1,14 @@
 package revision.stack_queue;
 
 import java.util.Stack;
+import java.util.regex.Pattern;
 
 public class Brackets {
+    private static final int MIN_VALUE = 0;
+    private static final int MAX_VALUE = 0xFFFFF;
+    Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+    Stack<Integer> stack = new Stack<>();
+
     public static void main(String[] args) {
         /**
          * A string S consisting of N characters is considered to be properly nested if any of the following conditions is true:
@@ -25,35 +31,12 @@ public class Brackets {
          * N is an integer within the range [0..200,000];
          * string S consists only of the following characters: "(", "{", "[", "]", "}" and/or ")".
          */
+
     }
+
 
     public int solution(String S) {
-        // write your code in Java SE 8
-        Stack<Character> stack = new Stack<Character>();
-
-        char[] arr = S.toCharArray();
-
-        for (char c : arr) {
-
-            switch (c) {
-                case ')':
-                    if (stack.isEmpty() || stack.pop() != '(')
-                        return 0;
-                    break;
-                case ']':
-                    if (stack.isEmpty() || stack.pop() != '[')
-                        return 0;
-                    break;
-                case '}':
-                    if (stack.isEmpty() || stack.pop() != '{')
-                        return 0;
-                    break;
-                default:
-                    stack.push(c);
-                    break;
-            }
-        }
-
-        return stack.isEmpty() ? 1 : 0;
+        return 0;
     }
+
 }

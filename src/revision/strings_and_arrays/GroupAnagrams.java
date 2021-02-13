@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+
 public class GroupAnagrams {
     /**
      * Given an array of strings, group anagrams together.
@@ -54,6 +55,32 @@ public class GroupAnagrams {
         List<List<String>> result = new ArrayList<>(map.values());
 
         return result;
+    }
+
+
+    public List<List<String>> groupAnagrams2(String[] strs) {
+
+        if (strs.length == 0) {
+            return new ArrayList<>();
+        }
+
+        HashMap<String, List<String>> map = new HashMap<>();
+
+        for (String s : strs) {
+            char[] arr = s.toCharArray();
+            Arrays.sort(arr);
+
+            String newString = new String(arr);
+
+            if (!map.containsKey(newString)) {
+                map.put(newString, new ArrayList<>());
+            }
+
+            map.get(newString).add(s);
+        }
+
+        return new ArrayList<>(map.values());
+
     }
 
 

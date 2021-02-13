@@ -13,6 +13,32 @@ public class BinarySearch {
          */
     }
 
+    public int search1(int[] nums, int target) {
+        int l = 0;
+        int r = nums.length - 1;
+        return binarySearch(nums, target, l, r);
+    }
+
+
+    private int binarySearch(int[] nums, int target, int l, int r) {
+        if (l <= r) {
+            int mid = l + (r - l) / 2;
+            //base case
+            if (nums[mid] == target) {
+                return mid;
+            }
+
+            if (nums[mid] < target) {
+                return binarySearch(nums, target, mid + 1, r);
+            } else {
+                return binarySearch(nums, target, l, mid - 1);
+            }
+        }
+
+        return -1;
+
+    }
+
     public int search(int[] arr, int x) {
 
         int defaultValue = -1;

@@ -6,7 +6,7 @@ public class Atoi {
         String s = "";
         int i = myAtoi(s);
         System.out.println("The string::" + i);
-        double result=0;
+        double result = 0;
 
 
         /**
@@ -117,6 +117,48 @@ public class Atoi {
         }
 
 
+    }
+
+
+    public int myAtoi2(String s) {
+        boolean isNegative = false;
+
+        s = s.trim();
+
+        if (s.isEmpty()) return 0;
+
+        if (s.charAt(0) == '-') {
+            isNegative = true;
+            s = s.substring(1);
+        } else if (s.charAt(0) == '+') {
+            s = s.substring(1);
+        }
+
+        double result = 0;
+
+        char[] c = s.toCharArray();
+
+        for (char a : c) {
+            //If any character is not an integer then just return break
+            if (!Character.isDigit(a))
+                break;
+
+            //else just keep updating the result
+            result = result * 10 + a - '0'; //horners rule
+
+        }
+
+        if (isNegative) {
+            result = result * -1;
+        }
+
+        if (result < Integer.MIN_VALUE || result > Integer.MAX_VALUE) {
+            return isNegative ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+        }
+        return (int) result;
+
 
     }
+
+
 }

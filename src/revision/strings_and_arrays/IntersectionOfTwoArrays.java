@@ -5,6 +5,27 @@ import java.util.*;
 public class IntersectionOfTwoArrays {
     public static void main(String[] args) {
 
+        List<Integer> list = new ArrayList<>();
+    }
+
+    public int[] intersection2(int[] nums1, int[] nums2) {
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        int index = 0;
+        for (int a : nums1) {
+            map.put(index++, a);
+        }
+
+        List<Integer> list = new ArrayList<>();
+
+        for (int i = 0; i < nums2.length; i++) {
+            if (map.containsValue(nums2[i])) {
+                list.add(nums2[i]);
+            }
+        }
+
+        return list.stream().mapToInt(Integer::intValue).toArray();
     }
 
     /**

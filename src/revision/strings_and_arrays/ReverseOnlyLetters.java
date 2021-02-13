@@ -53,7 +53,7 @@ public class ReverseOnlyLetters {
 
         }
 
-        return new String(a);
+        return new String(a); // or  String.valueOf(arr);
 
     }
 }

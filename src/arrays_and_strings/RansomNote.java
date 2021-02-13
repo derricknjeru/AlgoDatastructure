@@ -7,6 +7,23 @@ public class RansomNote {
 
     }
 
+    /**
+     * Complexity analysis
+     * <p>
+     * Time complexity : O(n). Time complexity is O(n) because accessing the counter table is a constant time operation.
+     * <p>
+     * Space complexity : O(1). Although we do use extra space, the space complexity is O(1) because the table's size stays constant no matter how large n is.
+     * <p>
+     * Follow up
+     * <p>
+     * What if the inputs contain unicode characters? How would you adapt your solution to such case?
+     * <p>
+     * Answer
+     * <p>
+     * Use a hash table instead of a fixed size counter. Imagine allocating a large size array to fit the entire range of unicode characters, which could go up to more than 1 million. A hash table is a more generic solution and could adapt to any range of characters.
+     *
+     * @return
+     */
     public boolean canConstruct(String ransomNote, String magazine) {
 
         // better approach without using hash
