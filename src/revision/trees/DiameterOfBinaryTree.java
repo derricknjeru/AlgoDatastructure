@@ -28,11 +28,14 @@ public class DiameterOfBinaryTree {
                         + tree.diameterOfBinaryTree(tree.root));
     }
 
+    //https://www.youtube.com/watch?v=mWyhPJ1Ukvw&ab_channel=KnowledgeCenter
+
 
     //https://leetcode.com/problems/diameter-of-binary-tree/
     //https://leetcode.com/problems/maximum-depth-of-binary-tree/
     //https://leetcode.com/problems/validate-binary-search-tree/
 
+    //Sometimes called width
     public int diameterOfBinaryTree(TreeNode root) {
         //base case
         if (root == null) {

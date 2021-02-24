@@ -2,9 +2,11 @@ package revision.trees;
 
 import java.util.Scanner;
 
-public class BinarySearchTreeIsBst {
+public class BinaryTreeIsBst {
     //Soln and explanation.
+    //https://www.youtube.com/watch?v=Z_-h_mpDmeg&t=2s&ab_channel=KevinNaughtonJr.
     //https://www.youtube.com/watch?v=MILxfAbIhrE&t=564s
+
 
     //Root of the Binary Tree
     Node root;
@@ -45,7 +47,7 @@ public class BinarySearchTreeIsBst {
             root = insert(root, data);
         }
         scan.close();
-        BinarySearchTreeIsBst isBst = new BinarySearchTreeIsBst();
+        BinaryTreeIsBst isBst = new BinaryTreeIsBst();
         if (isBst.isValidBST(root)) {
             System.out.println("yes");
         } else {
@@ -70,6 +72,30 @@ public class BinarySearchTreeIsBst {
             return root;
         }
     }
+
+    //Javacript
+
+    /**
+     * var isValidBST = function(root) {
+     *     return validBST(root,null,null)
+     * };
+     *
+     * function validBST(root, l, r){
+     *     if(root == null){
+     *        return true;
+     *     }
+     *
+     *     if(l!=null && l.val >= root.val){
+     *        return false;
+     *     }
+     *
+     *     if(r!=null && r.val <=root.val){
+     *        return false;
+     *     }
+     *
+     *     return validBST(root.left,l,root) &&  validBST(root.right,root,r);
+     * }
+     */
 
     /* Class containing left and right child of current
         node and key value*/

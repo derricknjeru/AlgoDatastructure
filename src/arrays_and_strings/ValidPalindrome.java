@@ -68,5 +68,40 @@ public class ValidPalindrome {
 
     }
 
+    //Java script
+
+    /**
+     * function(s) {
+     *     var res = s.toLowerCase();
+     *     var i =0;
+     *     var j = res.length-1;
+     *
+     *     console.log("J "+j)
+     *
+     *     while(i<j){
+     *         while(i<j && !isAlphaNumeric(res.charAt(i))){
+     *             i++;
+     *         }
+     *         while(i<j && !isAlphaNumeric(res.charAt(j))){
+     *             j--;
+     *         }
+     *
+     *         if(res[i]!=res[j]){
+     *            return false;
+     *         }
+     *
+     *         i++;
+     *         j--;
+     *
+     *     }
+     *
+     *     return true;
+     * };
+     *
+     * function isAlphaNumeric(code) {
+     *      return (/^[a-zA-Z0-9]+$/).test(code)
+     * };
+     */
+
 
 }

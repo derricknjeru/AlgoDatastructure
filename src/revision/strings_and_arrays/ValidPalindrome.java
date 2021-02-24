@@ -40,35 +40,71 @@ public class ValidPalindrome {
     }
 
     public static boolean isPalindrome(String s) {
-        if(s.isEmpty()){
+        if (s.isEmpty()) {
             return true;
         }
 
         //we convert it to lower cas
-        s=s.toLowerCase();
+        s = s.toLowerCase();
 
-        char[] arr=s.toCharArray();
+        char[] arr = s.toCharArray();
 
-        int i=0; //start pointer
+        int i = 0; //start pointer
 
-        int j=arr.length-1;
+        int j = arr.length - 1;
 
-        while(i<j){
-            while(i<j && !Character.isLetterOrDigit(arr[i])){
+        while (i < j) {
+            while (i < j && !Character.isLetterOrDigit(arr[i])) {
                 i++;
             }
 
-            while(i<j && !Character.isLetterOrDigit(arr[j])){
+            while (i < j && !Character.isLetterOrDigit(arr[j])) {
                 j--;
             }
 
-            if(arr[i++]!=arr[j--]) return false;
+            if (arr[i++] != arr[j--]) return false;
 
         }
 
         return true;
 
     }
+
+
+    //Java script
+
+    /**
+     * function(s) {
+     *     var res = s.toLowerCase();
+     *     var i =0;
+     *     var j = res.length-1;
+     *
+     *     console.log("J "+j)
+     *
+     *     while(i<j){
+     *         while(i<j && !isAlphaNumeric(res.charAt(i))){
+     *             i++;
+     *         }
+     *         while(i<j && !isAlphaNumeric(res.charAt(j))){
+     *             j--;
+     *         }
+     *
+     *         if(res[i]!=res[j]){
+     *            return false;
+     *         }
+     *
+     *         i++;
+     *         j--;
+     *
+     *     }
+     *
+     *     return true;
+     * };
+     *
+     * function isAlphaNumeric(code) {
+     *      return (/^[a-zA-Z0-9]+$/).test(code)
+     * };
+     */
 
 
 }
