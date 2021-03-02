@@ -84,4 +84,41 @@ public class GroupAnagrams {
     }
 
 
+    public List<List<String>> groupAnagrams3(String[] strs) {
+
+        HashMap<String, List<String>> map = new HashMap<>();
+
+        List<List<String>> result = new ArrayList<List<String>>();
+
+        for (String s : strs) {
+
+            String sortedString = sort(s);
+
+            if (map.containsKey(sortedString)) {
+                List list = map.get(sortedString);
+                list.add(s);
+                map.put(sortedString, list);
+
+            } else {
+                List list = new ArrayList<>();
+                list.add(s);
+                map.put(sortedString, list);
+            }
+
+        }
+
+        return new ArrayList<List<String>>(map.values());
+
+    }
+
+    private String sort(String s) {
+        char arr[] = s.toCharArray();
+
+        Arrays.sort(arr);
+
+        return new String(arr);
+
+    }
+
+
 }

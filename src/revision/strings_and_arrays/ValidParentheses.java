@@ -39,6 +39,45 @@ public class ValidParentheses {
 
     }
 
+    public boolean isValid2(String s) {
+        char[] arr = s.toCharArray();
+
+        if (arr.length == 1) {
+            return false;
+        }
+
+        Stack<Character> stack = new Stack<>();
+
+        for (char c : arr) {
+            switch (c) {
+                case ')':
+                    if (stack.isEmpty() || stack.pop() != '(') {
+                        return false;
+                    }
+                    break;
+                case '}':
+                    if (stack.isEmpty() || stack.pop() != '{') {
+                        return false;
+                    }
+                    break;
+                case ']':
+                    if (stack.isEmpty() || stack.pop() != '[') {
+                        return false;
+                    }
+                    break;
+
+                default:
+                    stack.push(c);
+                    break;
+
+            }
+
+        }
+
+        return stack.isEmpty();
+
+    }
+
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
         for (char c : s.toCharArray()) {
@@ -60,4 +99,43 @@ public class ValidParentheses {
         return stack.isEmpty();
 
     }
+
+    /**
+     *   var isValid = function(s) {
+     *     if(s.length<2) return false;
+     *
+     *     var stack =[];
+     *
+     *     var arr = s.split(''); //Array.from(s)
+     *
+     *     for(let c of arr){
+     *         switch(c){
+     *            case ')':
+     *                 if(stack.length==0||stack.pop()!='('){
+     *                   return false;
+     *                 }
+     *                 break;
+     *            case '}':
+     *                 if(stack.length==0||stack.pop()!='{'){
+     *                   return false;
+     *                 }
+     *                 break;
+     *
+     *            case ']':
+     *                 if(stack.length==0||stack.pop()!='['){
+     *                   return false;
+     *                 }
+     *                 break;
+     *
+     *             default:
+     *                 stack.push(c);
+     *                 break;
+     *         }
+     *
+     *     }
+     *
+     *     return stack.length==0? true : false;
+     *
+     * };
+     */
 }

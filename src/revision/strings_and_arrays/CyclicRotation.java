@@ -67,5 +67,36 @@ public class CyclicRotation {
         return nums;
     }
 
+    public void rotate(int[] nums, int k) {
+        //[1,2,3,4,5,6,7], k = 3
+        //7654321
+        // 5674321
+
+        //5671234
+
+
+        int n = nums.length;
+
+        k = k % n;
+
+        //reverse the whole list
+        reverse(nums, 0, n - 1);
+
+        //reverse K numbers
+        reverse(nums, 0, k - 1);
+
+        //reverse n-k numbers
+        reverse(nums, k, n - 1);
+
+    }
+
+    private void reverse(int[] nums, int i, int j) {
+        while (i < j) {
+            int temp = nums[i];
+            nums[i++] = nums[j];
+            nums[j--] = temp;
+        }
+    }
+
 
 }

@@ -202,4 +202,26 @@ public class ReverseWordsInAString {
     }
 
 
+    public String reverseWords5(String s) {
+        s = s.replaceAll("^\\s+|\\s+$", ""); //trim
+
+        s = s.replaceAll("\\s+", " "); //remove whitespaces
+
+        String[] arr = split(s); //split
+
+        int i = 0;
+        int j = arr.length - 1;
+
+        while (i < j) {
+            String temp = arr[i];
+            arr[i++] = arr[j];
+            arr[j--] = temp;
+
+        }
+
+        return String.join(" ", arr);
+
+    }
+
+
 }

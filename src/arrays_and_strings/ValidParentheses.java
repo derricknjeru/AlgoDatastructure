@@ -60,4 +60,44 @@ public class ValidParentheses {
         return stack.isEmpty();
 
     }
+    //
+
+    /**
+     * var isValid = function(s) {
+     *     if(s.length<2) return false;
+     *
+     *     var stack =[];
+     *
+     *     var arr = s.split(''); //Array.from(s)
+     *
+     *     for(let i = 0; i<arr.length; i++){
+     *         switch(arr[i]){
+     *            case ')':
+     *                 if(stack.length==0||stack.pop()!='('){
+     *                   return false;
+     *                 }
+     *                 break;
+     *            case '}':
+     *                 if(stack.length==0||stack.pop()!='{'){
+     *                   return false;
+     *                 }
+     *                 break;
+     *
+     *            case ']':
+     *                 if(stack.length==0||stack.pop()!='['){
+     *                   return false;
+     *                 }
+     *                 break;
+     *
+     *             default:
+     *                 stack.push(arr[i]);
+     *                 break;
+     *         }
+     *
+     *     }
+     *
+     *     return stack.length==0? true : false;
+     *
+     * };
+     */
 }
