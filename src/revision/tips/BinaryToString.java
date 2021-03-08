@@ -12,6 +12,7 @@ public class BinaryToString {
 
     public static String convertStringToBinary(String input) {
         int b1 = Integer.parseInt(input, 2);
+        System.out.println(b1);
         return Integer.toBinaryString(b1);
     }
 }
