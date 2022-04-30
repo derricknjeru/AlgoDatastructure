@@ -5,7 +5,7 @@ import java.util.List;
 //Source link https://www.youtube.com/watch?v=U79BoHTcCYw
 public class DesignHashSet {
     private int numBuckets = 15000;
-    LinkedList[] buckets;
+    LinkedList[] buckets; //Array of linkedlist
 
     private int hash_function(int key) {
         return key % numBuckets;

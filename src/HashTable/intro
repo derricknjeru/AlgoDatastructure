@@ -48,3 +48,12 @@ Variance
 -> looking at the chaining.
 
 
+
+Designing hashmap.
+
+Why not use array - For large dataset, search will take more time O(n) since it's a linear search.
+
+For ideal hashmap search is a constant time O(1) or close to 1.
+
+One has to design a hash_function or algo that convert keys to integers and then converts them to a range 0 -N-1 (K%N)
+
