@@ -1,6 +1,8 @@
 package HashTable;
 import java.util.*;
 public class SingleNumber {
+
+    //https://leetcode.com/problems/single-number/
     public int singleNumber(int[] nums) {
 
         HashMap<Integer, Integer> occurrences = new HashMap<>();
