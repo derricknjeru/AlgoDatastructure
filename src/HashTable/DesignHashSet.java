@@ -1,7 +1,7 @@
 package HashTable;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+
 //Source link https://www.youtube.com/watch?v=U79BoHTcCYw
 public class DesignHashSet {
     private int numBuckets = 15000;
@@ -14,6 +14,8 @@ public class DesignHashSet {
     public DesignHashSet() {
         buckets = new LinkedList[numBuckets];
     }
+
+
 
     public void add(int key) {
         int i = hash_function(key);
@@ -45,4 +47,5 @@ public class DesignHashSet {
         }
         return true;
     }
+
 }

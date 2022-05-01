@@ -48,7 +48,6 @@ public class SingleNumber {
         for (int i : nums) {
             occurrences.put(i, occurrences.getOrDefault(i, 0) + 1);
         }
-        HashMap<String,Integer> map=new HashMap<>();
 
         for (Map.Entry<Integer, Integer> m : occurrences.entrySet()) {
             System.out.printf("%d occur %d time(s)\n", m.getKey(), m.getValue());
