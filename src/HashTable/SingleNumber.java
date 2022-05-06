@@ -7,6 +7,7 @@ public class SingleNumber {
 
         HashMap<Integer, Integer> occurrences = new HashMap<>();
 
+
         for (int i : nums) {
             occurrences.put(i, occurrences.getOrDefault(i, 0) + 1);
         }
