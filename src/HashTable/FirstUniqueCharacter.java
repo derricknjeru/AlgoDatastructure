@@ -1,8 +1,15 @@
 package HashTable;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class FirstUniqueCharacter {
+    public static void main(String[] args) {
+        List<Integer> result = new ArrayList<>();
+
+        result.toArray(new Integer[0]);
+    }
     /**
      * Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
      *
