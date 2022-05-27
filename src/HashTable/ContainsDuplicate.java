@@ -5,6 +5,7 @@ import java.util.*;
 public class ContainsDuplicate {
     //https://leetcode.com/problems/contains-duplicate/
     public boolean containsDuplicate(int[] nums) {
+
         Set<Integer> set = new HashSet<>(nums.length);
         for (int a : nums) {
             if (set.contains(a)) {
