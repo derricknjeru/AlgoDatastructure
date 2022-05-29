@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 
 public class TopKFrequentElement {
+    //https://www.geeksforgeeks.org/priority-queue-class-in-java/
     public int[] topKFrequent(int[] nums, int k) {
         Map<Integer,Integer> map = new HashMap<>();
 
