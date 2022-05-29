@@ -1,0 +1,11 @@
+Linked list -> stores a list of values but in a way that each value is connected or linked to the next value
+Single linked list -> Each value is only connected to the next node. DATA|NEXT
+Double linked list -> Each value is connected to the next node and previous node.
+Circular linked list-> the last node is connected to the head. It has an address to the head
+
+NB
+Storing a list of values in a linked list can take up more memory than using a simple array because in addition to values
+we have to store next and sometimes previous fields for each node. However adding a new value to a linked list is easy
+Since you just extend the last node to add the new node also deleting is easy as you can just change the next
+field of the previous node to point to the node after the node you wish to remove.
+

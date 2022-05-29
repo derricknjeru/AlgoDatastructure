@@ -30,7 +30,7 @@ public class InsertDeleteGetRandom {
                 return list.get(0);
             }
 
-            Collections.shuffle(list, new Random(list.size()));
+            //Collections.shuffle(list, new Random(list.size()));
 
             int int_random = rand.nextInt(list.size());
 
