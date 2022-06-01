@@ -54,4 +54,8 @@ public class IsomorphicStrings {
 
         return true;
     }
+
+    // 3  ---> 2 ---> 0 ---> -4 --->2
+    //                        s
+    //                               f
 }
