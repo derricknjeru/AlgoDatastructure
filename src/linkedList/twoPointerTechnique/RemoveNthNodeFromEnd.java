@@ -1,10 +1,10 @@
-package linkedList;
+package linkedList.twoPointerTechnique;
 
-public class DeleteLinkedListRemoveNthFromEnd {
+public class RemoveNthNodeFromEnd {
     ListNode head;
 
     public static void main(String[] args) {
-        DeleteLinkedListRemoveNthFromEnd linkedList = new DeleteLinkedListRemoveNthFromEnd();
+        RemoveNthNodeFromEnd linkedList = new RemoveNthNodeFromEnd();
 
         linkedList.push(5);
         linkedList.push(4);
@@ -102,7 +102,7 @@ public class DeleteLinkedListRemoveNthFromEnd {
      *
      * We only used constant extra space.
      */
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+    public ListNode removeNthFromEnd2(ListNode head, int n) {
 
         int length = 0;
 
@@ -133,6 +133,30 @@ public class DeleteLinkedListRemoveNthFromEnd {
         }
 
         return dummy.next;
+    }
+
+    //Best soln.
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+
+        ListNode dummy = new ListNode(0);
+        dummy.next=head;
+
+        ListNode fast=dummy;
+        ListNode slow=dummy;
+
+        while(n-->0 && fast!=null){
+            fast=fast.next;
+        }
+
+        while(fast.next!=null){
+
+            slow = slow.next;
+            fast = fast.next;
+        }
+        slow.next=slow.next.next;
+
+        return dummy.next;
+
     }
 
 }

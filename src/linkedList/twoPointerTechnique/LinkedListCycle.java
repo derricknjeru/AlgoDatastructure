@@ -1,4 +1,4 @@
-package linkedList;
+package linkedList.twoPointerTechnique;
 
 class ListNode {
     int val;
@@ -67,3 +67,17 @@ public class LinkedListCycle {
         return false;
     }
 }
+
+//pwwkew
+//f
+//s
+
+//p f1
+//pw f2
+//w s1
+//_ s2/f2
+//w f3
+//wk f4
+//wke f5
+//wke s3
+//kew
