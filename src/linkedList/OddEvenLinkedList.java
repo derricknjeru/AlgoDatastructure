@@ -10,6 +10,8 @@ public class OddEvenLinkedList {
         }
     }
 
+    //https://leetcode.com/problems/odd-even-linked-list/solution/
+
     public ListNode oddEvenList(ListNode head) {
         if (head == null) return null;
 
