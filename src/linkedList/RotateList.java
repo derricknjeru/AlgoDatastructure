@@ -25,7 +25,7 @@ public class RotateList {
             return head;
         }
 
-        int _length = 1;
+        int _length = 1; //starting at 1 inorder to move until when next is null
         ListNode tail = head;
 
         while (tail != null && tail.next != null) {
