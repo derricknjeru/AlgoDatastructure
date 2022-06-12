@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class BinarySearchTreeIsBst {
     //Soln and explanation.
     //https://www.youtube.com/watch?v=MILxfAbIhrE&t=564s
+    //https://www.youtube.com/watch?v=i_Q0v_Ct5lY
 
     //Root of the Binary Tree
     Node root;

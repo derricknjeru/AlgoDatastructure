@@ -38,7 +38,7 @@ public class DepthFirstTraversals {
         printPostorder(node.right);
 
         // now deal with the node
-        System.out.print(node.key + " ");
+        System.out.print(node.key + " "); // print myself //root
     }
 
     /* Given a binary tree, print its nodes in inorder*/
@@ -50,7 +50,7 @@ public class DepthFirstTraversals {
         printInorder(node.left);
 
         /* then print the data of node */
-        System.out.print(node.key + " ");
+        System.out.print(node.key + " "); // print myself //root
 
         /* now recur on right child */
         printInorder(node.right);
@@ -62,7 +62,7 @@ public class DepthFirstTraversals {
             return;
 
         /* first print data of node */
-        System.out.print(node.key + " ");
+        System.out.print(node.key + " "); // print myself //root
 
         /* then recur on left sutree */
         printPreorder(node.left);
