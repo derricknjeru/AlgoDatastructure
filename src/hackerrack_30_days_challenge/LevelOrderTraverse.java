@@ -1,9 +1,6 @@
 package hackerrack_30_days_challenge;
 
-import trees.LevelOrderTraversal;
-
 import java.util.*;
-import java.io.*;
 import java.util.LinkedList;
 
 class NodeT {

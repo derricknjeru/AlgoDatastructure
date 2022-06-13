@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class BinaryTreeInorderTraversal {
+public class BinaryTreePostorderTraversal {
+
 
     // Definition for a binary tree node.
     public class TreeNode {
@@ -26,12 +27,10 @@ public class BinaryTreeInorderTraversal {
         }
     }
 
-//https://leetcode.com/problems/binary-tree-inorder-traversal/
-//Soln https://leetcode.com/problems/binary-tree-inorder-traversal/
-
+   //https://leetcode.com/problems/binary-tree-postorder-traversal/
 
     /**
-     * Given the root of a binary tree, return the inorder traversal of its nodes' values.
+     * Given the root of a binary tree, return the postorder traversal of its nodes' values.
      * <p>
      * <p>
      * <p>
@@ -60,52 +59,32 @@ public class BinaryTreeInorderTraversal {
      */
 
     List<Integer> result = new ArrayList<>();
+
     //https://www.youtube.com/watch?v=ZM-sV9zQPEs
-    public List<Integer> inorderTraversal(TreeNode root) {
-
-        if (root == null)
+    public List<Integer> postorderTraversal(TreeNode root) {
+        if(root==null){
             return result;
+        }
 
-        /* first recur on left child */
-        inorderTraversal(root.left);
+        postorderTraversal(root.left);
 
-        /* then print the data of node */
-        //System.out.print(root.val + " ");
+        postorderTraversal(root.right);
 
         result.add(root.val);
 
-        /* now recur on right child */
-        inorderTraversal(root.right);
-
         return result;
 
     }
 
-    //https://www.youtube.com/watch?v=nzmtCFNae9k
-    public List<Integer> inorderTraversalIterative(TreeNode root) {
+    //https://www.youtube.com/watch?v=xLQKdq0Ffjg&t=1s
+    public List<Integer> postorderTraversalIterative(TreeNode root) {
 
-        if (root == null)
-            return result;
 
-        Stack<TreeNode> stack = new Stack<>();
-
-        TreeNode curr =root;
-
-        while(curr!=null || !stack.isEmpty()){
-            while(curr!=null){
-                stack.push(curr);
-                curr=curr.left;
-            }
-
-            curr = stack.pop();
-            result.add(curr.val);
-            curr = curr.right;
-        }
-
+    //TODO
         return result;
-
     }
 }
+
 
 
 

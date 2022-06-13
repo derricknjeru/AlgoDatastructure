@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class LevelOrderTraversal {
+public class BinaryTreeLevelOrderTraversal {
     /**
      * Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
      * <p>
@@ -37,7 +37,9 @@ public class LevelOrderTraversal {
     }
 
     class Solution {
-        public List<List<Integer>> levelOrder(TreeNode root) {
+        //Example ->https://www.youtube.com/watch?v=86g8jAQug04
+        //ANS https://www.youtube.com/watch?v=XZnWETlZZ14
+        public List<List<Integer>> levelOrder2(TreeNode root) {
             List<List<Integer>> result = new ArrayList<>();
             if (root == null) {
                 return result;
@@ -80,10 +82,50 @@ public class LevelOrderTraversal {
 
         }
 
+        public List<List<Integer>> levelOrder(TreeNode root) {
+
+            List<List<Integer>> result = new ArrayList<>();
+
+            if (root == null) {
+                return result;
+            }
+
+            Queue<TreeNode> q = new LinkedList<>();
+            q.add(root);
+
+            while (!q.isEmpty()) {
+
+                List<Integer> currentNodeList = new ArrayList<>();
+                int size = q.size();
+
+                while (size > 0) {
+
+                    TreeNode currentNode = q.poll();
+                    currentNodeList.add(currentNode.val);
+
+                    if (currentNode.left != null) {
+                        q.add(currentNode.left);
+                    }
+
+                    if (currentNode.right != null) {
+                        q.add(currentNode.right);
+                    }
+                    size--;
+                }
+
+                result.add(currentNodeList);
+
+            }
+
+            return result;
+
+
+        }
+
 
     }
 
-    static void levelOrder(Node root){
+    static void levelOrder(Node root) {
         //Write your code here
 
     }
