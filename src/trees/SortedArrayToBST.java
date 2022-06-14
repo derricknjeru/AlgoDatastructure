@@ -34,7 +34,7 @@ public class SortedArrayToBST {
             left = right = null;
         }
     }
-
+    //https://www.youtube.com/watch?v=12omz-VAyRk
     public TreeNode sortedArrayToBST(int[] nums) {
         if (nums == null || nums.length == 0) {
             return null;
