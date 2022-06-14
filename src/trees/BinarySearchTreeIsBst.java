@@ -1,10 +1,32 @@
 package trees;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class BinarySearchTreeIsBst {
     //Soln and explanation.
     //https://www.youtube.com/watch?v=MILxfAbIhrE&t=564s
+    public boolean isValidBST(Node root) {
+        return isValidBSTHelper(root,Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    private boolean isValidBSTHelper(Node root, long min, long max){
+        if (root == null)
+            return true;
+
+
+        /* false if this node violates the min/max constraints */
+        if (root.data <= min || root.data >= max)
+            return false;
+
+        /* otherwise check the subtrees recursively
+        tightening the min/max constraints */
+        // Allow only distinct values
+        return (isValidBSTHelper(root.left, min, root.data) &&
+                isValidBSTHelper(root.right, root.data, max));
+
+    }
     //https://www.youtube.com/watch?v=i_Q0v_Ct5lY
 
     //Root of the Binary Tree
@@ -15,6 +37,8 @@ public class BinarySearchTreeIsBst {
         // Base condition
         if (root == null)
             return true;
+
+
 
         // if left node exist then check it has
         // correct data or not i.e. left node's data
@@ -33,7 +57,9 @@ public class BinarySearchTreeIsBst {
                 isBST(root.right, root, r);
     }
 
-    public boolean isValidBST(Node root) {
+
+
+    public boolean isValidBST3(Node root) {
         return isBST(root, null, null);
     }
 
@@ -70,6 +96,30 @@ public class BinarySearchTreeIsBst {
             }
             return root;
         }
+    }
+
+    public boolean isValidBST2(Node root) {
+        return isValidBSTHelper2(root);
+    }
+
+    private boolean isValidBSTHelper2(Node root){
+        List<Integer> temp = new ArrayList<>();
+        process(temp, root);
+        for(int i = 1; i < temp.size(); i++){
+            if(temp.get(i) <= temp.get(i - 1)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void process(List<Integer> list, Node root){
+        if(root == null){
+            return;
+        }
+        process(list, root.left);
+        list.add(root.data);
+        process(list, root.right);
     }
 
     /* Class containing left and right child of current
