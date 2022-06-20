@@ -9,6 +9,8 @@ public class Stonewall {
     }
 
     //https://gist.github.com/leonbobster/aa0a15cee35e2b62243366a1682e8522
+    //https://app.codility.com/demo/results/trainingF8APGK-YZU/
+    //https://app.codility.com/programmers/lessons/7-stacks_and_queues/stone_wall/
     public int solution(int[] H) {
         //block count
         int count = 0;
