@@ -1,4 +1,4 @@
-package revision.strings_and_arrays;
+package arrays_and_strings;
 
 import java.util.HashMap;
 import java.util.Map;
