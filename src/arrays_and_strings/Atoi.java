@@ -2,6 +2,14 @@ package arrays_and_strings;
 
 public class Atoi {
     public static void main(String[] args) {
+        String s1 = "9000",s2="";
+        char c =s1.charAt(0);
+
+        int addedCur = c=='9' ? 0 : c-'0'+1;
+        String s3=s1+addedCur;
+
+        System.out.println(s3);
+        
         String x = "4193 with words";//expected=4193
         String x1 = "words and 987";//expected=0
         String x2 = "-42";//expected=-42
