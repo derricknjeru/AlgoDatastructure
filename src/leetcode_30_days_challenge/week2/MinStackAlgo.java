@@ -1,7 +1,5 @@
 package leetcode_30_days_challenge.week2;
 
-import java.util.Stack;
-
 public class MinStackAlgo {
 
     public static void main(String[] args) {
@@ -23,55 +21,55 @@ public class MinStackAlgo {
     }
 
     static class MinStack {
-        /**
-         * initialize your data structure here.
-         */
-        int data;
-        MinStack next;    //root===|data|data1| |data1|null|  ->null
-        MinStack root;
+
+        StackNode head;
 
         public MinStack() {
+            head = new StackNode();
         }
 
-        public MinStack(int d) {
-            data = d;
-            next = null;
-        }
+        public void push(int val) {
+            StackNode newNode = new StackNode(val);
+            newNode.next = head;
 
-        public void push(int x) {
-            MinStack newNode = new MinStack(x);
-            if (root != null) {
-                newNode.next = root;
+            int prevMin = Integer.MAX_VALUE;
+
+            if (head != null) {
+                prevMin = head.min;
             }
-            root = newNode;
+
+            newNode.min = Math.min(val, prevMin);
+
+            head = newNode;
+
 
         }
 
         public void pop() {
-            if (root != null) {
-                root = root.next;
-            }
-
+            head = head.next;
         }
 
-
         public int top() {
-            if (root != null) {
-                return root.data;
-            } else {
-                return Integer.MIN_VALUE;
-            }
+            return head.val;
         }
 
         public int getMin() {
-            int min = Integer.MAX_VALUE;
-            // Check loop while head not equal to NULL
-            MinStack head = root;
-            while (head != null) {
-                min = Math.min(min, head.data);
-                head = head.next;
-            }
-            return min;
+            return head.min;
         }
+    }
+
+    static class StackNode {
+        StackNode next;
+        int min = Integer.MAX_VALUE;
+        int val;
+
+        StackNode() {
+
+        }
+
+        StackNode(int val) {
+            this.val = val;
+        }
+
     }
 }

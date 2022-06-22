@@ -1,6 +1,9 @@
 package stack_and_queue;
 
-public class StackImplementation {
+import java.util.Stack;
+
+public class StackImplementationLinkedList {
+
     class Node {
         int data;
         Node next;
@@ -33,4 +36,6 @@ public class StackImplementation {
 
         return data;
     }
+
+
 }
