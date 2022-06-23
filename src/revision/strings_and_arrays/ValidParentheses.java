@@ -1,5 +1,7 @@
 package revision.strings_and_arrays;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class ValidParentheses {
@@ -36,6 +38,8 @@ public class ValidParentheses {
      * @param args
      */
     public static void main(String[] args) {
+        Queue<Integer> q = new LinkedList<>();
+
 
     }
 
