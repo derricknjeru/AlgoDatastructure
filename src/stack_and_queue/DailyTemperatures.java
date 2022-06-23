@@ -21,6 +21,8 @@ public class DailyTemperatures {
      * <p>
      * Note: answer does not count towards the space complexity because space used for the output format does not count.
      **/
+
+    //https://leetcode.com/explore/learn/card/queue-stack/230/usage-stack/1363/
     public int[] dailyTemperatures(int[] temperatures) {
         int n = temperatures.length;
         int[] answer = new int[n];

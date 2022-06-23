@@ -1,8 +1,6 @@
 package trees;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class BinaryTreeInorderTraversal {
 
@@ -58,52 +56,54 @@ public class BinaryTreeInorderTraversal {
      * <p>
      * Follow up: Recursive solution is trivial, could you do it iteratively?
      */
-
-    List<Integer> result = new ArrayList<>();
     //https://www.youtube.com/watch?v=ZM-sV9zQPEs
     public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result =new ArrayList<>();
 
-        if (root == null)
-            return result;
+        inorderTraversal(root,result);
 
-        /* first recur on left child */
-        inorderTraversal(root.left);
+        return result;
+    }
 
-        /* then print the data of node */
-        //System.out.print(root.val + " ");
+    private void inorderTraversal(TreeNode root, List<Integer> result){
+        if(root==null){
+            return;
+        }
+
+        inorderTraversal(root.left,result);
 
         result.add(root.val);
 
-        /* now recur on right child */
-        inorderTraversal(root.right);
-
-        return result;
-
+        inorderTraversal(root.right,result);
     }
 
     //https://www.youtube.com/watch?v=nzmtCFNae9k
-    public List<Integer> inorderTraversalIterative(TreeNode root) {
+    public List<Integer> inorderTraversal2(TreeNode root) {
+        List<Integer> result =new ArrayList<>();
+        return inorderTraversal2(root,result);
+    }
 
-        if (root == null)
+    private List<Integer> inorderTraversal2(TreeNode root, List<Integer> result){
+        if(root==null){
             return result;
+        }
 
-        Stack<TreeNode> stack = new Stack<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
 
-        TreeNode curr =root;
+        TreeNode curr=root;
 
         while(curr!=null || !stack.isEmpty()){
             while(curr!=null){
                 stack.push(curr);
-                curr=curr.left;
+                curr = curr.left;
             }
-
             curr = stack.pop();
             result.add(curr.val);
-            curr = curr.right;
+            curr=curr.right;
+
         }
 
         return result;
-
     }
 }
 
