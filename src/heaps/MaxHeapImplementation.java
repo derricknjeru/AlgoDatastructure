@@ -1,10 +1,11 @@
 package heaps;
 
-
+import java.util.*;
 // Implementing "Max Heap"
 public class MaxHeapImplementation {
     // Create a complete binary tree using an array
     // Then use the binary tree to construct a Heap
+
     int[] maxHeap;
     // the number of elements is needed when instantiating an array
     // heapSize records the size of the array
@@ -126,6 +127,8 @@ public class MaxHeapImplementation {
     }
 
     public static void main(String[] args) {
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+
         // Test case
         MaxHeapImplementation maxheap = new MaxHeapImplementation(5);
         maxheap.add(1);

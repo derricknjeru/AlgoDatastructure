@@ -1,6 +1,8 @@
-package leetcode_30_days_challenge.week2;
+package heaps;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.PriorityQueue;
 
 public class LastStoneHeight {
     /**
