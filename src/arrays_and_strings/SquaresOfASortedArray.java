@@ -1,4 +1,4 @@
-package arrays101;
+package arrays_and_strings;
 
 import java.util.Arrays;
 
@@ -41,7 +41,7 @@ public class SquaresOfASortedArray {
      * @param A
      * @return
      */
-    public static int[] sortedSquares(int[] A) {
+    public static int[] sortedSquares2(int[] A) {
 
         int size = A.length;
 
@@ -71,36 +71,41 @@ public class SquaresOfASortedArray {
      * Now that we are reading two increasing arrays (the squares of the elements), we can merge these arrays together using a two-pointer technique.
      */
 
-    public int[] sortedSquares2(int[] A) {
-        int N = A.length;
-        int j = 0;
-        while (j < N && A[j] < 0)
-            j++;
-        int i = j - 1;
+    public static int[] sortedSquares(int[] nums) {
+        int startPositiveIndex = 0;
+        int n = nums.length;
 
-        int[] ans = new int[N];
-        int t = 0;
+        while (startPositiveIndex < n && nums[startPositiveIndex] < 0) {
+            startPositiveIndex++;
+        }
 
-        while (i >= 0 && j < N) {
-            if (A[i] * A[i] < A[j] * A[j]) {
-                ans[t++] = A[i] * A[i];
-                i--;
+        int negativeLastItemIndex = startPositiveIndex - 1;
+
+        int[] result = new int[n];
+
+        int index = 0;
+        while (negativeLastItemIndex >= 0 && startPositiveIndex < n) {
+            if (nums[negativeLastItemIndex] * nums[negativeLastItemIndex]
+                    < nums[startPositiveIndex] * nums[startPositiveIndex]) {
+                result[index++] = nums[negativeLastItemIndex] * nums[negativeLastItemIndex];
+                negativeLastItemIndex--;
             } else {
-                ans[t++] = A[j] * A[j];
-                j++;
+                result[index++] = nums[startPositiveIndex] * nums[startPositiveIndex];
+                startPositiveIndex++;
             }
         }
 
-        while (i >= 0) {
-            ans[t++] = A[i] * A[i];
-            i--;
-        }
-        while (j < N) {
-            ans[t++] = A[j] * A[j];
-            j++;
+        while (negativeLastItemIndex >= 0) {
+            result[index++] = nums[negativeLastItemIndex] * nums[negativeLastItemIndex];
+            negativeLastItemIndex--;
         }
 
-        return ans;
+        while (startPositiveIndex < n) {
+            result[index++] = nums[startPositiveIndex] * nums[startPositiveIndex];
+            startPositiveIndex++;
+        }
+
+        return result;
     }
 
 

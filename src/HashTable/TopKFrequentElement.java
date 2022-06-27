@@ -1,7 +1,8 @@
 package HashTable;
 
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.PriorityQueue;
 
 public class TopKFrequentElement {

@@ -1,4 +1,4 @@
-package revision.tips;
+package heaps;
 
 import java.util.*;
 
@@ -8,6 +8,8 @@ public class HashMaps {
         /**
          * With hashing we get O(1) search time on average (under reasonable assumptions) and O(n) in worst case.
          */
+
+        PriorityQueue<Map.Entry<String, Integer>> minHeap = new PriorityQueue<>(Map.Entry.comparingByValue(Collections.reverseOrder()));
 
         HashMap<Double, Integer> map = createPrintHashMap();
 
