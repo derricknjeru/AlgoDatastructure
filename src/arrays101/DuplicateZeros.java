@@ -1,5 +1,8 @@
 package arrays101;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class DuplicateZeros {
     public static void main(String[] args) {
         //int[] arr = {1, 0, 2, 3, 0, 4, 5, 0};
@@ -7,6 +10,9 @@ public class DuplicateZeros {
 
         //DuplicateZeros zeros = new DuplicateZeros();
         // zeros.duplicateZeros(arr2);
+
+        //Deque<Integer> stack = new ArrayDeque<>();
+
 
         int possibleDup = 0;
         int size = arr.length;

@@ -127,7 +127,7 @@ public class MaxHeapImplementation {
     }
 
     public static void main(String[] args) {
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+
 
         // Test case
         MaxHeapImplementation maxheap = new MaxHeapImplementation(5);
