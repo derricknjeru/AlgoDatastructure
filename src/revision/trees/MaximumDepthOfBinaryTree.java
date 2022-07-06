@@ -1,5 +1,7 @@
 package revision.trees;
 
+import java.util.*;
+
 public class MaximumDepthOfBinaryTree {
 
 
@@ -50,5 +52,42 @@ public class MaximumDepthOfBinaryTree {
 
     private boolean isLeaf(TreeNode a) {
         return (a.right == null && a.left == null);
+    }
+
+
+    public int maxDepth2(TreeNode root) {
+
+        if (root == null) {
+            return 0;
+        }
+
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+
+
+        int level = 0;
+
+        while (!q.isEmpty()) {
+
+            int size = q.size();
+
+            for (int i = 0; i < size; i++) {
+
+                TreeNode currentNode = q.poll();
+
+                if (currentNode.left != null) {
+                    q.add(currentNode.left);
+                }
+
+                if (currentNode.right != null) {
+                    q.add(currentNode.right);
+                }
+            }
+
+            level++;
+        }
+
+        return level;
+
     }
 }
