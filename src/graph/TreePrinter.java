@@ -54,8 +54,39 @@ public class TreePrinter {
         String root = getRoot(treeMap, children);
 
         int level = 0;
-        dfs(treeMap, level, root);
 
+        HashSet<String> seen = new HashSet<>();
+        Iterator iterator = treeMap.keySet().iterator();
+
+        while (iterator.hasNext()){
+            if(!seen.contains(iterator.next())){
+                dfs2(treeMap,root,seen,level);
+            }
+        }
+
+        //dfs(treeMap, level, root);
+
+
+    }
+
+    private static void dfs2(HashMap<String, ArrayList<String>> treeMap, String root, HashSet<String> seen, int level) {
+        if(root.isEmpty()) return;
+
+        for (int i = 0; i < level; i++) {
+            System.out.print("\t");
+        }
+
+        System.out.println(root);
+        seen.add(root);
+
+        List<String> children = treeMap.get(root);
+        if(children==null) return;
+
+        for(String child : children){
+            if(!seen.contains(child)){
+                dfs2(treeMap,child,seen, level+1);
+            }
+        }
 
     }
 
