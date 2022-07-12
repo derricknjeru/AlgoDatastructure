@@ -97,18 +97,8 @@ public class AutoCompleteWithWeight {
     public static void main(String[] args) {
         Trie trie = new Trie();
 
-        List<String> words = List.of("hello", "dog", "hell", "cat", "a", "hel","help","helps","helping","dig", "dig love");
         Map<String,Integer> map = new HashMap<>();
-        /*map.put("hello",2);
-        map.put("dog",5);
-        map.put("hell",1);
-        map.put("cat",5);
-        map.put("a",7);
-        map.put("hel",8);
-        map.put("help",3);
-        map.put("helps",9);
-        map.put("helping",0);
-        map.put("dig",3);*/
+
         map.put("I am Mike",9);
         map.put("I am dev",7);
 
