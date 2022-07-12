@@ -52,19 +52,22 @@ public class TreePrinter {
         }
 
         String root = getRoot(treeMap, children);
-
         int level = 0;
+        //Because we know the root
+        dfs(treeMap, level, root);
 
-        HashSet<String> seen = new HashSet<>();
+        //Testing
+        /**
+         * HashSet<String> seen = new HashSet<>();
         Iterator iterator = treeMap.keySet().iterator();
 
         while (iterator.hasNext()){
             if(!seen.contains(iterator.next())){
                 dfs2(treeMap,root,seen,level);
             }
-        }
+        }*/
 
-        //dfs(treeMap, level, root);
+
 
 
     }

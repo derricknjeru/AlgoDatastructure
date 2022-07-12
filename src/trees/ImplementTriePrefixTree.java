@@ -20,6 +20,9 @@ import java.util.*;
  * Output
  * [null, null, true, false, true, null, true]
  *
+ * a p p -> word l e --word
+ *
+ *
  * Explanation
  * Trie trie = new Trie();
  * trie.insert("apple");
@@ -110,4 +113,5 @@ public class ImplementTriePrefixTree {
         return true;
     }
 }
+
 
