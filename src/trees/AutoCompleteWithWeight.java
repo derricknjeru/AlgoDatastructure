@@ -101,12 +101,16 @@ public class AutoCompleteWithWeight {
 
         map.put("I am Mike",9);
         map.put("I am dev",7);
+        map.put("Hell am Mike",9);
+        map.put("Hell am James",5);
+        map.put("Hell am Ken",7);
+        map.put("Not am dev",7);
 
         for(Map.Entry<String,Integer> entry:map.entrySet()) {
                 trie.insert(entry.getKey(),entry.getValue());
         }
 
-        List<String> suggestedWords = trie.autoComplete("I");
+        List<String> suggestedWords = trie.autoComplete("Hell");
 
         for (String word:suggestedWords){
             System.out.println(word);

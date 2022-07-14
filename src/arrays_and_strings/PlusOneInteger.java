@@ -1,6 +1,8 @@
 package arrays_and_strings;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class PlusOneInteger {
     /**
@@ -25,9 +27,12 @@ public class PlusOneInteger {
         //int[] digits = {4, 3, 2, 1};
         //int[] digits = {1, 2, 3};
        // int[] digits = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
-       // int[] digits = {1, 2, 9};
+        int[] digits = {1, 2, 9};
         //int[] digits = {0, 0};
-        int[] digits = {9,9,9};
+        //int[] digits = {9,9,9};
+
+        List<Integer> list = new ArrayList<>();
+
 
 
         System.out.println(Arrays.toString(plusOne(digits)));

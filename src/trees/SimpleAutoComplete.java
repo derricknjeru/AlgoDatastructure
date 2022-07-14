@@ -28,6 +28,10 @@ public class SimpleAutoComplete {
         }
         public void insert(String word) {
             TrieNode current = root;
+            //a->b-c
+            //-> c-x
+            //b-c
+
 
             for(char c : word.toCharArray()){
                 TrieNode node = current.children.get(c);
@@ -62,6 +66,9 @@ public class SimpleAutoComplete {
         }
 
         private void searchWords(List<String> result, String word, TrieNode current) {
+            //I am mike
+            //I am ken
+
             if(current==null) return;
 
             if(current.isWord) result.add(word);
@@ -76,13 +83,13 @@ public class SimpleAutoComplete {
     public static void main(String[] args) {
         Trie trie = new Trie();
 
-        List<String> words = List.of("hello", "dog", "hell", "cat", "a", "hel","help","helps","helping","dig", "dig love");
+        List<String> words = List.of("I am mike", "I am Ken", "hell", "cat", "a", "hel","help","helps","helping","dig", "dig love");
 
         for (String word : words){
             trie.insert(word);
         }
 
-        List<String> suggestedWords = trie.autoComplete("dig");
+        List<String> suggestedWords = trie.autoComplete("I");
 
         for (String word:suggestedWords){
             System.out.println(word);
