@@ -26,6 +26,10 @@ public class HashMaps {
         List<Person> list = createList();
         sortListComparator(list);
 
+        //sorting by value then by key
+        PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>(
+                (a,b) -> a.getValue()==b.getValue() ? b.getKey().compareTo(a.getKey()) : a.getValue()-b.getValue()
+        );
 
     }
 
