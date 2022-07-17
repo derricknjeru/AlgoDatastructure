@@ -51,6 +51,8 @@ public class SearchInRotatedSortedArray {
 
     //https://www.youtube.com/watch?v=ggLGjf_XiNQ
 
+    //Use when we don't have duplicates
+
     int findPivot(int[] nums) {
 
         int n = nums.length;
