@@ -2,66 +2,61 @@ package graph;
 
 import java.util.*;
 
-public class NetworkDelayTime {
-
+public class PathWithMaximumProbability{
+    //https://www.youtube.com/watch?v=OHJpOGa_L34
     static class Node {
-        int weight;
+
+        double weight;
         int vertex;
 
-        Node(int weight, int vertex) {
+        Node(double weight, int vertex) {
             this.weight = weight;
             this.vertex = vertex;
         }
 
     }
-    //https://www.youtube.com/watch?v=OHJpOGa_L34
-    public int networkDelayTime(int[][] times, int n, int k) {
+
+    public double maxProbability(int n, int[][] edges, double[] succProb, int start, int end) {
 
         Map<Integer, List<Node>> graph = new HashMap<>();// adj list graph
-
+        int i = 0;
 
         // Build the adjacency list
-        for (int[] arr : times) {
+        for (int[] arr : edges) {
             int source = arr[0];
             int dest = arr[1];
-            int weight = arr[2];
+            double weight= succProb[i++];
 
             graph.putIfAbsent(source, new ArrayList<>());
+            graph.putIfAbsent(dest, new ArrayList<>());
+            //since it is undirected
             graph.get(source).add(new Node(weight, dest));
+            graph.get(dest).add(new Node(weight, source));
         }
 
-        int[] result = dijkstra(graph, n, k);
 
-        int answer = Integer.MIN_VALUE;
-        for (int i = 1; i <= n; i++) {
-            answer = Math.max(answer, result[i]);
-        }
-
-        // INT_MAX signifies atleat one node is unreachable
-        return answer == Integer.MAX_VALUE ? -1 : answer;
-
+        return dijkstraSingleTarget(graph, n, start,end);
     }
 
-
-    private static int[] dijkstra(Map<Integer, List<Node>> graph, int vertices, int source) {
+    private  double dijkstraSingleTarget(Map<Integer, List<Node>> graph, int vertices, int source, int target) {
         //create a min heap of pairs <distance,node> sorted by distance
         Queue<Node> minHeap = new PriorityQueue<>(
-                Comparator.comparingInt(a -> a.weight)
+                Comparator.comparingDouble(a -> a.weight)
         );
 
-        int[] dist = new int[vertices + 1]; //shortest distance for each vertex
-        Arrays.fill(dist, Integer.MAX_VALUE);
+        double[] dist = new double[vertices + 1]; //shortest distance for each vertex
+        Arrays.fill(dist, 0.0);
 
         boolean visited[] = new boolean[vertices + 1];
 
         // Distance for starting node is 0
-        dist[source] = 0;
-        minHeap.add((new Node(0, source)));
+        dist[source] = -1;
+        minHeap.add((new Node(-1,source)));
 
         while (!minHeap.isEmpty()) {
             Node topPair = minHeap.remove();
             int currNode = topPair.vertex;
-            int currDistance = topPair.weight;
+            double currDistance = topPair.weight;
 
             if (!graph.containsKey(currNode)) {
                 continue;
@@ -72,9 +67,9 @@ public class NetworkDelayTime {
 
 
             for (Node edge : graph.get(currNode)) {
-                int weight = edge.weight;
+                double weight = edge.weight;
                 int neighborNode = edge.vertex;
-                int nextDist = currDistance + weight;
+                double nextDist = currDistance * weight;
 
                 if (!visited[neighborNode] && nextDist < dist[neighborNode]) {
                     dist[neighborNode] = nextDist;
@@ -83,10 +78,10 @@ public class NetworkDelayTime {
                 }
 
             }
+
+
         }
 
-        return dist;
+        return -dist[target];
     }
-
-
 }

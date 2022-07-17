@@ -4,12 +4,34 @@ import java.util.*;
 
 public class Dijkstras {
 
+    static class Node {
+        int weight;
+        int vertex;
+
+        Node(int weight, int vertex) {
+            this.weight = weight;
+            this.vertex = vertex;
+        }
+
+    }
+    // https://www.youtube.com/watch?v=pLElbKBc4RU
+   //Space complexity
+    //V stands for Nodes
+    //E stands for edges
+
+    //The dist & prev array will use -> O(V) -> space complexity;
+    //space complexity of heap -> O(V+E);
+    //Time complexity O(V+ E log E)
+
+
 
     public static void main(String[] args) {
-        Map<Integer, List<Map.Entry<Integer, Integer>>> graph = new HashMap<>();// adj list graph
 
         int[][] arrayD = new int[][]{{2, 1, 1}, {2, 3, 1}, {3, 4, 1}};
         // int[][] arrayD = new int[][]{{1,2,1}};
+
+        Map<Integer, List<Node>> graph = new HashMap<>();// adj list graph
+
 
         // Build the adjacency list
         for (int[] arr : arrayD) {
@@ -18,10 +40,7 @@ public class Dijkstras {
             int weight = arr[2];
 
             graph.putIfAbsent(source, new ArrayList<>());
-            Map<Integer, Integer> map = new HashMap<>();
-            map.put(weight, dest);
-            Map.Entry<Integer, Integer> entry = map.entrySet().iterator().next();
-            graph.get(source).add(entry);
+            graph.get(source).add(new Node(weight, dest));
         }
 
         int n = 4;
@@ -29,7 +48,7 @@ public class Dijkstras {
 
         int[][] result = dijkstra(graph, n, k);
 
-        System.out.println(Arrays.toString(result[0]));
+        System.out.println(Arrays.toString(result[1]));
 
         int answer = Integer.MIN_VALUE;
         for (int i = 1; i <= n; i++) {
@@ -44,10 +63,10 @@ public class Dijkstras {
 
     }
 
-    private static int[][] dijkstra(Map<Integer, List<Map.Entry<Integer, Integer>>> graph, int vertices, int source) {
+    private static int[][] dijkstra(Map<Integer, List<Node>> graph, int vertices, int source) {
         //create a min heap of pairs <distance,node> sorted by distance
-        Queue<Map.Entry<Integer, Integer>> minHeap = new PriorityQueue<>(
-                Comparator.comparing(Map.Entry::getKey)
+        Queue<Node> minHeap = new PriorityQueue<>(
+                Comparator.comparingInt(a -> a.weight)
         );
 
         int[] dist = new int[vertices + 1]; //shortest distance for each vertex
@@ -60,16 +79,12 @@ public class Dijkstras {
 
         // Distance for starting node is 0
         dist[source] = 0;
-
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, source);
-        Map.Entry<Integer, Integer> entry = map.entrySet().iterator().next();
-        minHeap.add((entry));
+        minHeap.add((new Node(0,source)));
 
         while (!minHeap.isEmpty()) {
-            Map.Entry<Integer, Integer> topPair = minHeap.remove();
-            int currNode = topPair.getValue();
-            int currDistance = topPair.getKey();
+            Node topPair = minHeap.remove();
+            int currNode = topPair.vertex;
+            int currDistance = topPair.weight;
 
             if (!graph.containsKey(currNode)) {
                 continue;
@@ -79,24 +94,15 @@ public class Dijkstras {
             visited[currNode] = true;
 
 
-            for (Map.Entry<Integer, Integer> edge : graph.get(currNode)) {
-                int weight = edge.getKey();
-                int neighborNode = edge.getValue();
+            for (Node edge : graph.get(currNode)) {
+                int weight = edge.weight;
+                int neighborNode = edge.vertex;
                 int nextDist = currDistance + weight;
 
                 if (!visited[neighborNode] && nextDist < dist[neighborNode]) {
                     dist[neighborNode] = nextDist;
                     prev[neighborNode] = currNode;
-
-                    /**
-                     *
-                     */
-
-                    Map<Integer, Integer> newMap = new HashMap<>();
-                    newMap.put(nextDist, neighborNode);
-                    Map.Entry<Integer, Integer> entry1 = newMap.entrySet().iterator().next();
-
-                    minHeap.add((entry1));
+                    minHeap.add((new Node(nextDist, neighborNode)));
 
                 }
 
@@ -105,14 +111,14 @@ public class Dijkstras {
 
         }
 
-        return new int[][]{dist, prev};
+        return new int[][]{dist,prev};
     }
 
 
-    private static void dijkstraSingleTarget(Map<Integer, List<Map.Entry<Integer, Integer>>> graph, int vertices, int source, int target) {
+    private static int dijkstraSingleTarget(Map<Integer, List<Node>> graph, int vertices, int source, int target) {
         //create a min heap of pairs <distance,node> sorted by distance
-        Queue<Map.Entry<Integer, Integer>> minHeap = new PriorityQueue<>(
-                Comparator.comparing(Map.Entry::getKey)
+        Queue<Node> minHeap = new PriorityQueue<>(
+                Comparator.comparingInt(a -> a.weight)
         );
 
         int[] dist = new int[vertices + 1]; //shortest distance for each vertex
@@ -125,17 +131,12 @@ public class Dijkstras {
 
         // Distance for starting node is 0
         dist[source] = 0;
-
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, source);
-        Map.Entry<Integer, Integer> entry = map.entrySet().iterator().next();
-        minHeap.add((entry));
+        minHeap.add((new Node(0,source)));
 
         while (!minHeap.isEmpty()) {
-            Map.Entry<Integer, Integer> topPair = minHeap.remove();
-            int currNode = topPair.getValue();
-            int currDistance = topPair.getKey();
-            if(currNode==target)  break;
+            Node topPair = minHeap.remove();
+            int currNode = topPair.vertex;
+            int currDistance = topPair.weight;
 
             if (!graph.containsKey(currNode)) {
                 continue;
@@ -145,24 +146,15 @@ public class Dijkstras {
             visited[currNode] = true;
 
 
-            for (Map.Entry<Integer, Integer> edge : graph.get(currNode)) {
-                int weight = edge.getKey();
-                int neighborNode = edge.getValue();
+            for (Node edge : graph.get(currNode)) {
+                int weight = edge.weight;
+                int neighborNode = edge.vertex;
                 int nextDist = currDistance + weight;
 
                 if (!visited[neighborNode] && nextDist < dist[neighborNode]) {
                     dist[neighborNode] = nextDist;
                     prev[neighborNode] = currNode;
-
-                    /**
-                     *
-                     */
-
-                    Map<Integer, Integer> newMap = new HashMap<>();
-                    newMap.put(nextDist, neighborNode);
-                    Map.Entry<Integer, Integer> entry1 = newMap.entrySet().iterator().next();
-
-                    minHeap.add((entry1));
+                    minHeap.add((new Node(nextDist, neighborNode)));
 
                 }
 
@@ -171,9 +163,7 @@ public class Dijkstras {
 
         }
 
-        //shortest distance value
-        //dist[target]
-
+        return dist[target];
     }
 
 

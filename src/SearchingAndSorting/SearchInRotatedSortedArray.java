@@ -1,4 +1,4 @@
-package leetcode_30_days_challenge.week3;
+package SearchingAndSorting;
 
 public class SearchInRotatedSortedArray {
     public static void main(String[] args) {
