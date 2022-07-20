@@ -9,6 +9,9 @@ public class ArrayListVsLinkedList {
         LinkedList<Integer> linkedList = new LinkedList<>();
         ArrayList<Integer> arrayList = new ArrayList<>();
 
+        //in summary -> arrayList get is faster
+        //delete of
+
         for (int i = 0; i < 10000; i++) {
             linkedList.add(i);
             arrayList.add(i);

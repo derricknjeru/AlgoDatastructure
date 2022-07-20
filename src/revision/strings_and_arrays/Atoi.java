@@ -66,7 +66,71 @@ public class Atoi {
      * 0 <= s.length <= 200
      * s consists of English letters (lower-case and upper-case), digits, ' ', '+', '-' and '.'.
      */
+
+    // Time complexity: O(N) where N is the length of the string and we only traverse 1 time the string.
+    // Space complexity: O(1) we do not use any significant extra space, all is associated to the existing data.
     public static int myAtoi(String s) {
+        //  Main constraints related to the length.
+        if (s == null || s.isEmpty() || s.length() > 200) return 0;
+
+        int length = s.length();
+        int signDriver = 1;
+        int currentIndex = 0;
+        int result = 0;
+
+        /*  Integer.MAX_VALUE = 2147483647(10 digits)
+            Integer.MAX_VALUE / 10 = 214748364(9 digits) */
+        int maximumLimit = Integer.MAX_VALUE / 10;
+
+        //  Ignore every single leading space at the beginning of the string.
+        while (currentIndex < length && s.charAt(currentIndex) == ' ')
+            currentIndex++;
+
+        //  Check if the next char is '-' or '+' to determine the sign of the result. Default is positive.
+        if (currentIndex < length) {
+            if (s.charAt(currentIndex) == '-') {
+                signDriver *= -1;
+                currentIndex++;
+            } else if (s.charAt(currentIndex) == '+') {
+                currentIndex++;
+            }
+        }
+
+        /*  Once we traverse the string ignoring spaces and finding the corresponding sign,
+            we continue traversing the string only if the following characters represents a digit between 0 to 9. */
+        while (currentIndex < length && isCharacterADigit(s.charAt(currentIndex))) {
+            //  Converting the current char to integer using ASCII.
+            int currentDigit = s.charAt(currentIndex) - '0';
+
+            /*  This condition is used to handle any overflow case:
+                1. First scenario: if result > maximumLimit, means that if we concatenate any value to the end of the result,
+                   we are overflowing since the next value to maximumLimit is 214748365 and any value added after this 214748365"X"
+                   overflows the number.
+
+                2. Second scenario: in case the result is equal to maximumLimit (214748364), we should pay attention that the last digit
+                   of Integer.MAX_VALUE (2147483647) is a 7, so any number above 7 concatenated to the end of the result will be above our limit
+                   causing overflow, so that is why the condition "currentDigit>7".
+
+                   Depending in the sign value, we just return the MIN or the MAX.
+            */
+            if (result > maximumLimit || (result == maximumLimit && currentDigit > 7))
+                return signDriver == -1 ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+
+            // Operation to concatenate the next digit at the end of the result.
+            result = result * 10 + currentDigit;
+            // Move forward to the next character.
+            currentIndex++;
+        }
+        // We should return the value multiplied by the corresponding sign.
+        return signDriver * result;
+    }
+
+    private static boolean isCharacterADigit(char character) {
+        int possibleDigit = character - '0';
+        return possibleDigit >= 0 && possibleDigit <= 9 ? true : false;
+    }
+
+    public static int myAtoi3(String s) {
 
         boolean isNegative = false;
         s = s.trim();
@@ -141,6 +205,7 @@ public class Atoi {
         for (char a : c) {
             //If any character is not an integer then just return break
             if (!Character.isDigit(a))
+                //Character.isLetterOrDigit();
                 break;
 
             //else just keep updating the result
