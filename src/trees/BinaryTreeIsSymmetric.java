@@ -14,15 +14,27 @@ public class BinaryTreeIsSymmetric {
 
     //https://www.youtube.com/watch?v=K7LyJTWr2yA
     //https://leetcode.com/problems/symmetric-tree/
+
     public boolean isSymmetric(TreeNode root) {
-        return isMirror(root, root);
+        if (root == null) {
+            return true;
+        }
+        return helperIsSymetric(root.left, root.right);
     }
 
-    public boolean isMirror(TreeNode t1, TreeNode t2) {
-        if (t1 == null && t2 == null) return true;
-        if (t1 == null || t2 == null) return false;
-        return (t1.val == t2.val)
-                && isMirror(t1.right, t2.left)
-                && isMirror(t1.left, t2.right);
+    private boolean helperIsSymetric(TreeNode left, TreeNode right) {
+        if (left == null && right == null) {
+            return true;
+        }
+
+        if (left == null || right == null) {
+            return false;
+        }
+
+        if (left.val != right.val) return false;
+
+
+        return helperIsSymetric(left.left, right.right) && helperIsSymetric(left.right, right.left);
     }
+
 }

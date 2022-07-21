@@ -35,6 +35,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
      */
     //https://leetcode.com/problems/longest-substring-without-repeating-characters/
     //https://www.youtube.com/results?search_query=3.+longest+substring+without+repeating+characters+java
+   // https://www.youtube.com/watch?v=3IETreEybaA
 
     public int lengthOfLongestSubstring(String s) {
 

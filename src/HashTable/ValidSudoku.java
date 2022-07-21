@@ -1,7 +1,10 @@
 package HashTable;
 import java.util.*;
 public class ValidSudoku {
-    public boolean isValidSudoku(char[][] board) {
+    //https://www.youtube.com/watch?v=7gIlJKVK4Ok
+    //https://www.youtube.com/watch?v=TjFXEUCMqI8
+    //https://www.youtube.com/watch?v=Pl7mMcBm2b8&t=558s
+    public boolean isValidSudoku2(char[][] board) {
 
         for(int i=0; i<9; i++){
             Set<Character> rowMap = new HashSet<>();
@@ -41,8 +44,8 @@ public class ValidSudoku {
         return true;
 
     }
-
-    public boolean isValidSudoku2(char[][] board) {
+    //https://www.youtube.com/watch?v=Pl7mMcBm2b8&t=558s
+    public boolean isValidSudoku(char[][] board) {
 
         HashSet<String> seen = new HashSet<>();
 

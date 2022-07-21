@@ -1,5 +1,8 @@
 package trees;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class SameTree {
 
     public class TreeNode {
@@ -23,5 +26,9 @@ public class SameTree {
         if(p.val != q.val) return false;
 
         return isSameTree(p.left,q.left) && isSameTree(p.right,q.right);
+    }
+
+    public static void main(String[] args) {
+
     }
 }

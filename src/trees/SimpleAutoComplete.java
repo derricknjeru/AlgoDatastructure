@@ -75,7 +75,7 @@ public class SimpleAutoComplete {
 
             Map<Character,TrieNode> map = current.children;
             for(char child : map.keySet()){
-                searchWords(result,word+String.valueOf(child),map.get(child));
+                searchWords(result,word+ child,map.get(child));
             }
         }
     }

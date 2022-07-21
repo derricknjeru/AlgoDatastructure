@@ -3,6 +3,7 @@ package HashTable;
 import java.util.HashMap;
 
 public class ContainsDuplicateII {
+    //https://leetcode.com/problems/contains-duplicate-ii/
     public boolean containsNearbyDuplicate(int[] nums, int k) {
         HashMap<Integer,Integer> map = new HashMap<>();
 

@@ -2,6 +2,7 @@ package HashTable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 public class FirstUniqueCharacter {
@@ -36,6 +37,8 @@ public class FirstUniqueCharacter {
      * @param s
      * @return
      */
+
+
 
     public int firstUniqChar(String s) {
 

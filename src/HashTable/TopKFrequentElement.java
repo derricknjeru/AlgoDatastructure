@@ -19,7 +19,7 @@ public class TopKFrequentElement {
         for(Map.Entry<Integer,Integer> entry : map.entrySet()){
 
             pq.add(entry);
-
+            //poll the top item since it's the smallest
             if(pq.size() > k){
                 pq.poll();
             }

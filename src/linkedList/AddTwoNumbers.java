@@ -66,10 +66,9 @@ public class AddTwoNumbers {
 
                 ListNode node = new ListNode(sum % 10);
                 curr.next = node;
+                curr = curr.next;
 
                 carry = sum / 10;
-
-                curr = curr.next;
 
                 if (l1 != null) l1 = l1.next;
 

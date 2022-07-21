@@ -19,6 +19,8 @@ public class PrintAdjacencyList {
      * Expected Auxiliary Space: O(V + E)
      */
 
+    //https://practice.geeksforgeeks.org/problems/print-adjacency-list-1587115620/1
+
     public ArrayList<ArrayList<Integer>> printGraph(
             int V, ArrayList<ArrayList<Integer>> adj) {
         // Code here
@@ -27,15 +29,12 @@ public class PrintAdjacencyList {
 
 
         for (int i = 0; i < V; i++) {
-            ArrayList<Integer> edj = adj.get(i);
             ArrayList<Integer> x = new ArrayList<>();
-
             x.add(i);
 
-            for (int a : edj) {
+            for (int a :  adj.get(i)) {
                 x.add(a);
             }
-
             result.add(x);
 
         }

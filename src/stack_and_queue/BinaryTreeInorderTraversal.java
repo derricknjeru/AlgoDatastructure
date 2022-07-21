@@ -78,6 +78,8 @@ public class BinaryTreeInorderTraversal {
         result.add(root.val);
 
         inorderTraversal(root.right,result);
+
+
     }
 
     //https://www.youtube.com/watch?v=nzmtCFNae9k

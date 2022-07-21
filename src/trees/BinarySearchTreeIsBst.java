@@ -33,6 +33,8 @@ public class BinarySearchTreeIsBst {
     Node root;
 
     //https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/
+    //Preferred
+    //https://leetcode.com/problems/validate-binary-search-tree/
     private boolean isBST(Node root, Node l, Node r) {
         // Base condition
         if (root == null)
