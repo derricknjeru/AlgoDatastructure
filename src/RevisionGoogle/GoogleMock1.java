@@ -1,4 +1,4 @@
-package Tips;
+package RevisionGoogle;
 
 public class GoogleMock1 {
     /**
