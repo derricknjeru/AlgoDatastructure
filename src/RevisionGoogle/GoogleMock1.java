@@ -42,6 +42,8 @@ public class GoogleMock1 {
      */
 
     //https://collabedit.com/
+    //https://stackoverflow.com/questions/5864159/count-words-in-a-string-method
+    //https://leetcode.com/problems/rearrange-spaces-between-words/submissions/
 
     //spaces ->
     //words ->
@@ -53,7 +55,7 @@ public class GoogleMock1 {
     //   10/3 ->3 /1 -->1...2...3....4
     // 3 words  countSPaces/(3-1);
     public static void main(String[] args) {
-        String s = "  word1  word2   word3   ";
+        String s = "  word1  word2   word3    ";
         char[] array = s.toCharArray();
         redistributeSpaces(s);
         System.out.println(redistributeSpaces(s));
@@ -95,18 +97,21 @@ public class GoogleMock1 {
         s = s.replaceAll("\\s+", " ");
 
 
-        int rem = whiteSPaces % (wordCount - 1);
-        int totalSpaces = whiteSPaces / (wordCount - 1);
+        if(whiteSPaces == 0)
+            return s;
+
+        int totalSpaces = wordCount > 1 ? whiteSPaces / (wordCount - 1) : 0;
+        int rem = wordCount > 1 ? whiteSPaces % (wordCount - 1) : whiteSPaces;
 
         StringBuilder sb = new StringBuilder();
-        for (int i=0; i<s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if(c==' '){
+            if (c == ' ') {
                 int extra = (rem > 0) ? 1 : 0;
                 String prefix = ".".repeat(totalSpaces + extra);
                 sb.append(prefix);
                 rem--;
-            }else{
+            } else {
                 sb.append(c);
             }
 
