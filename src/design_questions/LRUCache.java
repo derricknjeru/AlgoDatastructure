@@ -1,4 +1,4 @@
-package DesignQuestions;
+package design_questions;
 
 import java.util.LinkedHashMap;
 
