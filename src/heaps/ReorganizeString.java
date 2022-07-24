@@ -69,7 +69,7 @@ public class ReorganizeString {
         return res.toString();
 
     }
-
+    //https://www.youtube.com/watch?v=zaM_GLLvysw&t=614s
     public String reorganizeString(String s) {
         int[] map = new int[26];
         for (char c : s.toCharArray()) {
@@ -92,7 +92,7 @@ public class ReorganizeString {
         while (maxHeap.size() > 1) {
             int currentIndex = maxHeap.remove();
             int nextIndex = maxHeap.remove();
-
+            //For String, StringBuffer, and StringBuilder, charAt() is a constant-time operation.
             res.append(alphabet.charAt(currentIndex));
             res.append(alphabet.charAt(nextIndex));
 
