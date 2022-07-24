@@ -1,4 +1,4 @@
-package RevisionGoogle;
+package revision_v2;
 
 public class GoogleMock1 {
     /**

@@ -1,4 +1,4 @@
-package RevisionGoogle.top_10;
+package revision_v2.top_10;
 
 public class TextJustification {
     //https://leetcode.com/problems/text-justification/
