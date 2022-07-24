@@ -22,6 +22,7 @@ public class DesignHashMap {
         map = new LinkedList[SIZE];
     }
 
+
     public void put(int key, int value) {
         int hash_key = hash_key(key);
         if(map[hash_key]==null){
@@ -45,7 +46,7 @@ public class DesignHashMap {
         LinkedList<Entry> entries = map[hashKey];
         if(entries==null) return -1;
 
-        for(Entry entry : entries){
+        for(Entry entry : entries){ //O(n)
             if(entry.key == key) return entry.val;
         }
         return -1;

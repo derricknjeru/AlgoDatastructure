@@ -1,6 +1,7 @@
 package arrays101;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class MergeSortedArray {
     /**
@@ -35,6 +36,9 @@ public class MergeSortedArray {
         int[] num2 = {2, 5, 6};
         merge(num1, 3, num2, 3);
 
+        HashMap<Character,Integer> map = new HashMap<>();
+
+
     }
 
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
@@ -42,7 +46,7 @@ public class MergeSortedArray {
 
         int[] A = new int[m];
 
-        if (m >= 0) System.arraycopy(nums1, 0, A, 0, m);
+        System.arraycopy(nums1, 0, A, 0, m);
 
         while (i < m && j < n) {
             if (A[i] <= nums2[j]) {
@@ -80,5 +84,9 @@ public class MergeSortedArray {
         }
         Arrays.sort(nums1);
     }
+
+
+
+
 }
 
