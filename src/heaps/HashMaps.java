@@ -5,6 +5,11 @@ import java.util.*;
 
 public class HashMaps {
     public static void main(String[] args) {
+
+        HashMap<Character, Integer> mapMaxheap = new HashMap<>();
+
+        PriorityQueue<Character> maxHeapWithMap = new PriorityQueue<>((a, b) -> mapMaxheap.get(b) - mapMaxheap.get(a));
+
         /**
          * With hashing we get O(1) search time on average (under reasonable assumptions) and O(n) in worst case.
          */

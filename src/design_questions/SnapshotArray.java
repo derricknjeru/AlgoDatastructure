@@ -73,5 +73,11 @@ public class SnapshotArray {
         public int get(int index, int snap_id) {
             return map.get(index).floorEntry(snap_id).getValue();
         }
+        //0, 1 -->0->(0,1) ---- //snap ->0
+        //snap 1 ->
+        //snap 2 ->
+        //0, 3 -> 0->(2,3)
+
+        //snap 1 --->
     }
 }
