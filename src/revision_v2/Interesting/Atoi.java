@@ -1,4 +1,4 @@
-package revision.strings_and_arrays;
+package revision_v2.Interesting;
 
 public class Atoi {
     public static void main(String[] args) {
