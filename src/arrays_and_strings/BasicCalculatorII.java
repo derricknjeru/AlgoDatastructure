@@ -79,6 +79,7 @@ public class BasicCalculatorII {
      //https://leetcode.com/problems/basic-calculator-ii/
     //https://www.youtube.com/watch?v=GR8Z1zaQzz0
     //https://leetcode.com/problems/basic-calculator-ii/solution/
+    //https://www.youtube.com/watch?v=2EErQ25kKE8
     public int calculate2(String s) {
 
         if (s == null || s.isEmpty()) return 0;
