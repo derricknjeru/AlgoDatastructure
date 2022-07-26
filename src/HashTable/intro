@@ -57,3 +57,17 @@ For ideal hashmap search is a constant time O(1) or close to 1.
 
 One has to design a hash_function or algo that convert keys to integers and then converts them to a range 0 -N-1 (K%N)
 
+hashmap look up is better than linked-list
+
+---->SIDE NOTE<----
+Arrays -> we can access each item at constant time.
+downside of array - size is fixed, because they store data contiguosly.
+
+linked list -> can grow in size, they don't have fixed size. Delection is also first
+downside
+To access the item we want, we need to traverse until we find the element. (0(n);)
+
+hashtable
+can grow over time
+look up and insertion, deletion can be constant time in theory.
+

@@ -27,6 +27,7 @@ public class DesignHashSet {
         if (buckets[i].indexOf(key) == -1) {
             buckets[i].add(key);
         }
+        buckets[i].get(key);
     }
 
     public void remove(int key) {
