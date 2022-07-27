@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PossiblePathsInMatrix {
+    //https://www.geeksforgeeks.org/print-all-possible-paths-from-top-left-to-bottom-right-of-a-mxn-matrix/
     public static void main(String[] args) {
         int m = 2;
         int n = 3;

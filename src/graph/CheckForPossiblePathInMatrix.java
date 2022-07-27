@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class CheckForPossiblePathInMatrix {
+    //https://leetcode.com/discuss/interview-question/2191439/Google-or-Phone-or-Check-if-path-exists
+    //https://www.geeksforgeeks.org/check-possible-path-2d-matrix/
     public static void main(String[] args) {
         // Given array
         int arr2[][] = {{0, 0, 0, -1, 0},
