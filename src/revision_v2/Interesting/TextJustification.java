@@ -5,10 +5,12 @@ import java.util.List;
 
 public class TextJustification {
     public List<String> fullJustify(String[] words, int width) {
+
         List<String> result = new ArrayList<>();
 
         StringBuilder sb = new StringBuilder();
-        String prefix = "";
+        int noOfwords = 0;
+
         for (int i = 0; i < words.length; i++) {
 
             String word = words[i];
@@ -17,8 +19,9 @@ public class TextJustification {
             if (wordCount <= width) {
                 sb.append(words[i]);
                 sb.append(" ");
+                noOfwords++;
             } else {
-                result.add(formattedString(sb.toString().trim(), width, false));
+                result.add(formattedString(sb.toString().trim(), width, false, noOfwords));
                 sb = new StringBuilder();
                 sb.append(word);
                 sb.append(" ");
@@ -26,13 +29,13 @@ public class TextJustification {
 
         }
 
-        result.add(formattedString(sb.toString().trim(), width, true));
+        result.add(formattedString(sb.toString().trim(), width, true, 1));
         return result;
     }
 
-    private String formattedString(String s, int width, boolean isLast) {
+    private String formattedString(String s, int width, boolean isLast, int noOfWords) {
 
-        int noOfWords = s.split("\\s+").length;
+        //int noOfWords = s.split("\\s+").length;
         int totalCharacters = s.length();
 
         StringBuilder sb = new StringBuilder();

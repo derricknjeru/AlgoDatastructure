@@ -4,6 +4,9 @@ package trees;
 // Java program for different tree traversals
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DepthFirstTraversals {
 
     /* Class containing left and right child of current
@@ -101,6 +104,9 @@ public class DepthFirstTraversals {
 
         System.out.println("\nPostorder traversal of binary tree is ");
         tree.printPostorder();
+
+        List<Integer> result = new ArrayList<>();
+        result.stream().mapToInt(Integer::intValue).toArray();
     }
 }
 
