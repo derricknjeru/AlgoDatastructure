@@ -4,6 +4,18 @@ import java.io.*;
 import java.util.*;
 
 public class MovingAverageQuiz {
+    //https://www.youtube.com/watch?v=E-kjYOZEBxY
+
+    /**
+     * Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.
+     * <p>
+     * For example,
+     * MovingAverage m = new MovingAverage(3);
+     * m.next(1) = 1
+     * m.next(10) = (1 + 10) / 2
+     * m.next(3) = (1 + 10 + 3) / 3
+     * m.next(5) = (10 + 3 + 5) / 3
+     */
     public static class MovingAverage {
         Queue<Integer> q;
         int maxSize = 0;

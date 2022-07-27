@@ -1,4 +1,4 @@
-package stack_and_queue;
+package revision_v2.Interesting;
 
 import java.util.LinkedList;
 import java.util.Queue;

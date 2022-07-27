@@ -24,23 +24,25 @@ public class DailyTemperatures {
 
     //https://leetcode.com/explore/learn/card/queue-stack/230/usage-stack/1363/
     public int[] dailyTemperatures(int[] temperatures) {
-        int n = temperatures.length;
-        int[] answer = new int[n];
-        Deque<Integer> stack = new ArrayDeque<>();
+        int n =  temperatures.length;
+        int [] ans = new int[n];
 
-        for (int currDay = 0; currDay < n; currDay++) {
-            int currentTemp = temperatures[currDay];
-            // Pop until the current day's temperature is not
-            // warmer than the temperature at the top of the stack
-            while (!stack.isEmpty() && temperatures[stack.peek()] < currentTemp) {
-                int prevDay = stack.pop();
-                answer[prevDay] = currDay - prevDay;
+        Deque<int[]> stack = new ArrayDeque<>();
+
+        for(int i = 0; i<n; i++){
+            int currentTemp = temperatures[i];
+            while(!stack.isEmpty() && stack.peek()[0]< currentTemp){
+                int [] prevDay=stack.pop();
+                int prevIndex = prevDay[1];
+                ans[prevIndex] = i -prevIndex;
             }
-            stack.push(currDay);
+
+            stack.push(new int [] {currentTemp,i});
         }
 
-        return answer;
+        return ans;
     }
+
 
     public int[] dailyTemperatures2(int[] temperatures) {
         int n = temperatures.length;
@@ -61,7 +63,6 @@ public class DailyTemperatures {
         int n = 13 / 5;
         System.out.println(n);
 
-        
 
     }
 
