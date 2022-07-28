@@ -42,7 +42,7 @@ public class DecodeString {
 
         StringBuilder sb = new StringBuilder();
         //StringBuilder sbNo = new StringBuilder();
-        int number=0;
+        int number = 0;
 
         for (char c : s.toCharArray()) {
             if (c == '[') {
@@ -61,7 +61,7 @@ public class DecodeString {
 
             } else {
                 if (Character.isDigit(c)) {
-                    number=number*10 +c-'0';
+                    number = number * 10 + c - '0';
                 } else {
                     sb.append(c);
                 }
@@ -72,4 +72,5 @@ public class DecodeString {
         return sb.toString();
 
     }
+
 }
