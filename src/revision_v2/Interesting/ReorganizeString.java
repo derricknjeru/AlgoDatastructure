@@ -39,6 +39,7 @@ public class ReorganizeString {
 
         StringBuilder res = new StringBuilder();
 
+
         while (maxHeap.size() > 1) {
             char current = maxHeap.remove();
             char next = maxHeap.remove();

@@ -110,9 +110,10 @@ public class LetterCombinationsOfPhoneNumber {
                 result.add(s);
             else {
                 int index = digits.charAt(s.length()) - '0';
-                String val = table[index];
-                for (int i = 0; i < val.length(); i++) {
-                    q.add(s + val.charAt(i));
+                String letters = table[index];
+                for (int i = 0; i < letters.length(); i++) {
+                    System.out.println(s);
+                    q.add(s + letters.charAt(i));
                 }
             }
         }

@@ -1,6 +1,8 @@
 package revision_v2.Interesting;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 public class KeysAndRooms {
@@ -75,5 +77,33 @@ public class KeysAndRooms {
         for (boolean v : seen)  // if any room hasn't been visited, return false
             if (!v) return false;
         return true;
+    }
+
+    public boolean canVisitAllRooms2(List<List<Integer>> rooms) {
+        boolean[] visited = new boolean[rooms.size()];
+        Queue<Integer> q = new LinkedList<>();
+
+        for (int n : rooms.get(0)) {
+            q.offer(n);
+            visited[n] = true;
+        }
+
+        while (!q.isEmpty()) {
+            int n = q.poll();
+            for (int key : rooms.get(n)) {
+                if (!visited[key]) {
+                    q.offer(key);
+                    visited[key] = true;
+                }
+            }
+        }
+
+        for (int i = 1; i < visited.length; i++) {
+            if (!visited[i]) {
+                return false;
+            }
+        }
+        return true;
+
     }
 }

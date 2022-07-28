@@ -1,6 +1,7 @@
 package HashTable;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 public class DesignHashMap {
     //Why have we choosen SIZE as 769
@@ -20,6 +21,10 @@ public class DesignHashMap {
     public DesignHashMap() {
         //initialize linked list size
         map = new LinkedList[SIZE];
+    }
+
+    public static void main(String[] args) {
+        new Random();
     }
 
 
