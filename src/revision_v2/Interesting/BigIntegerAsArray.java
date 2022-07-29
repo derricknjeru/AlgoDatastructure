@@ -3,6 +3,7 @@ package revision_v2.Interesting;
 import java.util.Arrays;
 
 public class BigIntegerAsArray {
+    //https://leetcode.com/discuss/interview-question/1305134/Google-Reject
     public static void main(String[] args) {
         int x = 2345;
 
