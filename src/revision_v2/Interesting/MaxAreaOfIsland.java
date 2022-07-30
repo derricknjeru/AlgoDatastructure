@@ -1,4 +1,4 @@
-package graph;
+package revision_v2.Interesting;
 
 public class MaxAreaOfIsland {
     //https://www.youtube.com/watch?v=iJGr1OtmH0c

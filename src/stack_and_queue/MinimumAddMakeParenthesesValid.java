@@ -50,4 +50,36 @@ public class MinimumAddMakeParenthesesValid {
         return open + closing;
     }
 
+    public int minAddToMakeValidReturnString(String s) {
+
+        if (s == null || s.isEmpty()) return 0;
+
+        int open = 0, closing = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(')
+                open++;
+            else if (c == ')')
+                if (open > 0)
+                    open--;
+                else
+                    closing++;
+        }
+
+        int ans = open + closing;
+
+        while (open-- > 0) {
+            s = s + ')';
+        }
+
+        while (closing-- > 0) {
+            s = '(' + s;
+        }
+
+        System.out.println(s);
+
+        return ans;
+    }
+
 }
