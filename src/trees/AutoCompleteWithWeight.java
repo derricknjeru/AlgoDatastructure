@@ -89,7 +89,7 @@ public class AutoCompleteWithWeight {
 
             Map<Character,TrieNode> map = current.children;
             for(char child : map.keySet()){
-                searchWords(mapResult, word+String.valueOf(child),map.get(child));
+                searchWords(mapResult, word+ child,map.get(child));
             }
         }
     }

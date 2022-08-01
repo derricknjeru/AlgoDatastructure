@@ -15,14 +15,13 @@ public class Dijkstras {
 
     }
     // https://www.youtube.com/watch?v=pLElbKBc4RU
-   //Space complexity
+    //Space complexity
     //V stands for Nodes
     //E stands for edges
 
     //The dist & prev array will use -> O(V) -> space complexity;
     //space complexity of heap -> O(V+E);
     //Time complexity O(V+ E log E)
-
 
 
     public static void main(String[] args) {
@@ -48,11 +47,12 @@ public class Dijkstras {
 
         int[][] result = dijkstra(graph, n, k);
 
-        System.out.println(Arrays.toString(result[1]));
+       // System.out.println(Arrays.toString(result[1]));
+        constructPath(result[1]);
 
         int answer = Integer.MIN_VALUE;
         for (int i = 1; i <= n; i++) {
-            if(result[0][i]==Integer.MIN_VALUE){
+            if (result[0][i] == Integer.MIN_VALUE) {
                 System.out.println(-1);
                 return;
             }
@@ -79,12 +79,13 @@ public class Dijkstras {
 
         // Distance for starting node is 0
         dist[source] = 0;
-        minHeap.add((new Node(0,source)));
+        minHeap.add((new Node(0, source)));
 
         while (!minHeap.isEmpty()) {
             Node topPair = minHeap.remove();
             int currNode = topPair.vertex;
             int currDistance = topPair.weight;
+
 
             if (!graph.containsKey(currNode)) {
                 continue;
@@ -111,7 +112,7 @@ public class Dijkstras {
 
         }
 
-        return new int[][]{dist,prev};
+        return new int[][]{dist, prev};
     }
 
 
@@ -131,13 +132,15 @@ public class Dijkstras {
 
         // Distance for starting node is 0
         dist[source] = 0;
-        minHeap.add((new Node(0,source)));
+        minHeap.add((new Node(0, source)));
 
         while (!minHeap.isEmpty()) {
             Node topPair = minHeap.remove();
             int currNode = topPair.vertex;
             int currDistance = topPair.weight;
-
+            if (currNode == target) {
+                break;
+            }
             if (!graph.containsKey(currNode)) {
                 continue;
             }
@@ -165,7 +168,11 @@ public class Dijkstras {
 
         return dist[target];
     }
-
+    public static void constructPath(int[] prev){
+        for(int i =prev.length; i>=0; i--){
+            System.out.println(prev[0]);
+        }
+    }
 
 }
 

@@ -3,90 +3,95 @@ package graph;
 import java.util.*;
 
 public class NetworkDelayTime {
+    //https://www.youtube.com/watch?v=OHJpOGa_L34&t=26s
+    class Solution {
 
-    static class Node {
-        int weight;
-        int vertex;
+        Map<Integer, List<Node>> graph;
 
-        Node(int weight, int vertex) {
-            this.weight = weight;
-            this.vertex = vertex;
-        }
+        class Node {
+            int weight;
+            int vertex;
 
-    }
-    //https://www.youtube.com/watch?v=OHJpOGa_L34
-    public int networkDelayTime(int[][] times, int n, int k) {
-
-        Map<Integer, List<Node>> graph = new HashMap<>();// adj list graph
-
-
-        // Build the adjacency list
-        for (int[] arr : times) {
-            int source = arr[0];
-            int dest = arr[1];
-            int weight = arr[2];
-
-            graph.putIfAbsent(source, new ArrayList<>());
-            graph.get(source).add(new Node(weight, dest));
-        }
-
-        int[] result = dijkstra(graph, n, k);
-
-        int answer = Integer.MIN_VALUE;
-        for (int i = 1; i <= n; i++) {
-            answer = Math.max(answer, result[i]);
-        }
-
-        // INT_MAX signifies atleat one node is unreachable
-        return answer == Integer.MAX_VALUE ? -1 : answer;
-
-    }
-
-
-    private static int[] dijkstra(Map<Integer, List<Node>> graph, int vertices, int source) {
-        //create a min heap of pairs <distance,node> sorted by distance
-        Queue<Node> minHeap = new PriorityQueue<>(
-                Comparator.comparingInt(a -> a.weight)
-        );
-
-        int[] dist = new int[vertices + 1]; //shortest distance for each vertex
-        Arrays.fill(dist, Integer.MAX_VALUE);
-
-        boolean visited[] = new boolean[vertices + 1];
-
-        // Distance for starting node is 0
-        dist[source] = 0;
-        minHeap.add((new Node(0, source)));
-
-        while (!minHeap.isEmpty()) {
-            Node topPair = minHeap.remove();
-            int currNode = topPair.vertex;
-            int currDistance = topPair.weight;
-
-            if (!graph.containsKey(currNode)) {
-                continue;
+            Node(int weight, int vertex) {
+                this.weight = weight;
+                this.vertex = vertex;
             }
 
-            if (visited[currNode]) continue;
-            visited[currNode] = true;
+        }
 
+        private void buildGraph(int[][] times, int n) {
+            for (int i = 1; i <= n; i++) {
+                graph.put(i, new ArrayList<>());
+            }
+            for (int[] time : times) {
+                int source = time[0];
+                int target = time[1];
+                int weight = time[2];
+                graph.get(source).add(new Node(weight, target));
+            }
+        }
 
-            for (Node edge : graph.get(currNode)) {
-                int weight = edge.weight;
-                int neighborNode = edge.vertex;
-                int nextDist = currDistance + weight;
+        private int[] dijikstra(int n, int source) {
+            //create result array
+            int[] dist = new int[n + 1];
+            Arrays.fill(dist, Integer.MAX_VALUE);
 
-                if (!visited[neighborNode] && nextDist < dist[neighborNode]) {
-                    dist[neighborNode] = nextDist;
-                    minHeap.add((new Node(nextDist, neighborNode)));
+            //create a priority queue
+            PriorityQueue<Node> minHeap = new PriorityQueue<>((a, b) -> a.weight - b.weight);
+            minHeap.add(new Node(0, source));
+            dist[source] = 0;
 
+            boolean[] visited = new boolean[n + 1];
+
+            while (!minHeap.isEmpty()) {
+
+                Node node = minHeap.remove();
+
+                int currNode = node.vertex;
+                int weight = node.weight;
+
+                if (visited[currNode]) continue;
+                visited[currNode] = true;
+
+                if (!graph.containsKey(currNode)) continue;
+
+                for (Node edge : graph.get(currNode)) {
+                    int neiNode = edge.vertex;
+                    int neiWeight = edge.weight;
+
+                    int nextWeight = weight + neiWeight;
+
+                    if (!visited[neiNode] && nextWeight < dist[neiNode]) {
+                        dist[neiNode] = nextWeight;
+                        minHeap.add(new Node(nextWeight, neiNode));
+                    }
                 }
 
             }
+
+            return dist;
         }
 
-        return dist;
+        public int networkDelayTime(int[][] times, int n, int k) {
+            graph = new HashMap<>();
+
+            buildGraph(times, n);
+
+            int[] dist = dijikstra(n, k);
+            int ans = 0;
+
+            for (int i = 1; i <= n; i++) {
+                if (dist[i] == Integer.MAX_VALUE) {
+                    return -1;
+                }
+
+                ans = Math.max(dist[i], ans);
+            }
+
+            return ans;
+
+        }
+
+
     }
-
-
 }

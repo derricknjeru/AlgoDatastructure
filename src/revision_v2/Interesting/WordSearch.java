@@ -1,5 +1,10 @@
 package revision_v2.Interesting;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.PriorityQueue;
+
 public class WordSearch {
     //https://leetcode.com/problems/word-search/
     //https://www.youtube.com/watch?v=vYYNp0Jrdv0&t=30s
@@ -113,5 +118,10 @@ public class WordSearch {
             return false;
 
         }
+    }
+
+    public static void main(String[] args) {
+
+
     }
 }
