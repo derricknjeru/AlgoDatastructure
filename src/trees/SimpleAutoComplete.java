@@ -94,5 +94,8 @@ public class SimpleAutoComplete {
         for (String word:suggestedWords){
             System.out.println(word);
         }
+
+        int[] nums = new int[2];
+        
     }
 }

@@ -2,20 +2,40 @@ package Tips;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Test {
     public static void main(String[] args) {
         Test hs = new Test();
 
-        int stones[] = {2, 7, 4, 1, 8, 1};
+       /* int stones[] = {2, 7, 4, 1, 8, 1};
         //int stones[] = {1,1};
 
         int stoneDiff = hs.heavyStoneOutput(stones);
 
         System.out.println();
 
-        System.out.println("output: " + stoneDiff);
+        System.out.println("output: " + stoneDiff);*/
+
+        List<String> res = new ArrayList<>();
+        res.add("2");
+        res.add("100.1");
+        res.add("0.1001");
+        res.add("2");
+        res.add("-2");
+        res.add("1");
+        res.add("100");
+        res.add("101");
+        res.add("3");
+        res.add("3990909");
+
+        Collections.sort(res, (o1, o2) -> {
+            if (o1.equals(o2)) return 0;
+            return Double.parseDouble(o2) > Double.parseDouble(o1) ? -1 : 1;
+        });
+
+        System.out.println(res);
 
     }
 
