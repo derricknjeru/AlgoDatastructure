@@ -52,7 +52,7 @@ public class FibonacciExample {
 
         if (cache[n] != 0) return cache[n];
 
-        int res = 0;
+        int res;
         if (n < 2) {
             return n;
         } else {
@@ -61,6 +61,8 @@ public class FibonacciExample {
         cache[n] = res;
         return res;
     }
+
+
 }
 
 
