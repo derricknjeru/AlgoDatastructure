@@ -7,6 +7,7 @@ public class UniquePaths {
     }
 
     //Best implementation {@link https://www.youtube.com/watch?v=rBAxUTqvlQA&t=404s}
+    //https://leetcode.com/problems/unique-paths/
     public int uniquePaths(int m, int n) {
         int dp[][] = new int[m][n]; //dp table
 
