@@ -8,6 +8,7 @@ public class HashMaps {
 
         HashMap<Character, Integer> mapMaxheap = new HashMap<>();
 
+
         PriorityQueue<Character> maxHeapWithMap = new PriorityQueue<>((a, b) -> mapMaxheap.get(b) - mapMaxheap.get(a));
 
         /**
@@ -18,6 +19,9 @@ public class HashMaps {
 
        // Map.Entry.comparingByKey(Collections.reverseOrder());
         map.entrySet().stream().sorted(Map.Entry.comparingByValue(Collections.reverseOrder())).forEach(x -> {
+
+        });
+        map.entrySet().stream().sorted((a,b) -> b.getValue()- a.getValue()).forEach(x -> {
 
         });
 
