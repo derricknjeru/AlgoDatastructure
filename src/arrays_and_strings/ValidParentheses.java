@@ -1,5 +1,7 @@
 package arrays_and_strings;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class ValidParentheses {
@@ -36,6 +38,47 @@ public class ValidParentheses {
      * @param args
      */
     public static void main(String[] args) {
+        Queue<Integer> q = new LinkedList<>();
+
+
+    }
+
+    public boolean isValid2(String s) {
+        char[] arr = s.toCharArray();
+
+        if (arr.length == 1) {
+            return false;
+        }
+
+        Stack<Character> stack = new Stack<>();
+
+        for (char c : arr) {
+            switch (c) {
+                case ')':
+                    if (stack.isEmpty() || stack.pop() != '(') {
+                        return false;
+                    }
+                    break;
+                case '}':
+                    if (stack.isEmpty() || stack.pop() != '{') {
+                        return false;
+                    }
+                    break;
+                case ']':
+                    if (stack.isEmpty() || stack.pop() != '[') {
+                        return false;
+                    }
+                    break;
+
+                default:
+                    stack.push(c);
+                    break;
+
+            }
+
+        }
+
+        return stack.isEmpty();
 
     }
 
@@ -60,18 +103,17 @@ public class ValidParentheses {
         return stack.isEmpty();
 
     }
-    //
 
     /**
-     * var isValid = function(s) {
+     *   var isValid = function(s) {
      *     if(s.length<2) return false;
      *
      *     var stack =[];
      *
      *     var arr = s.split(''); //Array.from(s)
      *
-     *     for(let i = 0; i<arr.length; i++){
-     *         switch(arr[i]){
+     *     for(let c of arr){
+     *         switch(c){
      *            case ')':
      *                 if(stack.length==0||stack.pop()!='('){
      *                   return false;
@@ -90,7 +132,7 @@ public class ValidParentheses {
      *                 break;
      *
      *             default:
-     *                 stack.push(arr[i]);
+     *                 stack.push(c);
      *                 break;
      *         }
      *

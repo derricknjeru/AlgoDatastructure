@@ -1,6 +1,7 @@
 package arrays_and_strings;
 
 public class BinarySearch {
+    //https://leetcode.com/problems/binary-search/
     public static void main(String[] ars) {
         int[] arr = {2, 3, 4, 10, 40};
         int x = 10;
@@ -12,12 +13,25 @@ public class BinarySearch {
         int result = binarySearch(arr, 0, n - 1, x);
 
         System.out.println(result);
+        /**
+         * Important things
+         * ---> while condition has to be equal to
+         * ---> and r is length-1;
+         */
     }
 
 
     // Java implementation of iterative Binary Search
     // Returns index of x if it is present in arr[l..
     // r], else return -1
+    //Time complexity is O(log n);
+
+    /**
+     * Important things
+     * ---> while condition has to be equal to
+     * ---> and r is length-1;'
+     * ---> Time complexity O(log n)
+     */
     static int binarySearch(int[] arr, int x) {
         int l = 0;
         int h = arr.length - 1;
@@ -60,6 +74,26 @@ public class BinarySearch {
 
         // We reach here when element is not present
         // in array
+        return -1;
+    }
+
+    public int search(int[] nums, int target) {
+        int l = 0;
+        int r = nums.length - 1;
+
+        while (l + 1 < r) {
+            int mid = l + (r - l) / 2;
+
+            if (nums[mid] >= target) {
+                r = mid;
+            } else {
+                l = mid;
+            }
+        }
+
+        if (nums[l] == target) return l;
+        if (nums[r] == target) return r;
+
         return -1;
     }
 

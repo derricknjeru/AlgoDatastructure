@@ -2,6 +2,7 @@ package arrays_and_strings;
 
 import java.util.Arrays;
 import java.util.HashMap;
+
 //
 public class ValidAnagram {
     public static void main(String[] args) {
@@ -50,17 +51,22 @@ public class ValidAnagram {
     }
 
     /**
-     * To examine if tt is a rearrangement of ss, we can count occurrences of each letter in the two strings and compare them. Since both ss and tt contain only letters from a-za−z, a simple counter table of size 26 is suffice.
-     * <p>
-     * Do we need two counter tables for comparison? Actually no, because we could increment the counter for each letter in ss and decrement the counter for each letter in tt, then check if the counter reaches back to zero.
-     * <p>
      * Complexity analysis
-     * <p>
-     * Time complexity : O(n)O(n). Time complexity is O(n)O(n) because accessing the counter table is a constant time operation.
-     * <p>
-     * Space complexity : O(1)O(1). Although we do use extra space, the space complexity is O(1)O(1) because the table's size stays constant no matter how large nn is.
+     *
+     * Time complexity : O(n). Time complexity is O(n) because accessing the counter table is a constant time operation.
+     *
+     * Space complexity : O(1). Although we do use extra space, the space complexity is O(1) because the table's size stays constant no matter how large n is.
+     *
+     * Follow up
+     *
+     * What if the inputs contain unicode characters? How would you adapt your solution to such case?
+     *
+     * Answer
+     *
+     * Use a hash table instead of a fixed size counter. Imagine allocating a large size array to fit the entire range of unicode characters, which could go up to more than 1 million. A hash table is a more generic solution and could adapt to any range of characters.
+     * @param s
+     * @return
      */
-
     public boolean isAnagram2(String s, String t) {
         if (s.length() != t.length()) {
             return false;

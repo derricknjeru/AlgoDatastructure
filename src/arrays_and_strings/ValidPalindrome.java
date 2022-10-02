@@ -7,6 +7,8 @@ public class ValidPalindrome {
         x.toLowerCase();
 
         System.out.println(isPalindrome(x));
+
+
     }
 
     /**
@@ -19,10 +21,10 @@ public class ValidPalindrome {
         int i = 0;
 
         while (i < j) {
-            while (i < j && !Character.isLetterOrDigit(s.charAt(i))) {
+            while (i < j && !Character.isLetterOrDigit(s.charAt(i)) || i < j && s.charAt(i) == ' ') {
                 i++;
             }
-            while (i < j && !Character.isLetterOrDigit(s.charAt(j))) {
+            while (i < j && !Character.isLetterOrDigit(s.charAt(j)) || i < j && s.charAt(j) == ' ') {
                 j--;
             }
 
@@ -38,35 +40,36 @@ public class ValidPalindrome {
     }
 
     public static boolean isPalindrome(String s) {
-        if(s.isEmpty()){
+        if (s.isEmpty()) {
             return true;
         }
 
         //we convert it to lower cas
-        s=s.toLowerCase();
+        s = s.toLowerCase();
 
-        char[] arr=s.toCharArray();
+        char[] arr = s.toCharArray();
 
-        int i=0; //start pointer
+        int i = 0; //start pointer
 
-        int j=arr.length-1;
+        int j = arr.length - 1;
 
-        while(i<j){
-            while(i<j && !Character.isLetterOrDigit(arr[i])){
+        while (i < j) {
+            while (i < j && !Character.isLetterOrDigit(arr[i])) {
                 i++;
             }
 
-            while(i<j && !Character.isLetterOrDigit(arr[j])){
+            while (i < j && !Character.isLetterOrDigit(arr[j])) {
                 j--;
             }
 
-            if(arr[i++]!=arr[j--]) return false;
+            if (arr[i++] != arr[j--]) return false;
 
         }
 
         return true;
 
     }
+
 
     //Java script
 
