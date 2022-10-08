@@ -4,28 +4,37 @@ import java.util.HashMap;
 
 public class NumberOfMatchingSubsequences {
 
-   // https://leetcode.com/problems/number-of-matching-subsequences/
-    //https://www.youtube.com/watch?v=Vch3pFgmKD8&ab_channel=CodingDecoded
+    // https://leetcode.com/problems/number-of-matching-subsequences/
 
     public int numMatchingSubseq(String s, String[] words) {
 
-        int matchingSubSequences = 0, m = s.length();
+        int matchingSub = 0;
+
         HashMap<String, Integer> frequencyOfWords = new HashMap<>();
         for (String word : words)
             frequencyOfWords.put(word, frequencyOfWords.getOrDefault(word, 0) + 1);
 
-        //Now use the same method used in the question isSubSequence?
-        for (String subSequence : frequencyOfWords.keySet()){
-            int i = 0, j = 0, n = subSequence.length();
-            while (i < m && j < n){
-                if (s.charAt(i) == subSequence.charAt(j)){
-                    j++;
-                }
+        for (String word : frequencyOfWords.keySet()) {
+            if (isSubsequence(word, s)) {
+                matchingSub += frequencyOfWords.get(word);
+            }
+        }
+
+        return matchingSub;
+
+    }
+
+    private boolean isSubsequence(String s, String t) {
+        int i = 0;
+        int j = 0;
+
+        while (i < s.length() && j < t.length()) {
+            if (s.charAt(i) == t.charAt(j)) {
                 i++;
             }
-            if (j == n) matchingSubSequences += frequencyOfWords.get(subSequence);
+            j++;
         }
-        return matchingSubSequences;
 
+        return i == s.length();
     }
 }
