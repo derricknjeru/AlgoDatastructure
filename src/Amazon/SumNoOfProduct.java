@@ -64,7 +64,7 @@ class SumNoOfProduct {
     public static void main(String[] args) {
         List list = Arrays.asList(7, 4, 5, 2, 6, 5);
 
-        System.out.println(findMaxProducts(Arrays.asList(2,9,4,7,5,2)));
+        System.out.println(findMaxProducts(Arrays.asList(2, 9, 4, 7, 5, 2)));
     }
 
     public static long findMaxProducts(List<Integer> products) {
