@@ -5,6 +5,12 @@ public class NumberOfProvinces {
     //https://www.youtube.com/watch?v=Kn-nw7VbWak
 
     public int findCircleNum(int[][] isConnected) {
+        /**
+         *        A  B  c
+         *      A  1  1   0
+         *      B  1  1   0
+         *      c  0  0   1
+         */
 
         int V = isConnected.length;
         boolean[] visited = new boolean[V];

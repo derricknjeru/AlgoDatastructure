@@ -11,7 +11,7 @@ public class DFS {
     //Time complexity is O(V+E) DFS visits every vertex and edge in the graph
     //Space O(V+E) because of the stack
     public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
-
+       //[[1,1,0],[1,1,0],[0,0,1]]
         boolean [] discovered = new boolean[V];
 
         ArrayList<Integer>ans = new ArrayList<>();

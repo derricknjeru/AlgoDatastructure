@@ -60,25 +60,49 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+//https://www.chegg.com/homework-help/questions-and-answers/java-problem-find-max-products-sub-array-questions-details-screenshot-q95046577
+
 class SumNoOfProduct {
     public static void main(String[] args) {
         List list = Arrays.asList(7, 4, 5, 2, 6, 5);
 
         System.out.println(findMaxProducts(Arrays.asList(2, 9, 4, 7, 5, 2)));
+
+        //7, 4, 5, 2, 6, 5
+
+        //7, 4, 5, 2, 6
+        //7, 4, 5, 2,
     }
 
     public static long findMaxProducts(List<Integer> products) {
         int l = products.size();
         long max = 0;
+
+        //7, 4, 5, 2, 6,  5
+
+
+        //5,4,2,1 ==> 12
+        //6,2,1
+        //2,1
+        //5,4,
+
+
         for (int i = l - 1; i >= 0; --i) {
-            if (i != l - 1 && products.get(i) < products.get(i + 1)) continue; //??
+
+            //if (i != l - 1 && products.get(i) < products.get(i + 1)) continue; //??
+
             long localMax = products.get(i);
+
             long prev = localMax;
+            //5
             for (int j = i - 1; j >= 0; --j) {
+                //prev = 4
                 prev = Math.min(prev - 1, products.get(j));
                 localMax += prev;
                 if (prev == 1) break;
+               //max 9
             }
+
             max = Math.max(localMax, max);
         }
         return max;

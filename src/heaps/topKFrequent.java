@@ -17,7 +17,8 @@ public class topKFrequent {
                 ((a, b) -> a.getValue() == b.getValue() ?
                         b.getKey().compareTo(a.getKey()) : //b.getKey().compareTo(a.getKey) is preferred as we want to store the word with high alphabetical order above the word with lower alphabetical order
                         a.getValue() - b.getValue());  //min heap
-
+        // 1453,55665
+        //4,4,5,5,
 
         for (Map.Entry<String, Integer> entry : occurrences.entrySet()) {
             minHeap.add(entry);
@@ -110,5 +111,20 @@ public class topKFrequent {
 
         return result;
 
+    }
+
+    public List<String> topKFrequent5(String[] words, int k) {
+        HashMap<String, Integer> freq = new HashMap<>();
+        for (String word : words) {
+            freq.put(word, freq.getOrDefault(word, 0) + 1);
+        }
+        List<String> res = new ArrayList<>(freq.keySet());
+        //sorting
+        //if two words have the same frequency, then the word with the lower alphabetical order comes first.
+        //else most frequent words will come first
+        res.sort((w1, w2) -> freq.get(w1).equals(freq.get(w2)) ?
+                w1.compareTo(w2) : freq.get(w2) - freq.get(w1));
+
+        return res.subList(0, k);
     }
 }

@@ -7,6 +7,7 @@ public class SubArraySumEqualsK {
 
     }
     public int subarraySum(int[] nums, int k) {
+        //https://www.youtube.com/watch?v=YkacnIOt2jM
         int count = 0, currSum = 0;
         HashMap<Integer, Integer> map = new HashMap<>(); //pref sum and count
 
