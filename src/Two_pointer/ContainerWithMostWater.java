@@ -57,7 +57,7 @@ public class ContainerWithMostWater {
 
         return maxArea;
     }
-    //Time complexity O(n)
+    //Time complexity O(n*n)
 
     public int maxAreaBruteForce(int[] height) {
         int maxArea = 0;
