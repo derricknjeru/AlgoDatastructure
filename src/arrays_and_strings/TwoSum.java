@@ -9,6 +9,35 @@ public class TwoSum {
     }
 
     /**
+     * Complexity Analysis
+     * <p>
+     * Time complexity: O(n^2)O(n
+     * 2
+     * ). For each element, we try to find its complement by looping through the rest of the array which takes O(n)O(n) time. Therefore, the time complexity is O(n^2)O(n
+     * 2
+     * ).
+     * <p>
+     * Space complexity: O(1)O(1). The space required does not depend on the size of the input array, so only constant space is used.
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+
+    public int[] twoSum1(int[] nums, int target) {
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] == target - nums[i]) {
+                    return new int[]{i, j};
+                }
+            }
+        }
+        // In case there is no solution, we'll just return null
+        return null;
+    }
+
+
+    /**
      * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
      * <p>
      * You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -43,45 +72,62 @@ public class TwoSum {
      * @param target
      * @return
      */
+    /**
+     * @param nums
+     * @param target
+     * @return
+     */
+
+    /**
+     * ime complexity: O(n) We traverse the list containing nn elements only once. Each lookup in the table costs only O(1) time.
+     * <p>
+     * Space complexity: O(n). The extra space required depends on the number of items stored in the hash table, which stores at most nn elements.
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+
     public int[] twoSum(int[] nums, int target) {
-
-        HashMap<Integer, Integer> map = new HashMap<>();
-
-        int[] indices = new int[2];
-
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-
-            int n = target - nums[i];
-
-            if (map.containsKey(n)) {
-                indices[0] = map.get(n);
-                indices[1] = i;
-            } else {
-                map.put(nums[i], i);
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[]{map.get(complement), i};
             }
-
+            map.put(nums[i], i);
         }
-
-        return indices;
+        // In case there is no solution, we'll just return null
+        return null;
     }
 
+
+    //two pass
+
+    /**
+     * Time complexity: O(n). We traverse the list containing nn elements exactly twice. Since the hash table reduces the lookup time to O(1)O(1), the overall time complexity is O(n)O(n).
+     * <p>
+     * Space complexity: O(n). The extra space required depends on the number of items stored in the hash table, which stores exactly nn elements.
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
     public int[] twoSum2(int[] nums, int target) {
-
-        int[] result = new int[2];
-
-        for (int i = 0; i <= nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[i] + nums[j] == target) {
-                    result[0] = i;
-                    result[1] = j;
-                    break;
-                }
-            }
-
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], i);
         }
-
-        return result;
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement) && map.get(complement) != i) {
+                return new int[]{i, map.get(complement)};
+            }
+        }
+        // In case there is no solution, we'll just return null
+        return null;
     }
+
 
     public int[] twoSum3(int[] nums, int target) {
 
