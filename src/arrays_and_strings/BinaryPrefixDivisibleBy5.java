@@ -5,6 +5,8 @@ import java.util.List;
 
 public class BinaryPrefixDivisibleBy5 {
     //https://leetcode.com/problems/binary-prefix-divisible-by-5/
+    //https://www.youtube.com/watch?v=SfjTHS80C8M&ab_channel=NideeshTerapalli
+    //https://www.youtube.com/watch?v=y8otfJ-5X40&ab_channel=NideeshTerapalli
 
     /**
      * You are given a binary array nums (0-indexed).
