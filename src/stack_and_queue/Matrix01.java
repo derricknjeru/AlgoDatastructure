@@ -2,9 +2,10 @@ package stack_and_queue;
 
 import java.util.*;
 
-public class UpdateMatrix {
+public class Matrix01 {
     //https://www.youtube.com/watch?v=UWykmfK7ta4
     //https://www.youtube.com/watch?v=KpOoGf1fWzE
+    //https://leetcode.com/problems/01-matrix/
     public int[][] updateMatrix(int[][] mat) {
         if (mat == null || mat.length == 0) {
             return mat;
