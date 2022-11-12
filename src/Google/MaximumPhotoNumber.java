@@ -17,6 +17,7 @@ public class MaximumPhotoNumber {
         System.out.println("Max so far " + client.getMax());
         client.ack(3);
         System.out.println("Max so far " + client.getMax());
+
     }
 
     /**
