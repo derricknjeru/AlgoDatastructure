@@ -1,11 +1,57 @@
 package arrays_and_strings;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.PriorityQueue;
+import java.util.Set;
 
 public class LongestConsecutiveSequence {
     //https://www.geeksforgeeks.org/longest-consecutive-subsequence/
     //https://leetcode.com/problems/longest-consecutive-sequence/
+
+    public int longestConsecutive(int[] nums) {
+        /**
+         * Complexity Analysis
+         *
+         * Time complexity : O(n)
+         *
+         * Although the time complexity appears to be quadratic due to the while loop nested within the for loop,
+         * closer inspection reveals it to be linear.
+         * Because the while loop is reached only when currentNum marks the beginning of a sequence
+         * (i.e. currentNum-1 is not present in nums), the while loop can only run for nn iterations
+         * throughout the entire runtime of the algorithm.
+         * This means that despite looking like O(n⋅n) complexity, the nested loops actually run in O(n + n) = O(n) time.
+         * All other computations occur in constant time, so the overall runtime is linear.
+         *
+         * Space complexity : O(n)
+         *
+         * In order to set up O(1) containment lookups,
+         * we allocate linear space for a hash table to store the O(n) numbers in nums.
+         * Other than that, the space complexity is identical to that of the brute force solution.
+         */
+        Set<Integer> num_set = new HashSet<Integer>();
+        for (int num : nums) {
+            num_set.add(num);
+        }
+
+        int longestStreak = 0;
+
+        for (int num : num_set) {
+            if (!num_set.contains(num - 1)) {
+                int currentNum = num;
+                int currentStreak = 1;
+
+                while (num_set.contains(currentNum + 1)) {
+                    currentNum += 1;
+                    currentStreak += 1;
+                }
+
+                longestStreak = Math.max(longestStreak, currentStreak);
+            }
+        }
+
+        return longestStreak;
+    }
 
     public int longestConsecutive2(int[] nums) {
         /**
@@ -70,15 +116,12 @@ public class LongestConsecutiveSequence {
             if (pq.peek() != prev) {
                 if (pq.peek() == prev + 1) {
                     currentStreak++;
-                    prev = pq.poll();
                 } else {
                     maxStreak = Math.max(maxStreak, currentStreak);
                     currentStreak = 1;
-                    prev = pq.poll();
                 }
-            } else {
-                prev = pq.poll();
             }
+            prev = pq.poll();
         }
 
         return Math.max(maxStreak, currentStreak);
