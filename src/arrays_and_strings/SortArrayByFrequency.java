@@ -38,6 +38,8 @@ public class SortArrayByFrequency {
          * -100 <= nums[i] <= 100
          */
     }
+    //Time complexity O(mlogn) because of the queue addAll method.
+    //Space complexity O(n)
 
     public int[] frequencySort(int[] nums) {
         Map<Integer, Integer> occ = new HashMap<>();
@@ -46,6 +48,8 @@ public class SortArrayByFrequency {
         }
 
         PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> Objects.equals(occ.get(a), occ.get(b)) ? (b - a) : occ.get(a) - occ.get(b));
+        //Time complexity O(mlogn) where m is the size of the collection being inserted.
+        // https://stackoverflow.com/questions/14310164/complexity-of-priorityqueue-addall
         pq.addAll(occ.keySet());
 
         int i = 0;
