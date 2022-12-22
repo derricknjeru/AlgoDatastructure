@@ -127,4 +127,33 @@ public class topKFrequent {
 
         return res.subList(0, k);
     }
+
+    class Solution {
+        public List<String> topKFrequent(String[] words, int k) {
+
+            HashMap<String, Integer> occurrences = new HashMap<>();
+            for (String word : words) {
+                occurrences.put(word, occurrences.getOrDefault(word, 0) + 1);
+            }
+
+            PriorityQueue<String> minHeap = new PriorityQueue<>(
+                    (a, b) -> occurrences.get(a) == occurrences.get(b) ? b.compareTo(a) : occurrences.get(a) - occurrences.get(b)
+            );
+
+            for (String word : occurrences.keySet()) {
+                minHeap.add(word);
+                if (minHeap.size() > k) {
+                    minHeap.poll();
+                }
+            }
+
+            List<String> result = new ArrayList<>();
+            while (!minHeap.isEmpty()) {
+                result.add(minHeap.poll());
+            }
+            Collections.reverse(result);
+
+            return result;
+        }
+    }
 }
