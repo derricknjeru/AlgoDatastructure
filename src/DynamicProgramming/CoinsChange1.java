@@ -1,7 +1,10 @@
 package DynamicProgramming;
 
+import java.util.HashMap;
+
 public class CoinsChange1 {
     public static void main(String[] args) {
+        HashMap<Integer,Integer> map = new HashMap<>();
         //https://leetcode.com/problems/coin-change/description/
         //https://www.youtube.com/watch?v=jl68j3vLHZk
         //https://www.youtube.com/watch?v=J2eoCvk59Rc&t=852s
