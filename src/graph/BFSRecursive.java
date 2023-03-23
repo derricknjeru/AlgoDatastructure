@@ -46,26 +46,24 @@ public class BFSRecursive {
     //https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1/
     public ArrayList<Integer> bfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
         // create a queue for doing BFS
-        Queue<Integer> pq = new ArrayDeque<>();
+        Queue<Integer> q = new ArrayDeque<>();
 
         // to keep track of whether a vertex is discovered or not
         boolean[] discovered = new boolean[V];
 
-        // enqueue the source vertex as discovered
-        pq.add(0);
-
-        // mark the source vertex as discovered
-        discovered[0] = true;
-
         ArrayList<Integer> ans = new ArrayList<>();
 
         for (int i = 0; i < V; i++) {
-            if (discovered[i] == false) {
-                bfs(pq, discovered, ans, adj);
+            if (!discovered[i]) {
+                // enqueue the source vertex as discovered
+                q.add(i);
+
+                // mark the source vertex as discovered
+                discovered[i] = true;
+
+                bfs(q, discovered, ans, adj);
             }
         }
-
-
         return ans;
 
     }
@@ -77,7 +75,7 @@ public class BFSRecursive {
         ans.add(v);
 
         for (int u : adj.get(v)) {
-            if (discovered[u] == false) {
+            if (!discovered[u]) {
                 pq.add(u);
                 discovered[u] = true;
             }

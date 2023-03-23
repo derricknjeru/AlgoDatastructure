@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DFS {
     //https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1/#
@@ -10,37 +11,46 @@ public class DFS {
 
     //Time complexity is O(V+E) DFS visits every vertex and edge in the graph
     //Space O(V+E) because of the stack
-    public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
-       //[[1,1,0],[1,1,0],[0,0,1]]
-        boolean [] discovered = new boolean[V];
 
-        ArrayList<Integer>ans = new ArrayList<>();
-
-        for(int i = 0; i<V; i++){
-            if(!discovered[i]){
-                dfs(i,discovered,adj,ans);
-            }
-        }
-
-        return ans;
-    }
-
-    private void dfs(int v, boolean [] discovered, ArrayList<ArrayList<Integer>> adj, ArrayList<Integer>ans){
-
+    //Like the BFS, this algorithm traverses the whole list once. Hence, it’s time complexity is O(V + E)
+    private static void dfs(int v, boolean[] discovered, Graph g, List<Integer> ans) {
+        //A Depth–first search (DFS) is a way of traversing graphs closely related to the preorder traversal of a tree.
         ans.add(v);
 
         discovered[v] = true;
 
-        for(int u : adj.get(v)){
+        for (int u : g.adjacencyList.get(v)) {
 
-            if(!discovered[u]){
+            if (!discovered[u]) {
 
-                dfs(u,discovered,adj,ans);
+                dfs(u, discovered, g, ans);
             }
         }
     }
 
+    public static void main(String[] args) {
+        int V = 5;
+        Graph g = new Graph(V);
+        g.addEdge(0, 1);
+        g.addEdge(0, 2);
+        g.addEdge(1, 3);
+        g.addEdge(1, 4);
 
+        //Expected results "01342" or "02143"
+
+
+        boolean[] discovered = new boolean[V];
+        List<Integer> ans = new ArrayList<>();
+
+        for (int i = 0; i < V; i++) {
+            if (!discovered[i]) {
+                dfs(i, discovered, g, ans);
+            }
+        }
+
+        for (int a : ans) System.out.print(a + " ");
+
+    }
 
 
 }
