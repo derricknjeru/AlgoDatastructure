@@ -1,111 +1,71 @@
 package graph;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 public class DetectCycleDirectedGraph {
-    static HashMap<Integer, List<Integer>> graph;
-
-
-    //https://www.youtube.com/watch?v=0dJmTuMrUZM
-    //Graph coloring: 0->not visited...1->visited...2->visited & processed
-    static boolean detectCycleDirectedGraph(HashMap<Integer, List<Integer>> graph, int n) {
-        int[] visited = new int[n];
-        for (int i = 0; i < n; ++i)
-            if (visited[i] == 0) {
-                if (detectCycle_util(graph, visited, i)) return true;
-            }
-        return false;
-    }
-
-    //Graph coloring: 0->not visited...1->visited...2->visited & processed
-    private static boolean detectCycle_util(HashMap<Integer, List<Integer>> graph, int[] visited, int v) {
-        if (visited[v] == 1) return true;
-        if (visited[v] == 2) return false;
-
-        visited[v] = 1;   //Mark current as visited
-        for (int u : graph.get(v)) {
-            if (detectCycle_util(graph, visited, u)) return true;
-        }
-        visited[v] = 2;   //Mark current node as processed
-        return false;
-
-    }
-
-    public static void buildGraph(int numCourses, int[][] prerequisites) {
-        for (int i = 0; i < numCourses; i++)
-            graph.putIfAbsent(i, new ArrayList<>());
-
-        for (int[] courses : prerequisites) {
-            int course1 = courses[1];
-            int course2 = courses[0];
-            graph.get(course1).add(course2);
-        }
-    }
-
-    //https://www.youtube.com/watch?v=L0DcePeWHnM
-    static boolean detectCycleUnDirectedGraph(HashMap<Integer, List<Integer>> graph, int n) {
-        int[] visited = new int[n];
-        for (int i = 0; i < n; ++i) {
-            visited[i] = 1;
-            // Call the recursive helper
-            // function to detect cycle in
-            // different DFS trees
-            for (int j = 0; j < graph.size(); ++j) {
-                if (visited[i] == 0) {
-                    if (detectUnCycle_util(graph, visited, i)) return true;
-                }
-            }
-
-            visited[i] = 0;
-        }
-        return false;
-    }
-
-    private static boolean detectUnCycle_util(HashMap<Integer, List<Integer>> graph, int[] visited, int v) {
-        if (visited[v] == 2)
-            return true;
-
-        visited[v] = 1;
-        for (int u : graph.get(v)) {
-            if (visited[u] == 1)
-                visited[u] = 2;
-            else {
-                if (detectUnCycle_util(graph, visited, v)) return true;
-
-            }
-        }
-        return false;
-    }
+    //https://www.youtube.com/watch?v=wQqFQeucFDc
+    //https://www.geeksforgeeks.org/detect-cycle-direct-graph-using-colors/
+    static int WHITE = 0, GRAY = 1, BLACK = 2;
 
     public static void main(String[] args) {
-        //-->directed
-        // int[][] prerequisites2 = {{1, 0}};
-        // int numCourses2 = 4;
-        //-->directed
-        int[][] prerequisites = {{0, 1}, {1, 0}};
-        int numCourses = 2;
-        //--> undirected
-        //int[][] prerequisites2 = {{1, 0}, {0, 2}, {2, 1}, {0, 3}, {3, 4}};
-        //int numCourses2 = 5;
-        //int[][] prerequisites = {{0, 1}, {1, 2}};
-        //int numCourses = 3;
+        int V = 4;
+        Graph g = new Graph(V);
 
+        g.addEdge(0, 1);
+        g.addEdge(0, 2);
+        g.addEdge(1, 2);
+        g.addEdge(2, 0);
+        g.addEdge(2, 3);
+        g.addEdge(3, 3);
 
-        graph = new HashMap<>();
-        buildGraph(numCourses, prerequisites);
+        //There is a cycle in a graph only if there is a back edge present in the graph.
+        // A back edge is an edge that is from a node to itself (selfloop) or one of its ancestor in the tree produced by DFS.
+        //https://en.wikipedia.org/wiki/Depth-first_search#Output_of_a_depth-first_search
+        if (isCyclic(g, V)) System.out.println("Graph contains cycle");
+        else System.out.println("Graph doesn't contain cycle");
 
-        if (detectCycleDirectedGraph(graph, numCourses)) {
-            System.out.println("Directed there is a cycle");
-        } else {
-            System.out.println("Directed there is no cycle");
+    }
+
+    private static boolean isCyclic(Graph g, int v) {
+        int[] visited = new int[v];
+
+        for (int i = 0; i < v; i++) {
+            if (visited[i] == WHITE) {
+                if (detectCycle_util(g, i, visited)) return true;
+            }
         }
 
-        /*if (detectCycleUnDirectedGraph(graph, numCourses)) {
-            System.out.println("UnDirected there is a cycle");
-        } else {
-            System.out.println("UnDirected there is no cycle");
-        }*/
+        return false;
     }
+
+    // Recursive function to find if there is back edge
+    // in DFS subtree tree rooted with 'u''
+
+    /**
+     * Complexity Analysis:
+     * Time complexity: O(V + E), where V is the number of vertices and E is the number of edges in the graph.
+     * Space Complexity :O(V). Since an extra color array is needed of size V.
+     */
+
+    private static boolean detectCycle_util(Graph g, int v, int[] visited) {
+        // GRAY : This vertex is being processed (DFS
+        // for this vertex has started, but not
+        // ended (or this vertex is in function
+        // call stack)
+
+        visited[v] = GRAY;
+
+        // Iterate through all adjacent vertices
+        for (int u : g.adjacencyList.get(v)) {
+
+            if (visited[u] == GRAY) return true;
+
+            // If v is not processed and there is a back
+            // edge in subtree rooted with v
+            if (visited[u] == WHITE && detectCycle_util(g, u, visited)) return true;
+
+        }
+        // Mark this vertex as processed
+        visited[v] = BLACK;
+        return false;
+    }
+
 }
