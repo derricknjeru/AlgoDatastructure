@@ -6,6 +6,7 @@ import java.util.List;
 public class CourseSchedule {
     //https://www.youtube.com/watch?v=kXy0ABd1vwo&t=12s
     //https://www.youtube.com/watch?v=iaaObeAEgxI&t=82s
+    //https://leetcode.com/problems/course-schedule/description/
     static int  WHITE=0, GRAY=1, BLACK=2;
     class Graph{
         int vertices;
