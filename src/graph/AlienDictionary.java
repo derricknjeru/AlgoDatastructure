@@ -80,6 +80,7 @@ public class AlienDictionary {
         HashMap<Character, List<Character>> graph = new HashMap<>();
 
         buildGraph(graph, words);
+
         //no of vertices
         int totalChar = graph.keySet().size();
         boolean[] seen = new boolean[26];

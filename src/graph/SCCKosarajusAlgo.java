@@ -4,7 +4,9 @@ package graph;
 import java.util.Stack;
 
 public class SCCKosarajusAlgo {
-
+     //https://www.geeksforgeeks.org/strongly-connected-components/
+    //https://www.youtube.com/watch?v=5wFyZJ8yH9Q
+    //https://www.youtube.com/watch?v=RpgcYiky7uw&t=1042s
 
     public static void main(String[] args) {
         // Create a graph given in the above diagram

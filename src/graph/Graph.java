@@ -24,6 +24,15 @@ public class Graph {
         }
     }
 
+    public void addEdgeUn(int source, int destination) {
+        if (source < vertices && destination < vertices) {
+            this.adjacencyList.get(source).add(destination);
+
+            //for undirected graph uncomment the line below
+            this.adjacencyList.get(destination).add(source);
+        }
+    }
+
     public void printGraph() {
         System.out.println(">>Adjacency List of Directed Graph<<");
         for (int i = 0; i < vertices; i++) {
