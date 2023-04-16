@@ -17,12 +17,12 @@ public class DFSIterative {
         boolean[] discovered = new boolean[V];
         for (int i = 0; i < V; i++) {
             if (!discovered[i]) {
-                bfsIterative(g, i, discovered);
+                dfsIterative(g, i, discovered);
             }
         }
     }
 
-    private static void bfsIterative(Graph g, int v, boolean[] discovered) {
+    private static void dfsIterative(Graph g, int v, boolean[] discovered) {
         Stack<Integer> stack = new Stack<>();
         stack.push(v);
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DFS {
+    //https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
     //https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1/#
     //https://www.techiedelight.com/depth-first-search/
     //https://www.youtube.com/watch?v=Y40bRyPQQr0
@@ -42,7 +43,7 @@ public class DFS {
         boolean[] discovered = new boolean[V];
         List<Integer> ans = new ArrayList<>();
 
-        for (int i = 0; i < V; i++) {
+        for (int i = 0; i < V; i++) { //We do this to cater for disconnected graph
             if (!discovered[i]) {
                 dfs(i, discovered, g, ans);
             }
