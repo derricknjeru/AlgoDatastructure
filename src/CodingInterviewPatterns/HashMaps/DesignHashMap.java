@@ -1,27 +1,27 @@
-package HashTable;
+package CodingInterviewPatterns.HashMaps;
 
 import java.util.LinkedList;
-//Why have we chosen SIZE as 769
-    /*
-    you can choose any arbitrary value!!
-    usually, we try to select a large prime number!
-    */
-//not only prime numbers. you can select any number. prime numbers give us less collision so that's a recommended practice.
-
 
 //https://leetcode.com/explore/learn/card/hash-table/182/practical-applications/1140/
 //https://www.youtube.com/watch?v=ISir207RuKQ&ab_channel=AlgorithmsMadeEasy
 
 class DesignHashMap {
-    private static final int size = 769;
+    //Why have we chosen SIZE as 769
+    /*
+    you can choose any arbitrary value!!
+    usually, we try to select a large prime number!
+    */
+    //not only prime numbers. you can select any number. prime numbers give us less collision so that's a recommended practice.
+
+    private static final int SIZE = 769;
     private final LinkedList<Entry>[] map;
 
     public DesignHashMap() {
-        map = new LinkedList[size];
+        map = new LinkedList[SIZE];
     }
 
     public void put(int key, int value) {
-        int hashKey = key % size;
+        int hashKey = key % SIZE;
         if (map[hashKey] != null) {
             //can someone dynamically update collections?
             for (int i = 0; i < map[hashKey].size(); i++) {
@@ -38,7 +38,8 @@ class DesignHashMap {
     }
 
     public int get(int key) {
-        int hashKey = key % size;
+
+        int hashKey = key % SIZE;
 
         if (map[hashKey] == null) return -1;
 
@@ -51,7 +52,7 @@ class DesignHashMap {
     }
 
     public void remove(int key) {
-        int hashKey = key % size;
+        int hashKey = key % SIZE;
 
         if (map[hashKey] == null) return;
 
@@ -74,5 +75,7 @@ class DesignHashMap {
             this.key = key;
         }
     }
-}
 
+    //16
+    //
+}

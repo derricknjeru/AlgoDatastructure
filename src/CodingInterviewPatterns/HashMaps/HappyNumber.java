@@ -1,10 +1,10 @@
-package HashTable;
+package CodingInterviewPatterns.HashMaps;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class HappyNumber {
-    private Set<Integer> set = new HashSet<>();
+    private final Set<Integer> set = new HashSet<>();
     //https://leetcode.com/problems/happy-number/solution/
 
     private int getNext(int n) {

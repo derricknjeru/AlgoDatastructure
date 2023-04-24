@@ -61,7 +61,7 @@ hashmap look up is better than linked-list
 
 ---->SIDE NOTE<----
 Arrays -> we can access each item at constant time.
-downside of array - size is fixed, because they store data contiguosly.
+downside of array - size is fixed, because they store data contiguously.
 
 linked list -> can grow in size, they don't have fixed size. Delection is also first
 downside

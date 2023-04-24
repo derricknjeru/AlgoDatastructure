@@ -1,6 +1,9 @@
-package HashTable;
+package CodingInterviewPatterns.HashMaps;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Set;
 
 //Source link https://www.youtube.com/watch?v=U79BoHTcCYw
 //https://leetcode.com/explore/learn/card/hash-table/182/practical-applications/1139/
@@ -9,8 +12,10 @@ class MyHashSet {
     private static final int size = 15000; // we want lf of 0.667
     private LinkedList<Integer>[] set;
 
+
     public MyHashSet() {
         set = new LinkedList[size];
+
     }
 
     public void add(int key) {
