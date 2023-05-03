@@ -10,7 +10,7 @@ public class BestTimeToBuyAndSellStock {
      * <p>
      * If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.
      * <p>
-     * Note that you cannot sell a stock before you buy one.
+     * Note.md that you cannot sell a stock before you buy one.
      * <p>
      * Example 1:
      * <p>

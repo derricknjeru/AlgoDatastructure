@@ -14,7 +14,7 @@ public class RemoveElement {
          *
          * Confused why the returned value is an integer but your answer is an array?
          *
-         * Note that the input array is passed in by reference, which means a modification to the input array will be known to the caller as well.
+         * Note.md that the input array is passed in by reference, which means a modification to the input array will be known to the caller as well.
          *
          * Internally you can think of this:
          *
@@ -38,7 +38,7 @@ public class RemoveElement {
          *
          * Input: nums = [0,1,2,2,3,0,4,2], val = 2
          * Output: 5, nums = [0,1,4,0,3]
-         * Explanation: Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4. Note that the order of those five elements can be arbitrary. It doesn't matter what values are set beyond the returned length.
+         * Explanation: Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4. Note.md that the order of those five elements can be arbitrary. It doesn't matter what values are set beyond the returned length.
          *
          *
          * Constraints:

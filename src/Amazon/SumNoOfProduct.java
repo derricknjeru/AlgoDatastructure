@@ -17,13 +17,13 @@
  * <p>
  * • Choose subarray from indices (1, 3) and pick products [3, 4, 5] respectively from each index, which is 12 products.
  * <p>
- * Note that we are forced to pick only 3 products from index 1 as the maximum number of products we can pick from index 2 is 4 and we need to make sure it is greater than the number of products picked from index 1.
+ * Note.md that we are forced to pick only 3 products from index 1 as the maximum number of products we can pick from index 2 is 4 and we need to make sure it is greater than the number of products picked from index 1.
  * <p>
  * • Choose subarray from indices (3,6) Find the maximum number of products that can be picked ALL .
  * <p>
  * Example The numbers of products in each plle are numProducts = [7, 4, 5, 2, 6,5).
  * <p>
- * These are some ways strictly increasing subarrays can be chosen (1-based index): 2 • Choose subarray from indices (1, 3) and pick products [3, 4, 5) respectively from each index, which is 12 products. Note that we are forced to pick only 3 products from index 1 as the maximum number of products we can pick from index 2 is 4 and we need to make sure it is greater than the number of products picked from index 1.
+ * These are some ways strictly increasing subarrays can be chosen (1-based index): 2 • Choose subarray from indices (1, 3) and pick products [3, 4, 5) respectively from each index, which is 12 products. Note.md that we are forced to pick only 3 products from index 1 as the maximum number of products we can pick from index 2 is 4 and we need to make sure it is greater than the number of products picked from index 1.
  * <p>
  * • Choose subarray from indices (3, 6) and pick products (1, 2, 4, 5] respectively from each index, which is 12 products.
  * <p>

@@ -8,7 +8,7 @@ public class ReversePolishNotation {
      * <p>
      * Valid operators are +, -, *, and /. Each operand may be an integer or another expression.
      * <p>
-     * Note that division between two integers should truncate toward zero.
+     * Note.md that division between two integers should truncate toward zero.
      * <p>
      * It is guaranteed that the given RPN expression is always valid. That means the expression would always evaluate to a result, and there will not be any division by zero operation.
      * <p>

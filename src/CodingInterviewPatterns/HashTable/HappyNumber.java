@@ -1,9 +1,14 @@
-package CodingInterviewPatterns.HashMaps;
+package CodingInterviewPatterns.HashTable;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
 public class HappyNumber {
+    HashMap<Integer,Integer> map = new HashMap<>();
+
+    public static void main(String[] args) {
+    }
     private final Set<Integer> set = new HashSet<>();
     //https://leetcode.com/problems/happy-number/solution/
 

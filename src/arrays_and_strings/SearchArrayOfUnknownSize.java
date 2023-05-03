@@ -37,7 +37,7 @@ public class SearchArrayOfUnknownSize {
      * 2 does not exist in
      * nums
      * so return -1
-     * Note:
+     * Note.md:
      * You may assume that all elements in the array are unique.
      * The value of each element in the array will be in the range[-9999, 9999].
      */

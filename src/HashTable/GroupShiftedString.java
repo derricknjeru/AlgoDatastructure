@@ -17,7 +17,7 @@ public class GroupShiftedString {
      * ["acef"],
      * ["a","z"]
      * ]
-     * Note: For the return value, each inner list's elements must follow the lexicographic order.
+     * Note.md: For the return value, each inner list's elements must follow the lexicographic order.
      *
      * @param strs
      * @return

@@ -15,7 +15,7 @@ public class ConstructBinarySearcTreefromPreorderTraversal {
      *
      *
      *
-     * Note:
+     * Note.md:
      *
      * 1 <= preorder.length <= 100
      * The values of preorder are distinct.

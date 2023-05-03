@@ -32,6 +32,8 @@ public class MinMaxHeap {
             System.out.println(iterator.next());
         }
 
+
+
         for (int a : minHeap) {
             System.out.println("dddffdfdfdfdfd" + a);
         }

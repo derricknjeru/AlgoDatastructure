@@ -18,7 +18,7 @@ public class SquaresOfASortedArray {
      * Output: [4,9,9,49,121]
      * <p>
      * <p>
-     * Note:
+     * Note.md:
      * <p>
      * 1 <= A.length <= 10000
      * -10000 <= A[i] <= 10000

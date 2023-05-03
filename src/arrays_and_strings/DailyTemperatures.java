@@ -19,7 +19,7 @@ public class DailyTemperatures {
      * <p>
      * If the input was non-increasing, then no element would ever be popped from the stack, and the stack would grow to a size of N elements at the end.
      * <p>
-     * Note: answer does not count towards the space complexity because space used for the output format does not count.
+     * Note.md: answer does not count towards the space complexity because space used for the output format does not count.
      **/
     public int[] dailyTemperatures(int[] temperatures) {
         int n = temperatures.length;

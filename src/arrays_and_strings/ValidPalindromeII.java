@@ -19,7 +19,7 @@ public class ValidPalindromeII {
      * Input: "abca" or abcbea
      * Output: True
      * Explanation: You could delete the character 'c'.
-     * Note:
+     * Note.md:
      * The string will only contain lowercase characters a-z. The maximum length of the string is 50000.
      */
     //{@link https://www.geeksforgeeks.org/remove-character-string-make-palindrome/}

@@ -36,7 +36,7 @@ public class MinHeapImplementation {
         // Index of the newly added element
         int index = realSize;
         // Parent node of the newly added element
-        // Note if we use an array to represent the complete binary tree
+        // Note.md if we use an array to represent the complete binary tree
         // and store the root node at index 1
         // index of the parent node of any node is [index of the node / 2]
         // index of the left child node is [index of the node * 2]

@@ -20,26 +20,18 @@ public class GroupAnagram {
 
         }
 
-        List<List<String>>list= new ArrayList<>();
-
-        for (List<String> v : map.values()) {
-            list.add(v);
-
-        }
+        List<List<String>> list = new ArrayList<>();
+        list.addAll(map.values()); //Collections.addAll();
         return list;
     }
 
-    private String getSortedString (String str) {
-        char array [] = str.toCharArray();
-
+    private String getSortedString(String str) {
+        char array[] = str.toCharArray();
         Arrays.sort(array);
-
         return new String(array);
-
     }
 
     public List<List<String>> groupAnagrams2(String[] strs) {
-
         HashMap<String, List<String>> map = new HashMap<>();
 
         for (String str : strs) {
@@ -52,8 +44,6 @@ public class GroupAnagram {
             map.get(sorted_word).add(str);
         }
 
-        List<List<String>> result = new ArrayList<>(map.values());
-
-        return result;
+        return new ArrayList<>(map.values());
     }
 }

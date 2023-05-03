@@ -24,21 +24,19 @@ public class ContainsDuplicateII {
 
     }
 
+
     public boolean containsNearbyDuplicate2(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
-
         for (int i = 0; i < nums.length; i++) {
-
-            int current = nums[i];
-
-            if (map.containsKey(current) && i - map.get(current) <= k) {
-                return true;
-            } else {
-                map.put(current, i);
+            int a = nums[i];
+            if (map.containsKey(a)) {
+                int diff = Math.abs(i - map.get(a));
+                if (diff <= k) return true;
             }
+            map.put(a, i);
         }
 
         return false;
-
     }
+
 }

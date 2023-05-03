@@ -46,7 +46,7 @@ public class BasicCalculatorII {
      * <p>
      * You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 231 - 1].
      * <p>
-     * Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+     * Note.md: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
      * <p>
      * <p>
      * <p>

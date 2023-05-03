@@ -1,4 +1,4 @@
-package CodingInterviewPatterns.HashMaps;
+package CodingInterviewPatterns.HashTable;
 
 import java.util.*;
 

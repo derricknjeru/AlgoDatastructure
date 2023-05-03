@@ -10,7 +10,7 @@ public class IntersectionOfTwoLinkedLists {
      *
      * The test cases are generated such that there are no cycles anywhere in the entire linked structure.
      *
-     * Note that the linked lists must retain their original structure after the function returns.
+     * Note.md that the linked lists must retain their original structure after the function returns.
      *
      * Custom Judge:
      *

@@ -1,9 +1,6 @@
-package CodingInterviewPatterns.HashMaps;
+package CodingInterviewPatterns.HashTable;
 
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Set;
 
 //Source link https://www.youtube.com/watch?v=U79BoHTcCYw
 //https://leetcode.com/explore/learn/card/hash-table/182/practical-applications/1139/
