@@ -19,7 +19,7 @@ public class DailyTemperatures {
      * <p>
      * If the input was non-increasing, then no element would ever be popped from the stack, and the stack would grow to a size of N elements at the end.
      * <p>
-     * Note.md: answer does not count towards the space complexity because space used for the output format does not count.
+     * Note.md.md: answer does not count towards the space complexity because space used for the output format does not count.
      **/
 
     //https://leetcode.com/explore/learn/card/queue-stack/230/usage-stack/1363/

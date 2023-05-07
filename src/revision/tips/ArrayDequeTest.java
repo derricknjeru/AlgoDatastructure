@@ -37,7 +37,7 @@ public class ArrayDequeTest {
          * offer() - inserts the specified element at the end of the array deque
          * offerFirst() - inserts the specified element at the beginning of the array deque
          * offerLast() - inserts the specified element at the end of the array deque
-         * Note.md: offer(), offerFirst() and offerLast() returns true if the element is successfully inserted; if the array deque is full, these methods return false.
+         * Note.md.md: offer(), offerFirst() and offerLast() returns true if the element is successfully inserted; if the array deque is full, these methods return false.
          */
 
         ArrayDeque<String> animals = new ArrayDeque<>();
@@ -56,7 +56,7 @@ public class ArrayDequeTest {
          *
          * getFirst() - returns the first element of the array deque
          * getLast() - returns the last element of the array deque
-         * Note.md: If the array deque is empty, getFirst() and getLast() throws NoSuchElementException.
+         * Note.md.md: If the array deque is empty, getFirst() and getLast() throws NoSuchElementException.
          */
 
         ArrayDeque<String> animals1 = new ArrayDeque<>();

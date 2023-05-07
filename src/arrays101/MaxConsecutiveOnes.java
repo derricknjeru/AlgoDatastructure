@@ -10,7 +10,7 @@ public class MaxConsecutiveOnes {
      * Output: 3
      * Explanation: The first two digits or the last three digits are consecutive 1s.
      * The maximum number of consecutive 1s is 3.
-     * Note.md:
+     * Note.md.md:
      * <p>
      * The input array will only contain 0 and 1.
      * The length of input array is a positive integer and will not exceed 10,000

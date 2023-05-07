@@ -25,7 +25,7 @@ public class LastStoneHeight {
      * we combine 1 and 1 to get 0 so the array converts to [1] then that's the value of last stone.
      * <p>
      * <p>
-     * Note.md:
+     * Note.md.md:
      * <p>
      * 1 <= stones.length <= 30
      * 1 <= stones[i] <= 1000

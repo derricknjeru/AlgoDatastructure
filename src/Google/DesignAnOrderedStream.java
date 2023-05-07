@@ -32,7 +32,7 @@ public class DesignAnOrderedStream {
      * [null, [], ["aaaaa"], ["bbbbb", "ccccc"], [], ["ddddd", "eeeee"]]
      * <p>
      * Explanation
-     * // Note.md that the values ordered by ID is ["aaaaa", "bbbbb", "ccccc", "ddddd", "eeeee"].
+     * // Note.md.md that the values ordered by ID is ["aaaaa", "bbbbb", "ccccc", "ddddd", "eeeee"].
      * OrderedStream os = new OrderedStream(5);
      * os.insert(3, "ccccc"); // Inserts (3, "ccccc"), returns [].
      * os.insert(1, "aaaaa"); // Inserts (1, "aaaaa"), returns ["aaaaa"].

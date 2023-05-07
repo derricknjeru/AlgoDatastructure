@@ -20,7 +20,7 @@ public class ValidParenthesisString {
      * Example 3:
      * Input: "(*))"
      * Output: True
-     * Note.md:
+     * Note.md.md:
      * The string size will be in the range [1, 100].
      */
     public static void main(String[] args) {

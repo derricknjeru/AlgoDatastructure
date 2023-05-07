@@ -26,7 +26,7 @@ public class BackspaceStringCompare {
      * Input: S = "a#c", T = "b"
      * Output: false
      * Explanation: S becomes "c" while T becomes "b".
-     * Note.md:
+     * Note.md.md:
      * <p>
      * 1 <= S.length <= 200
      * 1 <= T.length <= 200

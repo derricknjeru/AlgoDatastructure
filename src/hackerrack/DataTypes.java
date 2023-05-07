@@ -26,7 +26,7 @@ public class DataTypes {
         sv = scan.next();
         sv += scan.nextLine();
 
-        // Note.md: If you have trouble reading the entire String, please go back and review the Tutorial closely.
+        // Note.md.md: If you have trouble reading the entire String, please go back and review the Tutorial closely.
 
 
         /* Print the sum of both integer variables on a new line. */

@@ -14,7 +14,7 @@ public class ValidPalindrome {
     /**
      * Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
      * <p>
-     * Note.md: For the purpose of this problem, we define empty string as valid palindrome.
+     * Note.md.md: For the purpose of this problem, we define empty string as valid palindrome.
      */
     public static boolean isPalindrome2(String s) {
         int j = s.length() - 1;

@@ -32,7 +32,7 @@ public class LinkedHashMapExample {
         // Printing all entries inside Map
         System.out.println(lhm);
 
-        // Note.md: It prints the elements in same order
+        // Note.md.md: It prints the elements in same order
         // as they were inserted
 
         // Getting and printing value for a specific key

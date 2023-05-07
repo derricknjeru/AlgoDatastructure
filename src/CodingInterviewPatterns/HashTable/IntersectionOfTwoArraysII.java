@@ -16,7 +16,7 @@ import java.util.List;
  * <p>
  * Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
  * Output: [4,9]
- * Note.md:
+ * Note.md.md:
  * <p>
  * Each element in the result should appear as many times as it shows in both arrays.
  * The result can be in any order.
