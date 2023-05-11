@@ -39,7 +39,8 @@ public class RemoveLinkedListElements {
     }
 
     public ListNode removeElements(ListNode head, int val) {
-
+        //https://www.youtube.com/watch?v=JI71sxtHTng
+        //https://www.youtube.com/watch?v=5lNkvTd7PM4
         ListNode dummy = new ListNode(0);
         dummy.next=head;
 

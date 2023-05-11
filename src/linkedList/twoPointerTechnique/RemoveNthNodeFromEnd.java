@@ -93,23 +93,54 @@ public class RemoveNthNodeFromEnd {
 
     /**
      * Complexity Analysis
-     *
+     * <p>
      * Time complexity :O(L).
-     *
+     * <p>
      * The algorithm makes two traversal of the list, first to calculate list length L and second to find the (L - n)th node(Previous node). There are 2L-n operations and time complexity is O(L).
-     *
+     * <p>
      * Space complexity : O(1).
-     *
+     * <p>
      * We only used constant extra space.
      */
+
+
+    //Time complexity O(n)  we go through the list
+    //Space complexity is O(1) no extra space
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        //https://www.youtube.com/watch?v=Kka8VgyFZfc
+        //https://www.youtube.com/watch?v=XVuQxVej6y8
+
+
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+
+        ListNode fast = dummy;
+        ListNode slow = dummy;
+
+        //Create a gap of n between the 2 pointers
+        while (n > 0 && fast != null) {
+            fast = fast.next;
+            n--;
+        }
+
+        while (fast.next != null) { //fast.next because we want to stop when slow is at prev
+            slow = slow.next;
+            fast = fast.next;
+        }
+        slow.next = slow.next.next;
+
+        return dummy.next;
+
+    }
+
     public ListNode removeNthFromEnd2(ListNode head, int n) {
 
         int length = 0;
 
-        ListNode tempH = head;
-        while (tempH != null) {
+        ListNode prev = head;
+        while (prev != null) {
             length++;
-            tempH = tempH.next;
+            prev = prev.next;
         }
 
         /*When building a new list while doing linked list problems dummy heads are your best friend.
@@ -117,47 +148,27 @@ public class RemoveNthNodeFromEnd {
 
         ListNode dummy = new ListNode(0);
         dummy.next = head;
-        tempH = dummy;
+        prev = dummy;
 
         int position = (length - n) + 1; //Position to be deleted
+        int index = position - 1;
 
-        // Find previous node of the node to be deleted
-        for (int i = 0; i < position - 1; i++) {
-            if (tempH != null) {
-                tempH = tempH.next;
+        // Find previous node of the node to be deleted;
+        // We use less than because we have a dummy value at the end
+        for (int i = 0; i < index; i++) {
+            if (prev != null) {
+                prev = prev.next;
             }
         }
+
+        if (prev == null || prev.next == null) return head;
+
         //Change next of the previous node to 2nd next;
-        if (tempH != null) {
-            tempH.next = tempH.next.next;
-        }
+        prev.next = prev.next.next;
 
         return dummy.next;
     }
 
-    //Best soln.
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-
-        ListNode dummy = new ListNode(0);
-        dummy.next=head;
-
-        ListNode fast=dummy;
-        ListNode slow=dummy;
-
-        while(n-->0 && fast!=null){
-            fast=fast.next;
-        }
-
-        while(fast.next!=null){
-
-            slow = slow.next;
-            fast = fast.next;
-        }
-        slow.next=slow.next.next;
-
-        return dummy.next;
-
-    }
 
 }
 

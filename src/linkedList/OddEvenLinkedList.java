@@ -12,6 +12,15 @@ public class OddEvenLinkedList {
 
     //https://leetcode.com/problems/odd-even-linked-list/solution/
 
+    /**
+     * Complexity Analysis
+     * Time complexity : O(n). There are total nnn nodes, and we visit each node once.
+     * Space complexity : O(1). All we need is the four pointers.
+     *
+     * @param head
+     * @return
+     */
+
     public ListNode oddEvenList(ListNode head) {
         if (head == null) return null;
 

@@ -35,10 +35,13 @@ public class DepthFirstTraversals {
             return;
 
         // first recur on left subtree
-        printPostorder(node.left);
-
+        if (root.left != null) {
+            printPostorder(node.left);
+        }
         // then recur on right subtree
-        printPostorder(node.right);
+        if (root.right != null) {
+            printPostorder(node.right);
+        }
 
         // now deal with the node
         System.out.print(node.key + " "); // print myself //root
@@ -50,13 +53,16 @@ public class DepthFirstTraversals {
             return;
 
         /* first recur on left child */
-        printInorder(node.left);
-
+        if (root.left != null) {
+            printInorder(node.left);
+        }
         /* then print the data of node */
         System.out.print(node.key + " "); // print myself //root
 
         /* now recur on right child */
-        printInorder(node.right);
+        if (root.right != null) {
+            printInorder(node.right);
+        }
     }
 
     /* Given a binary tree, print its nodes in preorder*/
@@ -68,10 +74,13 @@ public class DepthFirstTraversals {
         System.out.print(node.key + " "); // print myself //root
 
         /* then recur on left sutree */
-        printPreorder(node.left);
-
+        if (root.left != null) {
+            printPreorder(node.left);
+        }
         /* now recur on right subtree */
-        printPreorder(node.right);
+        if (root.right != null) {
+            printPreorder(node.right);
+        }
     }
 
     // Wrappers over above recursive functions

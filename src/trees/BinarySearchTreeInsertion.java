@@ -56,8 +56,6 @@ public class BinarySearchTreeInsertion {
                 }
             }
         }
-
-
         return root;
     }
 
