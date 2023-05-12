@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 public class BinaryTreeLevelOrderTraversal {
+    //https://leetcode.com/problems/binary-tree-level-order-traversal/
     /**
      * Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
      * <p>
@@ -39,6 +40,15 @@ public class BinaryTreeLevelOrderTraversal {
     class Solution {
         //Example ->https://www.youtube.com/watch?v=86g8jAQug04
         //ANS https://www.youtube.com/watch?v=XZnWETlZZ14
+
+        /**
+         * BFS:
+         *
+         * Time complexity is O(|V|), where |V| is the number of nodes. You need to traverse all nodes.
+         * Space complexity is O(|V|) as well - since at worst case you need to hold all vertices in the queue.
+         * @param root
+         * @return
+         */
         public List<List<Integer>> levelOrder2(TreeNode root) {
             List<List<Integer>> result = new ArrayList<>();
             if (root == null) {

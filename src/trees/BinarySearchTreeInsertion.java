@@ -30,30 +30,22 @@ public class BinarySearchTreeInsertion {
 
     }
 
- /* Node is defined as :
- class Node
-    int data;
-    Node left;
-    Node right;
+    /* Node is defined as :
+    class Node
+       int data;
+       Node left;
+       Node right;
 
-    */
-   //https://www.youtube.com/watch?v=nVJI8sUlwSs
-    public static Node insert(Node root, int data) {
+       */
+    //https://www.youtube.com/watch?v=nVJI8sUlwSs
+    public static Node insert(Node root, int val) {
         if (root == null) {
-            return new Node(data);
+            return new Node(val);
         } else {
-            if (data <= root.data) {
-                if (root.left == null) {
-                    root.left = new Node(data);
-                } else {
-                    insert(root.left, data);
-                }
+            if (val <= root.data) {
+                root.left = insert(root.left, val);
             } else {
-                if (root.right == null) {
-                    root.right = new Node(data);
-                } else {
-                    insert(root.right, data);
-                }
+                root.right = insert(root.right, val);
             }
         }
         return root;
