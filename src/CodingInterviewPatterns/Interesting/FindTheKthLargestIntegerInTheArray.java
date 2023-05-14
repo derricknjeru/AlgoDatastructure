@@ -1,8 +1,17 @@
 package CodingInterviewPatterns.Interesting;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class FindTheKthLargestIntegerInTheArray {
+    /**
+     * Constraints:
+     *
+     * 1 <= k <= nums.length <= 104
+     * 1 <= nums[i].length <= 100
+     * nums[i] consists of only digits.
+     * nums[i] will not have any leading zeros.
+     */
     //https://leetcode.com/problems/find-the-kth-largest-integer-in-the-array
 
     /**
@@ -46,8 +55,15 @@ public class FindTheKthLargestIntegerInTheArray {
      */
 
     public String kthLargestNumber(String[] nums, int k) {
+        /**
+         * The time complexity of this approach is O(nlogk),
+         * where n is the size of the array and k is the number of largest elements we need to keep track of in the heap.
+         * We iterate over n elements and each heap operation takes logk time.
+         */
         //a.compareTo(b) we are doing so that the smallest can always be at the top
-        PriorityQueue<String> minHeap = new PriorityQueue<>((a, b) -> a.length() == b.length() ? a.compareTo(b) : a.length() - b.length());
+        //If the length of the strings are equal, we just see which one is lexicographically larger else we compare the length and sort.
+        // PriorityQueue<String> minHeap = new PriorityQueue<>((a, b) -> a.length() == b.length() ? a.compareTo(b) : a.length() - b.length());
+        PriorityQueue<String> minHeap = new PriorityQueue<>((a, b) -> a.length() == b.length() ? a.compareTo(b) : Integer.compare(a.length(), b.length()));
 
         for (String a : nums) {
             minHeap.add(a);

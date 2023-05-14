@@ -61,4 +61,10 @@ public class KClosestPointsToOrigin {
         int y = point[1];
         return x * x + y * y;
     }
+
+    public static void main(String[] args) {
+        int[][] grid = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+
+
+    }
 }
