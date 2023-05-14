@@ -100,9 +100,23 @@ public class BinarySearchTree {
     }
 
     private static Node findMin(Node root) {
+        if (root == null) {
+            return null;
+        }
         while (root.left != null) root = root.left;
         return root;
     }
+
+    private static Node findMax(Node root) {
+        if (root == null) {
+            return null;
+        }
+        while (root.right != null) {
+            root = root.right;
+        }
+        return root;
+    }
+
 
     public static void printInorder(Node root) {
         if (root == null) return;

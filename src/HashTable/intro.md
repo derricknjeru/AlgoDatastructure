@@ -1,3 +1,4 @@
+# Hashtable
 Hash Table is a data structure which organizes data using hash functions in order to support quick insertion and search.
 
 There are two different kinds of hash tables: hash set and hash map.
@@ -71,3 +72,19 @@ hashtable
 can grow over time
 look up and insertion, deletion can be constant time in theory.
 
+### Hashmap/set
+- The time complexity of lookup, insertion and deletion in a hashtable is typically O(1) on average, but in the worst case, they can have O(n) time complexity.
+- NB: The worse case can occur if the hash function is poorly designed or if there are too many collisions between keys.
+
+#### Here is a breakdown of the time complexity of different operations on hash tables in Java:
+
+- Search: O(1) on average, O(n) in the worst case
+- Insertion: O(1) on average, O(n) in the worst case
+- Deletion: O(1) on average, O(n) in the worst case
+
+#### Here are some tips for improving the performance of hash tables in Java:
+- Use a good hash function.
+- Use a large hash table.
+- Avoid using keys that are likely to collide.
+- Use a load factor of 0.75 or less.
+- Rehash the hash table when it becomes too full.

@@ -4,34 +4,39 @@ import java.util.Scanner;
 
 public class BinaryTreeIsBst {
     //Soln and explanation.
-    //https://www.youtube.com/watch?v=Z_-h_mpDmeg&t=2s&ab_channel=KevinNaughtonJr.
-    //https://www.youtube.com/watch?v=MILxfAbIhrE&t=564s
+    //https://www.youtube.com/watch?v=kR5AxWHa9nc
+    //https://leetcode.com/problems/validate-binary-search-tree/description/
 
 
     //Root of the Binary Tree
     Node root;
 
     //https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/
-    private boolean isBST(Node root, Node l, Node r) {
+
+    /**
+     * Time Complexity: O(N), Where N is the number of nodes in the tree
+     * Auxiliary Space: O(1), if Function Call Stack size is not considered, otherwise O(H) where H is the height of the tree
+     *
+     * @param root
+     * @return
+     */
+    private boolean isBST(Node root, Integer min, Integer max) {
         // Base condition
-        if (root == null)
-            return true;
+        if (root == null) return true;
 
         // if left node exist then check it has
         // correct data or not i.e. left node's data
         // should be less than root's data
-        if (l != null && root.data <= l.data)
-            return false;
+        if (min != null && root.data <= min) return false;
 
         // if right node exist then check it has
         // correct data or not i.e. right node's data
         // should be greater than root's data
-        if (r != null && root.data >= r.data)
-            return false;
+        if (max != null && root.data >= max) return false;
 
         // check recursively for every node.
-        return isBST(root.left, l, root) &&
-                isBST(root.right, root, r);
+        return isBST(root.left, min, root.data) && //lower bound does not change
+                isBST(root.right, root.data, max); //upper bound will not change(r) and data will be current root
     }
 
     public boolean isValidBST(Node root) {
@@ -77,23 +82,23 @@ public class BinaryTreeIsBst {
 
     /**
      * var isValidBST = function(root) {
-     *     return validBST(root,null,null)
+     * return validBST(root,null,null)
      * };
-     *
+     * <p>
      * function validBST(root, l, r){
-     *     if(root == null){
-     *        return true;
-     *     }
-     *
-     *     if(l!=null && l.val >= root.val){
-     *        return false;
-     *     }
-     *
-     *     if(r!=null && r.val <=root.val){
-     *        return false;
-     *     }
-     *
-     *     return validBST(root.left,l,root) &&  validBST(root.right,root,r);
+     * if(root == null){
+     * return true;
+     * }
+     * <p>
+     * if(l!=null && l.val >= root.val){
+     * return false;
+     * }
+     * <p>
+     * if(r!=null && r.val <=root.val){
+     * return false;
+     * }
+     * <p>
+     * return validBST(root.left,l,root) &&  validBST(root.right,root,r);
      * }
      */
 
