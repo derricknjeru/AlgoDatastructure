@@ -17,6 +17,7 @@ public class SortMapByKeyExample {
         usingTreeMap();
         usingTreeMapReverse();
         usingList();
+        usingListReverse();
     }
 
     private static void usingTreeMap() {
@@ -99,6 +100,9 @@ public class SortMapByKeyExample {
 
         //or easiest
         list.sort((o1, o2) -> Integer.compare(o2.getValue(), o1.getValue()));  // O(n log n)
+
+        //or easiest
+        list.sort(Map.Entry.comparingByKey(Collections.reverseOrder()));
 
         //We can print list at this point
         // Create a new LinkedHashMap to store the sorted entries. A LinkedHashMap allows us to do this, as it will maintain the order of insertion of each entry from the sorted list.
