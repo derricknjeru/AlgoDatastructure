@@ -3,6 +3,15 @@ package CodingInterviewPatterns.tries;
 import java.util.*;
 
 public class SearchSuggestionsSystem {
+    /**
+     * Complexity Analysis
+     * <p>
+     * Time complexity : O(M) to build the trie where M is total number of characters in products For each prefix we find its representative node in O(len(prefix))O(\text{len(prefix)})O(len(prefix)) and dfs to find at most 3 words which is an O(1) operation. Thus the overall complexity is dominated by the time required to build the trie.
+     * <p>
+     * In Java there is an additional complexity of (m^2) due to Strings being immutable, here m is the length of searchWord.
+     * Space complexity : O(26n)=O(n). Here n is the number of nodes in the trie. 26 is the alphabet size.
+     * Space required for output is O(m) where m is the length of the search word.
+     */
 
     static class Trie {
         TrieNode root;
@@ -30,17 +39,17 @@ public class SearchSuggestionsSystem {
             return current;
         }
 
-        public void searchWordDfs(TrieNode current, String word, List<String> ans) {
+        public void searchWordDfs(TrieNode current, String prefix, List<String> ans) {
             if (current == null) return;
 
             if (ans.size() == 3) return;
 
             if (current.isWord) {
-                ans.add(word);
+                ans.add(prefix);
             }
 
             for (char c : current.children.keySet()) {
-                searchWordDfs(current.children.get(c), word + c, ans);
+                searchWordDfs(current.children.get(c), prefix + c, ans);
             }
         }
     }
