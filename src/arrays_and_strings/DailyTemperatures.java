@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class DailyTemperatures {
+    //https://www.youtube.com/watch?v=cTBiBSnjO3c&ab_channel=NeetCode
     /**
      * Given NN as the length of temperatures,
      * <p>

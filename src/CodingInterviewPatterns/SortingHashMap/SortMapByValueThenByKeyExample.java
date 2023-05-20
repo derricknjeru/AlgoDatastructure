@@ -18,6 +18,9 @@ public class SortMapByValueThenByKeyExample {
         // Convert the HashMap to a List of Map.Entry objects
         List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
 
+        //Map.Entry<String, Integer> innerEntry = new HashMap.SimpleEntry<>("", 9);
+
+
         // Sort the List by value then by key using a custom Comparator
         list.sort((o1, o2) -> {
             int valueCompare = o1.getValue().compareTo(o2.getValue());

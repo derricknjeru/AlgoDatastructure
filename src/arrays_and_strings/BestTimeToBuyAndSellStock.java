@@ -24,18 +24,30 @@ public class BestTimeToBuyAndSellStock {
      * Output: 0
      * Explanation: In this case, no transaction is done, i.e. max profit = 0.
      */
+    //https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
     //https://www.youtube.com/watch?v=mj7N8pLCJ6w&t=2s&ab_channel=KevinNaughtonJr.
+    //https://leetcode.com/problems/best-time-to-buy-and-sell-stock/editorial/
+
+    /**
+     * Complexity Analysis
+     * Time complexity: O(n). Only a single pass is needed.
+     * <p>
+     * Space complexity: O(1). Only two variables are used.
+     *
+     * @param prices
+     * @return
+     */
     public int maxProfit(int[] prices) {
 
         int min = Integer.MAX_VALUE; //create maximum space for whatever no we will asign.
 
         int maxprofit = 0;
 
-        for (int i = 0; i < prices.length; i++) {
-            if (prices[i] < min) {
-                min = prices[i];
+        for (int price : prices) {
+            if (price < min) {
+                min = price;
             } else {
-                maxprofit = Math.max(maxprofit, prices[i] - min);
+                maxprofit = Math.max(maxprofit, price - min);
             }
 
         }
@@ -49,7 +61,6 @@ public class BestTimeToBuyAndSellStock {
         int minPrice = prices[0];
 
         int maxProfit = 0;
-
 
         for (int i = 1; i < prices.length; i++) {
             if (minPrice > prices[i]) {

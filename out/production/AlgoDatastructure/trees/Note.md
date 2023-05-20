@@ -110,11 +110,21 @@
 - Binary search tree - Binary tree in which, for each node,value of all the nodes
   in the left subtree is lesser than or equal and value of all the
   nodes in right subtree is greater.
+- Duplicates are not allowed in binary search tree
 
   ![Binary search tree](../images/binarysearch.png)
   </br>
   </br>
   ![Complexity](../images/binarysearchtreecomplexity.png)
+
+- AVL tree
+  AVL trees are a self-balanced special type of Binary Search Tree with just one exception:For each Node, the maximum height difference between the left and right sub-trees can only be one. 
+- If at any point their difference becomes more than one, then re-balancing is applied to make it a valid AVL tree.
+  - properties:
+    - It is a bst
+    - (balance factor)Height of the left subtree - height of the right subtree is [-1,0,1]
+    - For each node, balance factor must be calculated
+    - 
 
 
   

@@ -1,6 +1,7 @@
 package arrays_and_strings;
 
 public class BestTimeToBuyAndSellStock11 {
+
     /**
      * Say you have an array for which the ith element is the price of a given stock on day i.
      * <p>
@@ -33,17 +34,28 @@ public class BestTimeToBuyAndSellStock11 {
         BestTimeToBuyAndSellStock11 b = new BestTimeToBuyAndSellStock11();
         System.out.printf("The maximum profit %d", b.maxProfit(arr));
     }
-    //https://www.youtube.com/watch?v=blUwDD6JYaE&list=PLi9RQVmJD2fYMiu6JOL3PiEVh_Is6jAin&index=2&ab_channel=KevinNaughtonJr.
-    public int maxProfit(int[] prices) {
-        int maxprofit = 0;
 
+    //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
+    //https://www.youtube.com/watch?v=blUwDD6JYaE&list=PLi9RQVmJD2fYMiu6JOL3PiEVh_Is6jAin&index=2&ab_channel=KevinNaughtonJr.
+
+    /**
+     * Complexity Analysis
+     * Time complexity: O(n). Only a single pass is needed.
+     * <p>
+     * Space complexity: O(1). Only two variables are used.
+     *
+     * @param prices
+     * @return
+     */
+    public int maxProfit(int[] prices) {
+        int maxProfit = 0;
         for (int i = 0; i < prices.length - 1; i++) {
-            if (prices[i + 1] > prices[i]) {
-                maxprofit += prices[i + 1] - prices[i];
+            if (prices[i] < prices[i + 1]) {
+                int diff = prices[i + 1] - prices[i];
+                maxProfit += diff;
             }
 
         }
-        return maxprofit;
-
+        return maxProfit;
     }
 }

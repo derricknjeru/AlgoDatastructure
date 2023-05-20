@@ -3,6 +3,7 @@ package CodingInterviewPatterns.TwoPointers;
 public class ContainerWithMostWater {
 
     //https://leetcode.com/problems/container-with-most-water/
+    //https://www.youtube.com/watch?v=UuiTKBwPgAo&ab_channel=NeetCode
     /**
      * You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
      * <p>

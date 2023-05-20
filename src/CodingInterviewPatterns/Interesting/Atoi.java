@@ -133,7 +133,7 @@ public class Atoi {
 
     private static boolean isCharacterADigit(char character) {
         int possibleDigit = character - '0';
-        return possibleDigit >= 0 && possibleDigit <= 9 ? true : false;
+        return possibleDigit >= 0 && possibleDigit <= 9;
     }
 
     public static int myAtoi3(String s) {

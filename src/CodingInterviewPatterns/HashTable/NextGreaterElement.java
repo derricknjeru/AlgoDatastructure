@@ -90,7 +90,6 @@ public class NextGreaterElement {
         //https://www.youtube.com/watch?v=68a1Dc_qVq4
         //https://www.youtube.com/watch?v=mJWQjJpEMa4
         int len1 = nums1.length;
-        int len2 = nums2.length;
 
         HashMap<Integer, Integer> map = new HashMap<>();
         int[] ans = new int[len1];
@@ -100,16 +99,18 @@ public class NextGreaterElement {
             map.put(nums1[i], i);
         }
         //O(n*m) ---> in case where we have to go through the whole list looking for the value
-        for (int i = 0; i < len2; i++) {
-            int val = nums2[i];
-            if (map.containsKey(val)) {
-                int j = i;
-                while (j < len2) {
-                    if (val < nums2[j]) {
-                        ans[map.get(nums2[i])] = nums2[j];
-                        break;
-                    }
-                    j++;
+
+        //Time complexity is O(m+n)
+
+        for (int i = 0; i < nums2.length; i++) {
+            if (!map.containsKey(nums2[i])) {
+                continue;
+            }
+
+            for (int j = i + 1; j < nums2.length; j++) {
+                if (nums2[j] > nums2[i]) {
+                    ans[map.get(nums2[i])] = nums2[j];
+                    break;
                 }
             }
         }

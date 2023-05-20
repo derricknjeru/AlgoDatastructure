@@ -51,6 +51,10 @@ E.g.
 - Use a load factor of 0.75 or less.
 - Rehash the hash table when it becomes too full.
 
+### logarithmic  O(log n)
+- Binary search has a time complexity of O(log n), where n is the number of elements in the search space. 
+  This means that as the size of the search space grows, the time required to find a target element grows at a much slower rate than linear search. This makes binary search an efficient algorithm for searching large collections of data.
+
 ### linear runtime O(n)
 
 #### Sometimes even nested loops can be O(n).
