@@ -1,4 +1,4 @@
-package CodingInterviewPatterns.Math;
+package CodingInterviewPatterns.Maths;
 
 public class adjacentElementsProduct {
     public static void main(String[] args) {
