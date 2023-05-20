@@ -1,4 +1,4 @@
-package trees;
+package CodingInterviewPatterns.tries;
 
 import java.util.*;
 
