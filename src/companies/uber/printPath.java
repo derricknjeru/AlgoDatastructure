@@ -38,12 +38,10 @@ public class printPath {
 
             for (Folder folder : folders) {
                 folderMap.put(folder.id, folder);
-                adjacencyList.put(folder.id, new ArrayList<>(folder.subfolderIds));
+                adjacencyList.putIfAbsent(folder.id, new ArrayList<>());
+                List<Integer> adjacentFolders = adjacencyList.get(folder.id);
+                adjacentFolders.addAll(folder.subfolderIds);
             }
-        }
-
-        public List<Integer> getAdjacentFolders(int folderId) {
-            return adjacencyList.getOrDefault(folderId, Collections.emptyList());
         }
 
         public String getFolderName(int folderId) {
@@ -71,7 +69,7 @@ public class printPath {
             return;
         }
 
-        List<Integer> adjacentFolders = graph.getAdjacentFolders(currentId);
+        List<Integer> adjacentFolders = graph.adjacencyList.get(currentId);
         for (int subfolderId : adjacentFolders) {
             dfs(subfolderId, targetId, graph, path);
             if (path.get(path.size() - 1).equals(graph.getFolderName(targetId))) {
