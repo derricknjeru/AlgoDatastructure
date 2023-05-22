@@ -60,4 +60,23 @@ public class Graph {
         g.printGraph();
     }
 
+    private class Graph3 {
+        int vertices;
+        List<List<Integer>> adj;
+
+        Graph3(int V) {
+            this.vertices = V;
+            this.adj = new ArrayList<>();
+            for (int i = 0; i < V; i++) {
+                adj.add(new ArrayList<>());
+            }
+        }
+
+        public void addEdge(int source, int destination) {
+            if (source < vertices && destination < vertices) {
+                adj.get(source).add(destination);
+            }
+        }
+    }
+
 }

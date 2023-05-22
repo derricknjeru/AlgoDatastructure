@@ -22,7 +22,7 @@ public class Task3 {
          *
          * A[5] = 5
          *
-         * There are four pairs of identical indices: (0, 3), (0, 4), (1, 5) and (3, 4). Note.md.md that pairs (2 2) and (5, 1) are not counted since their first indices are not smaller than their second.
+         * There are four pairs of identical indices: (0, 3), (0, 4), (1, 5) and (3, 4). Note.md.md.md.md that pairs (2 2) and (5, 1) are not counted since their first indices are not smaller than their second.
          *
          * Write a function:
          *

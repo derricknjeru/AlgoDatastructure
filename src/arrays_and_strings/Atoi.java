@@ -29,7 +29,7 @@ public class Atoi {
      * <p>
      * If no valid conversion could be performed, a zero value is returned.
      * <p>
-     * Note.md.md:
+     * Note.md.md.md.md:
      * <p>
      * Only the space character ' ' is considered a whitespace character.
      * Assume we are dealing with an environment that could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, 231 − 1 or −231 is returned.

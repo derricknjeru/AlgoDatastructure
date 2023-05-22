@@ -20,7 +20,7 @@ Output: [
 	[1, 1, 1, 1]
 ]
 
-Note.md.md that all diagonal elements in the connectivity matrix are 1 since a path exists from every vertex to itself.
+Note.md.md.md.md that all diagonal elements in the connectivity matrix are 1 since a path exists from every vertex to itself.
 
 Constraints:
 

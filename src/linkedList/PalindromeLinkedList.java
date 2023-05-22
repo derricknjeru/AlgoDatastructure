@@ -137,7 +137,7 @@ public class PalindromeLinkedList {
         int front = 0;
         int back = vals.size() - 1;
         while (front < back) {
-            // Note that we must use ! .equals instead of !=
+            // Note.md.md that we must use ! .equals instead of !=
             // because we are comparing Integer, not int.
             if (!vals.get(front).equals(vals.get(back))) {
                 return false;

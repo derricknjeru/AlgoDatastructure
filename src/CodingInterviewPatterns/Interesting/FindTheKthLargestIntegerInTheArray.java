@@ -19,7 +19,7 @@ public class FindTheKthLargestIntegerInTheArray {
      * <p>
      * Return the string that represents the kth largest integer in nums.
      * <p>
-     * Note.md.md: Duplicate numbers should be counted distinctly. For example, if nums is ["1","2","2"], "2" is the first largest integer, "2" is the second-largest integer, and "1" is the third-largest integer.
+     * Note.md.md.md.md: Duplicate numbers should be counted distinctly. For example, if nums is ["1","2","2"], "2" is the first largest integer, "2" is the second-largest integer, and "1" is the third-largest integer.
      * <p>
      * <p>
      * <p>

@@ -35,7 +35,7 @@ public class DuplicateZeros {
     /**
      * Given a fixed length array arr of integers, duplicate each occurrence of zero, shifting the remaining elements to the right.
      * <p>
-     * Note.md.md that elements beyond the length of the original array are not written.
+     * Note.md.md.md.md that elements beyond the length of the original array are not written.
      * <p>
      * Do the above modifications to the input array in place, do not return anything from your function.
      * <p>
@@ -53,7 +53,7 @@ public class DuplicateZeros {
      * Explanation: After calling your function, the input array is modified to: [1,2,3]
      * <p>
      * <p>
-     * Note.md.md:
+     * Note.md.md.md.md:
      * <p>
      * 1 <= arr.length <= 10000
      * 0 <= arr[i] <= 9

@@ -46,7 +46,9 @@ public class TreePrinter {
         HashSet<String> children = new HashSet<>();
 
         for (Relation rs : input) {
-            if (!treeMap.containsKey(rs.parent)) treeMap.put(rs.parent, new ArrayList<String>());
+            if (!treeMap.containsKey(rs.parent)) {
+                treeMap.put(rs.parent, new ArrayList<String>());
+            }
             treeMap.get(rs.parent).add(rs.child);
             children.add(rs.child);
         }
@@ -54,43 +56,37 @@ public class TreePrinter {
         String root = getRoot(treeMap, children);
         int level = 0;
         //Because we know the root
-        dfs(treeMap, level, root);
+        printNodeDfs(treeMap, root, level);
+
+        System.out.println("----------------------------------------------");
 
         //Testing
         /**
          * HashSet<String> seen = new HashSet<>();
-        Iterator iterator = treeMap.keySet().iterator();
+         Iterator iterator = treeMap.keySet().iterator();
 
-        while (iterator.hasNext()){
-            if(!seen.contains(iterator.next())){
-                dfs2(treeMap,root,seen,level);
-            }
-        }*/
-
-
+         while (iterator.hasNext()){
+         if(!seen.contains(iterator.next())){
+         dfs2(treeMap,root,seen,level);
+         }
+         }*/
 
 
     }
 
-    private static void dfs2(HashMap<String, ArrayList<String>> treeMap, String root, HashSet<String> seen, int level) {
-        if(root.isEmpty()) return;
-
+    private static void printNodeDfs(Map<String, ArrayList<String>> tree, String node, int level) {
         for (int i = 0; i < level; i++) {
-            System.out.print("\t");
+            System.out.print("  ");
         }
 
-        System.out.println(root);
-        seen.add(root);
+        System.out.println((level) + ": " + node);
 
-        List<String> children = treeMap.get(root);
-        if(children==null) return;
-
-        for(String child : children){
-            if(!seen.contains(child)){
-                dfs2(treeMap,child,seen, level+1);
+        if (tree.containsKey(node)) {
+            List<String> children = tree.get(node);
+            for (String child : children) {
+                printNodeDfs(tree, child, level + 1);
             }
         }
-
     }
 
     private static void dfs(HashMap<String, ArrayList<String>> treeMap, int level, String root) {

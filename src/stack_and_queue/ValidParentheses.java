@@ -1,5 +1,8 @@
 package stack_and_queue;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
 
 public class ValidParentheses {
@@ -10,7 +13,7 @@ public class ValidParentheses {
      * <p>
      * Open brackets must be closed by the same type of brackets.
      * Open brackets must be closed in the correct order.
-     * Note.md.md that an empty string is also considered valid.
+     * Note.md.md.md.md that an empty string is also considered valid.
      * <p>
      * Example 1:
      * <p>

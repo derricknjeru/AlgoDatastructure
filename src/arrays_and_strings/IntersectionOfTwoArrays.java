@@ -43,7 +43,7 @@ public class IntersectionOfTwoArrays {
      * <p>
      * Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
      * Output: [9,4]
-     * Note.md.md:
+     * Note.md.md.md.md:
      * <p>
      * Each element in the result must be unique.
      * The result can be in any order.

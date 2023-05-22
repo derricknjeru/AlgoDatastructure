@@ -23,7 +23,7 @@ public class FirstUniqueCharacter {
      * <p>
      * s = "loveleetcode",
      * return 2.
-     * Note.md.md: You may assume the string contain only lowercase letters.
+     * Note.md.md.md.md: You may assume the string contain only lowercase letters.
      */
     public int firstUniqChar(String s) {
 

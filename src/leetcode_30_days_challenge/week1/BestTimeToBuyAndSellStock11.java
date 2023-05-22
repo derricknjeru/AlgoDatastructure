@@ -6,7 +6,7 @@ public class BestTimeToBuyAndSellStock11 {
      * <p>
      * Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
      * <p>
-     * Note.md.md: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).
+     * Note.md.md.md.md: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).
      * <p>
      * Example 1:
      * <p>
@@ -19,7 +19,7 @@ public class BestTimeToBuyAndSellStock11 {
      * Input: [1,2,3,4,5]
      * Output: 4
      * Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
-     * Note.md.md that you cannot buy on day 1, buy on day 2 and sell them later, as you are
+     * Note.md.md.md.md that you cannot buy on day 1, buy on day 2 and sell them later, as you are
      * engaging multiple transactions at the same time. You must sell before buying again.
      * Example 3:
      * <p>

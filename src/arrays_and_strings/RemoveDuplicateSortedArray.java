@@ -24,7 +24,7 @@ public class RemoveDuplicateSortedArray {
      * <p>
      * Confused why the returned value is an integer but your answer is an array?
      * <p>
-     * Note.md.md that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.
+     * Note.md.md.md.md that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.
      * <p>
      * Internally you can think of this:
      * <p>

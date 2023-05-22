@@ -24,32 +24,39 @@ public class PlusOneInteger {
     public static void main(String[] args) {
         //int[] digits = {4, 3, 2, 1};
         //int[] digits = {1, 2, 3};
-       // int[] digits = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
-       // int[] digits = {1, 2, 9};
+        // int[] digits = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
+        // int[] digits = {1, 2, 9};
         //int[] digits = {0, 0};
-        int[] digits = {9,9,9};
+        int[] digits = {9, 9, 9};
 
 
         System.out.println(Arrays.toString(plusOne(digits)));
     }
 
     static int[] plusOne(int[] digits) {
-        for(int i=digits.length-1;i>=0;i--){
-            if(digits[i]<9){
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (digits[i] < 9) {
                 digits[i]++;
                 return digits;
             }
 
-            digits[i]=0;
+            digits[i] = 0;
 
         }
         //In a case of 999
         //We add one because length will increase by 1 since the result should be 1000
-        int [] newIntArr= new int[digits.length+1];
-        newIntArr[0]=1;
+        int[] newIntArr = new int[digits.length + 1];
+        newIntArr[0] = 1;
 
         return newIntArr;
     }
+
+
+    //list = //Folder[0, [7,3] "ABX"], Folder[7,[9],"ACD", Folder[8,[],"XYX"], Folder[9,[],"ERD"]
+
+    //printPath(9) ---ABX ---ACD---ERD
+
+    //printPath(8) =" ";
 
 
 }

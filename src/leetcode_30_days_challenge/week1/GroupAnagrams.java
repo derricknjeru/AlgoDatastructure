@@ -15,7 +15,7 @@ public class GroupAnagrams {
      * ["nat","tan"],
      * ["bat"]
      * ]
-     * Note.md.md:
+     * Note.md.md.md.md:
      * <p>
      * All inputs will be in lowercase.
      * The order of your output does not matter.

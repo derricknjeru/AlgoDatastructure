@@ -3,6 +3,7 @@ package graph;
 import java.util.*;
 
 public class TopologicalSorting {
+    //https://www.youtube.com/watch?v=Q9PIxaNGnig
     static class Graph {
         // No. of vertices
         private int V;
@@ -65,7 +66,7 @@ public class TopologicalSorting {
      * @param stack
      */
 
-    //NB: Note.md.md: Here, we can also use vector/list/array instead of the stack. If the vector is used then print the elements in reverse order to get the topological sorting.
+    //NB: Note.md.md.md.md: Here, we can also use vector/list/array instead of the stack. If the vector is used then print the elements in reverse order to get the topological sorting.
     private static void topologicalSorting(Graph graph, int v, boolean[] seen, Deque<Integer> stack) {
         seen[v] = true;
         ArrayList<Integer> edges = graph.adj.get(v);

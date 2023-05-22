@@ -23,7 +23,7 @@ public class OpenTheLock {
      * Output: 6
      * Explanation:
      * A sequence of valid moves would be "0000" -> "1000" -> "1100" -> "1200" -> "1201" -> "1202" -> "0202".
-     * Note.md.md that a sequence like "0000" -> "0001" -> "0002" -> "0102" -> "0202" would be invalid,
+     * Note.md.md.md.md that a sequence like "0000" -> "0001" -> "0002" -> "0102" -> "0202" would be invalid,
      * because the wheels of the lock become stuck after the display becomes the dead end "0102".
      * Example 2:
      * <p>

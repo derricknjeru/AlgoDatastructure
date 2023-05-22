@@ -7,7 +7,7 @@ package hackerrack;
  * <p>
  * For a given array of  integers, the function returns the index of the element with the minimum value in the array. If there is more than one element with the minimum value, the returned index should be the smallest one.
  * If an empty array is passed to the function, it should raise an Exception.
- * Note.md.md: The arrays are indexed from .
+ * Note.md.md.md.md: The arrays are indexed from .
  * <p>
  * A colleague has written that function, and your task is to design  separated unit tests, testing if the function behaves correctly. The implementation in Python is listed below (Implementations in other languages can be found in the code template):
  * <p>

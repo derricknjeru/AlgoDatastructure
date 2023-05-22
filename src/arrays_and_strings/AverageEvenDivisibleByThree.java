@@ -11,7 +11,7 @@ public class AverageEvenDivisibleByThree {
      * <p>
      * Given an integer array nums of positive integers, return the average value of all even integers that are divisible by 3.
      * <p>
-     * Note.md.md that the average of n elements is the sum of the n elements divided by n and rounded down to the nearest integer.
+     * Note.md.md.md.md that the average of n elements is the sum of the n elements divided by n and rounded down to the nearest integer.
      * <p>
      * <p>
      * <p>

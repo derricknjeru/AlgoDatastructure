@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class LinearSearch {
     /**
      * Given an array of N elements and a integer K. Your task is to return the position of first occurrence of K in the given array.
-     * Note.md.md: Position of first element is considered as 1.
+     * Note.md.md.md.md: Position of first element is considered as 1.
      * <p>
      * Input:
      * First line of input contains T denoting the number of test cases. For each testcase there will be two space separated integer N and K denoting the size of array and the value of K respectively. The next line contains the N space separated integers denoting the elements of array.

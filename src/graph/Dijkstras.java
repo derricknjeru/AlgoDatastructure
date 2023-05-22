@@ -3,6 +3,7 @@ package graph;
 import java.util.*;
 
 public class Dijkstras {
+    //https://www.youtube.com/watch?v=pLElbKBc4RU&t=10s
 
     static class Node {
         int weight;
@@ -47,7 +48,7 @@ public class Dijkstras {
 
         int[][] result = dijkstra(graph, n, k);
 
-       // System.out.println(Arrays.toString(result[1]));
+        // System.out.println(Arrays.toString(result[1]));
         constructPath(result[1]);
 
         int answer = Integer.MIN_VALUE;
@@ -65,9 +66,9 @@ public class Dijkstras {
 
     private static int[][] dijkstra(Map<Integer, List<Node>> graph, int vertices, int source) {
         //create a min heap of pairs <distance,node> sorted by distance
-        Queue<Node> minHeap = new PriorityQueue<>(
-                Comparator.comparingInt(a -> a.weight)
-        );
+        //Queue<Node> minHeap = new PriorityQueue<>((a, b) -> Integer.compare(a.weight, b.weight));
+        //Queue<Node> minHeap = new PriorityQueue<>((a, b) -> a.weight - b.weight);
+        Queue<Node> minHeap = new PriorityQueue<>((a, b) -> a.weight - b.weight);
 
         int[] dist = new int[vertices + 1]; //shortest distance for each vertex
         Arrays.fill(dist, Integer.MAX_VALUE);
@@ -168,8 +169,9 @@ public class Dijkstras {
 
         return dist[target];
     }
-    public static void constructPath(int[] prev){
-        for(int i =prev.length; i>=0; i--){
+
+    public static void constructPath(int[] prev) {
+        for (int i = prev.length; i >= 0; i--) {
             System.out.println(prev[0]);
         }
     }

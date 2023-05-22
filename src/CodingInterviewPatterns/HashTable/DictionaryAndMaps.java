@@ -12,7 +12,7 @@ public class DictionaryAndMaps {
      * Task
      * Given  names and phone numbers, assemble a phone book that maps friends' names to their respective phone numbers. You will then be given an unknown number of names to query your phone book for. For each  queried, print the associated entry from your phone book on a new line in the form name=phoneNumber; if an entry for  is not found, print Not found instead.
      *
-     * Note.md.md: Your phone book should be a Dictionary/Map/HashMap data structure.
+     * Note.md.md.md.md: Your phone book should be a Dictionary/Map/HashMap data structure.
      *
      * Input Format
      *
@@ -21,7 +21,7 @@ public class DictionaryAndMaps {
      *
      * After the  lines of phone book entries, there are an unknown number of lines of queries. Each line (query) contains a  to look up, and you must continue reading lines until there is no more input.
      *
-     * Note.md.md: Names consist of lowercase English alphabetic letters and are first names only.
+     * Note.md.md.md.md: Names consist of lowercase English alphabetic letters and are first names only.
      *
      * Constraints
      *

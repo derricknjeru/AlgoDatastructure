@@ -25,7 +25,7 @@ import java.util.NoSuchElementException;
 // that is provided by Java primitives in a way that you can extend them and
 // add additional functionality (such as iteration).
 //
-// Note.md.md that this class contains a type parameter, shown in angle brackets
+// Note.md.md.md.md that this class contains a type parameter, shown in angle brackets
 // alongside the class name. This is a feature of Java "generics" that enables
 // an implementation to be re-used more easily.
 //
