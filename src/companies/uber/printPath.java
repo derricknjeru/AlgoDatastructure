@@ -97,6 +97,11 @@ public class printPath {
         printPath(9, folders); // Output: ABX --- ACD --- ERD
         printPath(8, folders); // Output: No path found.
         printPath(0, folders); // Output: ABX
+
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+
+        Map.Entry<Integer, Integer> x = map.floorEntry(0);
+
     }
 }
 
