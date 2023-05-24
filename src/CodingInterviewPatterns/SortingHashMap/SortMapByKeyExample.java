@@ -13,11 +13,24 @@ public class SortMapByKeyExample {
      * @param args
      */
     public static void main(String[] args) {
+        //should take a look
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, "Apple");
+        map.put(3, "Banana");
+        map.put(2, "Orange");
+
+        // Create a PriorityQueue of Map.Entry objects based on value comparison in decreasing order
+        //PriorityQueue<Map.Entry<Integer, String>> priorityQueue = new PriorityQueue<>(Comparator.comparing(Map.Entry::getValue).reversed());
+        PriorityQueue<Map.Entry<Integer, String>> priorityQueue = new PriorityQueue<>(Comparator.comparing(Map.Entry::getValue));
+
+        // Add the map entries to the PriorityQueue
+        // priorityQueue.addAll(map.entrySet());
+
 
         usingTreeMap();
         usingTreeMapReverse();
-        usingList();
-        usingListReverse();
+        // usingList();
+        // usingListReverse();
     }
 
     private static void usingTreeMap() {
@@ -44,10 +57,10 @@ public class SortMapByKeyExample {
         hashMap.put("orange", 4);
 
         // Create a comparator to sort the keys in reverse order
-        Comparator<String> reverseComparator = Collections.reverseOrder();
+        //Comparator<String> reverseComparator = Collections.reverseOrder();
 
         // Sort the hashmap by key in descending order
-        TreeMap<String, Integer> sortedMap = new TreeMap<>(reverseComparator);
+        TreeMap<String, Integer> sortedMap = new TreeMap<>(Collections.reverseOrder());
         sortedMap.putAll(hashMap);
 
         // Print the sorted map

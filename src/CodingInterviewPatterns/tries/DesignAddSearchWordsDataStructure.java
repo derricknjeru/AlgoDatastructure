@@ -1,4 +1,4 @@
-package trees;
+package CodingInterviewPatterns.tries;
 
 public class DesignAddSearchWordsDataStructure {
     class WordDictionary {
