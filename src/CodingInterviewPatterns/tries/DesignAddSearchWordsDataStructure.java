@@ -1,6 +1,29 @@
 package CodingInterviewPatterns.tries;
 
 public class DesignAddSearchWordsDataStructure {
+    //https://www.youtube.com/watch?v=9OcBPa_GQ7w&t=901s
+
+    /**
+     * Taking into account the updated time complexity analysis, here's the overall time and space complexity for the functions in the WordDictionary class:
+     *
+     * addWord(String word):
+     *
+     * Time Complexity: O(M), where M is the length of the word.
+     * Space Complexity: O(M), for storing the characters of the word in the trie.
+     * search(String word):
+     *
+     * Time Complexity: O(K * N * L), where K is the number of children, N is the number of nodes in the trie, and L is the average length of the words.
+     * Space Complexity: O(1), as no additional space is used.
+     * searchRecursive(Trie current, String word, int index):
+     *
+     * Time Complexity: O(K * N), where K is the number of children and N is the number of nodes in the trie.
+     * Space Complexity: O(L), for the recursive call stack, where L is the length of the word being searched.
+     * Overall:
+     *
+     * Time Complexity: The dominant factor is the search operation, which has a worst-case time complexity of O(K * N * L).
+     * Space Complexity: The space required to store the trie is proportional to the number of nodes and the length of the words added to the trie. Therefore, the space complexity is O(N * L), where N is the number of nodes and L is the average length of the words.
+     * It's worth noting that these complexities assume a balanced trie structure. In the worst case, where the trie is highly unbalanced, the time and space complexity can increase.
+     */
     class WordDictionary {
         private Trie root;
 
@@ -43,17 +66,16 @@ public class DesignAddSearchWordsDataStructure {
                 return false;
 
             } else {
-
                 Trie node = current.children[c - 'a'];
 
                 if (current.children[c - 'a'] == null) {
                     return false;
                 }
-
                 current = node;
+                return searchRecursive(current, word, index + 1);
             }
 
-            return searchRecursive(current, word, index + 1);
+
 
         }
 

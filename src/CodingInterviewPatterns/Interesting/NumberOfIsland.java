@@ -30,11 +30,47 @@ public class NumberOfIsland {
      * Output: 3
      */
 
+
+    void markCurrentIsland(char[][] matrix, int x, int y, int r, int c) {
+        if (x < 0 || x >= r || y < 0 || y >= c || matrix[x][y] != '1')  //Boundary case for matrix
+            return;
+
+        //Mark current cell as visited
+        matrix[x][y] = '2';
+
+        //Make recursive call in all 4 adjacent directions
+        markCurrentIsland(matrix, x + 1, y, r, c);  //DOWN
+        markCurrentIsland(matrix, x, y + 1, r, c);  //RIGHT
+        markCurrentIsland(matrix, x - 1, y, r, c);  //TOP
+        markCurrentIsland(matrix, x, y - 1, r, c);  //LEFT
+    }
+
+    public int numIslands(char[][] grid) {
+
+        int rows = grid.length;
+        if (rows == 0)     //Empty grid boundary case
+            return 0;
+        int cols = grid[0].length;
+
+        //Iterate for all cells of the array
+        int noOfIslands = 0;
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                if (grid[i][j] == '1') {
+                    markCurrentIsland(grid, i, j, rows, cols);
+                    noOfIslands += 1;
+                }
+            }
+        }
+        return noOfIslands;
+    }
+
+
     //Solutions
     // https://www.youtube.com/watch?v=U6-X_QOwPcs
     //https://www.programcreek.com/2014/04/leetcode-number-of-islands-java/
     //https://www.youtube.com/watch?v=o8S2bO3pmO4
-    public int numIslands(char[][] grid) {
+    public int numIslands1(char[][] grid) {
         if (grid == null && grid.length == 0) {
             return 0;
         }
@@ -47,7 +83,7 @@ public class NumberOfIsland {
                 if (grid[i][j] == '1') {
                     numOfIslands++;
                     //Turn everything that is one and around this 1 to 0 recursively over dfs.
-                    dfs(grid, i, j);
+                    dfs1(grid, i, j);
                 }
             }
 
@@ -56,7 +92,7 @@ public class NumberOfIsland {
         return numOfIslands;
     }
 
-    private void dfs(char[][] grid, int i, int j) {
+    private void dfs1(char[][] grid, int i, int j) {
         //check boundaries
         if (i < 0 || i >= grid.length || j < 0 || j >= grid[i].length || grid[i][j] == '0') {
             return;
@@ -64,10 +100,10 @@ public class NumberOfIsland {
 
         grid[i][j] = '0';
         //traverse all the sides
-        dfs(grid, i + 1, j);
-        dfs(grid, i - 1, j);
-        dfs(grid, i, j + 1);
-        dfs(grid, i, j - 1);
+        dfs1(grid, i + 1, j);
+        dfs1(grid, i - 1, j);
+        dfs1(grid, i, j + 1);
+        dfs1(grid, i, j - 1);
     }
 
     public int numIslands2(char[][] grid) {
