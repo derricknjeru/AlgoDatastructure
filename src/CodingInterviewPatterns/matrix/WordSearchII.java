@@ -1,4 +1,4 @@
-package trees;
+package CodingInterviewPatterns.matrix;
 
 import java.util.ArrayList;
 import java.util.HashSet;

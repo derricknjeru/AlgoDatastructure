@@ -1,4 +1,4 @@
-package arrays_and_strings;
+package CodingInterviewPatterns.matrix;
 
 public class WordSearch {
     public static void main(String[] args) {

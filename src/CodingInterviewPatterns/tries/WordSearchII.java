@@ -1,4 +1,4 @@
-package revision_v2.Interesting;
+package CodingInterviewPatterns.tries;
 
 import java.util.ArrayList;
 import java.util.HashSet;
