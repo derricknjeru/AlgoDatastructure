@@ -30,7 +30,7 @@ public class NumberOfIsland {
      * Output: 3
      */
 
-
+    //https://www.youtube.com/watch?v=__98uL6wst8&t=596s
     void markCurrentIsland(char[][] matrix, int x, int y, int r, int c) {
         if (x < 0 || x >= r || y < 0 || y >= c || matrix[x][y] != '1')  //Boundary case for matrix
             return;
