@@ -34,6 +34,12 @@ They are 3 types of problems
 - Dijkstra's guarantee finding the shortest weighted path (if no negative weights)
 - It is a greedy algorithm, we can a decision with what we have. And we don't go back to change it
 
-Bellman Ford Algorithm
+#### Bellman Ford Algorithm
 - Dijkstra doesn’t work for Graphs with negative weights, Bellman-Ford works for such graphs.
-- Bellman-Ford is also simpler than Dijkstra and suites well for distributed systems. But time complexity of Bellman-Ford is O(V * E), which is more than Dijkstra. 
+- Bellman-Ford is also simpler than Dijkstra and suites well for distributed systems. But time complexity of Bellman-Ford is O(V * E), which is more than Dijkstra.
+
+#### Floyd-Warshall - All Pairs Shortest Path Dynamic Programming
+
+- The Floyd Warshall Algorithm is for solving all pairs of shortest-path problems.
+- The problem is to find the shortest distances between every pair of vertices in a given edge-weighted directed Graph. 
+- It is an algorithm for finding the shortest path between all the pairs of vertices in a weighted graph. This algorithm follows the dynamic programming approach to find the shortest path.
