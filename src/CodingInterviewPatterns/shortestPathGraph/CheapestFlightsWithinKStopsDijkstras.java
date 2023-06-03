@@ -57,7 +57,7 @@ public class CheapestFlightsWithinKStopsDijkstras {
         for (int i = 0; i < n; i++) {
             graph.add(new ArrayList<>());
         }
-
+       // (u,v,p)
         for (int[] flight : flights) {
             int u = flight[0];
             int v = flight[1];

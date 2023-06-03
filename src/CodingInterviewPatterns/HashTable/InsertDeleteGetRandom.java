@@ -4,41 +4,85 @@ import java.util.*;
 
 public class InsertDeleteGetRandom {
     //https://leetcode.com/explore/learn/card/hash-table/187/conclusion-hash-table/1141/
+    //https://www.youtube.com/watch?v=WtkwD7ikxfg
 
-    class RandomizedSet {
+    static class RandomizedSet {
+        private List<Integer> v;
+        private Map<Integer, Integer> mymap;
+        private Random random;
 
-        Set<Integer> set;
-        Random rand;
-
+        /**
+         * Initialize your data structure here.
+         */
         public RandomizedSet() {
-            set=new HashSet<>();
-            rand = new Random();
+            v = new ArrayList<>();
+            mymap = new HashMap<>();
+            random = new Random();
         }
 
+        /**
+         * Inserts a value to the set. Returns true if the set did not already contain the specified element.
+         */
         public boolean insert(int val) {
-            return set.add(val);
+            if (mymap.containsKey(val))
+                return false;
+
+            v.add(val);
+            mymap.put(val, v.size() - 1);
+            return true;
         }
 
+        /**
+         * Removes a value from the set. Returns true if the set contained the specified element.
+         */
         public boolean remove(int val) {
-            return set.remove(val);
+            if (!mymap.containsKey(val))
+                return false;
+
+            int index = mymap.get(val);
+            int lastVal = v.get(v.size() - 1);
+
+            v.set(index, lastVal);
+            v.remove(v.size() - 1);
+
+            mymap.put(lastVal, index);
+            mymap.remove(val);
+
+            return true;
         }
 
+        /**
+         * Get a random element from the set.
+         */
         public int getRandom() {
-            List<Integer> list = new ArrayList<>(set);
-            //could also be  list.addAll(set);
-            if(list.size()==1){
-                return list.get(0);
-            }
-
-            //Collections.shuffle(list, new Random(list.size()));
-
-            int int_random = rand.nextInt(list.size());
-
-            int value = list.get(int_random);
-
-            return value;
+            int randomIndex = random.nextInt(v.size());
+            return v.get(randomIndex);
         }
     }
+
+
+    public static void main(String[] args) {
+        RandomizedSet randomizedSet = new RandomizedSet();
+
+        // Inserting elements
+        System.out.println(randomizedSet.insert(1)); // Returns true
+        System.out.println(randomizedSet.insert(2)); // Returns true
+        System.out.println(randomizedSet.insert(3)); // Returns true
+
+        // Trying to insert a duplicate element
+        System.out.println(randomizedSet.insert(2)); // Returns false
+
+        // Removing an element
+        System.out.println(randomizedSet.remove(2)); // Returns true
+
+        // Removing a non-existent element
+        System.out.println(randomizedSet.remove(4)); // Returns false
+
+        // Getting a random element
+        int randomElement = randomizedSet.getRandom();
+        System.out.println(randomElement); // Prints a random element from the set
+    }
+
 
 /**
  * Your RandomizedSet object will be instantiated and called as such:

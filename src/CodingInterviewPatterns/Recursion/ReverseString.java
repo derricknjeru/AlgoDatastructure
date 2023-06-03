@@ -6,9 +6,9 @@ public class ReverseString {
         reverseString(s1);
         System.out.println(s1);  // Output: ["o","l","l","e","h"]
 
-        char[] s2 = {'H', 'a', 'n', 'n', 'a', 'h'};
+        /*char[] s2 = {'H', 'a', 'n', 'n', 'a', 'h'};
         reverseString(s2);
-        System.out.println(s2);  // Output: ["h","a","n","n","a","H"]
+        System.out.println(s2);  // Output: ["h","a","n","n","a","H"]*/
     }
 
     public static void reverseString(char[] s) {

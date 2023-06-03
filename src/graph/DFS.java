@@ -27,6 +27,9 @@ public class DFS {
                 dfs(u, discovered, g, ans);
             }
         }
+
+        System.out.println("test ---> "+v);
+
     }
 
     public static void main(String[] args) {
@@ -37,10 +40,17 @@ public class DFS {
         g.addEdge(1, 3);
         g.addEdge(1, 4);
 
+        // 0 -----1---3   (u,v)
+        // |      |
+        // 2
+
+        //(0,1), (0,2), (1,3) (1,4)
         //Expected results "01342" or "02143"
 
+        g.printGraph();
 
-        boolean[] discovered = new boolean[V];
+
+        /*boolean[] discovered = new boolean[V];
         List<Integer> ans = new ArrayList<>();
 
         for (int i = 0; i < V; i++) { //We do this to cater for disconnected graph
@@ -49,7 +59,7 @@ public class DFS {
             }
         }
 
-        for (int a : ans) System.out.print(a + " ");
+        for (int a : ans) System.out.print(a + " ");*/
 
     }
 
