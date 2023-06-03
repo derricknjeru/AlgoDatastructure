@@ -1,4 +1,4 @@
-package CodingInterviewPatterns.DynamicProgramming;
+package CodingInterviewPatterns.Recursion;
 
 public class Pow {
     //fails with time limit for this test cases
