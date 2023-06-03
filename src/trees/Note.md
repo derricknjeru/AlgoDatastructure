@@ -26,7 +26,7 @@
     - Level: (DepthOfNode)+1
     - Height of a Node:The maximum number of connections between the node and a leaf node in its path is known as the
       height of that node.
-    - Height of a Tree:The height of a tree is simply the height of its root node. height == max depth
+    - Height of a Tree:The height of a tree is simply the height of its root node. height of the tree == max depth of the tree
 - I learned that depth and height are properties of a node:
     - The depth of a node is the number of edges from the node to the tree's root node.A root node will have a depth of
         0.

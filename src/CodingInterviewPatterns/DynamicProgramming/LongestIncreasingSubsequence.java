@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package CodingInterviewPatterns.DynamicProgramming;
 
 public class LongestIncreasingSubsequence {
     //https://leetcode.com/problems/longest-increasing-subsequence/

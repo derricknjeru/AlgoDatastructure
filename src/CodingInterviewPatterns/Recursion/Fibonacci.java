@@ -1,4 +1,4 @@
-package dynamic_programming_and_recursion;
+package CodingInterviewPatterns.Recursion;
 
 import java.util.HashMap;
 

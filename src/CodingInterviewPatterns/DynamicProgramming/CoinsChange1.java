@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package CodingInterviewPatterns.DynamicProgramming;
 
 import java.util.HashMap;
 

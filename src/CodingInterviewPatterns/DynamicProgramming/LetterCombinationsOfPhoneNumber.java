@@ -1,4 +1,4 @@
-package dynamic_programming_and_recursion;
+package CodingInterviewPatterns.DynamicProgramming;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

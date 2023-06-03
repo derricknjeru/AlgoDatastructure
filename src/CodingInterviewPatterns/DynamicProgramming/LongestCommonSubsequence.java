@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package CodingInterviewPatterns.DynamicProgramming;
 
 public class LongestCommonSubsequence {
     //https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/

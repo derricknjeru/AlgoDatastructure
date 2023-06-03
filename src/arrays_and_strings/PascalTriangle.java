@@ -5,6 +5,7 @@ import java.util.List;
 
 public class PascalTriangle {
     //https://leetcode.com/problems/pascals-triangle/
+    //https://chat.openai.com/c/5635421d-757f-484b-9efa-a116ef70148a
 
     /**
      * Given an integer numRows, return the first numRows of Pascal's triangle.

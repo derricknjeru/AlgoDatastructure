@@ -1,4 +1,4 @@
-package dynamic_programming_and_recursion;
+package CodingInterviewPatterns.DynamicProgramming;
 
 public class KthSymbolInGrammar {
     //https://www.youtube.com/watch?v=BAsiYnnE3V8

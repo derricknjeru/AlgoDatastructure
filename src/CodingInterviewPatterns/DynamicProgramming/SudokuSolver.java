@@ -1,4 +1,4 @@
-package dynamic_programming_and_recursion;
+package CodingInterviewPatterns.DynamicProgramming;
 
 public class SudokuSolver {
     //https://leetcode.com/problems/sudoku-solver/

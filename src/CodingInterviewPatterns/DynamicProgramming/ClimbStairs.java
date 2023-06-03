@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package CodingInterviewPatterns.DynamicProgramming;
 
 public class ClimbStairs {
     //https://leetcode.com/problems/climbing-stairs/
