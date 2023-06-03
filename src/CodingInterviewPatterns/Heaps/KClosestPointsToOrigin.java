@@ -1,4 +1,4 @@
-package heaps;
+package CodingInterviewPatterns.Heaps;
 
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -60,11 +60,5 @@ public class KClosestPointsToOrigin {
         int x = point[0];
         int y = point[1];
         return x * x + y * y;
-    }
-
-    public static void main(String[] args) {
-        int[][] grid = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-
-
     }
 }

@@ -1,7 +1,8 @@
-package heaps;
+package CodingInterviewPatterns.Heaps;
 // Java code for k largest/ smallest elements in an array
 
-import java.util.*;
+import java.util.Collections;
+import java.util.PriorityQueue;
 
 public class KLargestOrSmallestElements {
     /**

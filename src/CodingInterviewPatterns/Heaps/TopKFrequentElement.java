@@ -1,4 +1,4 @@
-package CodingInterviewPatterns.heaps;
+package CodingInterviewPatterns.Heaps;
 
 import java.util.Collections;
 import java.util.HashMap;

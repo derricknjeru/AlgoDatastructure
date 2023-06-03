@@ -1,4 +1,4 @@
-package heaps;
+package CodingInterviewPatterns.Heaps;
 
 import java.util.PriorityQueue;
 

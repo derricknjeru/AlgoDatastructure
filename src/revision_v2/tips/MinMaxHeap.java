@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 public class MinMaxHeap {
     public static void main(String[] args) {
         /**
-         * We use PriorityQueue class to implement heaps.Heaps in Java.
+         * We use PriorityQueue class to implement Heaps.Heaps in Java.
          * By default Min Heap is implemented by this class.
          * To implement Max Heap, we use Collections.reverseOrder()
          */

@@ -1,4 +1,4 @@
-package CodingInterviewPatterns.heaps;
+package CodingInterviewPatterns.Heaps;
 
 import java.util.Collections;
 import java.util.PriorityQueue;
@@ -23,7 +23,7 @@ public class FindMedianFromDataStream {
             int val = maxHeap.poll(); //remove value from maxheap which should have small no
             minHeap.add(val); //add it to minHeap
         }
-        //check for the case when the heaps are not even. one heap has more than 2 items
+        //check for the case when the Heaps are not even. one heap has more than 2 items
         if (maxHeap.size() > minHeap.size() + 1) {
             minHeap.add(maxHeap.poll()); //
         }
