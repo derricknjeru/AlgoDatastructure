@@ -1,4 +1,4 @@
-package linkedList;
+package CodingInterviewPatterns.Recursion;
 
 public class MergeTwoSortedLists {
     /**
@@ -13,9 +13,8 @@ public class MergeTwoSortedLists {
      */
     ListNode head, head2;
 
-    //https://leetcode.com/problems/merge-two-sorted-lists/
-    //https://www.youtube.com/watch?v=XIdigk956u0
-    //https://www.youtube.com/watch?v=N8WTaSSivEI
+    //https://leetcode.com/problems/merge-two-sorted-lists
+    //https://www.youtube.com/watch?v=bdWOmYL5d1g&t=1s
     public static void main(String[] args) {
         MergeTwoSortedLists lists = new MergeTwoSortedLists();
         //List one
@@ -70,6 +69,7 @@ public class MergeTwoSortedLists {
         }
     }
 
+
     /**
      * Definition for singly-linked list.
      * public class ListNode {
@@ -82,25 +82,48 @@ public class MergeTwoSortedLists {
      */
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode dummy = new ListNode(-1);
-        ListNode curr = dummy;
-
-        while (l1 != null && l2 != null) {
-            if (l1.val <= l2.val) {
-                curr.next = l1;
-                l1 = l1.next;
-            } else {
-                curr.next = l2;
-                l2 = l2.next;
-            }
-            curr = curr.next;
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
         }
 
-        if (l1 == null) curr.next = l2;
-        else curr.next = l1;
+        if (l1.val <= l2.val) {
+            l1.next = mergeTwoLists(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = mergeTwoLists(l1, l2.next);
+            return l2;
+        }
 
+    }
+
+    public ListNode mergeTwoLists2(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode curr = dummy;
+        helper(curr, l1, l2);
         return dummy.next;
     }
 
+    private void helper(ListNode curr, ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            curr.next = l2;
+            return;
+        }
+        if (l2 == null) {
+            curr.next = l1;
+            return;
+        }
+
+        if (l1.val <= l2.val) {
+            curr.next = l1;
+            l1 = l1.next;
+        } else {
+            curr.next = l2;
+            l2 = l2.next;
+        }
+        helper(curr.next, l1, l2);
+    }
 
 }
