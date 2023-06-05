@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class FlattenBinaryTreeToLinkedList {
+    //https://www.youtube.com/watch?v=rKnD7rLT0lI
 
     static class TreeNode {
         int val;

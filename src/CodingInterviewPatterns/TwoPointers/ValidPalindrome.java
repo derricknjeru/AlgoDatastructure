@@ -16,7 +16,7 @@ public class ValidPalindrome {
      * <p>
      * Note.md.md.md.md: For the purpose of this problem, we define empty string as valid palindrome.
      */
-    public static boolean isPalindrome2(String s) {
+    public static boolean isPalindrome(String s) {
         int j = s.length() - 1;
         int i = 0;
 
@@ -39,7 +39,7 @@ public class ValidPalindrome {
         return true;
     }
 
-    public static boolean isPalindrome(String s) {
+    public static boolean isPalindrome2(String s) {
         if (s.isEmpty()) {
             return true;
         }

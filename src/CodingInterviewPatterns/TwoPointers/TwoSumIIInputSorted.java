@@ -1,4 +1,4 @@
-package arrays_and_strings;
+package CodingInterviewPatterns.TwoPointers;
 
 public class TwoSumIIInputSorted {
     public static void main(String[] args) {
@@ -51,6 +51,7 @@ public class TwoSumIIInputSorted {
      */
 
     //https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+    //https://www.youtube.com/watch?v=cQ1Oz4ckceM
     public int[] twoSum(int[] nums, int target) {
         int l = 0, r = nums.length - 1;
 
@@ -84,33 +85,4 @@ public class TwoSumIIInputSorted {
 
         return null;
     }
- /*
-    Binary Search Approach
-            Logic
-    We iterate through the entire array and initialise the high and low value
-    We initialise the mid value if low index is lesser than the higher one or vice-versa
-    Then we check whether array[i]+arr[mid] == target or not
-
-            Complexity
-    TC - O(nlogn)
-    SC - O(1)
-*/
-
-        public int[] twoSum3(int[] numbers, int target) {
-            for (int i = 0; i < numbers.length; ++i) {
-                int low = i + 1;
-                int high = numbers.length - 1;
-                while (low <= high) {
-                    int mid = (high - low) / 2 + low;
-                    if (numbers[mid] +numbers[i] == target)
-                        return new int[]{i + 1, mid + 1};
-                    else if (numbers[mid] + numbers[i] > target)
-                        high = mid - 1;
-                    else
-                        low = mid + 1;
-                }
-            }
-            return new int[]{-1, -1};
-        }
-
 }

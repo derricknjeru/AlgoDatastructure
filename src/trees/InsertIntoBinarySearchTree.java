@@ -1,6 +1,5 @@
 package trees;
 
-import HashTable.FindDuplicateSubtrees;
 
 public class InsertIntoBinarySearchTree {
     //https://leetcode.com/problems/insert-into-a-binary-search-tree/

@@ -2,6 +2,7 @@
 # Links
 - [Recommended - Dynamic programming tutorial](https://www.youtube.com/watch?v=mmjDZGSr7EA&list=PLqM7alHXFySGbXhWx7sBJEwY2DnhDjmxm)
 - [Recursion hackerank ](https://www.youtube.com/playlist?list=PLI1t_8YX-ApvMthLj56t1Rf-Buio5Y8KL)
+- [Dynamic programming read](https://www.hackerearth.com/practice/algorithms/dynamic-programming/introduction-to-dynamic-programming-1/tutorial/)
 
   //https://www.youtube.com/watch?v=axUVeNtbmAw
   //https://www.youtube.com/watch?v=sLuKQ9mZFz0
