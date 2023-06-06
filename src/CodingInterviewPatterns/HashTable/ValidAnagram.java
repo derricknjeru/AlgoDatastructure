@@ -1,4 +1,4 @@
-package arrays_and_strings;
+package CodingInterviewPatterns.HashTable;
 
 import java.util.Arrays;
 import java.util.HashMap;
