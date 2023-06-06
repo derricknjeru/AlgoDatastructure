@@ -51,7 +51,7 @@ public class MaximumAscendingSubarraySum {
 
 
     //Time complexity = O(n)
-    //space complexity =
+    //space complexity =O(1)
     public static int maxAscendingSum(int[] nums) {
         int sum = nums[0], maxSum = sum;
         for (int i = 1; i < nums.length; i++) {
