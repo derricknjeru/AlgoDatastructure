@@ -1,4 +1,4 @@
-package revision_v2.Interesting;
+package CodingInterviewPatterns.stack_and_queue;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
