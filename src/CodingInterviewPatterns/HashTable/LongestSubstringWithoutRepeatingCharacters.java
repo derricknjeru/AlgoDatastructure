@@ -56,4 +56,19 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
         return maxLen;
     }
+    /**
+     * The expression right - left + 1 calculates the length of the current substring without repeating characters.
+     *
+     * In the sliding window approach, we use two pointers, left and right, to define the boundaries of the current substring we are considering. The length of the substring is given by right - left + 1.
+     *
+     * Here's a breakdown of the components:
+     *
+     * right represents the right boundary of the substring, which is the index of the current character we are examining.
+     * left represents the left boundary of the substring, which is the index of the earliest character in the substring (the character at left is included in the substring).
+     * right - left gives the number of characters between left and right, inclusive.
+     * Adding 1 (right - left + 1) accounts for the fact that we want to include the current character in the substring.
+     * For example, if left = 2 and right = 5, the substring would consist of the characters at indices 2, 3, 4, and 5. The length of the substring would be right - left + 1 = 5 - 2 + 1 = 4.
+     *
+     * Therefore, right - left + 1 gives us the length of the current substring without repeating characters.
+     */
 }
