@@ -5,6 +5,7 @@ import java.util.Deque;
 
 public class FlattenBinaryTreeToLinkedList {
     //https://www.youtube.com/watch?v=rKnD7rLT0lI
+    //https://github.com/Algorithms-Made-Easy/Leetcode-Challenge/blob/main/114.%20Flatten%20Binary%20Tree%20to%20Linked%20List
 
     static class TreeNode {
         int val;

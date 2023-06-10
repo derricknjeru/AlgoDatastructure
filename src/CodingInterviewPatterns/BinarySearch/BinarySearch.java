@@ -1,4 +1,4 @@
-package arrays_and_strings;
+package CodingInterviewPatterns.BinarySearch;
 
 public class BinarySearch {
     //https://leetcode.com/problems/binary-search/
