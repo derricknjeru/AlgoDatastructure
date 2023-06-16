@@ -29,7 +29,7 @@ public class Dijkstras {
         int[][] arrayD = new int[][]{{2, 1, 1}, {2, 3, 1}, {3, 4, 1}};
         // int[][] arrayD = new int[][]{{1,2,1}};
 
-        Map<Integer, List<Node>> graph = new HashMap<>();// adj list graph
+        Map<Integer, List<Node>> graph = new HashMap<>();// adj list CodingInterviewPatterns.graph
 
 
         // Build the adjacency list

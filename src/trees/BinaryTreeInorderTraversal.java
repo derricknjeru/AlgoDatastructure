@@ -58,48 +58,48 @@ public class BinaryTreeInorderTraversal {
      */
     //https://www.youtube.com/watch?v=ZM-sV9zQPEs
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> result =new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
 
-        inorderTraversal(root,result);
+        inorderTraversal(root, result);
 
         return result;
     }
 
-    private void inorderTraversal(TreeNode root, List<Integer> result){
-        if(root==null){
+    private void inorderTraversal(TreeNode root, List<Integer> result) {
+        if (root == null) {
             return;
         }
 
-        inorderTraversal(root.left,result);
+        inorderTraversal(root.left, result);
 
         result.add(root.val);
 
-        inorderTraversal(root.right,result);
+        inorderTraversal(root.right, result);
     }
 
     //https://www.youtube.com/watch?v=nzmtCFNae9k
     public List<Integer> inorderTraversal2(TreeNode root) {
-        List<Integer> result =new ArrayList<>();
-        return inorderTraversal2(root,result);
+        List<Integer> result = new ArrayList<>();
+        return inorderTraversal2(root, result);
     }
 
-    private List<Integer> inorderTraversal2(TreeNode root, List<Integer> result){
-        if(root==null){
+    private List<Integer> inorderTraversal2(TreeNode root, List<Integer> result) {
+        if (root == null) {
             return result;
         }
 
-        Deque<TreeNode> stack = new ArrayDeque<>();
+        Stack<TreeNode> stack = new Stack<>();
 
-        TreeNode curr=root;
+        TreeNode curr = root;
 
-        while(curr!=null || !stack.isEmpty()){
-            while(curr!=null){
+        while (curr != null || !stack.isEmpty()) {
+            while (curr != null) {
                 stack.push(curr);
                 curr = curr.left;
             }
             curr = stack.pop();
             result.add(curr.val);
-            curr=curr.right;
+            curr = curr.right;
 
         }
 

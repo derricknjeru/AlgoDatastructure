@@ -51,7 +51,7 @@ public class AlienDictionary {
      */
 
     /**
-     * Soln. Build a graph, then run topological sorting
+     * Soln. Build a CodingInterviewPatterns.graph, then run topological sorting
      */
 
     public static void main(String[] args) {

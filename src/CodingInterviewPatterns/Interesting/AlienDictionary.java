@@ -51,7 +51,7 @@ public class AlienDictionary {
      */
 
     /**
-     * Soln. Build a graph, then run topological sorting
+     * Soln. Build a CodingInterviewPatterns.graph, then run topological sorting
      */
 
     public static void main(String[] args) {
@@ -70,7 +70,7 @@ public class AlienDictionary {
                 "x",
                 "z"
         };
-        String s = alienOrder(words);
+        String s = alienOrder(words4);
         System.out.println(s);
     }
 
@@ -95,7 +95,7 @@ public class AlienDictionary {
             sb.append(stack.pop());
         }
 
-        System.out.println(totalChar);
+        //System.out.println(totalChar);
         return sb.toString();
     }
 

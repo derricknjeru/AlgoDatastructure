@@ -62,6 +62,26 @@ class Trie {
         return current;
     }
 
+    public boolean searchRecursively(String word) {
+        TrieNode current = root;
+        return searchRecursive(current, word, 0);
+    }
+
+    private boolean searchRecursive(TrieNode current, String word, int index) {
+
+        if (index == word.length()) {
+            return current.isEndOfWord;
+        }
+
+        char c = word.charAt(index);
+        TrieNode node = current.children.get(c);
+
+        if (node == null) {
+            return false;
+        }
+        return searchRecursive(node, word, index + 1);
+    }
+
     public void delete(String word) {
         deleteRecursive(root, word, 0);
     }

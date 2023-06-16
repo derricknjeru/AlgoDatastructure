@@ -29,6 +29,7 @@ public class DiameterOfBinaryTree {
     }
 
     //https://www.youtube.com/watch?v=mWyhPJ1Ukvw&ab_channel=KnowledgeCenter
+    //https://chat.openai.com/c/f6941e57-e22e-4585-a1a4-f8a26a0486e8
 
 
     //https://leetcode.com/problems/diameter-of-binary-tree/
@@ -49,7 +50,7 @@ public class DiameterOfBinaryTree {
         int rh = height(root.right);
 
         //Diameter through root
-        int diameterTR = lh + rh + 1;
+        int diameterTR = lh + rh;
 
         /** Diameter is not through the root**/
         //left diameter

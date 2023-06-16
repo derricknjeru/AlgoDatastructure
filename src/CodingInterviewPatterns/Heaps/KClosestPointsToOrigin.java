@@ -4,6 +4,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class KClosestPointsToOrigin {
+    //https://www.youtube.com/watch?v=1rEUgAG7f_c&ab_channel=KevinNaughtonJr.
     /**
      * Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane and an integer k, return the k closest points to the origin (0, 0).
      * <p>
@@ -35,10 +36,39 @@ public class KClosestPointsToOrigin {
      * 1 <= k <= points.length <= 104
      * -104 < xi, yi < 104
      */
+    class Solution {
+        public int[][] kClosest(int[][] points, int k) {
+            PriorityQueue<int[]> maxHeap = new PriorityQueue<>(
+                    (a,b) -> Integer.compare(dist(b), dist(a)));
+
+            for(int[] point : points){
+                maxHeap.offer(point);
+                if(maxHeap.size()>k) maxHeap.remove();
+            }
+
+            int[][] res = new int[k][2];
+            for (int i = 0; i < k; i++) {
+                int[] cur = maxHeap.remove();
+                res[i][0] = cur[0];
+                res[i][1] = cur[1];
+            }
+            return res;
+
+        }
+
+        private int dist(int[] points){
+            int x = points[0];
+            int y = points[1];
+            return x*x + y*y;
+        }
+    }
 
     public int[][] kClosest(int[][] points, int k) {
 
         Queue<int[]> maxHeap = new PriorityQueue<>((a, b) -> dist(b) - dist(a));
+
+        /*PriorityQueue<int[]> maxHeap = new PriorityQueue<>(
+                (a,b) -> Integer.compare(dist(b), dist(a)));*/
 
         for (int[] point : points) {
             maxHeap.add(point);
@@ -52,6 +82,12 @@ public class KClosestPointsToOrigin {
         while (!maxHeap.isEmpty()) {
             res[i++] = maxHeap.poll();
         }
+        /** int[][] res = new int[k][2];
+         for (int i = 0; i < k; i++) {
+         int[] cur = maxHeap.remove();
+         res[i][0] = cur[0];
+         res[i][1] = cur[1];
+         }*/
 
         return res;
     }

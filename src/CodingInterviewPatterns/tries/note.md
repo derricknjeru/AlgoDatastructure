@@ -4,6 +4,7 @@ A type of tree that stores the values for each node based on it position in the 
 
 - [Tries](https://www.youtube.com/watch?v=kMt9Y5fv4Ug&ab_channel=GoogleStudents)
 - [Tries book](https://www.educative.io/module/page/Z4JLg2tDQPVv6QjgO/10370001/4976190424350720/6228907478220800)
+- [Tries Hackarank](https://www.youtube.com/watch?v=zIjfhVPRZCg)
 
 ### Examples
 
@@ -37,10 +38,10 @@ Many problems in the real world use the trie pattern. Let’s look at some examp
 
 #### Time & space complexity
 
-- Insertion: The time complexity of inserting a word into the Trie is O(L), where L is the length of the word. This is
+- Insertion: The time complexity of inserting a word into the Trie is O(L), where L is the length of the longest word. This is
   because we iterate over each character in the word, and for each character, we perform constant time operations to
   navigate the Trie or create new nodes if necessary.
-- Search: The time complexity of searching for a word in the Trie is also O(L), where L is the length of the word.
+- Search: The time complexity of searching for a word in the Trie is also O(L), where L is the length of the longest word.
   Similar to insertion, we traverse the Trie by examining each character of the word, performing constant time
   operations until either the word is found or we reach the end of the word.
 - Prefix Search (startsWith): The time complexity of searching for a prefix in the Trie is O(P), where P is the length
@@ -61,5 +62,7 @@ Many problems in the real world use the trie pattern. Let’s look at some examp
  * Search prefix(): The space complexity is O(1) because constant space is used while searching the trie.
  */
 ```
+
+As you might expect, the height of a trie is always equal to the length of the longest key added to it. This means that tries tend to be very wide and not terribly deep, which makes retrieval speed much quicker. Adding a new key requires creating at most len(key) nodes, but if your keys share common prefixes (which is typical), you will re-use nodes from previously-added keys.
 
 

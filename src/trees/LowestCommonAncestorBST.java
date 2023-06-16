@@ -57,6 +57,7 @@ public class LowestCommonAncestorBST {
      */
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        //https://www.youtube.com/watch?v=gs2LMfuOR9k
         if (root == null) {
             return null;
         }

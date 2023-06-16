@@ -10,6 +10,7 @@ public class BalancedBinaryTree {
      */
 
     //https://leetcode.com/problems/balanced-binary-tree/
+    //https://www.youtube.com/watch?v=QfJsau0ItOY
     //https://www.youtube.com/watch?v=OgdYyBT8iU8
 
     public class TreeNode {
@@ -44,7 +45,7 @@ public class BalancedBinaryTree {
 
     public boolean isBalanced(TreeNode root) {
         if(root==null) return true;
-        return height(root)==-1 ? false: true;
+        return height(root) != -1;
     }
 
     private int height (TreeNode root){

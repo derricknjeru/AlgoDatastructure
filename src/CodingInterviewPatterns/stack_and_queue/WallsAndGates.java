@@ -99,20 +99,23 @@ public class WallsAndGates {
         }
 
         while (!queue.isEmpty()) {
-            int[] position = queue.poll();
-            int row = position[0];
-            int col = position[1];
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                int[] position = queue.poll();
+                int row = position[0];
+                int col = position[1];
 
-            for (int[] direction : DIRECTIONS) {
-                int newRow = row + direction[0];
-                int newCol = col + direction[1];
+                for (int[] direction : DIRECTIONS) {
+                    int newRow = row + direction[0];
+                    int newCol = col + direction[1];
 
-                if (newRow < 0 || newRow >= m || newCol < 0 || newCol >= n || rooms[newRow][newCol] != INF) {
-                    continue;
+                    if (newRow < 0 || newRow >= m || newCol < 0 || newCol >= n || rooms[newRow][newCol] != INF) {
+                        continue;
+                    }
+
+                    rooms[newRow][newCol] = rooms[row][col] + 1;
+                    queue.offer(new int[]{newRow, newCol});
                 }
-
-                rooms[newRow][newCol] = rooms[row][col] + 1;
-                queue.offer(new int[]{newRow, newCol});
             }
         }
     }

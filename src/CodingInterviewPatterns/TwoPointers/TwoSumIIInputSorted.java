@@ -52,7 +52,7 @@ public class TwoSumIIInputSorted {
 
     //https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
     //https://www.youtube.com/watch?v=cQ1Oz4ckceM
-    public int[] twoSum(int[] nums, int target) {
+    public int[] twoSum2(int[] nums, int target) {
         int l = 0, r = nums.length - 1;
 
         while (nums[l] + nums[r] != target) {
@@ -63,7 +63,7 @@ public class TwoSumIIInputSorted {
         return new int[]{l + 1, r + 1};
     }
 
-    public int[] twoSum2(int[] numbers, int target) {
+    public int[] twoSum(int[] numbers, int target) {
         int i = 0;
         int j = numbers.length - 1;
 

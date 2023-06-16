@@ -21,14 +21,14 @@ public class TopologicalSorting {
                 adj.add(new ArrayList<Integer>());
         }
 
-        // Function to add an edge into the graph
+        // Function to add an edge into the CodingInterviewPatterns.graph
         void addEdge(int v, int w) {
             adj.get(v).add(w);
         }
     }
 
     public static void main(String[] args) {
-        // Create a graph given in the above diagram
+        // Create a CodingInterviewPatterns.graph given in the above diagram
         int V = 6;
         Graph g = new Graph(6);
         g.addEdge(5, 2);
@@ -39,7 +39,7 @@ public class TopologicalSorting {
         g.addEdge(3, 1);
 
         System.out.println("Following is a Topological "
-                + "sort of the given graph");
+                + "sort of the given CodingInterviewPatterns.graph");
 
         boolean[] seen = new boolean[V];
         Deque<Integer> stack = new ArrayDeque<>();

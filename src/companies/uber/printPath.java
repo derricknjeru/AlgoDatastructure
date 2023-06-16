@@ -88,7 +88,7 @@ public class printPath {
 
 
     public static void main(String[] args) {
-        // Create the graph of folders
+        // Create the CodingInterviewPatterns.graph of folders
         Graph graph = new Graph();
         graph.addVertex(0, Arrays.asList(7, 3), "ABX");
         graph.addVertex(7, Collections.singletonList(9), "ACD");

@@ -22,7 +22,7 @@ public class CheapestFlightsWithinKStops {
         }
 
         public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
-            Map<Integer, List<Node>> graph = new HashMap<>();// adj list graph
+            Map<Integer, List<Node>> graph = new HashMap<>();// adj list CodingInterviewPatterns.graph
 
             // Build the adjacency list
             for (int[] arr : flights) {

@@ -46,6 +46,10 @@ public class LastStoneHeight {
     public int lastStoneWeight(int[] stones) {
         //Collections.reverseOrder() sorts the queue in desc
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+        /*PriorityQueue<Integer> maxHeap = new PriorityQueue<>(
+                (a,b)-> Integer.compare(b,a));
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());*/
+
 
         for (int a : stones) {
             maxHeap.add(a);

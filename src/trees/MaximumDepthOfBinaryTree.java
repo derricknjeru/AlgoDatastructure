@@ -3,6 +3,7 @@ package trees;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class MaximumDepthOfBinaryTree {
 
@@ -49,7 +50,7 @@ public class MaximumDepthOfBinaryTree {
             left = right = null;
         }
     }
-   //https://leetcode.com/explore/learn/card/recursion-i/256/complexity-analysis/2375/
+    //https://leetcode.com/explore/learn/card/recursion-i/256/complexity-analysis/2375/
     //https://www.youtube.com/watch?v=hTM3phVI6YQ
 
     public int maxDepth(TreeNode root) {
@@ -69,7 +70,7 @@ public class MaximumDepthOfBinaryTree {
     }
 
 
-    public int maxDepth2(TreeNode root) {
+    public int maxDepthIterative(TreeNode root) {
 
         if (root == null) {
             return 0;
@@ -104,4 +105,41 @@ public class MaximumDepthOfBinaryTree {
         return level;
 
     }
+
+    class StackNode {
+        int depth;
+        TreeNode node;
+
+        StackNode(int depth, TreeNode node) {
+            this.depth = depth;
+            this.node = node;
+        }
+    }
+
+    public int maxDepth3(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        Stack<StackNode> stack = new Stack<>();
+        stack.push(new StackNode(1, root));
+
+        int maxDepth = 1;
+
+        while (!stack.isEmpty()) {
+            StackNode curr = stack.pop();
+            int depth = curr.depth;
+            TreeNode treeNode = curr.node;
+
+            if (treeNode != null) {
+                maxDepth = Math.max(maxDepth, depth);
+                stack.push(new StackNode(depth + 1, treeNode.left));
+                stack.push(new StackNode(depth + 1, treeNode.right));
+            }
+        }
+
+        return maxDepth;
+    }
+
+
 }

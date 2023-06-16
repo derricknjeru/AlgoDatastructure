@@ -18,7 +18,7 @@ public class PathWithMaximumProbability{
 
     public double maxProbability(int n, int[][] edges, double[] succProb, int start, int end) {
 
-        Map<Integer, List<Node>> graph = new HashMap<>();// adj list graph
+        Map<Integer, List<Node>> graph = new HashMap<>();// adj list CodingInterviewPatterns.graph
         int i = 0;
 
         // Build the adjacency list

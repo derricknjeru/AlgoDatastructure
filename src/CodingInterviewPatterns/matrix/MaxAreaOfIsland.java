@@ -5,48 +5,51 @@ public class MaxAreaOfIsland {
     //https://leetcode.com/problems/max-area-of-island/
     //https://github.com/neetcode-gh/leetcode/blob/main/695-Max-Area-of-Island.py
     //https://www.youtube.com/watch?v=W8VuDt0eb5c
+    //https://leetcode.com/problems/max-area-of-island/editorial/
 
+    /**
+     * Complexity Analysis
+     * <p>
+     * Time Complexity: O(R∗C), where R is the number of rows in the given grid, and C is the number of columns. We visit every square once.
+     * <p>
+     * Space complexity: O(R∗C), the space used by seen to keep track of visited squares, and the space used by the call stack during our recursion.
+     */
 
-    int row = 0;
-    int col = 0;
-    int[][] directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-    boolean[][] seen;
 
     public int maxAreaOfIsland(int[][] grid) {
-        if (grid == null || grid.length == 0) return 0;
-
-        row = grid.length;
-        col = grid[0].length;
-        int area = 0;
-        seen = new boolean[row][col];
+        int row = grid.length;
+        if (row == 0) return 0;
+        int col = grid[0].length;
+        int max = 0;
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 if (grid[i][j] == 1) {
-                    area = Math.max(area, dfs(grid, i, j));
+                    max = Math.max(max, dfs(grid, i, j, row, col));
                 }
             }
         }
-
-        return area;
-
+        return max;
     }
 
-    private int dfs(int[][] grid, int i, int j) {
-        if (i < 0 || j < 0 || i >= row || j >= col || grid[i][j] == 0 || seen[i][j])
-            return 0;
+    private int dfs(int[][] grid, int i, int j, int row, int col) {
+        if (i < 0 || i >= row || j < 0 || j >= col || grid[i][j] == 0) return 0;
 
-        seen[i][j] = true;
-        int area = 1; //for current point i,j
+        grid[i][j] = 0; //reset since we have visited
+
+        int count = 1;
+
+        int[][] directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 
         for (int[] dir : directions) {
             int x = i + dir[0];
             int y = j + dir[1];
-            area += dfs(grid, x, y); //add area for other directions
+
+            count += dfs(grid, x, y, row, col);
         }
 
-        return area;
-
+        return count;
     }
+
 
 }

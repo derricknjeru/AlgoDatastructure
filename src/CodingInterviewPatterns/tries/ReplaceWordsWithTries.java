@@ -40,64 +40,82 @@ public class ReplaceWordsWithTries {
     //https://leetcode.com/problems/replace-words/
     //https://leetcode.com/problems/replace-words/solution/
 
+    static class Solution {
+
+        public String replaceWords(List<String> dictionary, String sentence) {
+            //creating a trie
+            TrieNode root = new TrieNode();
+            for (String rt : dictionary) {
+                insertWord(root, rt);
+            }
+
+            StringBuilder sb = new StringBuilder();
+            String[] words = sentence.split(" ");
+            for (int i = 0; i < words.length; i++) {
+                if (i > 0) {
+                    sb.append(' ');
+                }
+                sb.append(searchRoot(root, words[i]));
+            }
+            return sb.toString();
+
+        }
+
+        private void insertWord(TrieNode root, String word) {
+            TrieNode current = root;
+            for (int i = 0; i < word.length(); i++) {
+                char c = word.charAt(i);
+                TrieNode node = current.children[c - 'a'];
+                if (node == null) {
+                    node = new TrieNode();
+                    current.children[c - 'a'] = node;
+                }
+                current = node;
+            }
+
+            current.isWord = true;
+        }
+
+        private String searchRoot(TrieNode root, String word) {
+            TrieNode current = root;
+            StringBuilder prefix = new StringBuilder();
+            for (int i = 0; i < word.length(); i++) {
+                char c = word.charAt(i);
+                TrieNode node = current.children[c - 'a'];
+                if (node == null || current.isWord) {
+                    break;
+                }
+                prefix.append(c);
+                current = node;
+            }
+            return current.isWord ? prefix.toString() : word;
+        }
+
+        class TrieNode {
+            boolean isWord;
+            TrieNode[] children;
+
+            TrieNode() {
+                isWord = false;
+                children = new TrieNode[26];
+            }
+        }
+
+    }
+
     class TrieNode {
         boolean isWord;
-        Map<Character, TrieNode> children;
-        String wordValue;
+        TrieNode[] children;
 
         TrieNode() {
             isWord = false;
-            children = new HashMap<>();
+            children = new TrieNode[26];
         }
     }
 
-    private void insertWord(TrieNode root, String word) {
-        TrieNode current = root;
-        for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            current.children.putIfAbsent(c, new TrieNode());
-            current = current.children.get(c);
-        }
-
-        current.isWord = true;
-        current.wordValue = word;
-    }
-
-    private String search(TrieNode root, String word) {
-        TrieNode current = root;
-        for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            TrieNode node = current.children.get(c);
-            if (node == null || current.isWord) {
-                break;
-            }
-            current = node;
-        }
-        return current.isWord ? current.wordValue : word;
-    }
-
-    public String replaceWords(List<String> dictionary, String sentence) {
-        //create a trie and inseart dictionary
-        TrieNode root = new TrieNode();
-        for (String word : dictionary) {
-            insertWord(root, word);
-        }
-
-        StringBuilder sb = new StringBuilder();
-        String[] words = sentence.split("\\s+");
-        String prefix = "";
-        for (String word : words) {
-            sb.append(prefix);
-            sb.append(search(root, word));
-            prefix = " ";
-        }
-
-        return sb.toString();
-
-    }
 
     public static void main(String[] args) {
-        ReplaceWordsWithTries solution = new ReplaceWordsWithTries();
+        Solution solution = new Solution();
 
         // Example 1
         List<String> dictionary1 = Arrays.asList("cat", "bat", "rat");
@@ -119,7 +137,7 @@ public class ReplaceWordsWithTries {
     }
 
     public class ReplaceWordsWithTries2 {
-         class TrieNode {
+        class TrieNode {
             boolean isWord;
             TrieNode[] children;
 
@@ -178,6 +196,7 @@ public class ReplaceWordsWithTries {
 
 
     }
+
 
 }
 
