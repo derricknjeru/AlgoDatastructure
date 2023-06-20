@@ -3,6 +3,7 @@ package CodingInterviewPatterns.graph.UnionFind;
 import java.util.Arrays;
 
 public class RedundantConnection {
+    //https://leetcode.com/problems/redundant-connection/
 
     class UnionFind {
         UnionFind() {

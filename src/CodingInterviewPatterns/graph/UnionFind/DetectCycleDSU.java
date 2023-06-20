@@ -6,6 +6,9 @@ import java.lang.*;
 public class DetectCycleDSU {
     //https://practice.geeksforgeeks.org/problems/detect-cycle-using-dsu/1
     //https://www.youtube.com/watch?v=eTaWFhPXPz4
+    //https://www.youtube.com/watch?v=eTaWFhPXPz4
+
+    //Time complexity is O(E * V)
 
     public static void main(String[] args) {
         int V;

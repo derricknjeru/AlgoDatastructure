@@ -23,7 +23,7 @@ public class CloneGraph {
         }
     }
     /**
-     * Please remember that to go in the Depth-wise manner, you need to go recusrively, as it will go deeper into the nodes/trees (in case of trees). For breadth-wise manner, you need to go with level-order (for trees) / side-wise (for graphs) fashion, so we have to use queue here. This is one key observation, that I made.
+     * Please remember that to go in the Depth-wise manner, you need to go recusrively, as it will go deeper into the nodes/CodingInterviewPatterns.trees (in case of CodingInterviewPatterns.trees). For breadth-wise manner, you need to go with level-order (for CodingInterviewPatterns.trees) / side-wise (for graphs) fashion, so we have to use queue here. This is one key observation, that I made.
      *
      * Time Complexity:
      * For DFS: O(V + E), where V = No of vertices, E = No of edges, cause you are traversing each vertices and edge exactly one.

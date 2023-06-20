@@ -9,13 +9,6 @@ public class GoogleMock2 {
         /**
          * You are eating a candy bar that is made of pieces in a single row (e.g., a Toblerone). You can bite off 1, 2, or 3 pieces at a time. How many different ways can you eat a bar that is n pieces long?
          *
-         *
-         * Int n = 5 -> 4,3,2;
-         * //5 –,1,1
-         * //2 - 2,3
-         *
-         * N-1, n-2 n-3 (1,2,3)
-         *
          * if(n<=3) return n;
          *
          * findWays(3)-> 111,(2,1),3,(1,2)
@@ -38,9 +31,12 @@ public class GoogleMock2 {
 
         Map<Integer, Integer> cache = new HashMap<>();
 
-        int n = 4; // Number of pieces in the candy bar
+        int n = 5; // Number of pieces in the candy bar
         int ways = countWays(n, cache);
         System.out.println("Number of ways to eat the candy bar: " + ways);
+
+        int ways1 = countWays(n);
+        System.out.println("Number of ways to eat the candy bar dynamic: " + ways1);
     }
 
 
@@ -91,5 +87,23 @@ public class GoogleMock2 {
 
          Therefore, the time complexity of the memoized countWays function is O(n), providing a more efficient solution for calculating the number of different ways to eat a candy bar with n pieces.
          */
+    }
+
+    public static int countWays(int n) {
+        if (n <= 0) {
+            return 0;
+        }
+
+        int[] dp = new int[n + 1];
+        dp[0] = 0;
+        dp[1] = 1;
+        dp[2] = 2;
+        dp[3] = 4;
+
+        for (int i = 4; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];
+        }
+
+        return dp[n];
     }
 }

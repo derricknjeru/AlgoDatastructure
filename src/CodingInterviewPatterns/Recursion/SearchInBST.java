@@ -1,7 +1,5 @@
 package CodingInterviewPatterns.Recursion;
 
-import trees.BinarySearchTree;
-
 public class SearchInBST {
     static class Node {
         int data;
