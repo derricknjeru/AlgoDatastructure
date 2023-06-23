@@ -5,19 +5,10 @@ import java.util.*;
 //https://www.youtube.com/watch?v=kaBX2s3pYO4
 //https://www.geeksforgeeks.org/union-by-rank-and-path-compression-in-union-find-algorithm/
 
-class Node {
-    int parent;
-    int rank;
-
-    public Node(int parent, int rank) {
-        this.parent = parent;
-        this.rank = rank;
-    }
-}
 
 public class UnionFindByRank {
     private Node[] dsuf;
-    private int count;
+    int count;
 
     public UnionFindByRank(int size) {
         dsuf = new Node[size];
@@ -67,6 +58,16 @@ public class UnionFindByRank {
     // Time Complexity: O(1)
     public int getCount() {
         return count;
+    }
+
+    class Node {
+        int parent;
+        int rank;
+
+        public Node(int parent, int rank) {
+            this.parent = parent;
+            this.rank = rank;
+        }
     }
 }
 

@@ -12,7 +12,7 @@ public class DFS {
     //Time complexity is O(V+E) DFS visits every vertex and edge in the CodingInterviewPatterns.graph
     //Space O(V+E) because of the stack
 
-    //Like the BFS, this algorithm traverses the whole list once. Hence, it’s time complexity is O(V + E)
+    //Like the Bfs, this algorithm traverses the whole list once. Hence, it’s time complexity is O(V + E)
     private static void dfs(int v, boolean[] discovered, Graph g, List<Integer> ans) {
         //A Depth–first search (DFS) is a way of traversing graphs closely related to the preorder traversal of a tree.
         ans.add(v);

@@ -3,6 +3,28 @@ package CodingInterviewPatterns.graph.shortestPathGraph;
 import java.util.*;
 
 public class NearestPoliceStationMultiSourceBFS {
+    //https://www.geeksforgeeks.org/multi-source-shortest-path-in-unweighted-graph/
+    /**
+     * Suppose there are n towns connected by m bidirectional roads. There are s towns among them with a police station. We want to find out the distance of each town from the nearest police station. If the town itself has one the distance is 0.
+     *
+     * Example:
+     *
+     * Input :
+     * Number of Vertices = 6
+     * Number of Edges = 9
+     * Towns with Police Station : 1, 5
+     * Edges:
+     * 1 2
+     * 1 6
+     * 2 6
+     * 2 3
+     * 3 6
+     * 5 4
+     * 6 5
+     * 3 4
+     * 5 3
+     * @param args
+     */
     public static void main(String[] args) {
         /**
          * Input :
@@ -62,7 +84,7 @@ public class NearestPoliceStationMultiSourceBFS {
         int[] dist = new int[V + 1];
         Arrays.fill(dist, Integer.MAX_VALUE);
 
-        // Create a queue for BFS
+        // Create a queue for Bfs
         Queue<Integer> q = new LinkedList<>();
 
         //This boolean array is true if the current vertex
@@ -76,7 +98,7 @@ public class NearestPoliceStationMultiSourceBFS {
             q.add(station);
             visited[station] = true;
         }
-        // Multisource BFS
+        // Multisource Bfs
         while (!q.isEmpty()) {
             int curr = q.poll();
             for (int u : graph.get(curr)) {

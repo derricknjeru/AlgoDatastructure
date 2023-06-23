@@ -45,7 +45,7 @@ public class WallsAndGates {
     /**
      * The time complexity of the given algorithm is O(m * n), where 'm' represents the number of rows in the grid and 'n' represents the number of columns.
      * <p>
-     * The main reason for this time complexity is the BFS traversal of the grid. In the worst case, each cell of the grid may be visited once. Since there are 'm' rows and 'n' columns, the total number of cells is m * n. Therefore, the time complexity is proportional to the number of cells in the grid.
+     * The main reason for this time complexity is the Bfs traversal of the grid. In the worst case, each cell of the grid may be visited once. Since there are 'm' rows and 'n' columns, the total number of cells is m * n. Therefore, the time complexity is proportional to the number of cells in the grid.
      * <p>
      * Additionally, other operations such as enqueueing and dequeuing positions from the queue take constant time on average. So, they don't significantly affect the overall time complexity.
      * <p>
@@ -71,7 +71,7 @@ public class WallsAndGates {
      * If the neighboring cell is an empty room, update its distance to the nearest gate by incrementing the distance of the current position (row, col) by 1.
      * Enqueue the position of the neighboring cell into the queue.
      * Repeat steps 1-3 until the queue is empty.
-     * This algorithm uses a breadth-first search (BFS) approach to traverse the grid starting from the gate positions (0s) and updates the distances of the empty rooms (INF) to their nearest gate. By exploring the grid level by level, the algorithm ensures that the distances are filled in the shortest possible order.
+     * This algorithm uses a breadth-first search (Bfs) approach to traverse the grid starting from the gate positions (0s) and updates the distances of the empty rooms (INF) to their nearest gate. By exploring the grid level by level, the algorithm ensures that the distances are filled in the shortest possible order.
      */
 
     private static final int INF = 2147483647;

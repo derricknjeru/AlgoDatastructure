@@ -46,7 +46,7 @@ public class MaximumLevelSumBinaryTree {
             return 0;
         }
 
-        //BFS
+        //Bfs
         Queue<TreeNode> pq = new LinkedList<>();
         pq.add(root);
 
@@ -92,7 +92,7 @@ public class MaximumLevelSumBinaryTree {
             return 0;
         }
 
-        //BFS
+        //Bfs
         Queue<TreeNode> pq = new LinkedList<>();
         pq.add(root);
 

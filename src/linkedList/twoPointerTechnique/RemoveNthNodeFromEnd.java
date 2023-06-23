@@ -4,6 +4,7 @@ public class RemoveNthNodeFromEnd {
     ListNode head;
 
     public static void main(String[] args) {
+
         RemoveNthNodeFromEnd linkedList = new RemoveNthNodeFromEnd();
 
         linkedList.push(5);
@@ -118,12 +119,12 @@ public class RemoveNthNodeFromEnd {
         ListNode slow = dummy;
 
         //Create a gap of n between the 2 pointers
-        while (n > 0 && fast != null) {
+        while (fast != null && n >= 0) {
             fast = fast.next;
             n--;
         }
 
-        while (fast.next != null) { //fast.next because we want to stop when slow is at prev
+        while (fast != null) { //fast.next because we want to stop when slow is at prev
             slow = slow.next;
             fast = fast.next;
         }

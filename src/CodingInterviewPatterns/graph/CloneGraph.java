@@ -27,7 +27,7 @@ public class CloneGraph {
      *
      * Time Complexity:
      * For DFS: O(V + E), where V = No of vertices, E = No of edges, cause you are traversing each vertices and edge exactly one.
-     * For BFS: O(V^2) for the worst case, when every other node is connected to every other node.
+     * For Bfs: O(V^2) for the worst case, when every other node is connected to every other node.
      *
      * Please do upvote if you find this answer helpful.
      */

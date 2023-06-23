@@ -23,7 +23,7 @@ public class RottingOranges {
             }
         }
 
-        // BFS
+        // Bfs
         int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
         int count = 0;
 

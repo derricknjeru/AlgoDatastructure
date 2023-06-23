@@ -42,7 +42,7 @@ public class BinaryTreeLevelOrderTraversal {
         //ANS https://www.youtube.com/watch?v=XZnWETlZZ14
 
         /**
-         * BFS:
+         * Bfs:
          *
          * Time complexity is O(|V|), where |V| is the number of nodes. You need to traverse all nodes.
          * Space complexity is O(|V|) as well - since at worst case you need to hold all vertices in the queue.

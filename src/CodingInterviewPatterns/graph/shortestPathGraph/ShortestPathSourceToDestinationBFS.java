@@ -78,7 +78,7 @@ public class ShortestPathSourceToDestinationBFS {
 
         // a queue to maintain queue of vertices whose
         // adjacency list is to be scanned as per normal
-        // BFS algorithm using LinkedList of Integer type
+        // Bfs algorithm using LinkedList of Integer type
         Queue<Integer> q = new LinkedList<>();
 
         // boolean array visited[] which stores the

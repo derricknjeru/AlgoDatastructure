@@ -51,7 +51,7 @@ public class BFS {
     /*Time Complexity*/
     //Since this algorithm traverses the whole CodingInterviewPatterns.graph once, its time complexity is O(V + E).
     private static void bfs(Graph g, int v, boolean[] visited) {
-        // create a queue for doing BFS
+        // create a queue for doing Bfs
         Queue<Integer> q = new LinkedList<>();
 
         visited[v] = true; //mark as visited
