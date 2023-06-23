@@ -1,10 +1,20 @@
-package linkedList.twoPointerTechnique;
+package CodingInterviewPatterns.FastAndSlowPointers;
 
-import linkedList.twoPointerTechnique.ListNode;
+import java.util.HashSet;
+import java.util.Set;
 
-import java.util.*;
 
 public class LinkedListCycleII {
+    class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
+    }
+
     private static int[] res;
     //https://leetcode.com/explore/learn/card/linked-list/214/two-pointer-technique/1214/
 

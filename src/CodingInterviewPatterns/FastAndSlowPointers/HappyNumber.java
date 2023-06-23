@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class HappyNumber {
+    //https://leetcode.com/problems/happy-number/description/
     /**
      * The sumOfSquaredDigits function has a time complexity of O(log n) since it iterates through the digits of the number,
      * 'and the number of digits in a number is logarithmic in its value.
