@@ -98,6 +98,7 @@ public class SimpleDFS {
         }
 
         // backtrack: remove the current node from the path
+        // If the current folder is not part of the path to the destination, remove it
         path.pop();
         return false;
     }

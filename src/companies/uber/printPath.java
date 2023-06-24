@@ -71,10 +71,10 @@ public class printPath {
 
 
     public static void main(String[] args) {
-        // Map<Integer, Folder> graph = createAdjacencyList();
-        Map<Integer, Folder> graph = createAdjacencyList2();
+        Map<Integer, Folder> graph = createAdjacencyList();
+        //Map<Integer, Folder> graph = createAdjacencyList2();
         int src = 0;
-        int dest = 6;
+        int dest = 9;
 
         Set<Integer> visited = new HashSet<>();
         Stack<String> path = new Stack<>();
@@ -85,8 +85,10 @@ public class printPath {
             System.out.println("No path found to the target folder.");
         } else {
             System.out.print("Path from " + graph.get(src).getName() + " to " + graph.get(dest).getName() + ": ");
+            String prefix = "";
             for (String folderName : path) {
-                System.out.print(folderName + "---");
+                System.out.print(prefix + folderName);
+                prefix = "--->";
             }
             System.out.println();
         }
@@ -112,6 +114,7 @@ public class printPath {
             }
         }
         // backtrack: remove the current node from the path
+        // If the current folder is not part of the path to the destination, remove it
         path.pop();
         return false;
     }
