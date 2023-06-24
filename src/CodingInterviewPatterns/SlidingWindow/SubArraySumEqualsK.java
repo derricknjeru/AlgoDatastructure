@@ -22,13 +22,14 @@ public class SubArraySumEqualsK {
     public static int subarraySum(int[] nums, int k) {
         int count = 0, currSum = 0;
         HashMap<Integer, Integer> map = new HashMap<>(); //pref sum and count
+        //3,4,7,2,-3,1,4,2
 
         for (int num : nums) {
 
             currSum += num;
 
             //because of index 1
-            if (currSum == k) {
+           if (currSum == k) {
                 count += 1;
             }
 

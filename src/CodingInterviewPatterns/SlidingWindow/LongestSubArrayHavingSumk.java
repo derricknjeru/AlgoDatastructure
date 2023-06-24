@@ -1,6 +1,7 @@
 package CodingInterviewPatterns.SlidingWindow;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class LongestSubArrayHavingSumk {
     //https://www.geeksforgeeks.org/longest-sub-array-sum-k/''
@@ -9,35 +10,31 @@ public class LongestSubArrayHavingSumk {
 
     // Time Complexity: O(N), where N is the length of the given array.
     //Auxiliary Space: O(N), for storing the maxLength in the HashMap.
-    static int lenOfLongSubarr(int[] arr, int n, int k) {
-        // HashMap to store (sum, index) tuples
-        HashMap<Integer, Integer> map = new HashMap<>();
-        int sum = 0, maxLen = 0;
 
-        // traverse the given array
-        for (int i = 0; i < n; i++) {
+    public static int lenOfLongSubarr (int A[], int N, int K) {
+        int maxLen = 0;
+        int currSum = 0;
+        //Complete the function
+        Map<Integer, Integer> prefixSum = new HashMap<>();
 
-            // accumulate sum
-            sum += arr[i];
+        for(int i=0; i<N; i++){
+            currSum += A[i];
 
-            // when subarray starts from index '0'
-            if (sum == k)
+            if (currSum == K) // when subarray starts from index '0'
                 maxLen = i + 1;
-
-            // make an entry for 'sum' if it is
-            // not present in 'map'
-            if (!map.containsKey(sum)) {
-                map.put(sum, i);
-            }
 
             // check if 'sum-k' is present in 'map'
             // or not
-            if (map.containsKey(sum - k)) {
-
+            if (prefixSum.containsKey(currSum - K)) {
                 // update maxLength
-                if (maxLen < (i - map.get(sum - k)))
-                    maxLen = i - map.get(sum - k);
+                maxLen = Math.max(maxLen, i - prefixSum.get(currSum - K));
             }
+            // make an entry for 'sum' if it is
+            // not present in 'map'
+            if(!prefixSum.containsKey(currSum)){
+                prefixSum.put(currSum, i);
+            }
+
         }
 
         return maxLen;

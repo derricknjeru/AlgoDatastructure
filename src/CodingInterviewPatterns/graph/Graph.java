@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Graph {
-    int vertices; //total number of vertices in a CodingInterviewPatterns.graph
-    ArrayList<ArrayList<Integer>> adjacencyList; //An array of linked lists to store adjacent vertices.
+    public int vertices; //total number of vertices in a CodingInterviewPatterns.graph
+    public ArrayList<ArrayList<Integer>> adjacencyList; //An array of linked lists to store adjacent vertices.
 
     public Graph(int V) {
         this.vertices = V;
