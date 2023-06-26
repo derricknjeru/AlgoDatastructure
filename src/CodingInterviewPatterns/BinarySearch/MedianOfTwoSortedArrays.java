@@ -20,6 +20,7 @@ public class MedianOfTwoSortedArrays {
             int partitionX = (left + right) / 2;
             int partitionY = halfLen - partitionX;
 
+
             int maxX = (partitionX == 0) ? Integer.MIN_VALUE : nums1[partitionX - 1];
             int maxY = (partitionY == 0) ? Integer.MIN_VALUE : nums2[partitionY - 1];
 
