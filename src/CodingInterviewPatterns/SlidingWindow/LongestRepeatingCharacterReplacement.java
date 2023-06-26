@@ -11,7 +11,7 @@ public class LongestRepeatingCharacterReplacement {
      * The space complexity is O(1) since we are using a fixed-size array charCount
      * to keep track of character counts, and the other variables used for pointers
      * and counters require constant space regardless of the input size.
-     * Please note that the assumption made in the code is that the input string contains only uppercase English letters.
+     * Please note.md that the assumption made in the code is that the input string contains only uppercase English letters.
      * If the input can include lowercase letters or other characters, the code needs to be modified accordingly.
      *
      * @param s

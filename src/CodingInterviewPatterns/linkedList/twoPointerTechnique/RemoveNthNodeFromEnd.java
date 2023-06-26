@@ -1,9 +1,10 @@
-package CodingInterviewPatterns.FastAndSlowPointers;
+package CodingInterviewPatterns.linkedList.twoPointerTechnique;
 
 public class RemoveNthNodeFromEnd {
     ListNode head;
 
     public static void main(String[] args) {
+
         RemoveNthNodeFromEnd linkedList = new RemoveNthNodeFromEnd();
 
         linkedList.push(5);
@@ -110,23 +111,23 @@ public class RemoveNthNodeFromEnd {
         //https://www.youtube.com/watch?v=Kka8VgyFZfc
         //https://www.youtube.com/watch?v=XVuQxVej6y8
 
-        ListNode dummy = new ListNode(-1);
+
+        ListNode dummy = new ListNode(0);
         dummy.next = head;
 
+        ListNode fast = dummy;
         ListNode slow = dummy;
-        ListNode fast = head; ////1 step ahead because we want to stop when slow is at prev
 
-        //create a gap between them.
-        while (fast != null && n > 0) {
+        //Create a gap of n between the 2 pointers
+        while (fast != null && n >= 0) {
             fast = fast.next;
             n--;
         }
 
-        while (fast != null) {
+        while (fast != null) { //fast.next because we want to stop when slow is at prev
             slow = slow.next;
             fast = fast.next;
         }
-
         slow.next = slow.next.next;
 
         return dummy.next;

@@ -28,7 +28,7 @@ public class FindPairBST {
      *
      * Therefore, the overall space complexity is O(n), considering the worst-case scenario of an unbalanced BST with distinct elements. In the case of a balanced BST or when the elements are not all distinct, the space complexity may be lower.
      *
-     * Please note that the space complexity does not include the space required to store the input BST itself, as it is assumed to be given and not part of the space used by the algorithm.
+     * Please note.md that the space complexity does not include the space required to store the input BST itself, as it is assumed to be given and not part of the space used by the algorithm.
      * @param root
      * @param target
      * @return
