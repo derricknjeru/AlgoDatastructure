@@ -19,9 +19,51 @@ public class ValidSudoku {
      * Overall, the time and space complexities of the isValidSudoku method are both O(1),
      * making it an efficient solution for validating a 9x9 Sudoku board.
      *
-     * @param board
      * @return
      */
+
+    class Solution {
+        public boolean isValidSudoku(char[][] board) {
+
+            for (int i = 0; i < 9; i++) {
+                Set<Character> rowMap = new HashSet<>();
+                Set<Character> colMap = new HashSet<>();
+                Set<Character> boxMap = new HashSet<>();
+
+                for (int j = 0; j < 9; j++) {
+
+                    char cRow = board[i][j];
+                    char cCol = board[j][i];
+
+                    //Getting the board number 3*j + i;
+
+
+                    if (cRow != '.' && !rowMap.add(cRow)) {
+                        return false;
+                    }
+
+                    if (cCol != '.' && !colMap.add(cCol)) {
+                        return false;
+                    }
+
+                    int rowIndex = 3 * (i / 3);
+                    int colIndex = 3 * (i % 3);
+
+                    char boxChar = board[rowIndex + j / 3][colIndex + j % 3];
+
+                    if (boxChar != '.' && !boxMap.add(boxChar)) {
+                        return false;
+                    }
+
+                }
+
+
+            }
+
+            return true;
+
+        }
+    }
 
 
     public boolean isValidSudoku(char[][] board) {

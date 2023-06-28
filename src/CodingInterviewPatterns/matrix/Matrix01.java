@@ -7,6 +7,28 @@ public class Matrix01 {
     //https://www.youtube.com/watch?v=UWykmfK7ta4
     //https://www.youtube.com/watch?v=KpOoGf1fWzE
     //https://leetcode.com/problems/01-matrix/
+
+    /**
+     * The time complexity of the updateMatrix method can be analyzed as follows:
+     *
+     * The nested for loop at the beginning has a time complexity of O(m * n), where m is the number of rows and n is the number of columns in the input matrix mat.
+     *
+     * The subsequent loop that iterates until the queue q is empty executes a number of times proportional to the number of elements in the queue. In the worst case, each cell of the matrix could be added to the queue, resulting in a total of m * n iterations.
+     *
+     * Within this loop, there is another loop that runs for a maximum of 4 iterations. Hence, the time complexity of the inner loop is constant (O(1)).
+     *
+     * Overall, the time complexity of the algorithm can be approximated as O(m * n).
+     *
+     * The space complexity of the algorithm is determined by the auxiliary data structures used:
+     *
+     * The queue q can hold a maximum of m * n elements in the worst case, where m is the number of rows and n is the number of columns.
+     *
+     * The boolean matrix seen also has the same dimensions as the input matrix mat.
+     *
+     * Therefore, the space complexity is O(m * n) as well.
+     * @param mat
+     * @return
+     */
     public int[][] updateMatrix(int[][] mat) {
         if (mat == null || mat.length == 0) {
             return mat;

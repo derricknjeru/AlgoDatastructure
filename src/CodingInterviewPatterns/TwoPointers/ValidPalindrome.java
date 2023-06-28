@@ -15,6 +15,8 @@ public class ValidPalindrome {
      * Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
      * <p>
      * Note.md For the purpose of this problem, we define empty string as valid palindrome.
+     * Overall, the while loop runs in O(n) time, where n is the length of the input string s.
+     * Therefore, the time complexity of the isPalindrome method is O(n).
      */
     public static boolean isPalindrome(String s) {
         int j = s.length() - 1;

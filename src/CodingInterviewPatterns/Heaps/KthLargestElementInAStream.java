@@ -4,11 +4,18 @@ import java.util.PriorityQueue;
 
 public class KthLargestElementInAStream {
     /**
-     * The time complexity of the KthLargest constructor is O(n log k), where n is the number of elements in the nums array and k is the value of the k parameter. This is because for each element in the nums array, we add it to the min heap, which takes O(log k) time. If the size of the min heap exceeds k, we remove the smallest element, which also takes O(log k) time. Therefore, adding each element to the min heap and maintaining its size at most k takes O(n log k) time.
+     * Time complexity: O(n⋅logk)
      *
-     * The time complexity of the add method is O(log k), as we add the new value to the min heap, and if the size of the min heap exceeds k, we remove the smallest element. Both of these operations take O(log k) time.
+     * Operations on a heap cost logarithmic time relative to its size. Because our heap is limited to a size of k,
+     * operations cost at most O(logk). We iterate over nums, performing one or two heap operations at each iteration.
      *
-     * Overall, the time complexity of constructing the KthLargest object and calling the add method multiple times is O(n log k), where n is the total number of elements processed and k is the value of the k parameter.
+     * We iterate n times, performing up to log k work at each iteration, giving us a time complexity of O(n⋅log k).
+     *
+     * Because k≤nn, this is an improvement on the previous approach.
+     *
+     * Space complexity: O(k)
+     *
+     * The heap uses O(k)
      */
     class KthLargest {
         /**

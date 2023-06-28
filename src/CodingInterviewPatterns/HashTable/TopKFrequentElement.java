@@ -4,41 +4,88 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.*;
+
 
 public class TopKFrequentElement {
     //https://www.geeksforgeeks.org/priority-queue-class-in-java/
 
     /**
-     * The time complexity of the given solution to find the k most frequent elements in an integer array is O(n + k log k),
-     * where n is the length of the input array nums and k is the value specified.
+     * The overall time complexity of the updated solution is O(n),
+     * which meets the requirement of being better than O(n log n) for the given problem.
+     */
+    class Solution {
+        public int[] topKFrequent(int[] nums, int k) {
+            Map<Integer, Integer> occ = new HashMap<>();
+            int maxFreq = 0;
+
+            // Count frequencies of each number
+            for (int num : nums) {
+                int freq = occ.getOrDefault(num, 0) + 1;
+                occ.put(num, freq);
+                maxFreq = Math.max(maxFreq, freq);
+            }
+
+            // Create a list of lists to store numbers with the same frequency
+            List<List<Integer>> buckets = new ArrayList<>(maxFreq + 1);
+            for (int i = 0; i <= maxFreq; i++) {
+                buckets.add(new ArrayList<>());
+            }
+
+            // Assign numbers to their respective frequency buckets
+            for (int num : occ.keySet()) {
+                int freq = occ.get(num);
+                buckets.get(freq).add(num);
+            }
+
+            // Retrieve the top k frequent numbers
+            int[] res = new int[k];
+            int index = 0;
+
+            for (int i = maxFreq; i >= 0 && index < k; i--) {
+                List<Integer> bucket = buckets.get(i);
+                for (int num : bucket) {
+                    res[index++] = num;
+                    if (index == k) {
+                        break;
+                    }
+                }
+            }
+
+            return res;
+        }
+    }
+
+
+    /**
+     * The time complexity of the topKFrequent method can be analyzed as follows:
      * <p>
-     * Here's the breakdown of the time complexity:
+     * Constructing the frequency map (occ):
      * <p>
-     * Counting the frequency of each element: O(n)
+     * Iterating over the nums array takes O(n) time, where n is the length of the nums array.
+     * Inserting elements into the occ map using occ.put and occ.getOrDefault operations takes O(1) time on average.
+     * Therefore, constructing the frequency map takes O(n) time.
+     * Constructing the min-heap (minHeap):
      * <p>
-     * In the first loop, we iterate through the input array nums of length n and count the
-     * frequency of each element using a HashMap. This operation takes O(n) time complexity.
-     * Building the Min Heap: O(n log k)
+     * Iterating over the occ map takes O(m) time, where m is the number of unique elements in nums.
+     * Adding elements to the minHeap takes O(log k) time for each insertion, as the size of the heap is limited to k.
+     * Therefore, constructing the min-heap takes O(m log k) time.
+     * Constructing the result array (res):
      * <p>
-     * In the second loop, we iterate through the key set of the frequency map,
-     * which has at most k unique elements. Inserting an element into the Min Heap takes O(log k) time complexity, and we perform this operation for at most n elements. Hence, building the Min Heap takes O(n log k) time complexity.
-     * Retrieving the k most frequent elements: O(k log k)
-     * <p>
-     * In the third loop, we retrieve the k most frequent elements
-     * from the Min Heap by removing elements k times. Removing an element from the Min Heap takes O(log k)
-     * time complexity, and we perform this operation k times.
-     * Therefore, retrieving the k most frequent elements takes O(k log k) time complexity.
-     * Overall, the time complexity of the algorithm is dominated by the step of building the Min Heap,
-     * resulting in a time complexity of O(n + k log k).
-     * This complexity is better than O(n log n), as required by the problem's constraints.
+     * Extracting elements from the minHeap and storing them in the res array takes O(k log k) time.
+     * Since the size of the minHeap is limited to k, extracting each element takes O(log k) time.
+     * Therefore, constructing the result array takes O(k log k) time.
+     * Overall, the time complexity of the topKFrequent method is dominated by the step of constructing the min-heap,
+     * which is O(m log k). In the worst case, where m is equal to the number of elements in nums,
+     * the time complexity would be O(n log k).
      *
      * @param nums
      * @param k
      * @return
      */
 
-    //O(n + k log k)
-    public int[] topKFrequent(int[] nums, int k) {
+    //O(n log k).
+    public int[] topKFrequent2(int[] nums, int k) {
         // O(1) time
         if (k == nums.length) {
             return nums;
@@ -71,7 +118,7 @@ public class TopKFrequentElement {
         return top;
     }
 
-    public int[] topKFrequent2(int[] nums, int k) {
+    public int[] topKFrequent3(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
 
         for (int a : nums) {

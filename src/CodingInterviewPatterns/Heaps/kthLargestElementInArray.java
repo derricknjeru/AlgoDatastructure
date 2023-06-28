@@ -3,31 +3,35 @@ package CodingInterviewPatterns.Heaps;
 import java.util.PriorityQueue;
 
 public class kthLargestElementInArray {
-    //https://leetcode.com/problems/kth-largest-element-in-a-stream/
-    class KthLargest {
-        private int k;
-        private PriorityQueue<Integer> heap;
+    //https://leetcode.com/problems/kth-largest-element-in-an-array/
 
-        public KthLargest(int k, int[] nums) {
-            this.k = k;
-            heap = new PriorityQueue<>();
+    /**
+     * Time complexity: O(n⋅logk)
+     *
+     * Operations on a heap cost logarithmic time relative to its size. Because our heap is limited to a size of k,
+     * operations cost at most O(logk). We iterate over nums, performing one or two heap operations at each iteration.
+     *
+     * We iterate n times, performing up to log k work at each iteration, giving us a time complexity of O(n⋅log k).
+     *
+     * Because k≤nn, this is an improvement on the previous approach.
+     *
+     * Space complexity: O(k)
+     *
+     * The heap uses O(k)
+     */
+    class Solution {
+        public int findKthLargest(int[] nums, int k) {
+            PriorityQueue<Integer> minHeap = new PriorityQueue<>();
 
-            for (int num : nums) {
-                heap.offer(num);
+            for(int a: nums){
+                minHeap.add(a);
+                if(minHeap.size()>k){
+                    minHeap.remove();
+                }
             }
 
-            while (heap.size() > k) {
-                heap.poll();
-            }
-        }
+            return minHeap.poll();
 
-        public int add(int val) {
-            heap.offer(val);
-            if (heap.size() > k) {
-                heap.poll();
-            }
-
-            return heap.peek();
         }
     }
 }

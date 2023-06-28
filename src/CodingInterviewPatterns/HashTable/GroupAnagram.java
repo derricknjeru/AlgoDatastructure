@@ -35,6 +35,17 @@ public class GroupAnagram {
         return new ArrayList<>(map.values());
     }
 
+
+    public List<List<String>> groupAnagrams4(String[] strs) {
+        HashMap<String, List<String>> groups = new HashMap<>();
+        for (String s : strs) {
+            String sorted = getSortedString(s);
+            groups.computeIfAbsent(sorted, k -> new ArrayList<>()).add(s);
+        }
+        return new ArrayList<>(groups.values());
+    }
+
+
     /**
      * The time complexity of the given code is O(n * k), where n is the length of the input array strs and k is the maximum length of a string in strs.
      * <p>
