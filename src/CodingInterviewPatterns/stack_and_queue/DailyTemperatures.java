@@ -5,10 +5,11 @@ import java.util.Deque;
 
 public class DailyTemperatures {
     //https://www.youtube.com/watch?v=cTBiBSnjO3c&ab_channel=NeetCode
+
     /**
      * Given NN as the length of temperatures,
      * <p>
-     * Time complexity: O(N)O(N)
+     * Time complexity: O(N)
      * <p>
      * At first glance, it may look like the time complexity of this algorithm should be O(N^2)O(N
      * 2
@@ -16,7 +17,7 @@ public class DailyTemperatures {
      * <p>
      * An easier way to think about this is that in the worst case, every element will be pushed and popped once. This gives a time complexity of O(2 \cdot N) = O(N)O(2⋅N)=O(N).
      * <p>
-     * Space complexity: O(N)O(N)
+     * Space complexity: O(N)
      * <p>
      * If the input was non-increasing, then no element would ever be popped from the stack, and the stack would grow to a size of N elements at the end.
      * <p>
@@ -25,20 +26,20 @@ public class DailyTemperatures {
 
     //https://leetcode.com/explore/learn/card/queue-stack/230/usage-stack/1363/
     public int[] dailyTemperatures(int[] temperatures) {
-        int n =  temperatures.length;
-        int [] ans = new int[n];
+        int n = temperatures.length;
+        int[] ans = new int[n];
 
         Deque<int[]> stack = new ArrayDeque<>();
 
-        for(int i = 0; i<n; i++){
+        for (int i = 0; i < n; i++) {
             int currentTemp = temperatures[i];
-            while(!stack.isEmpty() && stack.peek()[0]< currentTemp){
-                int [] prevDay=stack.pop();
+            while (!stack.isEmpty() && stack.peek()[0] < currentTemp) {
+                int[] prevDay = stack.pop();
                 int prevIndex = prevDay[1];
-                ans[prevIndex] = i -prevIndex;
+                ans[prevIndex] = i - prevIndex;
             }
 
-            stack.push(new int [] {currentTemp,i});
+            stack.push(new int[]{currentTemp, i});
         }
 
         return ans;
@@ -46,6 +47,8 @@ public class DailyTemperatures {
 
 
     public int[] dailyTemperatures2(int[] temperatures) {
+        //Time Limit Exceeded
+        //O(n^2)
         int n = temperatures.length;
         int[] answer = new int[n];
         for (int day = 0; day < n; day++) {

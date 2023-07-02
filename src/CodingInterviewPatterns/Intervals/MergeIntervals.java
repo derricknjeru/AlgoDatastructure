@@ -22,24 +22,24 @@ public class MergeIntervals {
     //https://www.youtube.com/watch?v=44H3cEC2fFM&ab_channel=NeetCode
     static class Solution {
         public int[][] merge(int[][] intervals) {
-            List<int[]> mergedIntervals = new ArrayList<>();
-            // Arrays.sort(intervals, (a, b)-> a[0] - b[0]); faster
+
             Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
-            //Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0])); faster
+            //Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+
+            List<int[]> res = new ArrayList<>();
 
             for (int[] interval : intervals) {
-                int lastIndex = mergedIntervals.size() - 1;
-                if (mergedIntervals.isEmpty() || interval[0] > mergedIntervals.get(lastIndex)[1]) {
-                    mergedIntervals.add(interval);
+                if (res.isEmpty() || res.get(res.size() - 1)[1] < interval[0]) {
+                    res.add(interval);
                 } else {
-                    //There is an overlap, update the mergedIntervals list
-                    mergedIntervals.get(lastIndex)[1] =
-                            Math.max(mergedIntervals.get(lastIndex)[1], interval[1]);
+                    //There is an overlap
+                    int lastIndex = res.size() - 1;
+                    res.get(lastIndex)[0] = Math.min(res.get(lastIndex)[0], interval[0]);
+                    res.get(lastIndex)[1] = Math.max(res.get(lastIndex)[1], interval[1]);
                 }
-
             }
 
-            return mergedIntervals.toArray(new int[mergedIntervals.size()][2]);
+            return res.toArray(new int[res.size()][2]);
 
         }
     }

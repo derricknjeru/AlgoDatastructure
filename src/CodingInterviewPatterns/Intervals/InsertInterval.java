@@ -25,6 +25,8 @@ public class InsertInterval {
 
     static class Solution {
         public int[][] insert(int[][] intervals, int[] newInterval) {
+            //The time complexity of the given code is O(n),
+            // where n is the number of intervals in the input array.
             List<int[]> result = new ArrayList<>();
 
             // Add intervals before newInterval that end before it starts

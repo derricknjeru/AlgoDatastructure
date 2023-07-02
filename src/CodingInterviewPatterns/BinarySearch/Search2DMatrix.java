@@ -35,6 +35,20 @@ public class Search2DMatrix {
      */
 
     public boolean searchMatrix(int[][] matrix, int target) {
+        /**
+         * In the line int midValue = matrix[mid / n][mid % n];
+         * the expression matrix[mid / n][mid % n] is used to calculate the value at the middle index (mid) in a 2D matrix.
+         *
+         * Here's a breakdown of what each part of the expression means:
+         *
+         * mid / n: This division calculates the row index (mid / n) of the middle element in the 2D matrix. Since the 2D matrix is treated as a 1D array, dividing mid by the number of columns (n) gives the quotient representing the row index.
+         *
+         * mid % n: This modulo operation calculates the column index (mid % n) of the middle element in the 2D matrix. It calculates the remainder when mid is divided by the number of columns (n), which represents the column index.
+         *
+         * By combining these two operations, the expression matrix[mid / n][mid % n] accesses the element at the middle index (mid) in the 2D matrix.
+         *
+         * In the context of the binary search algorithm for searching a target value in a matrix, this expression is used to compare the middle element (midValue) with the target value to determine the next step in the binary search process.
+         */
         int m = matrix.length;
         int n = matrix[0].length;
         int left = 0;
@@ -56,45 +70,51 @@ public class Search2DMatrix {
         return false;
     }
 
+
     public boolean searchMatrix2(int[][] matrix, int target) {
         int rows = matrix.length;
         int cols = matrix[0].length;
 
-        int top = 0;
-        int bot = rows - 1;
+        // Binary search to find row
+        int left = 0;
+        int right = rows - 1;
 
-        while (top <= bot) {
-            int row = (top + bot) / 2;
-            if (target > matrix[row][cols - 1]) {
-                top = row + 1;
-            } else if (target < matrix[row][0]) {
-                bot = row - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (target == matrix[mid][cols - 1]) {
+                return true;
+            } else if (target > matrix[mid][cols - 1]) {
+                left = mid + 1;
             } else {
-                break;
+                right = mid - 1;
             }
         }
 
-        if (!(top <= bot)) {
+        if (left >= rows) {
             return false;
         }
 
-        int row = (top + bot) / 2;
-        int left = 0;
-        int right = cols - 1;
+        int row = left;
+        left = 0;
+        right = cols - 1;
 
+        // Binary search in the columns
         while (left <= right) {
-            int mid = (left + right) / 2;
+            int mid = left + (right - left) / 2;
+            if (target == matrix[row][mid]) {
+                return true;
+            }
+
             if (target > matrix[row][mid]) {
                 left = mid + 1;
-            } else if (target < matrix[row][mid]) {
-                right = mid - 1;
             } else {
-                return true;
+                right = mid - 1;
             }
         }
 
         return false;
     }
+
 
     public boolean searchMatrix3(int[][] matrix, int target) {
         int row = matrix.length;

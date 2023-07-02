@@ -3,7 +3,8 @@ package CodingInterviewPatterns.Intervals;
 import java.util.*;
 
 public class MeetingRoomsII {
-//https://www.youtube.com/watch?v=FdzJmTCVyJU
+    //https://www.youtube.com/watch?v=FdzJmTCVyJU
+    //https://www.youtube.com/watch?v=PWgFnSygweI
 
     /**
      * Given an array of meeting time intervals intervals where intervals[i] = [starti, endi],
@@ -43,6 +44,8 @@ public class MeetingRoomsII {
 
             PriorityQueue<Integer> minHeap = new PriorityQueue<>();
             minHeap.offer(intervals.get(0).end); // Add the first meeting's end time to the priority queue
+
+            //https://www.youtube.com/watch?v=PWgFnSygweI
 
             for (int i = 1; i < intervals.size(); i++) {
                 Interval currInterval = intervals.get(i);

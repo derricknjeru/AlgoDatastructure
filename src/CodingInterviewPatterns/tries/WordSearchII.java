@@ -5,6 +5,19 @@ import java.util.HashSet;
 import java.util.List;
 
 public class WordSearchII {
+    /**
+     * The time complexity of the findWords method in the given Solution class can be analyzed as follows:
+     *
+     * Building the Trie: The loop that inserts words into the Trie runs for each word in the words array, so the time complexity for building the Trie is O(N * M), where N is the total number of characters in all words and M is the average length of the words.
+     *
+     * Searching for words on the board: The method searchWord is called for each cell on the board, and for each cell, it explores in four directions.
+     * The maximum number of cells explored in each direction is the total number of cells on the board, which is R * C,
+     * where R is the number of rows and C is the number of columns.
+     * Therefore, the overall time complexity for searching for words on the board is O(4 * R * C * L),
+     * where L is the maximum length of a word.
+     *
+     * Combining the above complexities, the overall time complexity of the findWords method is O(N * M + 4 * R * C * L).
+     */
     //https://leetcode.com/problems/word-search-ii/
     //https://www.youtube.com/watch?v=3PT9QjgYTQc
     class Solution {

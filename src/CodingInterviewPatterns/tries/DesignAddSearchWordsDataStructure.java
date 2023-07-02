@@ -1,5 +1,8 @@
 package CodingInterviewPatterns.tries;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DesignAddSearchWordsDataStructure {
     //https://www.youtube.com/watch?v=9OcBPa_GQ7w&t=901s
     //https://www.youtube.com/watch?v=4OyefqK-LDA&t=942s
@@ -99,4 +102,70 @@ public class DesignAddSearchWordsDataStructure {
      * obj.addWord(word);
      * boolean param_2 = obj.search(word);
      */
+
+    class WordDictionary2 {
+        TrieNode root;
+
+        public WordDictionary2() {
+            root = new TrieNode();
+        }
+
+        public void addWord(String word) {
+            TrieNode current = root;
+            for (int i = 0; i < word.length(); i++) {
+                char c = word.charAt(i);
+                current.children.putIfAbsent(c, new TrieNode());
+                //TrieNode node = current.children.get(c);
+                current = current.children.get(c);
+            }
+            current.isWord = true;
+        }
+
+        public boolean search(String word) {
+            TrieNode current = root;
+            return searchRecursiverly(root, word, 0);
+        }
+
+        private boolean searchRecursiverly(TrieNode current, String word, int index) {
+            if (index == word.length()) {
+                return current.isWord;
+            }
+
+            char c = word.charAt(index);
+
+            if (c == '.') {
+                for (TrieNode node : current.children.values()) {
+                    if (node == null) return false;
+                    if (searchRecursiverly(node, word, index + 1)) return true;
+                }
+                return false;
+
+            } else {
+                TrieNode node = current.children.get(c);
+                if (node == null) return false;
+                return searchRecursiverly(node, word, index + 1);
+            }
+
+        }
+    }
+
+    class TrieNode {
+        boolean isWord;
+        Map<Character, TrieNode> children;
+
+        TrieNode() {
+            isWord = false;
+            children = new HashMap<>();
+        }
+    }
+
+
+    /**
+     * Your WordDictionary object will be instantiated and called as such:
+     * WordDictionary obj = new WordDictionary();
+     * obj.addWord(word);
+     * boolean param_2 = obj.search(word);
+     */
+
+
 }

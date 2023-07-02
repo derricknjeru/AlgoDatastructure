@@ -4,6 +4,17 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class KClosestPointsToOrigin {
+    /**
+     * The time complexity of the given code is O(n log k), where n is the number of points and k is the value passed as the parameter.
+     *
+     * The code uses a max heap (implemented as a PriorityQueue) to keep track of the k closest points. Initially, all points are added to the max heap. If the size of the max heap exceeds k, the farthest point is removed from the heap. This ensures that at any point, the max heap contains the k closest points encountered so far.
+     *
+     * The process of adding and removing elements from the max heap takes O(log k) time. Since there are n points in total, the overall time complexity of the loop that adds points to the max heap is O(n log k).
+     *
+     * After all the points have been processed, the code creates a 2D array and populates it with the points from the max heap. This step takes O(k) time because there are at most k points in the max heap.
+     *
+     * Therefore, the overall time complexity of the code is O(n log k + k) = O(n log k), since the O(n log k) term dominates the O(k) term as k is generally much smaller than n.
+     */
     //https://www.youtube.com/watch?v=1rEUgAG7f_c&ab_channel=KevinNaughtonJr.
     /**
      * Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane and an integer k, return the k closest points to the origin (0, 0).

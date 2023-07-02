@@ -2,11 +2,22 @@ package CodingInterviewPatterns.linkedList;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class FindTheDuplicateNumber {
+    public static void main(String[] args) {
+        LinkedHashMap<Integer,Integer> map = new LinkedHashMap<>(5,0.75f,true){
+            @Override
+            protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+                return super.removeEldestEntry(eldest);
+            }
+        };
+    }
     //https://www.youtube.com/watch?v=wjYnzkAhcNk&ab_channel=NeetCode
     //https://leetcode.com/problems/find-the-duplicate-number/editorial/
     //https://leetcode.com/problems/find-the-duplicate-number/description/
+
     /**
      * Complexity Analysis
      * <p>
@@ -26,6 +37,7 @@ public class FindTheDuplicateNumber {
      * @return
      */
     public int findDuplicate2(int[] nums) {
+
         Arrays.sort(nums);
         int ans = -1;
         for (int i = 0; i < nums.length - 1; i++) {
@@ -97,6 +109,7 @@ public class FindTheDuplicateNumber {
 
         return duplicate;
     }
+
     //https://leetcode.com/problems/find-the-duplicate-number/solution/
     public int findDuplicate(int[] nums) {
 
@@ -119,4 +132,30 @@ public class FindTheDuplicateNumber {
 
         return hare;
     }
+
+    public int findDuplicateSame(int[] nums) {
+        // Find the intersection point of the two runners.
+        int tortoise = nums[0];
+        int hare = nums[0];
+
+        while (true) {
+            tortoise = nums[tortoise];
+            hare = nums[nums[hare]];
+
+            if (tortoise == hare) {
+                break;
+            }
+        }
+
+        // Find the "entrance" to the cycle.
+        tortoise = nums[0];
+
+        while (tortoise != hare) {
+            tortoise = nums[tortoise];
+            hare = nums[hare];
+        }
+
+        return hare;
+    }
+
 }

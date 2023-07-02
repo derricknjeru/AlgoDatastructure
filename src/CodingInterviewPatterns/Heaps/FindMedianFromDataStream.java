@@ -4,6 +4,20 @@ import java.util.Collections;
 import java.util.PriorityQueue;
 
 public class FindMedianFromDataStream {
+    /**
+     * The time complexity of the addNum method is O(log n),
+     * where n is the total number of elements inserted so far.
+     * This is because inserting an element into a priority queue (implemented as a binary heap)
+     * takes O(log n) time complexity.
+     * <p>
+     * The time complexity of the findMedian method is O(1),
+     * as it simply returns the median based on the sizes of the maxHeap and minHeap,
+     * which can be obtained in constant time.
+     * <p>
+     * Overall, the time complexity of the FindMedianFromDataStream class depends on the number
+     * of elements inserted using the addNum method. If there are m elements inserted, the total time complexity
+     * would be O(m log m) due to the m insertions, each taking O(log m) time complexity.
+     */
     //https://leetcode.com/problems/find-median-from-data-stream/
     //https://www.youtube.com/watch?v=itmhHWaHupI
     PriorityQueue<Integer> maxHeap; //should store the small numbers

@@ -4,6 +4,18 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 class LRUCache {
+    /**
+     * The time complexity of the get and put methods in the LRUCache class depends on the underlying operations of the LinkedHashMap and the size of the cache.
+     * <p>
+     * For the get method:
+     * <p>
+     * The LinkedHashMap provides constant-time complexity (O(1)) for the getOrDefault operation, as it uses a hash table for storing the entries.
+     * For the put method:
+     * <p>
+     * The LinkedHashMap provides constant-time complexity (O(1)) for the put operation when the cache is not at its capacity.
+     * When the cache is at its capacity and a new entry is added, the removeEldestEntry method is called, which has a time complexity of O(1) because it simply checks the size of the cache.
+     * In summary, both the get and put methods of the LRUCache class have an average time complexity of O(1) due to the use of the LinkedHashMap, assuming that the cache does not exceed its capacity.
+     */
     private final LinkedHashMap<Integer, Integer> cache;
     private int capacity;
 

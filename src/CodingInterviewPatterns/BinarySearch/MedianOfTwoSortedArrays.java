@@ -47,6 +47,22 @@ public class MedianOfTwoSortedArrays {
     /*Brute-force solution (Linear)*/
     // Runtime: O(m+n)
     // Extra Space: O(m+n)
+
+    /**
+     * The time complexity of the provided implementation for finding the median of two sorted arrays, findMedianSortedArrays, can be analyzed as follows:
+     * <p>
+     * Constructing the merged array: The code merges the two sorted arrays nums1 and nums2 into a single sorted array nums. This step involves traversing both arrays and comparing the elements to determine the order. The time complexity of this step is O(m + n), where m is the length of nums1 and n is the length of nums2.
+     * <p>
+     * Calculating the median: After constructing the merged array nums, the code calculates the median. If the total number of elements in nums is even, it takes the average of the middle two elements. If the total number of elements is odd, it returns the middle element directly. These operations are performed in constant time, O(1).
+     * <p>
+     * Therefore, the overall time complexity of the implementation is O(m + n), where m and n are the lengths of the input arrays nums1 and nums2, respectively.
+     * <p>
+     * It's important to note that this time complexity assumes that the arrays nums1 and nums2 are already sorted. If the input arrays are not sorted, additional sorting steps may be required, which would affect the overall time complexity.
+     *
+     * @param nums1
+     * @param nums2
+     * @return
+     */
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int m = nums1.length;
         int n = nums2.length;

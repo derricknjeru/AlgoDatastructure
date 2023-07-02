@@ -23,33 +23,42 @@ public class GenerateParenthesis {
      * <p>
      * It's worth noting that this time complexity is an upper bound and represents the worst-case scenario. In practice, the actual time taken may be significantly less, especially for small values of n.
      *
-     * @param n
+     * @param
      * @return
      */
 
-    public List<String> generateParenthesis(int n) {
-        List<String> result = new ArrayList<>();
-        backtrack(result, "", 0, 0, n);
-        return result;
-    }
+    static class Solution {
+        List<String> res;
 
-    private void backtrack(List<String> result, String current, int openCount, int closeCount, int n) {
-        if (current.length() == 2 * n) {
-            result.add(current);
-            return;
+        public List<String> generateParenthesis(int n) {
+            //only add open parenthesis if open < n
+            //only add closing parenthesis if closed < open;
+            //base case valid if open ==closed && open==n
+
+            res = new ArrayList<>();
+            backtrack("", 0, 0, n);
+            return res;
         }
 
-        if (openCount < n) {
-            backtrack(result, current + "(", openCount + 1, closeCount, n);
-        }
+        private void backtrack(String current, int openN, int closeN, int n) {
+            //base case
+            if (openN == closeN && openN == n) {
+                res.add(current);
+                return;
+            }
 
-        if (closeCount < openCount) {
-            backtrack(result, current + ")", openCount, closeCount + 1, n);
+            if (openN < n) {
+                backtrack(current + "(", openN + 1, closeN, n);
+            }
+
+            if (closeN < openN) {
+                backtrack(current + ")", openN, closeN + 1, n);
+            }
         }
     }
 
     public static void main(String[] args) {
-        GenerateParenthesis s = new GenerateParenthesis();
+        Solution s = new Solution();
         // Example 1
         int n1 = 3;
         List<String> result1 = s.generateParenthesis(n1);
