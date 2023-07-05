@@ -57,42 +57,43 @@ public class AlienDictionary {
 
     /**
      * Certainly! Building the graph involves analyzing the relationships between characters in the given words to determine the order of letters in the alien language. Here's how it works:
-     *
+     * <p>
      * Initialize an empty graph represented by a Map<Character, Set<Character>>. This map will store the characters as keys and their corresponding neighbors as values.
-     *
+     * <p>
      * Iterate through the given words, comparing adjacent words pair by pair.
-     *
+     * <p>
      * For each pair of adjacent words, find the first characters that differ. This indicates an ordering relationship between the characters.
-     *
+     * <p>
      * Add an edge from the differing character in the first word to the differing character in the second word.
-     *
+     * <p>
      * If the differing character in the first word is not already a key in the graph, add it with an empty set as its value.
-     *
+     * <p>
      * Add the differing character in the second word to the set of neighbors of the differing character in the first word.
-     *
+     * <p>
      * Repeat steps 3-6 for all pairs of adjacent words.
-     *
+     * <p>
      * By the end of this process, the graph will represent the relationships between the characters in the alien language. Each character will be a key in the map, and its corresponding value will be a set containing all the characters that come after it in the language.
-     *
+     * <p>
      * For example, let's consider the input words: ["wrt", "wrf", "er", "ett", "rftt"].
-     *
+     * <p>
      * Comparing "wrt" and "wrf", we find that 't' comes before 'f'. So we add an edge from 't' to 'f' in the graph.
      * Comparing "wrf" and "er", we find that 'w' comes before 'e'. So we add an edge from 'w' to 'e' in the graph.
      * Comparing "er" and "ett", we find that 'r' comes before 't'. So we add an edge from 'r' to 't' in the graph.
      * Comparing "ett" and "rftt", we find that 'e' comes before 'r'. So we add an edge from 'e' to 'r' in the graph.
      * The resulting graph will look like this:
-     *
+     * <p>
      * arduino
      * Copy code
      * {
-     *   'w': ['e'],
-     *   'r': ['t'],
-     *   'e': ['r'],
-     *   't': ['f']
+     * 'w': ['e'],
+     * 'r': ['t'],
+     * 'e': ['r'],
+     * 't': ['f']
      * }
      * This graph represents the relationships between the characters 'w', 'r', 'e', 't', and 'f' in the alien language. In this case, the order of letters can be derived as "wertf".
-     *
+     * <p>
      * The subsequent topological sorting step performs a depth-first search (DFS) on the graph to determine the order of letters based on the edges.
+     *
      * @param args
      */
 
@@ -122,6 +123,11 @@ public class AlienDictionary {
         HashMap<Character, List<Character>> graph = new HashMap<>();
 
         buildGraph(graph, words);
+        System.out.println("graph");
+        for (Map.Entry<Character, List<Character>> entry : graph.entrySet()) {
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }
+
         //no of vertices
         int totalChar = graph.keySet().size();
         boolean[] seen = new boolean[26];
@@ -168,7 +174,6 @@ public class AlienDictionary {
          * After this step, the graph will contain all the characters as keys, but their corresponding lists of neighbors will be empty.
          *
          * The current state of the graph:
-
          * {
          *   'w': [],
          *   'r': [],
@@ -187,7 +192,6 @@ public class AlienDictionary {
          * After this step, the graph will contain the appropriate edges based on the order of characters in the given words.
          *
          * The updated state of the graph:
-
          * {
          *   'w': ['e'],
          *   'r': ['t'],
@@ -210,6 +214,7 @@ public class AlienDictionary {
         for (int i = 0; i < words.length - 1; i++) {
             String word1 = words[i];
             String word2 = words[i + 1];
+            System.out.println("Word 1 " + word1 + " word2 " + word2);
             int len = Math.min(word1.length(), word2.length());
             if (word1.length() > word2.length() && word1.substring(0, len).equals(word2)) {
                 return;

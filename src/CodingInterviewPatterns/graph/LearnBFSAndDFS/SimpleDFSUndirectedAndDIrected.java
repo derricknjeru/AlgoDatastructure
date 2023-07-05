@@ -4,7 +4,7 @@ import CodingInterviewPatterns.graph.Graph;
 
 import java.util.Stack;
 
-public class SimpleDFS {
+public class SimpleDFSUndirectedAndDIrected {
     public static void main(String args[]) {
         //https://www.techiedelight.com/find-path-between-vertices-directed-graph/
         //https://www.geeksforgeeks.org/find-if-there-is-a-path-between-two-vertices-in-a-given-graph/
@@ -43,6 +43,13 @@ public class SimpleDFS {
 
         // List of graph edges as per the above diagram
         Graph g2 = new Graph(n);
+        /**
+         * There is a path from 1 to 3
+         * The complete path is [1, 2, 3]
+         * There is no path from 3 to 1
+         * There is a path from 0 to 7
+         * The complete path is [0, 3, 4, 6, 7]
+         */
 
         g2.addEdge(0, 3);
         g2.addEdge(1, 0);

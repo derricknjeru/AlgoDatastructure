@@ -14,6 +14,8 @@ public class GoogleMock2 {
          * findWays(3)-> 111,(2,1),3,(1,2)
          * findWays(4)-> 1111,(1,1,2),(2,2)(2,1,1),(3,1)(1,3)(1,2,1)
          *
+         * 4 ---> 1-->2--3
+         *
          * if(cache.get(n)){
          *     return result;
          * }

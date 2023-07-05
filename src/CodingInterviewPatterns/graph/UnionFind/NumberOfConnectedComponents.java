@@ -1,7 +1,9 @@
 package CodingInterviewPatterns.graph.UnionFind;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class NumberOfConnectedComponents {
     //https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
@@ -58,11 +60,7 @@ public class NumberOfConnectedComponents {
             UnionFindByRank un = new UnionFindByRank(n);
 
             for (int[] edge : edges) {
-                int X = un.find(edge[0]);
-                int Y = un.find(edge[1]);
-                if (X != Y) {
-                    un.union(edge[0], edge[1]);
-                }
+                un.union(edge[0], edge[1]);
             }
             return un.getCount();
         }

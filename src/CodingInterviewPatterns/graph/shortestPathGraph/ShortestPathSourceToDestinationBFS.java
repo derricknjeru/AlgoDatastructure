@@ -36,6 +36,20 @@ public class ShortestPathSourceToDestinationBFS {
 
         System.out.println();
         printShortestDistance(g2, 0, 4, 5);
+
+        /**
+         * Target Vertex Distance from Source
+         * 2
+         * Shortest path length is: 2
+         * Path is ::
+         * 0 3 7
+         * Target Vertex Distance from Source
+         * 2
+         * Shortest path length is: 2
+         * Path is ::
+         * 0 1 4
+         * Process finished with exit code 0
+         */
     }
 
     private static void printShortestDistance(Graph g, int source, int dest, int v) {
@@ -104,6 +118,9 @@ public class ShortestPathSourceToDestinationBFS {
 
         while (!q.isEmpty()) {
             int v = q.poll();
+            // stopping condition (when we find
+            // our destination)
+            if (v == dest) return true;
 
             for (int u : g.adjacencyList.get(v)) {
                 if (!visited[u]) {
@@ -111,10 +128,6 @@ public class ShortestPathSourceToDestinationBFS {
                     q.add(u);
                     dist[u] = dist[v] + 1;
                     pred[u] = v;
-
-                    // stopping condition (when we find
-                    // our destination)
-                    if (u == dest) return true;
                 }
             }
         }

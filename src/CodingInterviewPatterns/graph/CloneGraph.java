@@ -22,13 +22,14 @@ public class CloneGraph {
             neighbors = _neighbors;
         }
     }
+
     /**
      * Please remember that to go in the Depth-wise manner, you need to go recusrively, as it will go deeper into the nodes/CodingInterviewPatterns.trees (in case of CodingInterviewPatterns.trees). For breadth-wise manner, you need to go with level-order (for CodingInterviewPatterns.trees) / side-wise (for graphs) fashion, so we have to use queue here. This is one key observation, that I made.
-     *
+     * <p>
      * Time Complexity:
      * For DFS: O(V + E), where V = No of vertices, E = No of edges, cause you are traversing each vertices and edge exactly one.
      * For Bfs: O(V^2) for the worst case, when every other node is connected to every other node.
-     *
+     * <p>
      * Please do upvote if you find this answer helpful.
      */
     //Best
@@ -40,6 +41,8 @@ public class CloneGraph {
     }
 
     private Node dfs(Node node, Map<Integer, Node> map) {
+        if (node == null) return null;
+
         if (map.containsKey(node.val)) return map.get(node.val);
 
         Node copy = new Node(node.val);
@@ -54,7 +57,7 @@ public class CloneGraph {
 
 
     public Node cloneGraph2(Node node) {
-        if(node == null) return null;
+        if (node == null) return null;
 
         Queue<Node> q = new LinkedList<>();
         HashMap<Integer, Node> map = new HashMap<>();
@@ -62,11 +65,11 @@ public class CloneGraph {
         q.add(node);
         map.put(node.val, new Node(node.val));
 
-        while(!q.isEmpty()){
+        while (!q.isEmpty()) {
             Node newNode = q.remove();
 
-            for(Node neighbor : newNode.neighbors){
-                if(!map.containsKey(neighbor.val)){
+            for (Node neighbor : newNode.neighbors) {
+                if (!map.containsKey(neighbor.val)) {
                     map.put(neighbor.val, new Node(neighbor.val, new ArrayList<Node>()));
                     q.add(neighbor);
                 }

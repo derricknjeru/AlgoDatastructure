@@ -135,7 +135,7 @@ public class GraphValidTree {
     }
 
     public static void main(String[] args) {
-        Solution2 treeValidator = new Solution2();
+        Solution treeValidator = new Solution();
 
         int n1 = 5;
         int[][] edges1 = {{0, 1}, {0, 2}, {0, 3}, {1, 4}};

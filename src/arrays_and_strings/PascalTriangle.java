@@ -39,7 +39,7 @@ public class PascalTriangle {
 
             row.add(1);
 
-            for (int j = 1; j < i; j++) {
+            for (int j = 1; j < prev_row.size(); j++) {
                 row.add(prev_row.get(j) + prev_row.get(j - 1));
             }
 

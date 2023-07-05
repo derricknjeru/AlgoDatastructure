@@ -7,24 +7,28 @@ import java.util.*;
 
 
 public class UnionFindByRank {
-    private Node[] dsuf;
-    int count;
+    private final int[] parent;
+    private final int[] rank;
+    private int count;
 
-    public UnionFindByRank(int size) {
-        dsuf = new Node[size];
-        for (int i = 0; i < size; i++) {
-            dsuf[i] = new Node(-1, 0);
+    public UnionFindByRank(int n) {
+        parent = new int[n];
+        rank = new int[n];
+        count = n;
+
+        for (int i = 0; i < n; i++) {
+            parent[i] = i;
+            rank[i] = 0;
         }
-        count = size;
     }
 
     // FIND operation with Path Compression
     // Time Complexity: O(log(n)) (amortized)
     public int find(int x) {
-        if (dsuf[x].parent == -1)
-            return x;
-        dsuf[x].parent = find(dsuf[x].parent); // path compression
-        return dsuf[x].parent;
+        if (parent[x] != x) {
+            parent[x] = find(parent[x]); // Path Compression
+        }
+        return parent[x];
     }
 
     /**
@@ -38,16 +42,18 @@ public class UnionFindByRank {
         int root1 = find(element1);
         int root2 = find(element2);
 
-        if (dsuf[root1].rank > dsuf[root2].rank) {
-            dsuf[root2].parent = root1;
-        } else if (dsuf[root1].rank < dsuf[root2].rank) {
-            dsuf[root1].parent = root2;
-        } else {
-            dsuf[root1].parent = root2;
-            dsuf[root2].rank += 1;
-        }
+        if (root1 != root2) {
+            if (rank[root1] > rank[root2]) {
+                parent[root2] = root1;
+            } else if (rank[root1] < rank[root2]) {
+                parent[root1] = root2;
+            } else {
+                parent[root2] = root1;
+                rank[root1]++;
+            }
 
-        count--; // Decrease count when union operation is performed
+            count--; // Decrease count when union operation is performed
+        }
     }
 
     /**
@@ -59,16 +65,7 @@ public class UnionFindByRank {
     public int getCount() {
         return count;
     }
-
-    class Node {
-        int parent;
-        int rank;
-
-        public Node(int parent, int rank) {
-            this.parent = parent;
-            this.rank = rank;
-        }
-    }
 }
+
 
 

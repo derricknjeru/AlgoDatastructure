@@ -6,6 +6,13 @@ import java.util.Map;
 import java.util.Set;
 
 public class UniqueWordAbbreviation {
+    public static void main(String[] args) {
+        ValidWordAbbr validWordAbbr = new ValidWordAbbr();
+        String input = "Hello, World!";
+        String key = validWordAbbr.buildKey(input);
+        System.out.println("Input: " + input);
+        System.out.println("Key: " + key);
+    }
     //https://www.youtube.com/watch?v=FJ8LJy6l_ts
 
     /**
@@ -35,8 +42,11 @@ public class UniqueWordAbbreviation {
      * The tricky part of this question is the case of duplications in the dictionary. if input dictionary is ["a", "a", "a"], and query is isUnique("a"), this should return true; because "a" is unique. another point require attention is to query the exactly word in the dictionary, this also should return true.
      */
 
-    public class ValidWordAbbr {
+    static public class ValidWordAbbr {
         private Map<String, Set<String>> dict = new HashMap<>();
+        ValidWordAbbr(){
+
+        }
 
         public ValidWordAbbr(String[] dictionary) {
             for (String s : dictionary) {

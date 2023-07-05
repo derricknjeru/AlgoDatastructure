@@ -20,6 +20,35 @@ public class SwapNodesInPairs {
         printList(swappedHead);
     }
 
+    public static ListNode swapPairs(ListNode head) {
+        // Create a dummy node to serve as the new head of the swapped list
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+
+        // Set up pointers for swapping
+        ListNode prev = dummy;
+        ListNode curr = head;
+
+        // Iterate through the list and swap adjacent nodes
+        while (curr != null && curr.next != null) {
+            ListNode next = curr.next;
+            ListNode nextNext = next.next;
+
+            // Swap adjacent nodes
+            prev.next = next;
+            next.next = curr;
+            curr.next = nextNext;
+
+            // Update pointers
+            prev = curr;
+            curr = nextNext;
+        }
+
+        // Return the new head of the swapped list
+        return dummy.next;
+    }
+
+
     static class ListNode {
         int val;
         ListNode next;
@@ -30,52 +59,39 @@ public class SwapNodesInPairs {
         }
     }
 
-    public static ListNode swapPairs(ListNode head) {
-        //https://www.youtube.com/watch?v=o811TZLAWOo
-        ListNode dummy = new ListNode(0); // Create a dummy node
-        dummy.next = head; // Connect the dummy node to the head
-        ListNode prev = dummy; // Initialize prev pointer to the dummy node
-        ListNode curr = head; // Initialize curr pointer to the head
+    /**
+     * In this swap function, we use recursion to swap adjacent nodes in the linked list.
+     * Here's a breakdown of the steps:
+     *
+     * Base case: If the list is empty or has only one node, we return the current head since there are no nodes to swap.
+     *
+     * Swap the first two nodes:
+     *
+     * Assign newHead to be the second node (head.next) because after swapping, it will become the new head of the list.
+     * Recursively call swap to swap the remaining nodes starting from the third node (head.next.next).
+     * Make the first node the second node in the swapped list:
+     *
+     * Set newHead. Next to head to make the first node (head) the second node in the swapped list.
+     * Return the new head of the swapped list (newHead).
+     * @param head
+     * @return
+     */
 
-        while (curr != null && curr.next != null) {
-            // Save pointers
-            ListNode nextPair = curr.next.next;
-            ListNode second = curr.next;
-
-            // Reverse this pair
-            second.next = curr;
-            curr.next = nextPair;
-            prev.next = second;
-
-            // Update pointers
-            prev = curr;
-            curr = nextPair;
-        }
-
-        return dummy.next; // Return the modified list (head of the modified list)
-    }
-
-
-    //https://chat.openai.com/c/2c5d5fa7-e4f1-4e64-8983-847859eb428a
-    //recursive
     public static ListNode swapPairs2(ListNode head) {
-
-        // Base case: empty list or single node
+        // Base case: if the list is empty or has only one node
         if (head == null || head.next == null) {
             return head;
         }
 
-        // Nodes to be swapped
-        ListNode first = head;
-        ListNode second = head.next;
+        // Swap the first two nodes
+        ListNode newHead = head.next;  // The new head of the swapped list will be the second node
+        head.next = swapPairs2(head.next.next);  // Recursively swap the remaining nodes starting from the third node
+        newHead.next = head;  // Make the first node the second node in the swapped list
 
-        // Swap the nodes
-        first.next = swapPairs(second.next);
-        second.next = first;
-
-        // Return the new head
-        return second;
+        // Return the new head of the swapped list
+        return newHead;
     }
+
 
     /**
      * Explanation.

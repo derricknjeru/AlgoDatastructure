@@ -6,6 +6,11 @@ import java.util.Map;
 public class MinCostClimbingStairs {
     //https://leetcode.com/problems/min-cost-climbing-stairs/description/
     //https://www.youtube.com/watch?v=ktmzAZWkEZ0&ab_channel=NeetCode
+
+    /**
+     * The time complexity of the provided solution is O(n), where n is the length of the cost array. This is because we iterate through the cost array once to calculate the minimum cost at each step.
+     * Each iteration takes constant time, as we perform simple arithmetic operations and comparisons.
+     */
     class Solution {
 
         public int minCostClimbingStairs(int[] cost) {

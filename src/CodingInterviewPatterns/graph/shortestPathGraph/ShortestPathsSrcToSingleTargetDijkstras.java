@@ -135,6 +135,7 @@ public class ShortestPathsSrcToSingleTargetDijkstras {
                 int nextWeight = node.weight;
                 int nextNode = node.vertex;
                 int nextDist = currDist + nextWeight;
+                //Since  operations to the heap are performed for each edge in the graph, the overall time complexity is O(ElogE).
                 if (!visited[nextNode] && nextDist < dist[nextNode]) {  //space O(E)-(minHeap) // time O(ElogE) - minheap
                     dist[nextNode] = nextDist;
                     pred[nextNode] = currNode;
