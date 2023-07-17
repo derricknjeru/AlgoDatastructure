@@ -1,4 +1,4 @@
-package CodingInterviewPatterns.graph;
+package CodingInterviewPatterns.graph.Bfs;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

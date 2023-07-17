@@ -1,11 +1,13 @@
-package CodingInterviewPatterns.graph;
+package CodingInterviewPatterns.graph.Dfs;
+
+import CodingInterviewPatterns.graph.Graph;
 
 import java.util.Stack;
 
 public class DFSIterative {
     public static void main(String[] args) {
         int V = 5;
-        Graph g = new Graph(V);
+        CodingInterviewPatterns.graph.Graph g = new CodingInterviewPatterns.graph.Graph(V);
         g.addEdge(0, 1);
         g.addEdge(0, 2);
         g.addEdge(1, 3);

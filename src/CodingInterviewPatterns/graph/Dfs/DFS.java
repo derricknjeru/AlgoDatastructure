@@ -1,4 +1,6 @@
-package CodingInterviewPatterns.graph;
+package CodingInterviewPatterns.graph.Dfs;
+
+import CodingInterviewPatterns.graph.Graph;
 
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class DFS {
     //Space O(V+E) because of the stack
 
     //Like the Bfs, this algorithm traverses the whole list once. Hence, it’s time complexity is O(V + E)
-    private static void dfs(int v, boolean[] discovered, Graph g, List<Integer> ans) {
+    private static void dfs(int v, boolean[] discovered, CodingInterviewPatterns.graph.Graph g, List<Integer> ans) {
         //A Depth–first search (DFS) is a way of traversing graphs closely related to the preorder traversal of a tree.
         ans.add(v);
 
@@ -33,7 +35,7 @@ public class DFS {
 
     public static void main(String[] args) {
         int V = 5;
-        Graph g = new Graph(V);
+        CodingInterviewPatterns.graph.Graph g = new Graph(V);
         g.addEdge(0, 1);
         g.addEdge(0, 2);
         g.addEdge(1, 3);

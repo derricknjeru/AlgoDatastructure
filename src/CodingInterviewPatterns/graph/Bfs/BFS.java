@@ -1,4 +1,6 @@
-package CodingInterviewPatterns.graph;
+package CodingInterviewPatterns.graph.Bfs;
+
+import CodingInterviewPatterns.graph.Graph;
 
 import java.util.*;
 
