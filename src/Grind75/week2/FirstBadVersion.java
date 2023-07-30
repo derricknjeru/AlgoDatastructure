@@ -1,4 +1,4 @@
-package CodingInterviewPatterns.BinarySearch.TemplateII;
+package Grind75.week2;
 
 public class FirstBadVersion extends VersionControl {
     public static void main(String[] args) {

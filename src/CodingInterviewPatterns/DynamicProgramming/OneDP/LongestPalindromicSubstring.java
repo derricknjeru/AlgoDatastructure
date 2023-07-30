@@ -27,34 +27,34 @@ public class LongestPalindromicSubstring {
             int longestLength = 0;
 
             for (int i = 0; i < s.length(); i++) {
-                // Odd length palindromes
-                int left = i, right = i;
-                while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
-                    int currentLength = right - left + 1;
-                    if (currentLength > longestLength) {
-                        longestPalindrome = s.substring(left, right + 1);
-                        longestLength = currentLength;
-                    }
-                    left--;
-                    right++;
+                // Find odd length palindrome
+                String oddPalindrome = expandAroundCenter(s, i, i);
+                if (oddPalindrome.length() > longestLength) {
+                    longestPalindrome = oddPalindrome;
+                    longestLength = oddPalindrome.length();
                 }
 
-                // Even length palindromes
-                left = i;
-                right = i + 1;
-                while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
-                    int currentLength = right - left + 1;
-                    if (currentLength > longestLength) {
-                        longestPalindrome = s.substring(left, right + 1);
-                        longestLength = currentLength;
-                    }
-                    left--;
-                    right++;
+                // Find even length palindrome
+                String evenPalindrome = expandAroundCenter(s, i, i + 1);
+                if (evenPalindrome.length() > longestLength) {
+                    longestPalindrome = evenPalindrome;
+                    longestLength = evenPalindrome.length();
                 }
             }
 
             return longestPalindrome;
         }
+
+        private String expandAroundCenter(String s, int left, int right) {
+            while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+                left--;
+                right++;
+            }
+            // Since the above loop will move one step beyond the valid palindrome,
+            // we need to use substring with left+1 and right-1 to get the actual palindrome.
+            return s.substring(left + 1, right);
+        }
+
     }
 
     //brute force.---> Not accepted by leetcode n^3 --the 2 for loops and the while loop

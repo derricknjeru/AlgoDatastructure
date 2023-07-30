@@ -1,4 +1,4 @@
-package CodingInterviewPatterns.Arrays;
+package Grind75.week2;
 
 public class BoyerMooreMajority {
     public static void main(String[] args) {

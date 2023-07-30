@@ -1,8 +1,8 @@
-package arrays_and_strings;
+package Grind75.week2;
 
 public class AddBinary {
     public static void main(String[] args) {
-        Grind75.week2.AddBinary.Solution sln = new Grind75.week2.AddBinary.Solution();
+        Solution sln = new Solution();
         String a = "11";
         String b = "1";
         System.out.println(sln.addBinary(a, b)); // Output: "100"
@@ -40,4 +40,3 @@ public class AddBinary {
     }
 
 }
-
