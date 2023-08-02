@@ -1,4 +1,4 @@
-package CodingInterviewPatterns.Heaps;
+package Grind75.Week3;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;

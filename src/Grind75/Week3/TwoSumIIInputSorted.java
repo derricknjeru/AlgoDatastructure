@@ -1,4 +1,4 @@
-package CodingInterviewPatterns.TwoPointers;
+package Grind75.Week3;
 
 public class TwoSumIIInputSorted {
     public static void main(String[] args) {

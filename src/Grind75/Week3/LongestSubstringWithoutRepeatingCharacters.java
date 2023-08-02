@@ -1,6 +1,8 @@
-package CodingInterviewPatterns.SlidingWindow;
+package Grind75.Week3;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LongestSubstringWithoutRepeatingCharacters {
     //https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
@@ -42,7 +44,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
             Set<Character> lookup = new HashSet<>();
 
             int left = 0;
-
+            //O(n) Time and space
             for (int right = 0; right < s.length(); right++) {
                 char c = s.charAt(right);
 
