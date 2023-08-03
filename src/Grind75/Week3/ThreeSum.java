@@ -1,4 +1,4 @@
-package CodingInterviewPatterns.TwoPointers;
+package Grind75.Week3;
 
 import java.util.ArrayList;
 import java.util.Arrays;
