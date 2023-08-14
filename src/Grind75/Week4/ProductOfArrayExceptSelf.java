@@ -1,4 +1,4 @@
-package CodingInterviewPatterns.InterestingQuiz;
+package Grind75.Week4;
 
 public class ProductOfArrayExceptSelf {
     //https://www.youtube.com/watch?v=gREVHiZjXeQ
