@@ -1,6 +1,4 @@
-package CodingInterviewPatterns.trees;
-
-import java.util.Arrays;
+package Grind75.week5;
 
 public class LowestCommonAncestorBT {
     static class TreeNode {
@@ -49,7 +47,6 @@ public class LowestCommonAncestorBT {
     }
 
     public static void main(String[] args) {
-
         /*
          * Construct the following BST:
          *        6
