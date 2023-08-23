@@ -1,4 +1,4 @@
-package CodingInterviewPatterns.backtracking;
+package Grind75.week5;
 
 import java.util.ArrayList;
 import java.util.List;
