@@ -1,10 +1,8 @@
 package CodingInterviewPatterns.matrix;
 
-public class NumberOfIsland {
+import java.util.*;
 
-    int row = 0;
-    int col = 0;
-    int[][] directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+public class NumberOfIsland {
 
     /**
      * Number of Islands
@@ -32,38 +30,119 @@ public class NumberOfIsland {
      */
 
     //https://www.youtube.com/watch?v=__98uL6wst8&t=596s
-    void markCurrentIsland(char[][] matrix, int x, int y, int r, int c) {
-        if (x < 0 || x >= r || y < 0 || y >= c || matrix[x][y] != '1')  //Boundary case for matrix
-            return;
+    static class Solution {
 
-        //Mark current cell as visited
-        matrix[x][y] = '2';
+        public int numIslands(char[][] grid) {
+            int rows = grid.length;
+            if (rows == 0) return 0;
 
-        //Make recursive call in all 4 adjacent directions
-        markCurrentIsland(matrix, x + 1, y, r, c);  //DOWN
-        markCurrentIsland(matrix, x, y + 1, r, c);  //RIGHT
-        markCurrentIsland(matrix, x - 1, y, r, c);  //TOP
-        markCurrentIsland(matrix, x, y - 1, r, c);  //LEFT
+            int cols = grid[0].length;
+
+            int count = 0;
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    if (grid[i][j] == '1') {
+                        count++;
+                        dfs(grid, i, j);
+                    }
+                }
+            }
+            return count;
+        }
+
+        private void dfs(char[][] grid, int r, int c) {
+            if (r < 0 || r >= grid.length || c < 0 || c >= grid[r].length || grid[r][c] != '1') return;
+
+            grid[r][c] = '0';
+
+            dfs(grid, r + 1, c);
+            dfs(grid, r - 1, c);
+            dfs(grid, r, c + 1);
+            dfs(grid, r, c - 1);
+
+        }
     }
 
-    public int numIslands(char[][] grid) {
+    static class Solution2 {
+        int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
-        int rows = grid.length;
-        if (rows == 0)     //Empty grid boundary case
-            return 0;
-        int cols = grid[0].length;
+        public int numIslands(char[][] grid) {
+            int rows = grid.length;
+            if (rows == 0) return 0;
 
-        //Iterate for all cells of the array
-        int noOfIslands = 0;
-        for (int i = 0; i < rows; ++i) {
-            for (int j = 0; j < cols; ++j) {
-                if (grid[i][j] == '1') {
-                    markCurrentIsland(grid, i, j, rows, cols);
-                    noOfIslands += 1;
+            int cols = grid[0].length;
+
+            int count = 0;
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    if (grid[i][j] == '1') {
+                        count++;
+                        dfs(grid, i, j);
+                    }
+                }
+            }
+            return count;
+        }
+
+        private void dfs(char[][] grid, int r, int c) {
+            if (r < 0 || r >= grid.length || c < 0 || c >= grid[r].length || grid[r][c] != '1') return;
+
+            grid[r][c] = '0';
+
+            for (int[] dir : directions) {
+                int x = dir[0] + r;
+                int y = dir[1] + c;
+                dfs(grid, x, y);
+            }
+
+        }
+    }
+
+    static class Solution3 {
+        public int numIslands(char[][] grid) {
+            int rows = grid.length;
+            if (rows == 0) return 0;
+
+            int cols = grid[0].length;
+
+            int count = 0;
+            boolean[][] visited = new boolean[rows][cols];
+
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    if (grid[i][j] == '1' && !visited[i][j]) {
+                        count++;
+                        bfs(i, j, grid, visited);
+                    }
+                }
+            }
+            return count;
+        }
+
+        private void bfs(int startRow, int startCol, char[][] grid, boolean[][] visited) {
+            int[][] directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+            int numRows = grid.length;
+            int numCols = grid[0].length;
+            Queue<int[]> queue = new LinkedList<>();
+            queue.offer(new int[]{startRow, startCol});
+            visited[startRow][startCol] = true;
+
+            while (!queue.isEmpty()) {
+                int[] curr = queue.poll();
+                int row = curr[0];
+                int col = curr[1];
+
+                for (int[] direction : directions) {
+                    int newRow = row + direction[0];
+                    int newCol = col + direction[1];
+
+                    if (newRow >= 0 && newRow < numRows && newCol >= 0 && newCol < numCols && grid[newRow][newCol] == '1' && !visited[newRow][newCol]) {
+                        queue.offer(new int[]{newRow, newCol});
+                        visited[newRow][newCol] = true;
+                    }
                 }
             }
         }
-        return noOfIslands;
     }
 
 
@@ -71,121 +150,12 @@ public class NumberOfIsland {
     // https://www.youtube.com/watch?v=U6-X_QOwPcs
     //https://www.programcreek.com/2014/04/leetcode-number-of-islands-java/
     //https://www.youtube.com/watch?v=o8S2bO3pmO4
-    public int numIslands1(char[][] grid) {
-        if (grid == null && grid.length == 0) {
-            return 0;
-        }
 
-        int numOfIslands = 0;
-
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-
-                if (grid[i][j] == '1') {
-                    numOfIslands++;
-                    //Turn everything that is one and around this 1 to 0 recursively over dfs.
-                    dfs1(grid, i, j);
-                }
-            }
-
-        }
-
-        return numOfIslands;
-    }
-
-    private void dfs1(char[][] grid, int i, int j) {
-        //check boundaries
-        if (i < 0 || i >= grid.length || j < 0 || j >= grid[i].length || grid[i][j] == '0') {
-            return;
-        }
-
-        grid[i][j] = '0';
-        //traverse all the sides
-        dfs1(grid, i + 1, j);
-        dfs1(grid, i - 1, j);
-        dfs1(grid, i, j + 1);
-        dfs1(grid, i, j - 1);
-    }
-
-    public int numIslands2(char[][] grid) {
-        if (grid == null || grid.length == 0)
-            return 0;
-        int n = grid.length;
-        int m = grid[0].length;
-        boolean visited[][] = new boolean[n][m];
-        int count = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (visited[i][j] || grid[i][j] == '0')
-                    continue;
-                count++;
-                dfs2(i, j, grid, visited, n, m);
-            }
-        }
-        return count;
-    }
-
-    void dfs2(int i, int j, char[][] grid, boolean[][] visited, int n, int m) {
-        if (i < 0 || i >= n || j < 0 || j >= m || visited[i][j])
-            return;
-        if (grid[i][j] == '0') {
-            visited[i][j] = true;
-            return;
-        }
-        visited[i][j] = true;
-        dfs2(i + 1, j, grid, visited, n, m);
-        dfs2(i - 1, j, grid, visited, n, m);
-        dfs2(i, j + 1, grid, visited, n, m);
-        dfs2(i, j - 1, grid, visited, n, m);
-    }
-
-
-    public int numIslandsX(char[][] grid) {
-        if (grid == null && grid.length == 0) {
-            return 0;
-        }
-        row = grid.length;
-        col = grid[0].length;
-
-        int islands = 0;
-
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
-                if (grid[i][j] == '1') {
-                    islands++;
-                    dfsX(grid, i, j);
-                }
-
-            }
-        }
-
-        return islands;
-
-    }
-
-    private void dfsX(char[][] grid, int i, int j) {
-        if (i < 0 || j < 0 || i >= row || j >= col || grid[i][j] == '0') return;
-
-        grid[i][j] = '0';
-
-        for (int[] dir : directions) {
-            int x = i + dir[0];
-            int y = j + dir[1];
-
-            dfsX(grid, x, y);
-        }
-
-    }
 
     public static void main(String[] args) {
-        char[][] grid = {
-                {'1', '1', '1', '1', '0'},
-                {'1', '1', '0', '1', '0'},
-                {'1', '1', '0', '0', '0'},
-                {'0', '0', '0', '0', '0'}
-        };
+        char[][] grid = {{'1', '1', '1', '1', '0'}, {'1', '1', '0', '1', '0'}, {'1', '1', '0', '0', '0'}, {'0', '0', '0', '0', '0'}};
 
-        NumberOfIsland solution = new NumberOfIsland();
+        Solution solution = new Solution();
         int numIslands = solution.numIslands(grid);
         System.out.println("Number of islands: " + numIslands);
     }

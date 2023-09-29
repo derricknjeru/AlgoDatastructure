@@ -1,145 +1,155 @@
 package CodingInterviewPatterns.Heaps;
 
+import java.util.Arrays;
+
 public class MinHeapImplementation {
-    // Create a complete binary tree using an array
-    // Then use the binary tree to construct a Heap
-    int[] minHeap;
-    // the number of elements is needed when instantiating an array
-    // heapSize records the size of the array
-    int heapSize;
-    // realSize records the number of elements in the Heap
-    int realSize = 0;
+    //https://www.youtube.com/watch?v=t0Cq6tVNRBA&ab_channel=HackerRank
+    //Summary
+    /**
+     * All elements are smaller than the parent.
+     * <p>
+     * Inserting
+     * -> When we insert the element we always insert it at the next empty slot at the bottom, then we heapifyUP it
+     * to the right position
+     * -> if the element is not in the right position we swap it with the parent, untill we find the right location.
+     * <p>
+     * Removing minimum element
+     * Removing the minimum element, we remove the top element and we swap it with the last element, and we heapifyDown
+     * <p>
+     * Implementation
+     * We implement using an array, And to get index we do: leftchild = parentIndex *2 + 1 and rightchild = parentIndex * 2 +1;
+     */
 
-    public MinHeapImplementation(int heapSize) {
-        this.heapSize = heapSize;
-        minHeap = new int[heapSize + 1];
-        // To better track the indices of the binary tree,
-        // we will not use the 0-th element in the array
-        // You can fill it with any value
-        minHeap[0] = 0;
+
+    private int capacity = 10;
+    private int size = 0;
+
+    int[] minHeap = new int[capacity];
+
+    private int getLeftChildIndex(int parentIndex) {
+        return 2 * parentIndex + 1;
     }
 
-    // Function to add an element
-    public void add(int element) {
-        realSize++;
-        // If the number of elements in the Heap exceeds the preset heapSize
-        // print "Added too many elements" and return
-        if (realSize > heapSize) {
-            System.out.println("Added too many elements!");
-            realSize--;
-            return;
+    private int getRightChildIndex(int parentIndex) {
+        return 2 * parentIndex + 2;
+    }
+
+    private int getParentIndex(int childIndex) {
+        return (childIndex - 1) / 2;
+    }
+
+    private boolean hasLeftChild(int index) {
+        return getLeftChildIndex(index) < size;
+    }
+
+    private boolean hasRightChild(int index) {
+        return getRightChildIndex(index) < size;
+    }
+
+    private boolean hasParent(int index) {
+        return getParentIndex(index) >= 0;
+    }
+
+    private int leftChild(int index) {
+        return minHeap[getLeftChildIndex(index)];
+    }
+
+    private int rightChild(int index) {
+        return minHeap[getRightChildIndex(index)];
+    }
+
+    private int parent(int index) {
+        return minHeap[getParentIndex(index)];
+    }
+
+    private void swap(int indexOne, int indexTwo) {
+        int temp = minHeap[indexOne];
+        minHeap[indexOne] = minHeap[indexTwo];
+        minHeap[indexTwo] = temp;
+    }
+
+    private void ensureExtraCapacity() {
+        if (size == capacity) {
+            minHeap = Arrays.copyOf(minHeap, capacity * 2);
+            capacity *= 2;
         }
-        // Add the element into the array
-        minHeap[realSize] = element;
-        // Index of the newly added element
-        int index = realSize;
-        // Parent node of the newly added element
-        // Note.md.md.md.md if we use an array to represent the complete binary tree
-        // and store the root node at index 1
-        // index of the parent node of any node is [index of the node / 2]
-        // index of the left child node is [index of the node * 2]
-        // index of the right child node is [index of the node * 2 + 1]
-        int parent = index / 2;
-        // If the newly added element is smaller than its parent node,
-        // its value will be exchanged with that of the parent node
-        while (minHeap[index] < minHeap[parent] && index > 1) {
-            int temp = minHeap[index];
-            minHeap[index] = minHeap[parent];
-            minHeap[parent] = temp;
-            index = parent;
-            parent = index / 2;
+    }
+
+    private int peek() {
+        if (size == 0) throw new IllegalStateException();
+        return minHeap[0];
+    }
+
+    private int poll() {
+        if (size == 0) throw new IllegalStateException();
+        //get top item and replace it with the bottom item
+        int item = minHeap[0];
+        minHeap[0] = minHeap[size - 1];
+        size--;
+
+        heapifyDown();
+        return item;
+    }
+
+    public void add(int item) {
+        ensureExtraCapacity();
+        //add element to last sport
+        minHeap[size] = item;
+        size++;
+        heapifyUP();
+    }
+
+    private void heapifyUP() {
+        int index = size - 1;
+        while (hasParent(index) && parent(index) > minHeap[index]) {
+            swap(getParentIndex(index), index);
+            index = getParentIndex(index);
         }
     }
 
-    // Get the top element of the Heap
-    public int peek() {
-        return minHeap[1];
-    }
-
-    // Delete the top element of the Heap
-    public int pop() {
-        // If the number of elements in the current Heap is 0,
-        // print "Don't have any elements" and return a default value
-        if (realSize < 1) {
-            System.out.println("Don't have any element!");
-            return Integer.MAX_VALUE;
-        } else {
-            // When there are still elements in the Heap
-            // realSize >= 1
-            int removeElement = minHeap[1];
-            // Put the last element in the Heap to the top of Heap
-            minHeap[1] = minHeap[realSize];
-            realSize--;
-            int index = 1;
-            // When the deleted element is not a leaf node
-            while (index <= realSize / 2) {
-                // the left child of the deleted element
-                int left = index * 2;
-                // the right child of the deleted element
-                int right = (index * 2) + 1;
-                // If the deleted element is larger than the left or right child
-                // its value needs to be exchanged with the smaller value
-                // of the left and right child
-                if (minHeap[index] > minHeap[left] || minHeap[index] > minHeap[right]) {
-                    if (minHeap[left] < minHeap[right]) {
-                        int temp = minHeap[left];
-                        minHeap[left] = minHeap[index];
-                        minHeap[index] = temp;
-                        index = left;
-                    } else {
-                        // maxHeap[left] >= maxHeap[right]
-                        int temp = minHeap[right];
-                        minHeap[right] = minHeap[index];
-                        minHeap[index] = temp;
-                        index = right;
-                    }
-                } else {
-                    break;
-                }
+    private void heapifyDown() {
+        int index = 0;
+        //we only need to check left child since if we don't have a left child, we don't have a right chlld
+        while (hasLeftChild(index)) {
+            int smallerChildIndex = getLeftChildIndex(index);
+            if (hasRightChild(index) && rightChild(index) < leftChild(index)) {
+                smallerChildIndex = getRightChildIndex(index);
             }
-            return removeElement;
-        }
-    }
 
-    // return the number of elements in the Heap
-    public int size() {
-        return realSize;
-    }
-
-    public String toString() {
-        if (realSize == 0) {
-            return "No element!";
-        } else {
-            StringBuilder sb = new StringBuilder();
-            sb.append('[');
-            for (int i = 1; i <= realSize; i++) {
-                sb.append(minHeap[i]);
-                sb.append(',');
+            if (minHeap[index] < minHeap[smallerChildIndex]) {
+                //current item is smaller than that of the two children
+                //Everything is in order
+                break;
+            } else {
+                swap(index, smallerChildIndex);
             }
-            sb.deleteCharAt(sb.length() - 1);
-            sb.append(']');
-            return sb.toString();
+
+            //move down to smaller child
+            index = smallerChildIndex;
         }
+
     }
 
     public static void main(String[] args) {
-        // Test case
-        MinHeapImplementation minHeap = new MinHeapImplementation(3);
-        minHeap.add(3);
-        minHeap.add(1);
-        minHeap.add(2);
-        // [1,3,2]
-        System.out.println(minHeap.toString());
-        // 1
-        System.out.println(minHeap.peek());
-        // 1
-        System.out.println(minHeap.pop());
-        // [2, 3]
-        System.out.println(minHeap.toString());
-        minHeap.add(4);
-        // Add too many elements
+
+        MinHeapImplementation minHeap = new MinHeapImplementation();
+
+        // Adding elements to the min-heap
+        minHeap.add(10);
         minHeap.add(5);
-        // [2,3,4]
-        System.out.println(minHeap.toString());
+        minHeap.add(15);
+        minHeap.add(3);
+        minHeap.add(8);
+
+        // Peeking at the minimum element (without removing)
+        System.out.println("Peek: " + minHeap.peek()); // Should print "Peek: 3"
+
+        // Removing and printing elements in ascending order (minimum to maximum)
+        while (minHeap.size > 0) {
+            int min = minHeap.poll();
+            System.out.println("Popped: " + min);
+        }
     }
+
+
 }

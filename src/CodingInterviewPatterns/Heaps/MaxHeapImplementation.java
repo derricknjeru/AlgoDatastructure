@@ -1,152 +1,127 @@
 package CodingInterviewPatterns.Heaps;
 
-// Implementing "Max Heap"
+import java.util.Arrays;
+
 public class MaxHeapImplementation {
-    // Create a complete binary tree using an array
-    // Then use the binary tree to construct a Heap
+    private int capacity = 10;
+    private int size = 0;
 
-    int[] maxHeap;
-    // the number of elements is needed when instantiating an array
-    // heapSize records the size of the array
-    int heapSize;
-    // realSize records the number of elements in the Heap
-    int realSize = 0;
+    int[] maxHeap = new int[capacity];
 
-    public MaxHeapImplementation(int heapSize) {
-        this.heapSize = heapSize;
-        maxHeap = new int[heapSize + 1];
-        // To better track the indices of the binary tree,
-        // we will not use the 0-th element in the array
-        // You can fill it with any value
-        maxHeap[0] = 0;
+    private int getLeftChildIndex(int parentIndex) {
+        return 2 * parentIndex + 1;
     }
 
-    // Function to add an element
-    public void add(int element) {
-        realSize++;
-        // If the number of elements in the Heap exceeds the preset heapSize
-        // print "Added too many elements" and return
-        if (realSize > heapSize) {
-            System.out.println("Added too many elements!");
-            realSize--;
-            return;
+    private int getRightChildIndex(int parentIndex) {
+        return 2 * parentIndex + 2;
+    }
+
+    private int getParentIndex(int childIndex) {
+        return (childIndex - 1) / 2;
+    }
+
+    private boolean hasLeftChild(int index) {
+        return getLeftChildIndex(index) < size;
+    }
+
+    private boolean hasRightChild(int index) {
+        return getRightChildIndex(index) < size;
+    }
+
+    private boolean hasParent(int index) {
+        return getParentIndex(index) >= 0;
+    }
+
+    private int leftChild(int index) {
+        return maxHeap[getLeftChildIndex(index)];
+    }
+
+    private int rightChild(int index) {
+        return maxHeap[getRightChildIndex(index)];
+    }
+
+    private int parent(int index) {
+        return maxHeap[getParentIndex(index)];
+    }
+
+    private void swap(int indexOne, int indexTwo) {
+        int temp = maxHeap[indexOne];
+        maxHeap[indexOne] = maxHeap[indexTwo];
+        maxHeap[indexTwo] = temp;
+    }
+
+    private void ensureExtraCapacity() {
+        if (size == capacity) {
+            maxHeap = Arrays.copyOf(maxHeap, capacity * 2);
+            capacity *= 2;
         }
-        // Add the element into the array
-        maxHeap[realSize] = element;
-        // Index of the newly added element
-        int index = realSize;
-        // Parent node of the newly added element
-        // Note.md.md.md.md if we use an array to represent the complete binary tree
-        // and store the root node at index 1
-        // index of the parent node of any node is [index of the node / 2]
-        // index of the left child node is [index of the node * 2]
-        // index of the right child node is [index of the node * 2 + 1]
+    }
 
-        int parent = index / 2;
-        // If the newly added element is larger than its parent node,
-        // its value will be exchanged with that of the parent node
-        while ( maxHeap[index] > maxHeap[parent] && index > 1 ) {
-            int temp = maxHeap[index];
-            maxHeap[index] = maxHeap[parent];
-            maxHeap[parent] = temp;
-            index = parent;
-            parent = index / 2;
+    private int peek() {
+        if (size == 0) throw new IllegalStateException();
+        return maxHeap[0];
+    }
+
+    private int poll() {
+        if (size == 0) throw new IllegalStateException();
+        int item = maxHeap[0];
+        maxHeap[0] = maxHeap[size - 1];
+        size--;
+        heapifyDown();
+        return item;
+    }
+
+    public void add(int item) {
+        ensureExtraCapacity();
+        maxHeap[size] = item;
+        size++;
+        heapifyUp();
+    }
+
+    private void heapifyUp() {
+        int index = size - 1;
+        while (hasParent(index) && parent(index) < maxHeap[index]) {
+            swap(getParentIndex(index), index);
+            index = getParentIndex(index);
         }
     }
 
-    // Get the top element of the Heap
-    public int peek() {
-        return maxHeap[1];
-    }
-
-    // Delete the top element of the Heap
-    public int pop() {
-        // If the number of elements in the current Heap is 0,
-        // print "Don't have any elements" and return a default value
-        if (realSize < 1) {
-            System.out.println("Don't have any element!");
-            return Integer.MIN_VALUE;
-        } else {
-            // When there are still elements in the Heap
-            // realSize >= 1
-            int removeElement = maxHeap[1];
-            // Put the last element in the Heap to the top of Heap
-            maxHeap[1] = maxHeap[realSize];
-            realSize--;
-            int index = 1;
-            // When the deleted element is not a leaf node
-            while (index <= realSize / 2) {
-                // the left child of the deleted element
-                int left = index * 2;
-                // the right child of the deleted element
-                int right = (index * 2) + 1;
-                // If the deleted element is smaller than the left or right child
-                // its value needs to be exchanged with the larger value
-                // of the left and right child
-                if (maxHeap[index] < maxHeap[left] || maxHeap[index] < maxHeap[right]) {
-                    if (maxHeap[left] > maxHeap[right]) {
-                        int temp = maxHeap[left];
-                        maxHeap[left] = maxHeap[index];
-                        maxHeap[index] = temp;
-                        index = left;
-                    } else {
-                        // maxHeap[left] <= maxHeap[right]
-                        int temp = maxHeap[right];
-                        maxHeap[right] = maxHeap[index];
-                        maxHeap[index] = temp;
-                        index = right;
-                    }
-                } else {
-                    break;
-                }
+    private void heapifyDown() {
+        int index = 0;
+        while (hasLeftChild(index)) {
+            int largerChildIndex = getLeftChildIndex(index);
+            if (hasRightChild(index) && rightChild(index) > leftChild(index)) {
+                largerChildIndex = getRightChildIndex(index);
             }
-            return removeElement;
-        }
-    }
 
-    // return the number of elements in the Heap
-    public int size() {
-        return realSize;
-    }
-
-    public String toString() {
-        if (realSize == 0) {
-            return "No element!";
-        } else {
-            StringBuilder sb = new StringBuilder();
-            sb.append('[');
-            for (int i = 1; i <= realSize; i++) {
-                sb.append(maxHeap[i]);
-                sb.append(',');
+            if (maxHeap[index] > maxHeap[largerChildIndex]) {
+                break;
+            } else {
+                swap(index, largerChildIndex);
             }
-            sb.deleteCharAt(sb.length() - 1);
-            sb.append(']');
-            return sb.toString();
+
+            index = largerChildIndex;
         }
     }
 
     public static void main(String[] args) {
+        MaxHeapImplementation maxHeap = new MaxHeapImplementation();
 
+        // Adding elements to the max-heap
+        maxHeap.add(10);
+        maxHeap.add(5);
+        maxHeap.add(15);
+        maxHeap.add(3);
+        maxHeap.add(8);
 
-        // Test case
-        MaxHeapImplementation maxheap = new MaxHeapImplementation(5);
-        maxheap.add(1);
-        maxheap.add(2);
-        maxheap.add(3);
-        // [3,1,2]
-        System.out.println(maxheap.toString());
-        // 3
-        System.out.println(maxheap.peek());
-        // 3
-        System.out.println(maxheap.pop());
-        System.out.println(maxheap.pop());
-        System.out.println(maxheap.pop());
-        // No element
-        System.out.println(maxheap.toString());
-        maxheap.add(4);
-        // Add too many elements
-        maxheap.add(5);
-        // [4,1,2]
-        System.out.println(maxheap.toString());
+        // Peeking at the maximum element (without removing)
+        System.out.println("Peek: " + maxHeap.peek()); // Should print "Peek: 15"
+
+        // Removing and printing elements in descending order (maximum to minimum)
+        while (maxHeap.size > 0) {
+            int max = maxHeap.poll();
+            System.out.println("Popped: " + max);
+        }
     }
 }
+

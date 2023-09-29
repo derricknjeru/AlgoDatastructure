@@ -2,6 +2,7 @@ package CodingInterviewPatterns.graph.Dfs;
 
 import CodingInterviewPatterns.graph.Graph;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DFS {
@@ -29,13 +30,13 @@ public class DFS {
             }
         }
 
-        System.out.println("test ---> "+v);
+        System.out.println("test ---> " + v);
 
     }
 
     public static void main(String[] args) {
         int V = 5;
-        CodingInterviewPatterns.graph.Graph g = new Graph(V);
+        Graph g = new Graph(V);
         g.addEdge(0, 1);
         g.addEdge(0, 2);
         g.addEdge(1, 3);
@@ -43,7 +44,7 @@ public class DFS {
 
         // 0 -----1---3   (u,v)
         // |      |
-        // 2
+        // 2      4
 
         //(0,1), (0,2), (1,3) (1,4)
         //Expected results "01342" or "02143"
@@ -51,7 +52,7 @@ public class DFS {
         g.printGraph();
 
 
-        /*boolean[] discovered = new boolean[V];
+        boolean[] discovered = new boolean[V];
         List<Integer> ans = new ArrayList<>();
 
         for (int i = 0; i < V; i++) { //We do this to cater for disconnected CodingInterviewPatterns.graph
@@ -60,7 +61,7 @@ public class DFS {
             }
         }
 
-        for (int a : ans) System.out.print(a + " ");*/
+        for (int a : ans) System.out.print(a + " ");
 
     }
 
