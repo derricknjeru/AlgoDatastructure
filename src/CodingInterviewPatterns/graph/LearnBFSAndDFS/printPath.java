@@ -1,4 +1,4 @@
-package companies.uber;
+package CodingInterviewPatterns.graph.LearnBFSAndDFS;
 
 import java.util.*;
 
