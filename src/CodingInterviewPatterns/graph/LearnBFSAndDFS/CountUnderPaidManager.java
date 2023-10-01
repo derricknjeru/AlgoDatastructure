@@ -1,4 +1,4 @@
-package companies.Google;
+package CodingInterviewPatterns.graph.LearnBFSAndDFS;
 
 import java.util.*;
 
@@ -35,7 +35,6 @@ B (Manager, Salary: $90)
 |   |   +-- E (Employee, Salary: $60)
 |   |
 |   +-- D (Employee, Salary: $70)
-
 
 */
 
