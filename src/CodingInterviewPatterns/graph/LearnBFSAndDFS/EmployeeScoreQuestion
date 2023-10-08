@@ -1,0 +1,127 @@
+/*
+The employee score for an employee equals "The total number of directs and indirect employees report to that employee,
+ then plus 1. The "plus one" here means adding the employee itself as self-reporting.
+
+ An employee without any other employees reporting to them. Will have employee score of 1.
+
+ Each employee has a unique eid, (employee id). Given a direct report map, where key is an eid, value is an array of
+ eids who direct report to key. This map should contain all employees.
+
+ Here is an example of direct report map.
+  {123: [234, 345],
+     234: [456, 789],
+     345:[],
+     456:[],
+     789:[]}
+
+ no loops -> Manager can't report to their reports or employees can't report to themselves.
+ Employees can't have more than one manager
+ Company have only one CEO
+
+ Write a function, Input is given eid, calculate employee score for the eid, Direct report map is a global variable
+ that you can access anywhere in your code. Assume map is valid.
+
+
+Map<Integer, List<Integer>> directReports = new HashMap<>();
+
+//V1 -> Write a function, Input is given eid,
+
+private int getScore(String eid){
+    if(!directReports.containsKey(eid)) return 0;
+
+    int score = 1;
+    for(int neiId : directReports.get(eid){
+        score += getScore(neiId);
+    }
+    return score;
+}
+
+//v2 follow up 2, Assume getScore will called multiple times, improve the efficiency
+Map<Integer, Integer> cache = new HashMap<>();
+
+private int getScore(String eid){
+    if(!directReports.containsKey(eid)) return 0;
+    if(cache.containsKey(eid)) return cache.get(eid);
+
+    int score = 1;
+    for(int neiId : directReports.get(eid){
+        score += getScore(neiId);
+    }
+    cache.put(eid,score);
+    return score;
+}
+
+//v3 -> follow up 3, should return on O(1) time.
+//This is O(1) because there are scenarios where the score will be already be in cache
+private void getAllEmployees(){
+ for (int eid : directReports.keySet()) {
+     int score = getScore(eid);
+     System.out.println("Employee eid "+ eid + "score is: " + score);
+ }
+}
+
+//v4 -> follow up 4, Validate the direct report.
+/**
+   no loops -> Manager can't report to their reports or employees can't report to themselves.
+   Employees can't have more than one manager
+   Company have only one CEO
+*/
+
+public static boolean validateDirectReports(Map<Integer) {
+    // Employees can't have more than one manager
+    Set<Integer> allEmployees = new HashSet<>(directReports.keySet());
+    for (List<Integer> reports : directReports.values()) {
+      allEmployees.addAll(reports);
+    }
+    if (allEmployees.size() != directReports.size()) {
+      return false;
+    }
+
+    //There is only one CEO
+    for (int eid : directReports.keySet()) {
+      List<Integer> reports = directReports.get(eid);
+      if (reports.contains(eid)) {
+        return false;
+      }
+    }
+
+    //There are no loops
+    Set<Integer> visited = new HashSet<>();
+    for (int eid : directReports.keySet()) {
+      if (!visited.contains(eid)) {
+        if (hasCycle(eid, directReports, visited, new HashSet<>())) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  private static boolean hasCycle(int eid, Map<Integer, List<Integer>> directReports, Set<Integer> visited, Set<Integer> stack) {
+      visited.add(eid);
+      stack.add(eid);
+
+      for (int report : directReports.getOrDefault(eid, Collections.emptyList())) {
+        if (!visited.contains(report)) {
+          if (hasCycle(report, directReports, visited, stack)) {
+            return true;
+          }
+        } else if (stack.contains(report)) {
+          return true;
+        }
+      }
+
+      stack.remove(eid);
+      return false;
+ }
+
+
+
+
+
+
+
+
+
+
+

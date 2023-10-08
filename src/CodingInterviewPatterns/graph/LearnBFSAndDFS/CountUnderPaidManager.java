@@ -56,13 +56,21 @@ public class CountUnderPaidManager {
         List<Employee> employees = createEmployeeList();
 
         char managerName = 'B'; // Change the manager name for this example
-        if (isUnderPaid(managerName, employees)) {
+        Solution sln = new Solution();
+        if (sln.isUnderPaid(managerName, employees)) {
+            System.out.println("Manager " + managerName + " is underpaid");
+        } else {
+            System.out.println("Manager " + managerName + " is not underpaid");
+        }
+        Solution2 sln2 = new Solution2();
+        if (sln2.isUnderPaid(managerName, employees)) {
             System.out.println("Manager " + managerName + " is underpaid");
         } else {
             System.out.println("Manager " + managerName + " is not underpaid");
         }
 
-        if (isUnderPaid2(managerName, employees)) {
+        Solution3 sln3 = new Solution3();
+        if (sln3.isUnderPaid(managerName, employees)) {
             System.out.println("Manager " + managerName + " is underpaid");
         } else {
             System.out.println("Manager " + managerName + " is not underpaid");
@@ -84,76 +92,118 @@ public class CountUnderPaidManager {
         return employees;
     }
 
-    private static boolean isUnderPaid(char name, List<Employee> employeeList) {
-        Map<Character, Employee> graph = new HashMap<>();
-        Map<Character, Long> salaryMap = new HashMap<>();
-        for (Employee employee : employeeList) {
-            graph.put(employee.name, employee);
-            salaryMap.put(employee.name, employee.salary);
+    static class Solution {
+
+        private boolean isUnderPaid(char name, List<Employee> employeeList) {
+            Map<Character, Employee> graph = new HashMap<>();
+            Map<Character, Long> salaryMap = new HashMap<>();
+            for (Employee employee : employeeList) {
+                graph.put(employee.name, employee);
+                salaryMap.put(employee.name, employee.salary);
+            }
+
+            long totalSalary = getTotalSalary(graph, name);
+            long salaryOfSubordinates = totalSalary - salaryMap.get(name);
+            long totalSubordinates = totalCount - 1;
+            double avgSalary = (totalSubordinates > 0) ? (double) salaryOfSubordinates / totalSubordinates : 0;
+
+            System.out.println("The average salary of " + name + " is " + avgSalary);
+
+            return avgSalary > salaryMap.get(name);
         }
 
-        long totalSalary = getTotalSalary(graph, name);
-        long salaryOfSubordinates = totalSalary - salaryMap.get(name);
-        long totalSubordinates = totalCount - 1;
-        double avgSalary = (totalSubordinates > 0) ? (double) salaryOfSubordinates / totalSubordinates : 0;
+        private static long totalCount = 0;
 
-        System.out.println("The average salary of " + name + " is " + avgSalary);
+        private long getTotalSalary(Map<Character, Employee> graph, char name) {
+            totalCount++;
+            long salary = graph.get(name).salary;
 
-        return avgSalary > salaryMap.get(name);
-    }
-
-    private static long totalCount = 0;
-
-    private static long getTotalSalary(Map<Character, Employee> graph, char name) {
-        totalCount++;
-        long salary = graph.get(name).salary;
-
-        for (char emp : graph.get(name).employeeList) {
-            salary += getTotalSalary(graph, emp);
-        }
-        return salary;
-    }
-
-    static class ReportSummary {
-        int totalEmployees;
-        long totalSalary;
-
-        public ReportSummary(int totalCount, long salary) {
-            this.totalEmployees = totalCount;
-            this.totalSalary = salary;
+            for (char emp : graph.get(name).employeeList) {
+                salary += getTotalSalary(graph, emp);
+            }
+            return salary;
         }
     }
 
+    static class Solution2 {
+        class ReportSummary {
+            int totalEmployees;
+            long totalSalary;
 
-    private static boolean isUnderPaid2(char name, List<Employee> employeeList) {
-        Map<Character, Employee> graph = new HashMap<>();
-        Map<Character, Long> salaryMap = new HashMap<>();
-        for (Employee employee : employeeList) {
-            graph.put(employee.name, employee);
-            salaryMap.put(employee.name, employee.salary);
+            public ReportSummary(int totalCount, long salary) {
+                this.totalEmployees = totalCount;
+                this.totalSalary = salary;
+            }
         }
 
-        ReportSummary summary = getTotalSalary2(graph, name);
-        long salaryOfSubordinates = summary.totalSalary - salaryMap.get(name);
-        long totalSubordinates = summary.totalEmployees - 1;
-        double avgSalary = (totalSubordinates > 0) ? (double) salaryOfSubordinates / totalSubordinates : 0;
 
-        System.out.println("The average salary of " + name + " is " + avgSalary);
+        private boolean isUnderPaid(char name, List<Employee> employeeList) {
+            Map<Character, Employee> graph = new HashMap<>();
+            Map<Character, Long> salaryMap = new HashMap<>();
+            for (Employee employee : employeeList) {
+                graph.put(employee.name, employee);
+                salaryMap.put(employee.name, employee.salary);
+            }
 
-        return avgSalary > salaryMap.get(name);
+            ReportSummary summary = getTotalSalary2(graph, name);
+            long salaryOfSubordinates = summary.totalSalary - salaryMap.get(name);
+            long totalSubordinates = summary.totalEmployees - 1;
+            double avgSalary = (totalSubordinates > 0) ? (double) salaryOfSubordinates / totalSubordinates : 0;
+
+            System.out.println("The average salary of " + name + " is " + avgSalary);
+
+            return avgSalary > salaryMap.get(name);
+        }
+
+
+        private ReportSummary getTotalSalary2(Map<Character, Employee> graph, char name) {
+            int totalCount = 1;
+            long salary = graph.get(name).salary;
+
+            for (char emp : graph.get(name).employeeList) {
+                ReportSummary subResult = getTotalSalary2(graph, emp);
+                salary += subResult.totalSalary;
+                totalCount += subResult.totalEmployees;
+
+            }
+            return new ReportSummary(totalCount, salary);
+        }
     }
 
+    static class Solution3 {
 
-    private static ReportSummary getTotalSalary2(Map<Character, Employee> graph, char name) {
-        int totalCount = 1;
-        long salary = graph.get(name).salary;
-
-        for (char emp : graph.get(name).employeeList) {
-            ReportSummary subResult = getTotalSalary2(graph, emp);
-            salary += subResult.totalSalary;
-            totalCount += subResult.totalEmployees;
+        private boolean isUnderPaid(char managerName, List<Employee> employees) {
+            Map<Character, Employee> employeeMap = new HashMap<>();
+            for (Employee employee : employees) {
+                employeeMap.put(employee.name, employee);
+            }
+            return isUnderPaidDFS(managerName, employeeMap);
         }
-        return new ReportSummary(totalCount, salary);
+
+        private boolean isUnderPaidDFS(char managerName, Map<Character, Employee> employeeMap) {
+            Employee manager = employeeMap.get(managerName);
+            if (manager == null) {
+                // Manager not found in the organization tree, they are not underpaid.
+                return false;
+            }
+
+            long totalSalary = manager.salary;
+            int countEmployees = 1;
+
+            for (char employeeName : manager.employeeList) {
+                if (employeeMap.containsKey(employeeName)) {
+                    Employee employee = employeeMap.get(employeeName);
+                    totalSalary += employee.salary;
+                    countEmployees++;
+                    if (isUnderPaidDFS(employeeName, employeeMap)) {
+                        return true;
+                    }
+                }
+            }
+
+            long averageSalary = totalSalary / countEmployees;
+            return manager.salary < averageSalary;
+        }
     }
 }
 

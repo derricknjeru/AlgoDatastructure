@@ -1,5 +1,7 @@
 package CodingInterviewPatterns.graph;
 
+import java.util.List;
+
 public class DetectCycleDirectedGraph {
     //https://www.youtube.com/watch?v=wQqFQeucFDc
     //https://www.geeksforgeeks.org/detect-cycle-direct-graph-using-colors/
@@ -20,6 +22,10 @@ public class DetectCycleDirectedGraph {
         // A back edge is an edge that is from a node to itself (selfloop) or one of its ancestor in the tree produced by DFS.
         //https://en.wikipedia.org/wiki/Depth-first_search#Output_of_a_depth-first_search
         if (isCyclic(g, V)) System.out.println("Graph contains cycle");
+        else System.out.println("Graph doesn't contain cycle");
+
+
+        if (isCyclic2(g, V)) System.out.println("Graph contains cycle");
         else System.out.println("Graph doesn't contain cycle");
 
     }
@@ -60,11 +66,54 @@ public class DetectCycleDirectedGraph {
 
             // If v is not processed and there is a back
             // edge in subtree rooted with v
+            //A back edge is an edge that is from a node to itself (selfloop) or one of its ancestor in the tree produced by DFS
             if (visited[u] == WHITE && detectCycle_util(g, u, visited)) return true;
 
         }
         // Mark this vertex as processed
         visited[v] = BLACK;
+        return false;
+    }
+
+    private static boolean isCyclic2(Graph g, int V) {
+        //https://www.youtube.com/watch?v=joqmqvHC_Bo&ab_channel=GeeksforGeeks
+        // Mark all the vertices as not visited and
+        // not part of recursion stack
+        boolean[] visited = new boolean[V];
+        boolean[] recStack = new boolean[V];
+
+        // Call the recursive helper function to
+        // detect cycle in different DFS trees
+        for (int i = 0; i < V; i++)
+            if (isCyclicUtil(g, i, visited, recStack))
+                return true;
+
+        return false;
+    }
+
+    // Function to check if cycle exists
+    private static boolean isCyclicUtil(Graph g, int i, boolean[] visited,
+                                        boolean[] recStack) {
+        // Mark the current node as visited and
+        // part of recursion stack
+        if (recStack[i])
+            return true;
+
+        if (visited[i])
+            return false;
+
+        visited[i] = true;
+        recStack[i] = true;
+
+        List<Integer> children = g.adjacencyList.get(i);
+
+        for (int c : children) {
+            if (isCyclicUtil(g, c, visited, recStack))
+                return true;
+        }
+
+        // Mark this vertex as processed
+        recStack[i] = false;
         return false;
     }
 

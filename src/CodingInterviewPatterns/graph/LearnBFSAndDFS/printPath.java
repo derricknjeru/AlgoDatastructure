@@ -71,12 +71,12 @@ public class printPath {
 
 
     public static void main(String[] args) {
-        //Map<Integer, Folder> graph = createAdjacencyList();
-        Map<Integer, Folder> graph = createAdjacencyList2();
+        Map<Integer, Folder> graph = createAdjacencyList();
+        //Map<Integer, Folder> graph = createAdjacencyList2();
         int src = 0;
-        int dest = 6;
+        int dest = 9;
 
-        Set<Integer> visited = new HashSet<>();
+        /*Set<Integer> visited = new HashSet<>();
         Stack<String> path = new Stack<>();
 
         dfs(graph, visited, src, dest, path);
@@ -98,11 +98,11 @@ public class printPath {
             printPath(path2);
         } else {
             System.out.println("No path found to the target folder.");
-        }
+        }*/
 
         Stack<String> path3 = new Stack<>();
-        dfs(graph, src, dest, path3);
-        printPath(path3);
+        dfs2(graph, src, dest, path3);
+        //printPath(path3);
     }
 
     private static void printPath(Stack<String> path) {
@@ -111,7 +111,7 @@ public class printPath {
         System.out.println("Path: " + joiner);
     }
 
-    private static boolean dfs(Map<Integer, Folder> graph, Set<Integer> visited, int src, int dest, Stack<String> path) {
+    /*private static boolean dfs(Map<Integer, Folder> graph, Set<Integer> visited, int src, int dest, Stack<String> path) {
         if (graph.get(src) == null) {
             return false;
         }
@@ -156,7 +156,7 @@ public class printPath {
         // If the current folder is not part of the path to the destination, remove it
         path.pop();
         return false;
-    }
+    }*/
 
     private static void dfs2(Map<Integer, Folder> graph, int src, int dest, Stack<String> path) {
         if (!graph.containsKey(src)) {
@@ -175,7 +175,7 @@ public class printPath {
         }
         // backtrack: remove the current node from the path
         // If the current folder is not part of the path to the destination, remove it
-        path.pop();
+       path.pop();
     }
 
 
