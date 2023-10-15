@@ -4,6 +4,7 @@ import java.util.*;
 
 public class EmployeeScore {
     //https://interviewing.io/questions/employee-hierarchy
+    //https://www.youtube.com/watch?v=jvN-Lmjl25M&t=294s&ab_channel=interviewing.io
     /*
 The employee score for an employee equals "The total number of directs and indirect employees report to that employee,
 then plus 1. The "plus one" here means adding the employee itself as self-reporting.

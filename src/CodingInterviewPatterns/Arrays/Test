@@ -1,0 +1,8 @@
+Given an integer array nums and two integers left and right, return the number of contiguous non-empty subarray.
+such that the value of the maximum array element in that number is in the range [left,right]
+
+Example:
+Input:nums [2, 1, 4, 3] left = 2, right = 3
+output 3
+
+There are 3 subarrays that meet the requirement [2] [2,1] [3]
