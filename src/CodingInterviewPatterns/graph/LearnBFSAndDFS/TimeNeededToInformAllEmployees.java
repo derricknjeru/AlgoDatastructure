@@ -122,5 +122,33 @@ public class TimeNeededToInformAllEmployees {
         }
     }
 
+    public class Solution3 {
+        private int totalTime = 0;
 
+        public int numOfMinutes(int n, int headID, int[] manager, int[] informTime) {
+            List<List<Integer>> graph = new ArrayList<>();
+            for (int i = 0; i < n; i++) {
+                graph.add(new ArrayList<>());
+            }
+
+            for (int i = 0; i < n; i++) {
+                int u = manager[i];
+                if (u != -1) {
+                    graph.get(u).add(i);
+                }
+            }
+
+            dfs(graph, headID, informTime, informTime[headID]);
+
+            return totalTime;
+        }
+
+        private void dfs(List<List<Integer>> graph, int empId, int[] informTime, int parentTime) {
+            for (int neiId : graph.get(empId)) {
+                int childTime = parentTime + informTime[neiId];
+                dfs(graph, neiId, informTime, childTime);
+                totalTime = Math.max(totalTime, childTime);
+            }
+        }
+    }
 }
