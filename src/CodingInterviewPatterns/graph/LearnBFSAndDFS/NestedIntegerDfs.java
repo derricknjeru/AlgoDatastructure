@@ -7,6 +7,7 @@ public class NestedIntegerDfs {
 
 
     // The provided NestedInteger class
+    // The provided NestedInteger class
     static class NestedInteger {
         List<NestedInteger> list;
         Integer integer;
@@ -44,6 +45,29 @@ public class NestedIntegerDfs {
         public List<NestedInteger> getList() {
             return list;
         }
+
+        public String toString() {
+            if (isInteger()) {
+                return integer.toString();
+            } else {
+                StringBuilder result = new StringBuilder("[");
+                boolean first = true;
+
+                for (NestedInteger ni : list) {
+                    if (!first) {
+                        result.append(",");
+                    } else {
+                        first = false;
+                    }
+
+                    result.append(ni.toString());
+                }
+
+                result.append("]");
+                return result.toString();
+            }
+        }
+
     }
 
     static class Solution {
@@ -66,6 +90,14 @@ public class NestedIntegerDfs {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
+        ////https://www.educative.io/courses/decode-coding-interview-java/diy-nested-list-weight-sum
+        //https://cheonhyangzhang.gitbooks.io/leetcode-solutions/content/339-nested-list-weight-sum.html
+        /**
+         * Time Complexity: O(N)
+         * N is the total number of integers in the nested list.
+         * This implementation visits each integer once, and for each integer,
+         * it performs a constant amount of work (adding the integer value to the sum and tracking the depth).
+         */
 
         // Example 1: [[1,1],2,[1,1]]
         List<NestedInteger> nestedList1 = new ArrayList<>();

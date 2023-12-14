@@ -46,11 +46,40 @@ public class NestedIntegerBfs {
         public List<NestedInteger> getList() {
             return list;
         }
+
+        public String toString() {
+            if (isInteger()) {
+                return integer.toString();
+            } else {
+                StringBuilder result = new StringBuilder("[");
+                boolean first = true;
+
+                for (NestedInteger ni : list) {
+                    if (!first) {
+                        result.append(",");
+                    } else {
+                        first = false;
+                    }
+
+                    result.append(ni.toString());
+                }
+
+                result.append("]");
+                return result.toString();
+            }
+        }
+
     }
 
     static class Solution {
         public int depthSum(List<NestedInteger> nestedList) {
             Queue<NestedInteger> q = new LinkedList<>(nestedList);
+            int size = 0;
+            System.out.println("---q---");
+            while (size < q.size()) {
+                System.out.println(q.poll());
+            }
+            System.out.println("\n---end---");
             return depthSumBfs(q);
         }
 
@@ -76,7 +105,15 @@ public class NestedIntegerBfs {
     }
 
     public static void main(String[] args) {
+        //https://www.educative.io/courses/decode-coding-interview-java/diy-nested-list-weight-sum
+        //https://cheonhyangzhang.gitbooks.io/leetcode-solutions/content/339-nested-list-weight-sum.html
         Solution solution = new Solution();
+        /**
+         * Time Complexity: O(N)
+         * Similar to the recursive implementation,
+         * this implementation also visits each integer once and performs a constant amount of work for each integer.
+         * The use of a queue for BFS traversal ensures that each integer is processed once, and the depth is incremented accordingly.
+         */
 
         // Example 1: [[1,1],2,[1,1]]
         List<NestedInteger> nestedList1 = new ArrayList<>();
@@ -92,6 +129,7 @@ public class NestedIntegerBfs {
         item2.add(new NestedInteger(1));
 
         nestedList1.add(item2);
+        System.out.println(nestedList1);
 
         System.out.println(solution.depthSum(nestedList1)); // Output: 10
 
@@ -108,6 +146,7 @@ public class NestedIntegerBfs {
         item3.add(item4);
 
         nestedList2.add(item3);
+        System.out.println(nestedList2);
 
 
         System.out.println(solution.depthSum(nestedList2)); // Output: 27

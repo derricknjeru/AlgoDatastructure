@@ -13,6 +13,7 @@ public class InvertBinaryTree {
         }
     }
     //https://www.youtube.com/watch?v=OnSn2XEQ4MY&t=3s
+    //Best https://www.youtube.com/watch?v=_i0jqdVkObU
 
     /**
      * Definition for a binary tree node.
@@ -32,12 +33,12 @@ public class InvertBinaryTree {
     public TreeNode invertTree(TreeNode root) {
         if (root == null) return null;
 
+        invertTree(root.left);
+        invertTree(root.right);
+
         TreeNode tmp = root.left;
         root.left = root.right;
         root.right = tmp;
-
-        invertTree(root.left);
-        invertTree(root.right);
 
         return root;
     }
