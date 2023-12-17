@@ -4,11 +4,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
-public class TwoDigitNumberExtractorPart1 {
-    private static final String FILE_PATH = "/Users/derrick/IdeaProjects/AlgoDatastructure/src/AOC/Y2023/day1/puzzleInput2";
+public class TwoDigitNumberExtractorPart2 {
+    private static final String FILE_PATH = "/Users/derrick/IdeaProjects/AlgoDatastructure/src/AOC/Y2023/day1/puzzleInput";
+
+    //private static final Map<String, Integer> DIGITS_MAP = new HashMap<>();
+    static Map<String, String> DIGITS_MAP = Map.of("one", "o1e", "two", "t2o", "three", "th3ee", "four", "f4ur", "five", "f5ve", "six", "s6x", "seven", "se7en", "eight", "ei8ht", "nine", "n9ne");
 
     public static void main(String[] args) {
 
@@ -47,6 +51,7 @@ public class TwoDigitNumberExtractorPart1 {
     private static int extractTwoDigitNumber(String input) {
         int firstDigit = -1;
         int lastDigit = -1;
+        input = getDigitValue(input);
 
         for (char c : input.toCharArray()) {
             if (Character.isDigit(c)) {
@@ -67,6 +72,13 @@ public class TwoDigitNumberExtractorPart1 {
         } else {
             return -1; // Indicates that a 2-digit number was not found
         }
+    }
+
+    private static String getDigitValue(String input) {
+        for (Map.Entry<String, String> entry : DIGITS_MAP.entrySet()) {
+            input = input.replaceAll(entry.getKey(), entry.getValue());
+        }
+        return input;
     }
 
 }
