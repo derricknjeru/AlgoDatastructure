@@ -152,7 +152,7 @@ Second time: O(n)
 
 The space complexity remains the same as the first-time run since the memo map is used to store the calculated scores for all employee IDs. The space complexity is still O(n) in the worst case.
 
-It's important to note that the space complexity mentioned here assume that the direct reports map is valid, without any circular reporting hierarchy or missing employee IDs.
+It's important to README.md that the space complexity mentioned here assume that the direct reports map is valid, without any circular reporting hierarchy or missing employee IDs.
          */
     }
 

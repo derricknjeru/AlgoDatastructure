@@ -80,6 +80,5 @@ public class TwoDigitNumberExtractorPart2 {
         }
         return input;
     }
-
 }
 

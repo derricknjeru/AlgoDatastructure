@@ -57,7 +57,7 @@ public class MedianOfTwoSortedArrays {
      * <p>
      * Therefore, the overall time complexity of the implementation is O(m + n), where m and n are the lengths of the input arrays nums1 and nums2, respectively.
      * <p>
-     * It's important to note that this time complexity assumes that the arrays nums1 and nums2 are already sorted. If the input arrays are not sorted, additional sorting steps may be required, which would affect the overall time complexity.
+     * It's important to README.md that this time complexity assumes that the arrays nums1 and nums2 are already sorted. If the input arrays are not sorted, additional sorting steps may be required, which would affect the overall time complexity.
      *
      * @param nums1
      * @param nums2

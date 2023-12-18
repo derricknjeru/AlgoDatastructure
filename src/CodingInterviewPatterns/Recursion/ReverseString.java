@@ -40,7 +40,7 @@ public class ReverseString {
      * Each recursive call adds a new frame to the call stack, which requires space to store the local variables and parameters of that call. Since there can be at most n/2 recursive calls in this case,
      * the space complexity is linear with respect to the length of the input string.
      *
-     * It's important to note.md that the space complexity of the algorithm is considered O(1) in terms of extra memory,
+     * It's important to README.md.md that the space complexity of the algorithm is considered O(1) in terms of extra memory,
      * as it doesn't use any additional data structures proportional to the input size. Instead,
      * it modifies the input array in-place.
      */
