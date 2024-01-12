@@ -7,6 +7,7 @@ public class SCCKosarajusAlgo {
      //https://www.geeksforgeeks.org/strongly-connected-components/
     //https://www.youtube.com/watch?v=5wFyZJ8yH9Q
     //https://www.youtube.com/watch?v=RpgcYiky7uw&t=1042s
+    //https://www.youtube.com/watch?v=LvM8Qi-IvqE
 
     public static void main(String[] args) {
         // Create a CodingInterviewPatterns.graph given in the above diagram
