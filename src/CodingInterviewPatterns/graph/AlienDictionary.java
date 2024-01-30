@@ -7,6 +7,8 @@ public class AlienDictionary {
     //https://www.youtube.com/watch?v=6kTZYvNNyps
     //https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/ --> Kahn’s algorithm
     //https://www.geeksforgeeks.org/given-sorted-dictionary-find-precedence-characters/
+    //https://interviewing.io/questions/alien-dictionary
+    //https://www.youtube.com/watch?v=si7AZyFR9B8
 
 
     /**

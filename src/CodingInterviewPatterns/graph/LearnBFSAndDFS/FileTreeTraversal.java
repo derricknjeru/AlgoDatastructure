@@ -4,6 +4,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class FileTreeTraversal {
+    //https://interviewing.io/questions/print-folder-structure
+    //https://www.youtube.com/watch?v=MRy7M3E0La8
+    //https://leetcode.com/discuss/interview-question/1369886/google-phone-filepaths
+    //https://leetcode.com/discuss/interview-question/569802/google-phone-print-hierarchy
     /*
      *   files = [ "/webapp/assets/html/a.html",
      *             "/webapp/assets/html/b.html",

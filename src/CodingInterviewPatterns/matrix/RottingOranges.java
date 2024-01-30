@@ -1,4 +1,4 @@
-package CodingInterviewPatterns.graph;
+package CodingInterviewPatterns.matrix;
 
 import java.util.ArrayDeque;
 import java.util.LinkedList;

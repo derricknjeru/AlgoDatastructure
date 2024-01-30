@@ -82,6 +82,7 @@ public class WallsAndGates {
     public void wallsAndGates(int[][] rooms) {
         //https://www.youtube.com/watch?v=yJvA5MNx5LM&ab_channel=VivekSharma
         //https://chat.openai.com/
+        //https://interviewing.io/mocks/google-java-walls-and-gates
         if (rooms == null || rooms.length == 0 || rooms[0].length == 0) {
             return;
         }

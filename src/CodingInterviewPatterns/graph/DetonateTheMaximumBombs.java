@@ -3,7 +3,7 @@ package CodingInterviewPatterns.graph;
 import java.util.*;
 
 public class DetonateTheMaximumBombs {
-
+//https://www.youtube.com/watch?v=8NPbAvVXKR4
     public int maximumDetonation(int[][] bombs) {
         Map<Integer, List<Integer>> graph = new HashMap<>();
         int V = bombs.length;
@@ -36,6 +36,65 @@ public class DetonateTheMaximumBombs {
         }
 
         return answer;
+    }
+
+    class Solution {
+        public int maximumDetonation(int[][] bombs) {
+            int V = bombs.length; // Number of vertices (bombs)
+            // Declaring an array of ArrayLists to represent the graph
+            List<Integer>[] graph = new ArrayList[V];
+
+            // Initializing each element of the array with a new ArrayList
+            for (int i = 0; i < V; i++) {
+                graph[i] = new ArrayList<Integer>();
+            }
+
+            // Constructing the graph based on bomb proximity
+            // Time Complexity: O(V^3)
+            for (int i = 0; i < V; i++) {
+                for (int j = 0; j < V; j++) {
+                    long x1 = bombs[i][0], y1 = bombs[i][1], r1 = bombs[i][2];
+                    long x2 = bombs[j][0], y2 = bombs[j][1], r2 = bombs[j][2];
+
+                    long d = (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
+
+                    // If bomb i can reach bomb j or vice versa, add an edge
+                    if (d <= r1 * r1) {
+                        graph[i].add(j);
+                    }
+
+                    if (d <= r2 * r2) {
+                        graph[j].add(i);
+                    }
+                }
+            }
+
+            int max = 0;
+            // Finding the maximum detonation using DFS
+            // Time Complexity: O(V^2)
+            for (int i = 0; i < V; i++) {
+                boolean[] visited = new boolean[V];
+                max = Math.max(max, dfs(graph, i, visited));
+            }
+            return max;
+        }
+
+        // Depth-First Search (DFS) to traverse the graph and count detonations
+        // Time Complexity: O(V^2)
+        private int dfs(List<Integer>[] graph, int i, boolean[] visited) {
+            if (visited[i]) return 0;
+
+            visited[i] = true;
+            ;
+
+            int count = 1; // Counting the current bomb
+            for (int u : graph[i]) {
+                if (!visited[u]) {
+                    count += dfs(graph, u, visited);
+                }
+            }
+            return count;
+        }
     }
 
     private int dfs(Map<Integer, List<Integer>> graph, int src, Set<Integer> visited) {

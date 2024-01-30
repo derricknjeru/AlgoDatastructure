@@ -18,7 +18,7 @@ public class TimeNeededToInformAllEmployees {
      * Overall, the time complexity of the code is O(n) because the dominant factor is the DFS traversal. Other operations such as constructing the adjacency list contribute linearly to the time complexity but are overshadowed by the DFS traversal.
      */
 
-    static class Solution {
+    static class Solution3 {
         private int maxTime = Integer.MIN_VALUE;
 
         public int numOfMinutes(int n, int headID, int[] manager, int[] informTime) {
@@ -51,6 +51,38 @@ public class TimeNeededToInformAllEmployees {
                 }
             }
         }
+    }
+
+    static class Solution {
+        public int numOfMinutes(int n, int headID, int[] manager, int[] informTime) {
+            List<Integer>[] graph = new ArrayList[n];
+            for (int i = 0; i < n; i++) {
+                graph[i] = new ArrayList<>();
+            }
+
+            for (int i = 0; i < n; i++) {
+                if (manager[i] != -1) {
+                    graph[manager[i]].add(i);
+                }
+            }
+
+            // dfs
+
+            return dfs(graph, headID, informTime);
+        }
+
+        private int dfs(List<Integer>[] graph, int node, int[] informTime) {
+            if (graph[node].size() == 0) return 0;
+
+            int nodeTime = informTime[node];
+            int maxValue = 0;
+            for (int child : graph[node]) {
+                int childTime = nodeTime + dfs(graph, child, informTime);
+                maxValue = Math.max(maxValue, childTime);
+            }
+            return maxValue;
+        }
+
     }
 
     public static void main(String[] args) {
