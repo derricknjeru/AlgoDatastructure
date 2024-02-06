@@ -2,6 +2,7 @@ package CodingInterviewPatterns.DynamicProgramming.OneDP;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class CoinsChange1 {
     public static void main(String[] args) {
@@ -61,7 +62,7 @@ public class CoinsChange1 {
             for (int i = 1; i <= amount; i++) {
                 //get the min number of coins for each amount from 0 ---> n;
                 for (int coin : coins) { //go through each coin
-                    if (coin <= i) {
+                    if (i - coin >= 0) {
                         dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                         // dp[i - coin] represent minimum number of coins required
                         //to make up the remaining amount after subtracting coin, and
@@ -76,29 +77,39 @@ public class CoinsChange1 {
 
     }
 
+
     class Solution2 {
-        /**
-         * The time complexity of this solution is O(amount * coins.Length)
-         * and the space complexity is O(amount) since we are using a single-dimensional
-         * array to store the minimum number of coins for each amount.
-         *
-         * @param coins
-         * @param amount
-         * @return
-         */
+        //Top down ---> recursive
+        private Map<Integer, Integer> memo = new HashMap<>();
 
         public int coinChange(int[] coins, int amount) {
-            int[] dp = new int[amount + 1];
-            Arrays.fill(dp, amount + 1);
-            dp[0] = 0;
+            if (amount == 0) {
+                return 0; // Base case: amount reached, no coins needed
+            }
+            if (amount < 0) {
+                return -1; // Base case: invalid amount, cannot make change
+            }
+
+            if (memo.containsKey(amount)) {
+                return memo.get(amount); // Use cached result if available
+            }
+
+            int minCoins = Integer.MAX_VALUE; // Initialize minimum coins to maximum value
 
             for (int coin : coins) {
-                for (int i = coin; i <= amount; i++) {
-                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+                int remainingAmount = amount - coin;
+                int result = coinChange(coins, remainingAmount); // Recursive call
+
+                // If valid result (not -1) and less than current minimum, update minimum
+                if (result != -1) {
+                    minCoins = Math.min(minCoins, result + 1);
                 }
             }
 
-            return dp[amount] > amount ? -1 : dp[amount];
+            minCoins = (minCoins == Integer.MAX_VALUE) ? -1 : minCoins;
+            memo.put(amount, minCoins); // Cache the result
+
+            return minCoins;
         }
     }
 }
