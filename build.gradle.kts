@@ -1,16 +1,16 @@
 plugins {
-    kotlin("jvm") version "1.9.22"
+    kotlin("jvm") version "2.4.10"
 }
 
-group = "org.example"
-version = "1.0-SNAPSHOT"
+group = "com.derricknjeru"
+version = "0.1.0"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 

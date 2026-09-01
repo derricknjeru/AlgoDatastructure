@@ -14,7 +14,7 @@ fun main() {
 
 private fun getSafeData(): Int {
     val filePath =
-        "/Users/derrick/IdeaProjects/AlgoDatastructureInKotlin/src/main/kotlin/adventofcode2024/resources/day_2.txt"
+        "src/main/kotlin/adventofcode2024/resources/day_2.txt"
 
     /*
      Time Complexity:
@@ -66,7 +66,7 @@ private fun getSafeData(): Int {
 
 private fun getSafeData2(): Int {
     val filePath =
-        "/Users/derrick/IdeaProjects/AlgoDatastructureInKotlin/src/main/kotlin/adventofcode2024/resources/day_2.txt"
+        "src/main/kotlin/adventofcode2024/resources/day_2.txt"
 
     /*
      Time Complexity:

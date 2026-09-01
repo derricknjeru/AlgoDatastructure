@@ -12,7 +12,7 @@ fun main() {
 
 private fun getSafeData(): Int {
     val filePath =
-        "/Users/derrick/IdeaProjects/AlgoDatastructureInKotlin/src/main/kotlin/adventofcode2024/resources/day_2.txt"
+        "src/main/kotlin/adventofcode2024/resources/day_2.txt"
 
     /*
      Time Complexity: O(L ⋅ W^2)
@@ -77,7 +77,7 @@ private fun isDecreasing(numbers: List<Int>): Boolean {
 
 private fun getSafeData2(): Int {
     val filePath =
-        "/Users/derrick/IdeaProjects/AlgoDatastructureInKotlin/src/main/kotlin/adventofcode2024/resources/day_2.txt"
+        "src/main/kotlin/adventofcode2024/resources/day_2.txt"
 
     /*
      Time Complexity: O(L ⋅ W^2)

@@ -48,7 +48,7 @@ import kotlin.math.abs
 fun main() {
 
     val pairs =
-        extractData("/Users/derrick/IdeaProjects/AlgoDatastructureInKotlin/src/main/kotlin/adventofcode2024/resources/day_1.txt")
+        extractData("src/main/kotlin/adventofcode2024/resources/day_1.txt")
 
     val sortedList1 = pairs.first.sorted() // O(n log n)
     val sortedList2 = pairs.second.sorted() // O(n log n)

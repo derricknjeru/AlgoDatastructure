@@ -34,7 +34,7 @@ package adventofcode2024
  */
 fun main() {
     val pairs =
-        extractData("/Users/derrick/IdeaProjects/AlgoDatastructureInKotlin/src/main/kotlin/adventofcode2024/resources/day_1.txt")
+        extractData("src/main/kotlin/adventofcode2024/resources/day_1.txt")
 
     //val list1 = listOf(3, 4, 2, 1, 3, 3)
     //val list2 = listOf(4, 3, 5, 3, 9, 3)
