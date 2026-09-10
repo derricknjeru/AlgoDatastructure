@@ -9,6 +9,8 @@ fun main() {
     println("Hello, my name is $name & I am $age years old")
 
     printAboveShape()
+
+    testForLoop()
 }
 
 /*
@@ -42,4 +44,14 @@ fun printAboveShape1() {
         }
         println()
     }
+}
+
+
+fun testForLoop(){
+    val x: IntArray = intArrayOf(1, 2, 3, 4, 5)
+    for ((index,i) in x.withIndex()) {
+        println("value $i index = $index")
+    }
+
+    val set = HashSet<Int>()
 }

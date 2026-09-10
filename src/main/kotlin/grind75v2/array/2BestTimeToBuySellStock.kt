@@ -1,6 +1,7 @@
-package grind75.array
+package grind75v2.array
 
 import kotlin.math.max
+
 
 fun main() {
     val maxProfit = maxProfit(listOf(7, 1, 5, 3, 6, 4).toIntArray())
@@ -17,7 +18,8 @@ fun maxProfit(prices: IntArray): Int {
     }
     return maxProfit
 }
-
+// space complexity is O(1)
+// Time complexity is O(n)
 fun maxProfit2(prices: IntArray): Int {
     var maxProfit = 0
     var minPrice = Int.MAX_VALUE

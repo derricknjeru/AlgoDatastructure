@@ -1,4 +1,4 @@
-package grind75.array
+package grind75v2.array
 
 fun main() {/*
      * 1. Two Sum
@@ -67,6 +67,8 @@ fun main() {/*
 }
 
 class Solution {
+    // space complexity is O(n)
+   // Time complexity is O(n)
     fun twoSum(nums: IntArray, target: Int): IntArray {
         val map = HashMap<Int, Int>()
         nums.forEachIndexed { index, num ->
@@ -81,10 +83,13 @@ class Solution {
 }
 
 class Solution2 {
+    // space complexity is O(n)
+    // Time complexity is O(n)
     fun twoSum(nums: IntArray, target: Int): IntArray {
         val map = HashMap<Int, Int>()
         for (index in nums.indices) {
             val comp = target - nums[index]
+            val x = map.containsValue(comp)
             map[comp]?.let {
                 return intArrayOf(it, index)
             }
@@ -96,6 +101,8 @@ class Solution2 {
 
 
 class Solution3 {
+    // space complexity is O(n)
+    // Time complexity is O(n)
     fun twoSum(nums: IntArray, target: Int): IntArray {
         val map = HashMap<Int, Int>()
         for ((num, index) in nums.withIndex()) {
@@ -110,6 +117,8 @@ class Solution3 {
 }
 
 class Solution4 {
+    // space complexity is O(n)
+    // Time complexity is O(n)
     fun twoSum(nums: IntArray, target: Int): IntArray {
         val map = HashMap<Int, Int>()
         for (index in 0..nums.lastIndex) {
@@ -120,5 +129,23 @@ class Solution4 {
             map[nums[index]] = index
         }
         return intArrayOf()
+    }
+}
+
+class Solution5 {
+    // space complexity is O(n)
+    // Time complexity is O(n)
+    fun twoSum(nums: IntArray, target: Int): IntArray {
+        //val map = HashMap<Int, Int>()
+        val map  = mutableMapOf<Int, Int>()
+        for ((index, value) in nums.withIndex()) {
+            val x = target - value
+            if (map.containsKey(x)) {
+                return intArrayOf(index, map.getValue(x))
+            }
+            map[value] = index
+
+        }
+        return intArrayOf(0, 0)
     }
 }
