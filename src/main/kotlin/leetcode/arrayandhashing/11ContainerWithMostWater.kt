@@ -1,4 +1,4 @@
-package grind75v2.array
+package leetcode.arrayandhashing
 
 import kotlin.math.max
 import kotlin.math.min

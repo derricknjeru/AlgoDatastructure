@@ -1,4 +1,4 @@
-package grind75v2.array
+package leetcode.arrayandhashing
 
 fun main() {
     val nums = intArrayOf(3, 2, 3)
@@ -78,5 +78,7 @@ private fun majorityElement3(nums: IntArray): Int {
     val maxCount = 0; val res = 0
     // val mostFrequent = occurrenceMap.maxByOrNull { it.value }
     // return mostFrequent?.key ?: 0
+
+   // occurrencesMap.isEmpty()
     return most.key
 }

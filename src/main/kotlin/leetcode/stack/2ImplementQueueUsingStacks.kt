@@ -1,4 +1,4 @@
-package grind75v2.stack
+package leetcode.stack
 
 fun main() {
 

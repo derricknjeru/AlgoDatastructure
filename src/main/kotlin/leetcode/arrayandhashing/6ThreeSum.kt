@@ -1,4 +1,4 @@
-package grind75v2.array
+package leetcode.arrayandhashing
 
 fun main() {
     /**

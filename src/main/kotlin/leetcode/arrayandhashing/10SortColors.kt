@@ -1,4 +1,4 @@
-package grind75v2.array
+package leetcode.arrayandhashing
 
 fun main() {
     val nums = intArrayOf(2, 0, 2, 1, 1, 0)

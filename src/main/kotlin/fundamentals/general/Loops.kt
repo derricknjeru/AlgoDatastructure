@@ -47,31 +47,31 @@ fun printAboveShape1() {
 }
 
 
-fun testForLoop(){
+fun testForLoop() {
     val x: IntArray = intArrayOf(1, 2, 3, 4, 5)
-    for ((index,i) in x.withIndex()) {
+    for ((index, i) in x.withIndex()) {
         println("value $i index = $index")
     }
 
     val set = HashSet<Int>()
-    for ((index, value) in  set.withIndex()) {
+    for ((index, value) in set.withIndex()) {
         println("value $index = $value")
     }
 
     val nums = intArrayOf(1, 2, 3, 4, 5)
-    for ((index,i) in set.withIndex()) {
+    for ((index, i) in set.withIndex()) {
         println("value $i index = $index")
     }
 
-    for ( i in nums.indices) {
+    for (i in nums.indices) {
         println("num = $i")
     }
-    for ( i in 1 until nums.size) {
+    for (i in 1 until nums.size) {
         print("num = ${nums[i]} ")
         //num = 2 num = 3 num = 4 num = 5
     }
     println()
-    for ( i in 2 downTo 0 step 2) {
+    for (i in 2 downTo 0 step 2) {
         println("i = $i")
         //downTo is inclusive
         /**
@@ -80,7 +80,7 @@ fun testForLoop(){
          */
     }
 
-    for(i in 4 .. 10 step 2) {
+    for (i in 4..10 step 2) {
         println("i = $i")
         /**
          * i = 4
@@ -90,4 +90,11 @@ fun testForLoop(){
          *
          */
     }
+
+
+    for (i in nums.indices) {
+        println("i = $i")
+    }
+
+
 }
