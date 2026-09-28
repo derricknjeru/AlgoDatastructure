@@ -1,4 +1,4 @@
-package leetcode.stack
+package leetcode.twopointers
 
 import kotlin.math.max
 import kotlin.math.min

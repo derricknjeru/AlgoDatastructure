@@ -1,4 +1,4 @@
-package leetcode.arrayandhashing
+package leetcode.twopointers
 
 fun main() {
     /**
