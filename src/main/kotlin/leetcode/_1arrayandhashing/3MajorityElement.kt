@@ -32,7 +32,26 @@ fun main() {
      * Follow-up: Could you solve the problem in linear time and in O(1) space?
      */
 
+    val count = IntArray(26)
+    count[0] = 6
+    count[1] = 5
+    count[2] = 4
+    count[3] = 7
+    val max = count.maxOrNull() ?: 0
 
+    println(max)
+
+    val map = mapOf(
+        'a' to 4,
+        'b' to 3,
+        'c' to 2,
+        'd' to 1
+    )
+
+    val max2 = map.maxByOrNull { it.value }?.key
+    val max3 = map.maxOfOrNull { it.value }
+    println(max2)
+    println(max3)
 
 }
 // https://www.youtube.com/watch?v=7pnhv842keE
