@@ -17,6 +17,14 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+// Run any Kotlin `main`, e.g. ./gradlew -q runMain -PmainClass=intercom._1agentassignment.solution.SolutionKt
+tasks.register<JavaExec>("runMain") {
+    group = "application"
+    description = "Runs the Kotlin main class given by -PmainClass=<fully.qualified.FileKt>"
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set(providers.gradleProperty("mainClass"))
+}
 kotlin {
     jvmToolchain(17)
 }
