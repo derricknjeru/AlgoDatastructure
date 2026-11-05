@@ -48,7 +48,7 @@ private data class AgentState(
 
 /** Fewest active -> waited longest (smallest stamp, NEVER first) -> initial list order. */
 private val PRIORITY: Comparator<AgentState> =
-    compareBy<AgentState>({ it.active }, { it.lastAssignedAt }, { it.order })
+    compareBy({ it.active }, { it.lastAssignedAt }, { it.order })
 
 /**
  * Version 1 – linear scan. This is what you should write first in the interview.

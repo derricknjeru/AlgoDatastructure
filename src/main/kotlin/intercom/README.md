@@ -14,6 +14,12 @@ Each problem folder contains:
 
 `Harness.kt` is the tiny shared helper (`scenario`, `expect`, `expectThrows`, `summary`) used by every `main`.
 
+**Interview on 9 Nov?** Follow the day-by-day [`PREP_PLAN.md`](PREP_PLAN.md): exact files, functions and commands for each day.
+
+**New to Kotlin or rusty?** Start with [`_0kotlinessentials`](_0kotlinessentials/README.md): lessons, drills
+and a cheat sheet for the Kotlin features these problems use (data classes, comparators, grouping,
+`getOrPut`, `TreeMap`/`PriorityQueue`, `require`/`check`, `kotlin.test`).
+
 ---
 
 ## Problems by priority

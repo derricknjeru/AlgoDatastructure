@@ -7,6 +7,7 @@
 | File | Purpose |
 |------|---------|
 | [`practice/Practice.kt`](practice/Practice.kt) | Skeleton with `TODO()`s and runnable examples. Start here. |
+| [`practice/ScalableAssignmentSystem.kt`](practice/ScalableAssignmentSystem.kt) | Follow-ups on top of the practice answer: O(log n) TreeSet, agents going offline (keep or reassign), thread-safety – with explanations. |
 | [`solution/Solution.kt`](solution/Solution.kt) | Reference: O(n) scan **and** TreeSet/heap version. |
 | `src/test/kotlin/intercom/_1agentassignment/` | Unit tests for both solutions. |
 
