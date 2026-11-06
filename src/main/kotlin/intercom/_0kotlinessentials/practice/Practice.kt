@@ -5,7 +5,9 @@ import intercom.Harness.expect
 import intercom.Harness.expectThrows
 import intercom.Harness.scenario
 import jdk.internal.agent.resources.agent
+import java.util.PriorityQueue
 import java.util.TreeMap
+import kotlin.comparisons.reverseOrder
 
 /*
  * Kotlin essentials – drills. One per topic, in Intercom's domain. Aim for < 3 minutes each.
@@ -46,33 +48,98 @@ fun countByStatus(conversations: List<Conversation>): Map<Status, Int> =
     conversations.groupingBy { it.status }.eachCount()
 
 // 4. getOrPut: each recipient's inbox = texts delivered to them, in order.
-fun buildInboxes(messages: List<Message>): Map<String, List<String>> = TODO("4. getOrPut")
+/**
+ * val messages = listOf(
+ *             Message("cust", listOf("fin", "alice"), "Hi"),
+ *             Message("fin", listOf("cust", "alice"), "Hello!"),
+ *             Message("alice", listOf("cust", "fin"), "Alice here"),
+ *         )
+ *         expect(
+ *             "buildInboxes", buildInboxes(messages),
+ *             mapOf(
+ *                 "fin" to listOf("Hi", "Alice here"),
+ *                 "alice" to listOf("Hi", "Hello!"),
+ *                 "cust" to listOf("Hello!", "Alice here")
+ *             ),
+ *         )
+ */
+fun buildInboxes(messages: List<Message>): Map<String, List<String>> {
+    val res = mutableMapOf<String, MutableList<String>>()
+    for ((_, recipients, text) in messages) {
+        for (recipient in recipients) {
+            res.getOrPut(recipient) { mutableListOf() }.add(text)
+        }
+    }
+    return res
+}
 
 // 5a. TreeMap: event names with timestamp in [from, to] (both inclusive), in time order.
-fun eventsBetween(timeline: TreeMap<Int, String>, from: Int, to: Int): List<String> = TODO("5a. subMap")
+fun eventsBetween(timeline: TreeMap<Int, String>, from: Int, to: Int): List<String> =
+    if (from > to) return emptyList() else timeline.subMap(from, true, to, true).values.toList()
 
 // 5b. TreeMap: the latest event at or before t, or null.
-fun lastEventAtOrBefore(timeline: TreeMap<Int, String>, t: Int): String? = TODO("5b. floorEntry")
+fun lastEventAtOrBefore(timeline: TreeMap<Int, String>, t: Int): String? = timeline.floorEntry(t)?.value
 
 // 5c. PriorityQueue: k busiest agents (load desc, ties by name asc). Use a min-heap of size k.
-fun busiestAgents(load: Map<String, Int>, k: Int): List<String> = TODO("5c. PriorityQueue top-k")
+fun busiestAgents(load: Map<String, Int>, k: Int): List<String> {
+    if (k <= 0) return emptyList()
+
+    // Desired ordering:
+    // 1. Highest load first.
+    // 2. Alphabetical order for ties.
+    val best = compareByDescending<Map.Entry<String, Int>> { it.value }
+        .thenBy { it.key }
+
+    // Reverse ordering to create a min-heap.
+    // Least desirable agent (lowest load, alphabetically last on ties)
+    // stays at the top and gets removed first.
+    val minHeap = PriorityQueue(best.reversed())
+
+    // Maintain only the K busiest agents.
+    for (agentEntry in load.entries) {
+        minHeap.add(agentEntry)
+
+        // Remove the least desirable agent if size exceeds K.
+        if (minHeap.size > k) {
+            minHeap.poll()
+        }
+    }
+
+    // Sort the remaining K agents in the desired order.
+    return minHeap.sortedWith(best).map { it.key }
+}
+
+// Time Complexity: O(n log k + k log k)
+// - Process n agents using a heap of size k: O(n log k)
+// - Sort the remaining k agents: O(k log k)
+//
+// Space Complexity: O(k)
+// - The heap stores at most k entries.
 
 // 6a. require + null safety: parse a limit typed by an admin. Trim spaces.
 //     null / blank / not a number / negative -> IllegalArgumentException with a helpful message.
-fun parseLimit(input: String?): Int = TODO("6a. requireNotNull / toIntOrNull / require")
+fun parseLimit(input: String?): Int {
+    val text = requireNotNull(input) { "input can not be null" }.trim()
+    require(text.isNotEmpty()) { "input can not be empty" }
+    val number = requireNotNull(text.toIntOrNull()) { "input can not be null" }
+    require(number >= 0) { "input can not be empty" }
+    return number
+}
 
 // 6b. check: closing an already-closed ticket is an IllegalStateException.
 class Ticket {
+    val treeMap = TreeMap<String, Agent>()
     var closed = false
         private set
 
     fun close() {
-        TODO("6b. check")
+        check(!closed) { "ticket can not be closed" }
+        closed = true
     }
 }
 
 // 6c. elvis: owner name, or "unassigned" when the conversation has no owner.
-fun ownerOf(conversationId: Int, owners: Map<Int, String>): String = TODO("6c. ?:")
+fun ownerOf(conversationId: Int, owners: Map<Int, String>): String = owners[conversationId] ?: "unassigned"
 
 // 7. kotlin.test: open src/test/kotlin/intercom/_0kotlinessentials/KotlinTestBasicsTest.kt and add a test.
 

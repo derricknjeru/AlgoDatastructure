@@ -14,19 +14,28 @@ import intercom._0kotlinessentials.collections.Conversation
  */
 
 // 1. Customers that have at least one ASSIGNED conversation, distinct, alphabetical.
-fun customersWithAssignedConversations(conversations: List<Conversation>): List<String> = TODO("1. filter/map/distinct/sorted")
+fun customersWithAssignedConversations(conversations: List<Conversation>): List<String> =
+    conversations
+        .filter { it.assignee != null }
+        .map { it.customer }
+        .distinct()
+        .sorted()
 
 // 2. Ids of conversations without a rating.
-fun unratedIds(conversations: List<Conversation>): List<Int> = TODO("2. filter")
+fun unratedIds(conversations: List<Conversation>): List<Int> = conversations.filter { it.rating == null }.map { it.id }
 
 // 3. Ids ordered by rating, best first; unrated last (keep their original order).
-fun bestRatedFirst(conversations: List<Conversation>): List<Int> = TODO("3. nullsLast(reverseOrder())")
+fun bestRatedFirst(conversations: List<Conversation>): List<Int> =
+    conversations.sortedWith(compareBy(nullsLast(reverseOrder())) { it.rating }).map { it.id }
 
 // 4. "#1 Alice, #2 Bob, #3 Alice, ..." – first 3 only, "unassigned" for null.
-fun summaryLine(conversations: List<Conversation>): String = TODO("4. joinToString(limit)")
+fun summaryLine(conversations: List<Conversation>): String =
+    conversations.joinToString(limit = 3) { "#${it.id} ${it.assignee ?: "unassigned"}" }
 
 // 5. id -> messages
-fun messagesById(conversations: List<Conversation>): Map<Int, Int> = TODO("5. associate")
+fun messagesById(conversations: List<Conversation>): Map<Int, Int> =
+    conversations
+        .associate { it.id to it.messages }
 
 // 6. Average of the ratings that exist; null when there are none.
 fun averageRating(conversations: List<Conversation>): Double? = TODO("6. mapNotNull/average")
@@ -51,10 +60,12 @@ fun pages(ids: List<Int>, pageSize: Int): List<List<Int>> = TODO("11a. chunked")
 fun busiestWindow(messagesPerMinute: List<Int>, k: Int): Int? = TODO("11b. windowed")
 
 // 12. customer -> its non-null ratings; drop customers with no ratings.
-fun ratingsByCustomer(conversations: List<Conversation>): Map<String, List<Int>> = TODO("12. groupBy/mapValues/filterValues")
+fun ratingsByCustomer(conversations: List<Conversation>): Map<String, List<Int>> =
+    TODO("12. groupBy/mapValues/filterValues")
 
 // 13. Ids of the first n conversations with at least minMessages – don't process the rest.
-fun firstBigConversationIds(conversations: List<Conversation>, minMessages: Int, n: Int): List<Int> = TODO("13. asSequence")
+fun firstBigConversationIds(conversations: List<Conversation>, minMessages: Int, n: Int): List<Int> =
+    TODO("13. asSequence")
 
 // 14. Hours 0..23 not inside any covered range.
 fun uncoveredHours(covered: List<IntRange>): List<Int> = TODO("14. ranges")

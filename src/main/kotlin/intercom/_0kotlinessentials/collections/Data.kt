@@ -21,7 +21,9 @@ data class Conversation(
     val channel: Channel,
     val messages: Int,
     val rating: Int?,
-)
+) {
+    val hasHighRating get() = rating != null && rating > 0
+}
 
 val CONVERSATIONS = listOf(
     Conversation(1, "acme", "Alice", Channel.CHAT, messages = 4, rating = 5),

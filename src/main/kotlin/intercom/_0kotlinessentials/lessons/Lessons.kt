@@ -189,7 +189,7 @@ fun lesson3Grouping() = scenario("3. groupBy / groupingBy().eachCount()") {
 fun lesson4GetOrPut() = scenario("4. getOrPut") {
     val inbox = HashMap<String, MutableList<Int>>()
     for (c in CONVERSATIONS) {
-        inbox.getOrPut(c.assignee ?: "unassigned") { mutableListOf() } += c.id
+        inbox.getOrPut(c.assignee ?: "unassigned") { mutableListOf() }.add(c.id)
     }
     expect("map of lists", inbox, mapOf("Alice" to listOf(1, 3), "Bob" to listOf(2, 5), "unassigned" to listOf(4)))
 
@@ -316,8 +316,8 @@ fun main() {
     lesson1DataClasses()
     lesson2Comparators()
     lesson3Grouping()
-    /*lesson4GetOrPut()
+    lesson4GetOrPut()
     lesson5TreeMapAndHeap()
-    lesson6RequireCheckNulls()*/
+    lesson6RequireCheckNulls()
     Harness.summary()
 }

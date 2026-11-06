@@ -131,6 +131,7 @@ fun change() = scenario("4. Change") {
     expect("map[k] = v / += pair / remove", limits, mapOf("Bob" to 4, "Carol" to 3))
 
     val scores = mutableListOf(3, 1, 2)
+    scores.sort()
     val copy = scores.sorted()
     scores.sortDescending()
     expect("sorted() returns a copy; sort()/sortDescending() mutate", copy to scores, listOf(1, 2, 3) to listOf(3, 2, 1))

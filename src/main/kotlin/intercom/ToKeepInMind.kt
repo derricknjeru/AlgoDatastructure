@@ -1,5 +1,7 @@
 package intercom
 
+import java.util.PriorityQueue
+
 fun main() {
     // 1 ->
     val array = IntArray(26)
@@ -22,6 +24,21 @@ fun main() {
     val nums = IntArray(26)
     nums.forEachIndexed { index, num ->
         println("$index -> $num")
+    }
+
+    val best = compareByDescending<Map.Entry<String, Int>> { it.value }
+        .thenBy { it.key }
+
+    val minHeap = PriorityQueue(best.reversed())
+
+    // gives a list
+    minHeap.sortedWith(best).map { it.key }
+
+    val agents = listOf("Alice", "Bob")
+    for (i in agents.lastIndex downTo 0) println(agents[i])
+    for ((index, agent) in agents.withIndex()) println("$index -> $agent")
+    agents.forEachIndexed { index, agent ->
+        println("$index -> $agent")
     }
 
 }

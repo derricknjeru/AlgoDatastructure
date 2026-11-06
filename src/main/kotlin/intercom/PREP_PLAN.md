@@ -10,7 +10,48 @@ Kotlin essentials live in `src/main/kotlin/intercom/_0kotlinessentials/`.
 
 ---
 
+## The interview format (from Intercom's brief) and what it means
+
+| The brief says | So practise like this |
+|----------------|-----------------------|
+| **One** coding exercise; implement **all** the requirements | Expect one multi-part problem (like Pack #1 + its extension). **Complete and simple beats optimal and half-done**: get every requirement working with the O(n) version first, then optimise. |
+| Start simple, iterate toward optimal if time permits | Say it at the start: *"I'll do a linear scan first and improve it if we have time."* |
+| Code is **not run**; syntax errors don't matter | **Practise without running.** Write the code → **trace the given example by hand**, line by line, saying the variable values → *then* run to check your trace. Hand-tracing is what they assess. |
+| They may ask you to **explain the principle** behind the tools you use | Know the internals in the cheat sheet below – one or two sentences each. |
+| Think out loud: reasoning, edge cases, alternatives | Narrate: restate → clarifying questions → approach → edge cases → alternatives you'd consider, even if you don't build them. |
+| HackerRank editor, no AI | Practise in a plain editor (turn off Copilot/autocomplete). Write your own `import java.util.*`. |
+
+### The 5-step script for the real session
+1. **Restate** the problem and **ask clarifying questions** (ties? empty input? limits? duplicates?).
+2. **Write the given example** as the expected output before coding.
+3. **Simple version first** – make every requirement work.
+4. **Hand-trace** the example through your code, out loud. Then name edge cases and check them.
+5. **Optimise / discuss** – better data structure, complexity before vs after, trade-offs.
+
+## Internals cheat sheet – "how does the tool you chose work?"
+
+| Tool | How it works | Cost |
+|------|--------------|------|
+| `sorted` / `sortedBy` / `sortedWith` (objects) | **TimSort** – hybrid of merge sort + insertion sort; exploits already-sorted runs. **Stable**: equal elements keep their order (why tie-breaks are predictable). Primitive arrays use dual-pivot quicksort (not stable). | O(n log n) |
+| `HashMap` / `HashSet` | Array of **buckets**; `hashCode()` picks the bucket, `equals()` finds the key in it. Resizes (doubles + rehashes) at 75 % full. A bucket with many collisions becomes a small tree. Don't change a key's fields while it's in the map. | O(1) avg, O(log n) worst |
+| `LinkedHashMap` (= `mutableMapOf`) | HashMap **+ doubly linked list** through the entries → keeps insertion order; access-order mode + `removeEldestEntry` = LRU cache. | O(1) avg |
+| `TreeMap` / `TreeSet` | **Red-black tree** – self-balancing binary search tree (height ≤ 2·log n). Sorted keys, `floorKey`/`ceilingKey`/`subMap`. Uses the **comparator for equality**: compare == 0 → treated as duplicate. | O(log n) |
+| `PriorityQueue` | **Binary heap in an array**: children of i at 2i+1 and 2i+2, parent at (i−1)/2. `offer` appends + **sift up**; `poll` moves last to root + **sift down**. Building from a collection is O(n). Iteration order is **not** sorted. | offer/poll O(log n), peek O(1) |
+| `ArrayList` / `mutableListOf` | **Dynamic array**; grows ~1.5× when full and copies → append is **amortised** O(1). Insert/remove at the front shifts everything. | get/set/append O(1), front O(n) |
+| `ArrayDeque` | **Circular buffer** with head/tail indices; doubles when full. | both ends O(1) |
+| Binary search (`binarySearch`, `floorKey`) | Sorted data; compare with the middle, discard half each step. Missing → insertion point (`-(insertion) - 1`). | O(log n) |
+| `groupingBy { }.eachCount()` / `merge` | One pass over the data, one hash-map update per element. | O(n) time, O(k) space |
+
+Say it like: *"I'm using a TreeMap – it's a red-black tree, so floorKey is O(log n) and the keys stay
+sorted even when timestamps arrive out of order."*
+
+---
+
 ## How every session works
+
+> **No-run rule (matches the real interview):** for every LeetCode problem and pack exercise,
+> write the solution and **hand-trace the example out loud before you run anything**. Running
+> is only for checking your trace.
 
 ### "Lessons" = read and run
 Open the `lessons/Lessons.kt` file, read the named functions top to bottom, then run the file.
@@ -33,10 +74,12 @@ Scenarios you haven't reached yet print `TODO` – that's fine. When done, compa
        // 2. then the solution
    }
    ```
-3. Run it: `./gradlew -q runMain -PmainClass=scratch.lc981.Lc981Kt`
+3. Timer **25 min**, editor without autocomplete/Copilot. Talk out loud as if the interviewer is listening.
+4. **Before running:** hand-trace the example through your code out loud (variable values line by line).
+5. Run it to check your trace: `./gradlew -q runMain -PmainClass=scratch.lc981.Lc981Kt`
    (class name = file name + `Kt`).
-4. Timer **25 min**. Talk out loud as if the interviewer is listening.
-5. Compare with your old solution (path in each table) and write down **one mistake**.
+6. Say the complexity and **how the main data structure works inside** (internals cheat sheet).
+7. Compare with your old solution (path in each table) and write down **one mistake**.
 
 ### Running things
 ```bash
@@ -285,15 +328,17 @@ Then read `_1agentassignment/practice/ScalableAssignmentSystem.kt` (TreeSet, off
 
 No new problems. 30–45 min max:
 1. Re-read section 6 (follow-ups) of the READMEs for packs #1, #2 and #3.
-2. Skim the cheat sheets in `_0kotlinessentials/README.md` (Parts 1–4).
+2. Re-read the **internals cheat sheet** at the top of this file, and skim the cheat sheets in
+   `_0kotlinessentials/README.md` (Parts 1–4).
 3. Type the `main` template once from memory (see "Speed drill" in that README).
 
-### In the interview
-1. Ask clarifying questions; restate the rules in your own words.
-2. Write the given example as a `main` check **before** the implementation.
-3. Start with the simple O(n) version; run it early and often.
-4. Say edge cases out loud (empty, full, duplicates, unknown ids, ties).
-5. Only then optimise – and explain the trade-off (e.g. scan vs TreeSet).
+### In the interview (HackerRank, code is not run)
+Follow **the 5-step script** at the top of this file:
+1. Restate the problem and ask clarifying questions.
+2. Write the given example down as the expected output **before** the implementation.
+3. Simple O(n) version first – implement **every** requirement.
+4. **Hand-trace** the example through your code out loud; say edge cases (empty, full, duplicates, unknown ids, ties).
+5. Only then optimise – explain the trade-off (e.g. scan vs TreeSet) and how the structure works inside.
 
 ---
 
