@@ -20,22 +20,30 @@ Rules for practice (mirror the real session):
 
 | Day | Focus | File | Problems |
 |-----|-------|------|----------|
-| 1 | Maps, sets, sorting | [day-1-maps-sets-sorting.md](day-1-maps-sets-sorting.md) | 9 |
-| 2 | Heaps | [day-2-heaps.md](day-2-heaps.md) | 6 |
-| 3 | Ordered collections and design | [day-3-ordered-and-design.md](day-3-ordered-and-design.md) | 5 |
+| 1 | Maps, sets, sorting | [day-1-maps-sets-sorting.md](docs/day-1-maps-sets-sorting.md) | 9 |
+| 2 | Heaps | [day-2-heaps.md](docs/day-2-heaps.md) | 6 |
+| 3 | Ordered collections and design | [day-3-ordered-and-design.md](docs/day-3-ordered-and-design.md) | 5 |
 
 Also:
 
-- [mocks.md](mocks.md): two 35-minute timed mock interviews. Run one after Day 1 and one after Day 2 (or Day 3 if time is short).
-- [TRACKER.md](TRACKER.md): progress log for all 20 core problems.
-- [secondary.md](secondary.md): optional problems once the core list is done.
+- [Timed mocks](docs/mocks.md): two 35-minute mock interviews.
+- [Mock solutions](docs/mock-solutions.md): review only after completing a timed attempt.
+- [Progress tracker](docs/TRACKER.md): progress log for all 20 core problems.
+- [Secondary problems](docs/secondary.md): optional problems once the core list is done.
+- [Practice exercises](exercises/): Kotlin TODO starters.
+- [Reference solutions](solutions/MockPracticeSolutions.kt): solutions for the Kotlin starters.
+
+## Resources
+
+- [HackerRank Interview Preparation Kit](https://www.hackerrank.com/interview/interview-preparation-kit?utm_source=chatgpt.com)
+- [HackerRank Data Structures Practice](https://www.hackerrank.com/domains/data-structures?utm_source=chatgpt.com)
 
 ### Suggested daily schedule (about 3 hours)
 
 - 10 min: review the cheat sheet below.
 - 2 hours: solve the day's problems (roughly 12 to 15 minutes each, timed; stop and review if stuck past 20 minutes).
 - 20 min: review solutions, rewrite one solution cleanly from memory.
-- 10 min: update [TRACKER.md](TRACKER.md) and note what felt slow.
+- 10 min: update the [progress tracker](docs/TRACKER.md) and note what felt slow.
 
 On Day 3 evening, run Mock 2 if you have not already done so.
 

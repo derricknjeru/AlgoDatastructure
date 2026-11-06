@@ -1,6 +1,6 @@
 # Secondary Problems (Optional)
 
-Attempt these only after the 20 core problems in [TRACKER.md](TRACKER.md) are solved. Use the same routine from the [README](README.md): identify the data structure, implement in Kotlin, state complexity, and discuss alternatives out loud.
+Attempt these only after the 20 core problems in [TRACKER.md](TRACKER.md) are solved. Use the same routine from the [README](../README.md): identify the data structure, implement in Kotlin, state complexity, and discuss alternatives out loud.
 
 Note: links below were not checked against the live site. Confirm each URL before you start.
 

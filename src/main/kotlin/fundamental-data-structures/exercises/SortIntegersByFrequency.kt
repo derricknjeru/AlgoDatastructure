@@ -17,6 +17,6 @@ package fundamental_data_structures
  * Practice decision: empty input returns an empty new array.
  */
 
-// TODO: Replace the body, then compare it with MockPracticeSolutions.kt.
+// TODO: Replace the body, then compare it with ../solutions/MockPracticeSolutions.kt.
 fun sortIntegersByFrequencyTodo(nums: IntArray): IntArray =
     TODO("Implement frequency sorting")
