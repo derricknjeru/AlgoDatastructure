@@ -2,6 +2,8 @@
 
 Run each mock under real conditions: Kotlin only, no AI tools, no internet search for solutions, thinking out loud (record yourself if you can).
 
+Solutions and a practice exercise for each mock are in [mock-solutions.md](mock-solutions.md). Read them only after your attempt.
+
 ## Timing Breakdown (both mocks)
 
 Total: **35 minutes**
