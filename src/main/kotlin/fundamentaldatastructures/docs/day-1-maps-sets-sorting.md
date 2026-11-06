@@ -122,8 +122,8 @@ Note: links marked **(link not verified)** were not checked against the live sit
 - **Link:** https://www.hackerrank.com/challenges/java-comparator/problem **(link not verified)**
 - **Skill:** Custom ordering with `compareBy` and `thenBy` (Kotlin equivalent of a Java comparator)
 - **Status:**
-  - [ ] Solved
-  - [ ] Reviewed
+  - [X] Solved
+  - [X] Reviewed
 
 **Key questions to answer out loud:**
 
@@ -139,8 +139,8 @@ Note: links marked **(link not verified)** were not checked against the live sit
 - **Link:** https://leetcode.com/problems/reorder-data-in-log-files/
 - **Skill:** Partitioning plus custom comparator with multiple tie-break rules
 - **Status:**
-  - [ ] Solved
-  - [ ] Reviewed
+  - [X] Solved
+  - [X] Reviewed
 
 **Key questions to answer out loud:**
 

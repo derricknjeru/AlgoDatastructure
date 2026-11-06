@@ -33,6 +33,12 @@ Also:
 - [Practice exercises](exercises/): Kotlin TODO starters.
 - [Reference solutions](solutions/MockPracticeSolutions.kt): solutions for the Kotlin starters.
 
+### Practical Kotlin OOP
+
+- [Introduction to OOP using Kotlin](docs/introduction-to-oop-kotlin.md)
+- [Library lending exercise](exercises/OopLibraryExercise.kt)
+- [Library lending reference solution](solutions/OopLibrarySolution.kt)
+
 ## Resources
 
 - [HackerRank Interview Preparation Kit](https://www.hackerrank.com/interview/interview-preparation-kit?utm_source=chatgpt.com)

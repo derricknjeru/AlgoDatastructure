@@ -24,6 +24,7 @@ tasks.register<JavaExec>("runMain") {
     description = "Runs the Kotlin main class given by -PmainClass=<fully.qualified.FileKt>"
     classpath = sourceSets["main"].runtimeClasspath
     mainClass.set(providers.gradleProperty("mainClass"))
+    standardInput = System.`in`
 }
 kotlin {
     jvmToolchain(17)
