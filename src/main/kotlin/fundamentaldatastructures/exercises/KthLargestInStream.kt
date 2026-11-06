@@ -1,4 +1,4 @@
-package fundamental_data_structures
+package fundamentaldatastructures.exercises
 
 /*
  * Kth Largest in a Stream

@@ -41,4 +41,6 @@ fun main() {
         println("$index -> $agent")
     }
 
+
+    for(i in nums.indices){ }
 }

@@ -14,14 +14,17 @@ Note: links marked **(link not verified)** were not checked against the live sit
 - **Link:** https://leetcode.com/problems/two-sum/
 - **Skill:** `HashMap` complement lookup (value to index)
 - **Status:**
-  - [ ] Solved
-  - [ ] Reviewed
+  - [X] Solved
+  - [X] Reviewed
 
 **Key questions to answer out loud:**
 
 - Why is a hash map better than a nested loop here? What are the time complexities of each?
+ Ans: Look up is constant time & insertion is also constant time
 - What do you store as the key and what as the value? Why?
+  Ans: Num as key, index as value; because you will be checking numbers 
 - What happens if the same number appears twice, and does the answer need to be unique?
+   Ans: This is why the hash-map lookup must happen **before** inserting the current number: it prevents matching an element with itself while still supporting duplicates.
 
 ---
 
@@ -31,14 +34,14 @@ Note: links marked **(link not verified)** were not checked against the live sit
 - **Link:** https://www.hackerrank.com/challenges/ctci-ransom-note/problem
 - **Skill:** Frequency counting with `HashMap<String, Int>`
 - **Status:**
-  - [ ] Solved
-  - [ ] Reviewed
+  - [X] Solved
+  - [X] Reviewed
 
 **Key questions to answer out loud:**
 
-- Why is a count map a better choice than sorting both word lists?
-- How do you decide the answer when a word is missing from the magazine?
-- Could you use an array instead of a map if the input were only lowercase letters? What is the trade-off?
+- Why is a count map a better choice than sorting both word lists? Ans: sorting =nlogn countmap = O(m + n)
+- How do you decide the answer when a word is missing from the magazine? return No
+- Could you use an array instead of a map if the input were only lowercase letters? What is the trade-off? Yes
 
 ---
 
@@ -48,8 +51,8 @@ Note: links marked **(link not verified)** were not checked against the live sit
 - **Link:** https://leetcode.com/problems/group-anagrams/
 - **Skill:** Grouping by a canonical key (sorted string or count signature)
 - **Status:**
-  - [ ] Solved
-  - [ ] Reviewed
+  - [X] Solved
+  - [X] Reviewed
 
 **Key questions to answer out loud:**
 
@@ -65,14 +68,17 @@ Note: links marked **(link not verified)** were not checked against the live sit
 - **Link:** https://www.hackerrank.com/challenges/sparse-arrays/problem
 - **Skill:** Map from string to count, then answer queries with `getOrDefault`
 - **Status:**
-  - [ ] Solved
-  - [ ] Reviewed
+  - [X] Solved
+  - [X] Reviewed
 
 **Key questions to answer out loud:**
 
 - Why is a map the natural structure when most queries are for strings that never appeared?
+  - A map stores only strings that appeared and provides expected O(1) count lookup, which suits sparse queries.
 - What should a query return for an unseen string, and how do you avoid a null crash in Kotlin?
+  - An unseen query returns 0; use `occurrenceMap[query] ?: 0` or `getOrDefault(query, 0)` to avoid null.
 - If the strings were very long, how would you reduce the memory cost (for example, hashing)?
+  - Use fixed-size hashes or fingerprints to reduce key memory, but account for collision risk with strong or double hashes or by verifying originals when exactness is required.
 
 ---
 
@@ -82,8 +88,8 @@ Note: links marked **(link not verified)** were not checked against the live sit
 - **Link:** https://www.hackerrank.com/challenges/icecream-parlor/problem **(link not verified)**
 - **Skill:** Map from price to index for pair finding under a budget
 - **Status:**
-  - [ ] Solved
-  - [ ] Reviewed
+  - [X] Solved
+  - [X] Reviewed
 
 **Key questions to answer out loud:**
 
@@ -99,8 +105,8 @@ Note: links marked **(link not verified)** were not checked against the live sit
 - **Link:** https://leetcode.com/problems/sort-array-by-increasing-frequency/
 - **Skill:** Frequency map plus a custom comparator with tie-break
 - **Status:**
-  - [ ] Solved
-  - [ ] Reviewed
+  - [X] Solved
+  - [X] Reviewed
 
 **Key questions to answer out loud:**
 
