@@ -16,8 +16,8 @@ Note: links marked **(link not verified)** were not checked against the live sit
 - **Link:** https://leetcode.com/problems/top-k-frequent-words/
 - **Skill:** Frequency map plus bounded heap with a two-field comparator (count, then lexicographic)
 - **Status:**
-  - [ ] Solved
-  - [ ] Reviewed
+  - [X] Solved
+  - [X] Reviewed
 
 **Key questions to answer out loud:**
 
@@ -33,8 +33,8 @@ Note: links marked **(link not verified)** were not checked against the live sit
 - **Link:** https://leetcode.com/problems/kth-largest-element-in-a-stream/
 - **Skill:** Size-K min heap maintained across inserts
 - **Status:**
-  - [ ] Solved
-  - [ ] Reviewed
+  - [X] Solved
+  - [X] Reviewed
 
 **Key questions to answer out loud:**
 
@@ -50,8 +50,8 @@ Note: links marked **(link not verified)** were not checked against the live sit
 - **Link:** https://www.hackerrank.com/challenges/jesse-and-cookies/problem
 - **Skill:** Min heap repeatedly combining the two smallest values
 - **Status:**
-  - [ ] Solved
-  - [ ] Reviewed
+  - [X] Solved
+  - [X] Reviewed
 
 **Key questions to answer out loud:**
 
@@ -67,8 +67,8 @@ Note: links marked **(link not verified)** were not checked against the live sit
 - **Link:** https://www.hackerrank.com/challenges/qheap1/problem
 - **Skill:** Min heap with lazy deletion (or a second heap as a delete buffer)
 - **Status:**
-  - [ ] Solved
-  - [ ] Reviewed
+  - [X] Solved
+  - [X] Reviewed
 
 **Key questions to answer out loud:**
 
