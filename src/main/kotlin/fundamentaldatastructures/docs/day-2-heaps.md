@@ -84,8 +84,8 @@ Note: links marked **(link not verified)** were not checked against the live sit
 - **Link:** https://www.hackerrank.com/challenges/find-the-running-median/problem
 - **Skill:** Two heaps (max heap for lower half, min heap for upper half) with rebalancing
 - **Status:**
-  - [ ] Solved
-  - [ ] Reviewed
+  - [X] Solved
+  - [X] Reviewed
 
 **Key questions to answer out loud:**
 
@@ -101,8 +101,8 @@ Note: links marked **(link not verified)** were not checked against the live sit
 - **Link:** https://leetcode.com/problems/find-median-from-data-stream/
 - **Skill:** Two heaps (same as running median, in class-design form)
 - **Status:**
-  - [ ] Solved
-  - [ ] Reviewed
+  - [X] Solved
+  - [X] Reviewed
 
 **Key questions to answer out loud:**
 

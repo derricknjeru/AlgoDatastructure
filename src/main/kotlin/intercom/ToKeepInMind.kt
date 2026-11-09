@@ -42,5 +42,8 @@ fun main() {
     }
 
 
-    for(i in nums.indices){ }
+    for (i in nums.indices) {
+    }
+    val age: Int? = "23".toIntOrNull()
+    if (age !in 0..150) println(age) // not the range
 }

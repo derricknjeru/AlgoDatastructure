@@ -14,6 +14,7 @@ fun isPalindrome(s: String): Boolean {
     var left = 0
     var right = s.length - 1
 
+
     while (left < right) {
         // Skip non-alphanumeric characters from the left
         while (left < right && !s[left].isLetterOrDigit()) {

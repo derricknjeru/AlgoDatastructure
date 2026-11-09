@@ -19,6 +19,7 @@ class ComparatorSolutionChecker : Comparator<ComparatorSolutionPlayer> {
             first.name.compareTo(second.name)
         }
     }
+
 }
 
 /*
@@ -30,3 +31,7 @@ fun sortPlayersReference(
     players: List<ComparatorSolutionPlayer>
 ): List<ComparatorSolutionPlayer> =
     players.sortedWith(ComparatorSolutionChecker())
+
+fun main() {
+    val stack = ArrayDeque<Char>()
+}
